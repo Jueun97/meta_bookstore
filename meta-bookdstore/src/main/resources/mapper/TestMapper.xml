@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- 하단의 namespace는 이 sql를 사용할 mapper가 어딨는지 path를 명확히 지정해주는 것. 
+  	   alias를 사용할지 말지 토의한 결과 현재는 명확시 기입을 하는 방향.(추후 별도 논의 필요.)-->
+  <mapper namespace="com.meta.mapper.TestMapper">
+	  <!-- 1.북 리스트 보기 -->
+	 	<select id="test" resultType="com.meta.vo.TestVo">
+	    SELECT * from board
+	 	</select>
+  </mapper>
