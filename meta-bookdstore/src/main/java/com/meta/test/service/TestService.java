@@ -1,12 +1,12 @@
-package com.meta.service;
+package com.meta.test.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.meta.mapper.TestMapper;
-import com.meta.vo.TestVo;
+import com.meta.test.mapper.TestMapper;
+import com.meta.test.vo.TestVo;
 
 //Service는 기존의 비즈니스 로직을 controller 또는
 //Dao에서 같이 묶어서 병행했다면 Service를 통해
