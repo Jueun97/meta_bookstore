@@ -1,8 +1,9 @@
-package com.meta.mapper;
+package com.meta.test.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
-import com.meta.vo.TestVo;
+
+import com.meta.test.vo.TestVo;
 
 
 //이곳은 우리가 Spring으로만 구성했던 프로젝트쪽에서

@@ -1,4 +1,4 @@
-package com.meta.vo;
+package com.meta.test.vo;
 
 import lombok.Data;
 
