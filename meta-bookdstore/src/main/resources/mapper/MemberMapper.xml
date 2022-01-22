@@ -3,10 +3,20 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.meta.member.mapper.MemberMapper">
-	  <!-- 1.북 리스트 보기 -->
+	  <!-- 1.member id찾기 -->
 	 	<select id="findByMemberId" resultType="com.meta.member.vo.MemberVO">
 	    SELECT m_no,id,password,name,address,phone,email,grade,regdate
 	    FROM member
 	    WHERE id=#{id}
 	 	</select>
+	 	<!-- 2.회원가입 -->
+  	<insert id="register">
+  		INSERT INTO member(m_no,id,password, name, address, phone, email)
+			VALUES(member_seq.nextval,#{id},#{password1},#{name},#{address},#{phone},#{email})
+  	</insert>
+  	 <!-- 3.아이디 중복체크 -->
+  	<select id="checkId" resultType="String">
+  		SELECT id FROM member 
+  		WHERE id = #{id}
+  	</select>
   </mapper>
