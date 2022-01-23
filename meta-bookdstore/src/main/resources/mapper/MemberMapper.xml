@@ -14,7 +14,19 @@
   		INSERT INTO member(m_no,id,password, name, address, phone, email)
 			VALUES(member_seq.nextval,#{id},#{password1},#{name},#{address},#{phone},#{email})
   	</insert>
-  	 <!-- 3.아이디 중복체크 -->
+	 	<!-- 3-1.회원수정 -->
+  	 <update id="update">
+	  	UPDATE member 
+			SET password=#{password},name=#{name},phone=#{phone},email=#{email}
+			WHERE m_no=#{m_no}
+	  </update>
+	 	<!-- 3-2.회원수정,번호로 회원 객체찾기 -->
+  	 <select id="findByMno" resultType="com.meta.member.vo.MemberVO">
+		  	SELECT m_no,id,password,name,address,phone,email,grade,regdate
+		    FROM member
+		    WHERE m_no=#{m_no}
+	  </select>
+  	 <!-- 4.아이디 중복체크 -->
   	<select id="checkId" resultType="String">
   		SELECT id FROM member 
   		WHERE id = #{id}

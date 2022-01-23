@@ -9,7 +9,7 @@ import com.meta.member.vo.MemberVO;
 import lombok.Data;
 
 @Data
-public class MemberRegdto {
+public class MemberRegDto {
 	@NotEmpty(message="id를 입력하셔야 합니다.")
 	@NotBlank
 	private String id;

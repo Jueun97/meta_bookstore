@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
-import com.meta.member.dto.MemberRegdto;
+import com.meta.config.auth.PrincipalDetails;
+import com.meta.member.dto.MemberRegDto;
+import com.meta.member.dto.MemberUpdateDto;
 import com.meta.member.mapper.MemberMapper;
 import com.meta.member.vo.MemberVO;
 
@@ -24,7 +26,7 @@ public class MemberService {
         return memberMapper.findByMemberId(id);
     }
 	
-	public int register(MemberRegdto memberRegDto) {
+	public int register(MemberRegDto memberRegDto) {
 		//password bcrypt암호화 과정.
 		String rawPassword = memberRegDto.getPassword1();
 		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
@@ -33,8 +35,8 @@ public class MemberService {
 		return memberMapper.register(memberRegDto);
 	}
 	
-	//에러검사부분
-	public boolean hasErrors(MemberRegdto memberRegDto,BindingResult bindingResult) {
+	//회원 가입시 에러검사부분
+	public boolean hasErrors(MemberRegDto memberRegDto,BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return true;
 		}
@@ -50,6 +52,31 @@ public class MemberService {
   			return true;
   		}
   		return false;
+	}
+	
+	public int update(MemberUpdateDto memberUpdateDto) {
+		//password bcrypt암호화 과정.
+		String rawPassword = memberUpdateDto.getPassword();
+		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+		memberUpdateDto.setPassword(encPassword);
+		return memberMapper.update(memberUpdateDto);
+	}
+	
+	public MemberVO updatedSel(MemberVO member) {
+		MemberVO memberEntity = memberMapper.findByMno(member.getM_no());
+		System.out.println("memberEntitiy 값 : " + memberEntity);
+		memberEntity.setName(member.getName());
+		memberEntity.setPhone(member.getPhone());
+		memberEntity.setAddress(member.getAddress());
+		memberEntity.setEmail(member.getEmail());
+		return memberEntity;
+	}
+	//회원 수정 시 에러검사부분
+	public boolean hasErrors(MemberUpdateDto memberUpdateDto,BindingResult bindingResult,PrincipalDetails principalDetails) {
+		if(bindingResult.hasErrors()) {
+			return true;
+		}
+		return false;
 	}
 	
 	//가입된 회원인지??
