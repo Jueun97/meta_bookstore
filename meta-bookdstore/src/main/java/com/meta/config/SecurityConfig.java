@@ -20,18 +20,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	UserDetailsService userDetailsService;
 	
 	//BCrypt Password설정부분 <- 나중에..
-//	@Bean
-//	public BCryptPasswordEncoder encode() {
-//		return new BCryptPasswordEncoder();
-//	}
-//	
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		//로그인한 사용자 정보를 조회할때 userDetailsService객체를 사용하라.
-//		//passwordEncoder()메소드가 리턴하는 객체를 사용하여, 비밀번호를 암호화 하라.
-//		auth.userDetailsService(userDetailsService)
-//			.passwordEncoder(encode());
-//	}
+	@Bean
+	public BCryptPasswordEncoder encode() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		//로그인한 사용자 정보를 조회할때 userDetailsService객체를 사용하라.
+		//passwordEncoder()메소드가 리턴하는 객체를 사용하여, 비밀번호를 암호화 하라.
+		auth.userDetailsService(userDetailsService)
+			.passwordEncoder(encode());
+	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -52,17 +52,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		//.loginProcessingUrl("/login") //post방식으로 로그인 요청시
 		//.defaultSuccessUrl("/"); : 로그인이 정상적으로 됬으면 /로 가게하기
 		http.formLogin()
-			.loginPage("/login")
-			.loginProcessingUrl("/login")
-			.failureUrl("/login?error")
-			.defaultSuccessUrl("/book/list")
+			.loginPage("/member/login")
+			.loginProcessingUrl("/member/login")
+			.failureUrl("/member/login?error")
+			.defaultSuccessUrl("/main/main")
 			.usernameParameter("id")
 			.passwordParameter("password");
 		
 		
 		http.logout()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //로그아웃 요청 URL
-			.logoutSuccessUrl("/login") //로그아웃 성공시 여기로
+			.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")) //로그아웃 요청 URL
+			.logoutSuccessUrl("/member/login") //로그아웃 성공시 여기로
 			.invalidateHttpSession(true); //세션지우기
 	}
 }
