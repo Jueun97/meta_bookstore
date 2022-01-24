@@ -19,6 +19,9 @@ repositories {
 }
 
 dependencies {
+	//mybatis 쿼리 로그 보이기
+	// https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1
+	implementation group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
 	//jsp설정 : jasper와 jstl
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
  	implementation 'javax.servlet:jstl'
