@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+	<!-- https://sosohanya.tistory.com/31 참고 -->
 	<include resource="org/springframework/boot/logging/logback/base.xml"/>
-	<logger name="com.meta" level="DEBUG" />
+	<logger name="com.meta" level="debug"/>
   <logger name="org.springframework.jdbc" level="DEBUG" />
-  <!-- https://sosohanya.tistory.com/31 --> 
-  <!-- https://romeoh.tistory.com/entry/Spring-boot-mybatis-SQL-%EB%A1%9C%EA%B7%B8-%EC%B0%8D%EA%B8%B0-log4jdbc -->
- <!-- 좀 더 보기 좋은 MyBatis 쿼리 Log : log4jdbc -->
-	<logger name="jdbc.sqlonly" level="debug" />
-	<logger name="jdbc.sqltiming" level="off" />
-	<logger name="jdbc.audit" level="warn" />
-	<logger name="jdbc.resultset" level="warn" />
-	<logger name="jdbc.resultsettable" level="warn" />
-	<logger name="jdbc.connection" level="warn" />
 </configuration>
