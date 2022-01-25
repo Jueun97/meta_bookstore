@@ -6,12 +6,13 @@ import lombok.Data;
 
 @Data
 public class BookVO {
-	private Long book_no;
+	private int book_no;
 	private String title;
+	private String image;
 	private String author;
-	private String pub;
-	private Date pubDate;
+	private String price;
+	private String publisher;
+	private String pubdate;
 	private String description;
-	private int price;
 	private int cate_no;
 }

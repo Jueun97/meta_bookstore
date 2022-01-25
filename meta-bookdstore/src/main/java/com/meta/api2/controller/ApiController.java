@@ -32,8 +32,8 @@ public class ApiController {
 
 	@RequestMapping("api/insert/book/{no}")
 	public void main(@PathVariable int no) {
-		String clientId = "2yeIdK4hATyPib0cFlJ5"; // 애플리케이션 클라이언트 아이디값"
-		String clientSecret = "GC18hsEjyo"; // 애플리케이션 클라이언트 시크릿값"
+		String clientId = "YIvIdiFc5N3WNOGUZEGZ"; // 애플리케이션 클라이언트 아이디값"
+		String clientSecret = "L9nI9wDgfv"; // 애플리케이션 클라이언트 시크릿값"
 
 		@SuppressWarnings("unused")
 		String text = "";
