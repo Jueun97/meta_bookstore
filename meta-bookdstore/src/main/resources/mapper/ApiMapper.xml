@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meta.api2.mapper.ApiMapper">
+	<!-- 1.북 리스트 보기 -->
+
+	<insert id="insert" parameterType="com.meta.api2.vo.ApiVo">
+		INSERT INTO book (book_no, title, author, publisher, pubdate, description,
+		image, price,cate_no )
+		values(seq_book_no.nextval,#{title},#{author},#{publisher},to_date(#{pubdate},'yyyy-mm-dd'),#{description},#{image},#{price},#{cate_no})
+	</insert>
+</mapper>
