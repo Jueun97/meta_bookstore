@@ -1,5 +1,6 @@
 package com.meta.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -47,6 +48,14 @@ public class MemberController {
   	public String registerForm(Model model) {
   		model.addAttribute("memberRegDto",new MemberRegDto());
   		return "member/register";
+  	}
+  	//회원 유형에 따른 redirect요청
+  	@RequestMapping("redirect")
+  	public String redirect(Model model,HttpServletRequest request) {
+  		if(request.isUserInRole("ROLE_ADMIN")) {
+  			return "redirect:/admin/index";
+  		}
+  		return "redirect:/main/main";
   	}
   	//회원 가입 처리
   	@PostMapping("register")

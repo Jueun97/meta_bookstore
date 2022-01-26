@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <c:url var="R" value="/" />
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,22 +19,24 @@
 <div class="container">
   <div class="box">
     <h1>관리자 페이지 #1</h1>
+    
     <table>
       <tr>
           <td>로그인ID</td>
           <td><sec:authentication property="name" /></td>
+          <!-- name속성은 id인것. -->
       </tr>
       <tr>
           <td>이름</td>
-          <td><sec:authentication property="principal.name" /></td>
+          <td><sec:authentication property="principal.member.name" /></td>
       </tr>
       <tr>
           <td>이메일</td>
-          <td><sec:authentication property="principal.email" /></td>
+          <td><sec:authentication property="principal.member.email" /></td>
       </tr>
       <tr>
           <td>권한</td>
-          <td><sec:authentication property="principal.grade" /></td>
+          <td><sec:authentication property="principal.member.grade" /></td>
       </tr>
     </table>
 
