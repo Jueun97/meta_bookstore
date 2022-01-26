@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="header__buttons">
-            <button type="button" class="btn btn-primary">로그인</button>
-            <button type="button" class="btn btn-primary">회원가입</button>
+            <button type="button" class="btn btn-info">로그인</button>
+            <button type="button" class="btn btn-info">회원가입</button>
         </div>
     </header>
