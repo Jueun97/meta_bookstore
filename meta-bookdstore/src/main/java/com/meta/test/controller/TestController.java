@@ -26,5 +26,12 @@ public class TestController {
 		
 		return "index";
 	}
+	
+	@GetMapping("/testView")
+	public String testView(Model model) {
+		System.out.println("testView");
+		
+		return "/include/base";
+	}
 
 }
