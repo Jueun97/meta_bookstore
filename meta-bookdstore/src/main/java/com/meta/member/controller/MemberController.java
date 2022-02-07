@@ -57,7 +57,7 @@ public class MemberController {
   		}
   		return "redirect:/main/main";
   	}
-  	//회원 가입 처리
+  	//회원 가입 처리 
   	@PostMapping("register")
   	public String register(@ModelAttribute("memberRegDto") @Valid MemberRegDto memberRegDto,BindingResult bindingResult
   			,RedirectAttributes rttr) {
@@ -71,6 +71,12 @@ public class MemberController {
   		rttr.addFlashAttribute("msg","회원가입이 완료되었습니다.");
   		return "redirect:login";
   	}
+  	//회원 정보 찾 폼 
+	@GetMapping("find")
+  	public String find(Model model) {
+  		//model.addAttribute("memberRegDto",new MemberRegDto());
+  		return "member/find";
+  	}
   	
 //  	//아이디 중복 검사
 //  	@PostMapping("checkId")
@@ -79,11 +85,6 @@ public class MemberController {
 //  		return result;
 //  	}
   	
-  	//회원 index 폼
-  	@GetMapping("{pageUserId}/index")
-	public String indexForm(@PathVariable int pageUserId) {
-		return "member/index";
-	}
   	
   	//회원 정보 수정 폼
   	@GetMapping("{m_no}/update")
@@ -108,4 +109,20 @@ public class MemberController {
   		rttr.addFlashAttribute("msg","회원정보 수정이 완료되었습니다.");
   		return "redirect:/member/"+principalDetails.getMember().getM_no()+"/index";
   	}
+  	
+  	//회원 정보 확인 폼 (디테일) 
+  	@GetMapping("mypage")
+  	public String showMypage(Model model) {
+  		//model.addAttribute("memberRegDto",new MemberRegDto());
+  		return "member/mypage";
+  	}
+  	
+  	//회원 주문 정보 확인 폼 
+	@GetMapping("myorder")
+  	public String showMyorder(Model model) {
+  		//model.addAttribute("memberRegDto",new MemberRegDto());
+  		return "member/myorder";
+  	}
+	
+
 }
