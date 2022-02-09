@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.stereotype.Controller;
 
 @Configuration
 @EnableWebSecurity //해당 파일로 Security 활성화
@@ -43,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		//.authenticated() : 앞에있는 주소로 갈땐 인증이 필요하다
 		//.anyRequest().permitAll() : 위에꺼 아닌 주소는 허용하겠다.
 		http.authorizeRequests()
-			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+			//.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.antMatchers("/order/**").authenticated()//로그인 해야 order페이지 접근가능
 			.anyRequest().permitAll(); 
 		

@@ -292,22 +292,23 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>책 제목</th>
+                                            <th>작가</th>
+                                            <th>출판사</th>
+                                            <th>출판일</th>
+                                            <th>가격</th>
+                                            <th>setting</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach items="${bookData}" var = "data">
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td>${data.title}</td>
+                                            <td>${data.author}</td>
+                                            <td>${data.publisher}</td>
+                                            <td>${data.pubdate}</td>
+                                            <td>${data.price}</td>
+                                            <td>setting prepairing...</td>
                                         </tr>
                                     </tbody>
                                 </table>
