@@ -69,7 +69,7 @@
                                 </a>
                             </li>
                             <li class="nav-item mx-0">
-                                <a class="nav-link d-flex align-items-center px-0" href="#">
+                                <a class="nav-link d-flex align-items-center px-0" href="/logout">
                                     <span class="font-weight-normal text-gray-600">Logout</span>
                                 </a>
                             </li>
