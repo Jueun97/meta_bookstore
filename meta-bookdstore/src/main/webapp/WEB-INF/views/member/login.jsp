@@ -67,7 +67,7 @@
 				<div class="form-group mb-4">
 					<div class="js-form-message js-focus-state">
 						<label id="signinEmailLabel" class="form-label" for="signinEmail">Username
-							or email *</label> <input type="email"
+							or email *</label> <input type="text"
 							class="form-control rounded-0 height-4 px-4" name="email"
 							id="signinEmail" placeholder="creativelayers088@gmail.com"
 							aria-label="creativelayers088@gmail.com"

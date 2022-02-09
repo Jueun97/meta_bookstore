@@ -33,5 +33,12 @@ public class TestController {
 		
 		return "/include/base";
 	}
+	
+	@GetMapping("/adminmain")
+	public String admintestView(Model model) {
+		System.out.println("adminTestView");
+		
+		return "/admin/admin";
+	}
 
 }
