@@ -31,46 +31,10 @@ public class MemberController {
 	
 	
 	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
-
 	
 	@Autowired
 	private MemberService memberService;
-	
-	//로그인폼
-    @RequestMapping("login")
-    public String loginForm() {
-        return "member/login";
-    }
-    //스프링 시큐리티를 쓰기 때문에 post요청에 대한 URL을 만들지 않는다.
-    
-    //회원 가입 폼
-  	@GetMapping("register")
-  	public String registerForm(Model model) {
-  		model.addAttribute("memberRegDto",new MemberRegDto());
-  		return "member/register";
-  	}
-  	//회원 유형에 따른 redirect요청
-  	@RequestMapping("redirect")
-  	public String redirect(Model model,HttpServletRequest request) {
-  		if(request.isUserInRole("ROLE_ADMIN")) {
-  			return "redirect:/admin/index";
-  		}
-  		return "redirect:/main/main";
-  	}
-  	//회원 가입 처리 
-  	@PostMapping("register")
-  	public String register(@ModelAttribute("memberRegDto") @Valid MemberRegDto memberRegDto,BindingResult bindingResult
-  			,RedirectAttributes rttr) {
-  		log.info("register().dto : " + memberRegDto);
-  		//회원가입 입력 폼에 에러가 있다면??
-  		if(memberService.hasErrors(memberRegDto, bindingResult)) {
-  			return "member/register";
-  		}else {
-  			memberService.register(memberRegDto);
-  		}
-  		rttr.addFlashAttribute("msg","회원가입이 완료되었습니다.");
-  		return "redirect:login";
-  	}
+
   	//회원 정보 찾 폼 
 	@GetMapping("find")
   	public String find(Model model) {
