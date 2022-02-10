@@ -56,6 +56,36 @@
             </li>
 
             <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>회원 정보 관리</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>책 재고 관리</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>주문 관리</span></a>
+            </li>
+
+            <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -301,7 +331,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${bookData}" var = "data">
+                                    <c:forEach items="${bookdata}" var = "data">
                                         <tr>
                                             <td>${data.title}</td>
                                             <td>${data.author}</td>
@@ -310,6 +340,7 @@
                                             <td>${data.price}</td>
                                             <td>setting prepairing...</td>
                                         </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -326,7 +357,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Meta-BookStore 2022</span>
                     </div>
                 </div>
             </footer>

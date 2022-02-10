@@ -23,7 +23,7 @@ public class AdminController {
 	public String admintestView(Model model) {
 		System.out.println("adminTestView");
 
-		model.addAttribute("bookData", bookService.list());
+		model.addAttribute("bookdata", bookService.list());
 
 		return "/admin/admin";
 	}

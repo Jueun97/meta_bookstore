@@ -8,4 +8,13 @@
 		SELECT book_no,title,author,publisher,pubDate,description,price,cate_no
 		from book
 	</select>
+
+	<delete id="delete" parameterType="com.meta.book.vo.BookVO">
+  	<![CDATA[
+		delete from
+			(SELECT * FROM guestbook WHERE NO = #{no} )
+			 where password = #{password}
+		]]>
+  </delete>
+
 </mapper>

@@ -1,13 +1,13 @@
 package com.meta.book.mapper;
 
-import java.util.List;
-
+import com.meta.book.vo.BookVO;
 import org.apache.ibatis.annotations.Mapper;
 
-import com.meta.book.vo.BookVO;
+import java.util.List;
 
 @Mapper
 public interface BookMapper {
 	
 	public List<BookVO> list();
+	public void delete();
 }
