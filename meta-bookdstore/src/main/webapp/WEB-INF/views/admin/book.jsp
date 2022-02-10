@@ -15,6 +15,13 @@
 
     <title>Meta-Book Admin</title>
 
+    <!-- table관련 hover이벤트 -->
+    <style>
+        table#trHover tr:hover{
+            background-color: #b8f1fb;
+        }
+    </style>
+
     <!-- Custom fonts for this template -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -296,7 +303,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/logout">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -320,10 +327,10 @@
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <button type="button" class="btn btn-primary" style="float: right; margin-left:50px;">책 등록</button>
+                                <button type="button" class="btn btn-primary" style="float: right; margin-left:50px;" onclick="location.href='/admin/bookInsertForm' ">책 등록</button>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                        <tr>
+                                        <tr id="tablehover">
                                             <th>책 제목</th>
                                             <th>작가</th>
                                             <th>출판사</th>
@@ -334,8 +341,8 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${bookdata}" var = "data">
-                                        <tr>
-                                            <td><a href="/admin/bookUpdate?book_no=${data.book_no}">${data.title}</a></td>
+                                        <tr id="trHover">
+                                            <td><a href="/admin/bookUpdate?book_no=${data.book_no}" style="color: #858796;">${data.title}</a></td>
                                             <td>${data.author}</td>
                                             <td>${data.publisher}</td>
                                             <td>${data.pubdate}</td>

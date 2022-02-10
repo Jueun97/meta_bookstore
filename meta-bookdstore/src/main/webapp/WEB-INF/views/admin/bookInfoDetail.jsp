@@ -296,7 +296,7 @@
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" href="/logout">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
@@ -309,19 +309,45 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
+            <div class="container-fluid" style="padding-left: 20.5rem; padding-right: 20.5rem;">
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Update page</h1>
                 <p class="mb-4">책 리스트의 업데이트  페이지입니다. </p>
-                ${bookinfo[0].title}
-                <p>${bookinfo[0].author}</p>
-                <p>${bookinfo[0].price}</p>
-                <p>${bookinfo[0].publisher}</p>
-                <p>${bookinfo[0].pubdate}</p>
-                <p>${bookinfo[0].description}</p>
 
-
+                <form>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Book Title</label>
+                        <input type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="${bookinfo[0].title}">
+                        <div id="titleHelp" class="form-text">기존의 책 제목 확인 후, 수정할 책 제목을 입력해주세요.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="author" class="form-label">Author</label>
+                        <input type="text" class="form-control" id="author" aria-describedby="authorHelp" placeholder="${bookinfo[0].author}">
+                        <div id="authorHelp" class="form-text">기존의 책 작가 확인 후, 수정할 책 작가를 입력해주세요.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="publisher" class="form-label">Publisher</label>
+                        <input type="text" class="form-control" id="publisher" aria-describedby="publisherHelp" placeholder="${bookinfo[0].publisher}">
+                        <div id="publisherHelp" class="form-text">기존의 출판사 확인 후, 수정할 출판사 입력해주세요.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pubdate" class="form-label">Pubdate</label>
+                        <input type="text" class="form-control" id="pubdate" aria-describedby="pubdateHelp" placeholder="${bookinfo[0].pubdate}">
+                        <div id="pubdateHelp" class="form-text">기존의 출판일자 확인 후, 수정할 출판일자를 입력해주세요.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="text" class="form-control" id="price" aria-describedby="priceHelp" placeholder="${bookinfo[0].price}">
+                        <div id="priceHelp" class="form-text">기존의 책 가격 확인 후, 수정할 책 가격을 입력해주세요.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" rows="3" placeholder="${bookinfo[0].description}"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="float: right;">수정</button>
+                    <button type="button" class="btn btn-outline-danger" onclick="history.back()" style="float: right; margin-right: 1rem;">취소</button>
+                </form>
 
             </div>
             <!-- /.container-fluid -->

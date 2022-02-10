@@ -312,8 +312,8 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Main Page</h1>
-                <p class="mb-4">메인 페이지입니다. 추후 관리요망. </p>
+                <h1 class="h3 mb-2 text-gray-800">Book Insert Form</h1>
+                <p class="mb-4">새로운 책을 등록하는 Page입니다.</p>
 
             </div>
             <!-- /.container-fluid -->

@@ -1,8 +1,8 @@
 package com.meta.member.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
+import com.meta.config.auth.PrincipalDetails;
+import com.meta.member.dto.MemberUpdateDto;
+import com.meta.member.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,19 +10,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.meta.config.auth.PrincipalDetails;
-import com.meta.member.dto.MemberRegDto;
-import com.meta.member.dto.MemberUpdateDto;
-import com.meta.member.service.MemberService;
-import com.meta.member.vo.MemberVO;
+import javax.validation.Valid;
 
 
 @Controller
@@ -67,8 +58,8 @@ public class MemberController {
   			return "member/update";
   		}else {
   			int res = memberService.update(memberUpdateDto);
-  			MemberVO memberEntity =  memberService.updatedSel(memberUpdateDto.toEntity());
-  			principalDetails.setMember(memberEntity); //수정한 세션정보 변경
+  			//MemberVO memberEntity =  memberService.updatedSel(memberUpdateDto.toEntity());
+  			//principalDetails.setMember(memberEntity); //수정한 세션정보 변경
   		}
   		rttr.addFlashAttribute("msg","회원정보 수정이 완료되었습니다.");
   		return "redirect:/member/"+principalDetails.getMember().getM_no()+"/index";

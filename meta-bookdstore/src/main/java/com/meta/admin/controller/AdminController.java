@@ -43,6 +43,13 @@ public class AdminController {
 		return "/admin/book";
 	}
 
+	@GetMapping("bookInsertForm")
+	public String bookInsertForm(Model model){
+		System.out.println("bookInsertForm");
+
+		return "admin/bookInsertForm";
+	}
+
 	@GetMapping("bookUpdate")
 	public String bookUpdate(@ModelAttribute BookVO vo, Model model){
 		System.out.println("bookUpdate");

@@ -52,7 +52,7 @@ public class AuthController {
   	@RequestMapping("/auth/redirect")
   	public String redirect(Model model,HttpServletRequest request) {
   		if(request.isUserInRole("ROLE_ADMIN")) {
-  			return "redirect:/admin/index";
+  			return "redirect:/admin/main";
   		}
   		return "redirect:/";
   	}
