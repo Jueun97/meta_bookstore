@@ -65,6 +65,6 @@ public class AdminController {
 		bookService.delete(vo.getBook_no());
 
 		//과정이 끝난 후에는 책관리 페이지로 다시 redirecting한다.
-		return "redirect:/admin/main";
+		return "redirect:/admin/book";
 	}
 }
