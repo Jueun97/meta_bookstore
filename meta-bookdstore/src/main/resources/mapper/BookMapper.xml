@@ -9,11 +9,16 @@
 		from book
 	</select>
 
+	<select id="detailBookInfo" resultType="com.meta.book.vo.BookVO">
+		SELECT book_no,title,author,publisher,pubDate,description,price,cate_no
+		from book
+		where book_no = #{book_no}
+	</select>
+
 	<delete id="delete" parameterType="com.meta.book.vo.BookVO">
   	<![CDATA[
-		delete from
-			(SELECT * FROM guestbook WHERE NO = #{no} )
-			 where password = #{password}
+		delete from book
+		where book_no = #{book_no}
 		]]>
   </delete>
 

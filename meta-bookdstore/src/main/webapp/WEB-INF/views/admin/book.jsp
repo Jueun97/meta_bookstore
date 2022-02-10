@@ -38,7 +38,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/main">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -50,7 +50,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="/admin/book">
                     <i class="fas fa-fw fa-table"></i>
                     <span>책 정보 관리</span></a>
             </li>
@@ -60,7 +60,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-table"></i>
                     <span>회원 정보 관리</span></a>
             </li>
@@ -70,7 +70,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-table"></i>
                     <span>책 재고 관리</span></a>
             </li>
@@ -80,7 +80,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-table"></i>
                     <span>주문 관리</span></a>
             </li>
@@ -315,10 +315,12 @@
                     <h1 class="h3 mb-2 text-gray-800">책 정보 관리</h1>
                     <p class="mb-4">게시된 책 정보들을 조회 및 관리할 수 있는 페이지입니다. 이 곳에 있는 기능을 통해 관리를 진행해주세요. </p>
 
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="table-responsive">
+                                <button type="button" class="btn btn-primary" style="float: right; margin-left:50px;">책 등록</button>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -333,12 +335,12 @@
                                     <tbody>
                                     <c:forEach items="${bookdata}" var = "data">
                                         <tr>
-                                            <td>${data.title}</td>
+                                            <td><a href="/admin/bookUpdate?book_no=${data.book_no}">${data.title}</a></td>
                                             <td>${data.author}</td>
                                             <td>${data.publisher}</td>
                                             <td>${data.pubdate}</td>
                                             <td>${data.price}</td>
-                                            <td>setting prepairing...</td>
+                                            <td><a href="/admin/delete?book_no=${data.book_no}">삭제</a></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
