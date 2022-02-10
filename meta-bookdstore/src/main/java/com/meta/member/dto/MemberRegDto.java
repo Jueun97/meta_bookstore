@@ -38,14 +38,14 @@ public class MemberRegDto {
 	@Email
 	private String email;
 	
-	public MemberVO toEntity() {
-		return MemberVO.builder()
-						.id(id)
-						.password(password1)
-						.name(name)
-						.address(address)
-						.phone(phone)
-						.email(email)
-						.build();
-	}
+//	public MemberVO toEntity() {
+//		return MemberVO.builder()
+//						.id(id)
+//						.password(password1)
+//						.name(name)
+//						.address(address)
+//						.phone(phone)
+//						.email(email)
+//						.build();
+//	}
 }

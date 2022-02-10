@@ -37,15 +37,15 @@ public class MemberUpdateDto {
 	@Email
 	private String email;
 	
-	public MemberVO toEntity() {
-		return MemberVO.builder()
-						.m_no(m_no)
-						.id(id)
-						.password(password)
-						.name(name)
-						.address(address)
-						.phone(phone)
-						.email(email)
-						.build();
-	}
+//	public MemberVO toEntity() {
+//		return MemberVO.builder()
+//						.m_no(m_no)
+//						.id(id)
+//						.password(password)
+//						.name(name)
+//						.address(address)
+//						.phone(phone)
+//						.email(email)
+//						.build();
+//	}
 }
