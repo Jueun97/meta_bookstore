@@ -50,6 +50,12 @@ public class AuthController {
 //  		rttr.addFlashAttribute("msg","회원가입이 완료되었습니다.");
 //  		return "redirect:login";
 //  	}
+	
+	@RequestMapping("/auth/jusoPopup")
+	public String jusoPopup() {
+		return "auth/jusoPopup";
+	}
+	
   	//회원 유형에 따른 redirect요청
   	@RequestMapping("/auth/redirect")
   	public String redirect(Model model,HttpServletRequest request) {

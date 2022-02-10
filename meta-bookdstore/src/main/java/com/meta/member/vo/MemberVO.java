@@ -12,7 +12,9 @@ public class MemberVO {
 	private String id;
 	private String password;
 	private String name;
-	private String address;
+	private String zipcode; //우편번호
+	private String address; //도로명주소
+	private String otheraddress; //나머지 주소
 	private String phone;
 	private String email;
 	private String grade;

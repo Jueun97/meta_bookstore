@@ -71,7 +71,7 @@
 				<!-- Form Group -->
 				<div class="form-group mb-4">
 					<div class="js-form-message js-focus-state">
-						<label id="signinEmailLabel" class="form-label" for="signinEmail">아이디</label> <input type="text"
+						<label id="id" class="form-label" for="id">아이디</label> <input type="text"
 							class="form-control rounded-0 height-4 px-4" name="id"
 							placeholder="아이디 입력" required>
 					</div>
@@ -81,8 +81,8 @@
 				<!-- Form Group -->
 				<div class="form-group mb-4">
 					<div class="js-form-message js-focus-state">
-						<label id="signinPasswordLabel" class="form-label"
-							for="signinPassword">Password *</label> <input type="password"
+						<label id="password" class="form-label"
+							for="password">Password *</label> <input type="password"
 							class="form-control rounded-0 height-4 px-4" name="password"
 							id="signinPassword" placeholder="비밀번호 입력" aria-label=""
 							aria-describedby="signinPasswordLabel" required>
@@ -107,7 +107,7 @@
 				</div>
 
 				<div class="mb-2">
-					<a href="/member/register"
+					<a href="/auth/register"
 						class=" btn btn-block py-3 rounded-0 btn-outline-dark font-weight-medium"
 						data-target="#signup" data-link-group="idForm"
 						data-animation-in="fadeIn">Create Account</a>
