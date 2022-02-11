@@ -5,14 +5,30 @@
   <mapper namespace="com.meta.member.mapper.MemberMapper">
 	  <!-- 1.member id찾기 -->
 	 	<select id="findByMemberId" resultType="com.meta.member.vo.MemberVO">
-	    SELECT m_no,id,password,name,address,phone,email,grade,regdate
+	    SELECT *
 	    FROM member
 	    WHERE id=#{id}
 	 	</select>
 	 	<!-- 2.회원가입 -->
   	<insert id="register">
-  		INSERT INTO member(m_no,id,password, name, address, phone, email)
-			VALUES(member_seq.nextval,#{id},#{password1},#{name},#{address},#{phone},#{email})
+  		INSERT INTO member(m_no,
+  							id,
+  							password,
+  							name,
+  							phone, 
+  							email,
+  							zipcode,
+  							roadAddress,
+  							otherAddress)
+		VALUES(member_seq.nextval,
+				#{id},
+				#{password},
+				#{name},
+				#{phone},
+				#{email},
+				#{zipcode},
+				#{roadAddress},
+				#{otherAddress})
   	</insert>
 	 	<!-- 3-1.회원수정 -->
   	 <update id="update">

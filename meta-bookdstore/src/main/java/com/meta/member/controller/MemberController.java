@@ -49,7 +49,6 @@ public class MemberController {
 //  		return result;
 //  	}
   	
-  	
   	//회원 정보 수정 폼
   	@GetMapping("{m_no}/update")
   	public String updateForm(@PathVariable int m_no,Model model) {
@@ -67,8 +66,8 @@ public class MemberController {
   			return "member/update";
   		}else {
   			int res = memberService.update(memberUpdateDto);
-  			MemberVO memberEntity =  memberService.updatedSel(memberUpdateDto.toEntity());
-  			principalDetails.setMember(memberEntity); //수정한 세션정보 변경
+  			//MemberVO memberEntity =  memberService.updatedSel(memberUpdateDto.toEntity());
+  			//principalDetails.setMember(memberEntity); //수정한 세션정보 변경
   		}
   		rttr.addFlashAttribute("msg","회원정보 수정이 완료되었습니다.");
   		return "redirect:/member/"+principalDetails.getMember().getM_no()+"/index";

@@ -46,7 +46,7 @@
 	<c:import url="/WEB-INF/views/include/aside.jsp"></c:import>
 
 	<!--     content here 내용은 여기에 넣어주세용  -->
-	<form class="account">
+	<form class="account" method="post" action="/auth/register" onsubmit="return checkSubmit();">
 		<!-- Signup -->
 		<div id="signup" data-target-group="idForm">
 			<!-- Title -->
@@ -61,10 +61,12 @@
 				<!-- Form Group -->
 				<div class="form-group mb-4">
 					<div class="js-form-message js-focus-state">
-						<label id="id" class="form-label"
-							for="signinEmail1">아이디</label> <input type="id"
-							class="form-control rounded-0 height-4 px-4" name="id"
-							id="signinEmail1" placeholder="아이디를 입력하세요" required>
+						<label class="form-label"
+							for="id">아이디</label> 
+						<input type="text" style="width: 30%;"
+						class="form-control rounded-0 height-4 px-4" name="id" title="영어,숫자만 가능합니다"
+						id="id" placeholder="아이디를 입력하세요" pattern="^[a-zA-Z0-9]+$" >
+						<div id="checkId"></div>
 					</div>
 				</div>
 				<!-- End Form Group -->
@@ -72,11 +74,11 @@
 				<!-- Form Group -->
 				<div class="form-group mb-4">
 					<div class="js-form-message js-focus-state">
-						<label id="password" class="form-label"
-							for="password">비밀번호</label> <input type="password"
+						<label class="form-label">비밀번호</label> 
+						<input type="password" style="width: 30%;"
 							class="form-control rounded-0 height-4 px-4" name="password"
 							id="password" placeholder="비밀번호를 입력하세요" aria-label=""
-							aria-describedby="signinPasswordLabel1" required>
+							aria-describedby="signinPasswordLabel1" >
 					</div>
 				</div>
 				<!-- End Form Group -->
@@ -84,34 +86,38 @@
 				<!-- Form Group -->
 				<div class="form-group mb-4">
 					<div class="js-form-message js-focus-state">
-						<label id="password" class="form-label"
-							for="password">비밀번호 확인</label> <input
-							type="password" class="form-control rounded-0 height-4 px-4"
-							name="password" id="signupConfirmPassword" placeholder="비밀번호를 동일하게 한번 더 입력해주세요"
+						<label class="form-label">비밀번호 확인</label> <input
+							type="password" style="width: 30%;" class="form-control rounded-0 height-4 px-4"
+							name="password1" id="password1" placeholder="다시 비밀번호를 입력해주세요"
 							aria-label="" aria-describedby="signupConfirmPasswordLabel"
-							required>
+							>
 					</div>
+					<div id="passwordCheck"></div>
 				</div>
 				<!-- End Form Group -->
 				<!-- Form Group -->
 				<div class="form-group mb-4">
 					<div class="js-form-message js-focus-state">
 						<label id="name" class="form-label"
-							for="name">이름</label> <input type="text"
+							for="name">이름</label> <input type="text" style="width: 30%"
 							class="form-control rounded-0 height-4 px-4" name="name"
-							id="name" placeholder="이름을 입력하세요" required>
+							id="name" placeholder="이름을 입력하세요" >
 					</div>
 				</div>
 				<!-- End Form Group -->
+				
 				<!-- Form Group -->
 				<div class="form-group mb-4">
 					<div class="js-form-message js-focus-state">
 						<label class="form-label">전화번호</label>
 						<div class="telDiv">
-						<input type="text" maxlength="3" size="4" id="tel1" class="tel_form form-control rounded-0 height-4 px-4"> 
-			            - <input type="text" maxlength="4" size="5" id="tel2" class="tel_form form-control rounded-0 height-4 px-4"> 
-			            - <input type="text" maxlength="4" size="5" id="tel3" class="tel_form form-control rounded-0 height-4 px-4">
-            		</div> 
+							<input type="text" maxlength="3" size="4" id="tel1" onkeyup="to_auto_tel('tel1','tel2',3);"
+							class="tel_form form-control rounded-0 height-4 px-4"> 
+				             -  <input type="text" maxlength="4" size="5" id="tel2" onkeyup="to_auto_tel('tel2','tel3',4);"
+				             class="tel_form form-control rounded-0 height-4 px-4"> 
+				             -  <input type="text" maxlength="4" size="5" id="tel3" class="tel_form form-control rounded-0 height-4 px-4">
+				           	<input type="hidden" name="phone" id="phone"/>
+            			</div> 
 					</div>
 				</div>
 				<!-- End Form Group -->
@@ -121,9 +127,9 @@
 						<label class="form-label">이메일</label> <br>	
 						<input type="text" style="width: 30%; display:inline-block;"
 						class="form-control rounded-0 height-4 px-4" name="email1"
-						id="email1" placeholder="이메일을 입력" required>
-						@ <input type="text" class="form-control rounded-0 height-4 px-4" id="email2" name="email2" style="width: 30%; display:inline-block;">
-						<select name="email2" onChange="selectEmailChange(this.value);"	title="직접입력" style="width: 20%;">
+						id="email1" placeholder="이메일을 입력" >
+						@ <input type="text" class="form-control rounded-0 height-4 px-4" id="emailDomain" name="emailDomain" style="width: 30%; display:inline-block;">
+						<select name="emailDomain" id="emailDomain" onChange="selectEmailChange(this.value);"	title="직접입력" style="width: 20%;">
 							<option value="">직접입력</option>
 							<option value="hanmail.net">hanmail.net</option>
 							<option value="naver.com">naver.com</option>
@@ -138,26 +144,27 @@
 							<option value="freechal.com">freechal.com</option>
 						</select>
 					</div>
+					<input type="hidden" name="email" id="email"/>
 				</div>
 				<!-- End Form Group -->
 				<!-- Form Group -->
 				<div class="form-group mb-4">
 					<div class="js-form-message js-focus-state">
-						<label class="form-label" for="address">주소</label> 
+						<label class="form-label">주소</label> 
 							<div class="addrBtn">
 								<input type="text" style="width: 30%"
 								class="form-control rounded-0 height-2 px-2" name="zipcode"
-								id="zipcode" placeholder="우편번호" required readonly>
+								id="zipcode" placeholder="우편번호"  readonly>
 								<button type="button" class="btn btn-info" onClick="goPopup();">주소검색</button>								
 							</div>
 							도로명 주소
 							<input type="text" style="margin-top: 10px;"
-							class="form-control rounded-0 height-4 px-4" name="address"
-							id="address" placeholder="주소검색을 해주세요" required readonly>
+							class="form-control rounded-0 height-4 px-4" name="roadAddress"
+							id="roadAddress" placeholder="주소검색을 해주세요"  readonly>
 							상세 주소
 							<input type="text" style="margin-top: 10px;"
-							class="form-control rounded-0 height-4 px-4" name="otheraddress"
-							id="otheraddress" placeholder="상세주소" required>
+							class="form-control rounded-0 height-4 px-4" name="otherAddress"
+							id="otherAddress" placeholder="상세주소" >
 					</div>
 				</div>
 				<!-- End Form Group -->
@@ -179,33 +186,10 @@
 		<!-- End Signup -->
 	</form>
 
-
-
-
-
 	<!-- footer 자리 -->
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
-<script>
-	function goPopup(){
-		var pop = window.open("/auth/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-	}
-	
-	function jusoCallBack(roadAddrPart1,addrDetail,zipNo){
-			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-			var addressEl = document.querySelector("#address");
-			addressEl.value = roadAddrPart1;
-			var addrDetailEl = document.querySelector("#otheraddress");
-			addrDetailEl.value = addrDetail;
-			var zipNoEl = document.querySelector("#zipcode");
-			zipNoEl.value = zipNo;
-	}
-	function selectEmailChange(value){
-		//alert("값 변경 테스트" + value);
-		var email2 = document.getElementById("email2");
-		email2.value = value;
-	}
-</script>
+	<script src="/js/auth/register.js"></script>
 </body>
 </html>
 

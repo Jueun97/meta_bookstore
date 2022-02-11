@@ -25,16 +25,7 @@ public class MemberService {
     public MemberVO findByMemberId(String id) {
         return memberMapper.findByMemberId(id);
     }
-	
-	public int register(MemberRegDto memberRegDto) {
-		//password bcrypt암호화 과정.
-		String rawPassword = memberRegDto.getPassword1();
-		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-		//validateDuplicateMember(vo);
-		memberRegDto.setPassword1(encPassword);
-		return memberMapper.register(memberRegDto);
-	}
-	
+		
 	//회원 가입시 에러검사부분
 	public boolean hasErrors(MemberRegDto memberRegDto,BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
@@ -67,7 +58,7 @@ public class MemberService {
 		System.out.println("memberEntitiy 값 : " + memberEntity);
 		memberEntity.setName(member.getName());
 		memberEntity.setPhone(member.getPhone());
-		memberEntity.setAddress(member.getAddress());
+//		memberEntity.setAddress(member.getAddress());
 		memberEntity.setEmail(member.getEmail());
 		return memberEntity;
 	}
@@ -85,11 +76,6 @@ public class MemberService {
 //		if(findMember!=null) {
 //			throw new IllegalStateException("이미 가입된 회원입니다.");
 //		}
-//	}
-	
-//	public String checkId(String id) {
-//		String result = memberMapper.checkId(id);
-//		return result;
 //	}
 	
 }
