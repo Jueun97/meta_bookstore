@@ -122,6 +122,10 @@
 	<!-- footer 자리 -->
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
-
+<script>
+  	$(function(){
+  		${(empty msg)?"":"alert('" += msg += "');"};
+  	});
+</script>
 </body>
 </html>

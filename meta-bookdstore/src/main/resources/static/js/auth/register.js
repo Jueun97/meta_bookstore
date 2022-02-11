@@ -112,4 +112,5 @@ $("#password1").keyup(function(){
 	if(password1==''){
 		$("#passwordCheck").html('');
 	}
+
 });

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.telDiv{
+	display: flex;
+}
+
+.tel_form{
+	width: 15%;
+}
+
+.addrBtn{
+	display:flex;
+}
+
+.addrBtn button{
+	margin-left: 10px;
+}

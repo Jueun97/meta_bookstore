@@ -44,6 +44,8 @@
 
 <!-- CSS Bookworm Template -->
 <link rel="stylesheet" href="/css/theme.css">
+<!-- 직접 만든 css -->
+<link rel="stylesheet" href="/css/member/mypage.css">
 </head>
 <body>
 	<!--header자리 -->
@@ -51,100 +53,162 @@
 	<c:import url="/WEB-INF/views/include/aside.jsp"></c:import>
 
 	<!--     content here 내용은 여기에 넣어주세용  -->
-    <main id="content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 border-right">
-                    <h6 class="font-weight-medium font-size-7 pt-5 pt-lg-8  mb-5 mb-lg-7">My account</h6>
-                    <div class="tab-wrapper">
-                        <ul class="my__account-nav nav flex-column mb-0" role="tablist" id="pills-tab">
-                            <li class="nav-item mx-0">
-                                <a class="nav-link d-flex align-items-center px-0" id="pills-two-example1-tab"  href="/member/myorder" role="tab" aria-controls="pills-two-example1" aria-selected="false">
-                                    <span class="font-weight-normal text-gray-600">Orders</span>
-                                </a>
-                            </li>
-    
-                            <li class="nav-item mx-0">
-                                <a class="nav-link d-flex align-items-center px-0" id="pills-five-example1-tab"  href="/member/mypage" role="tab" aria-controls="pills-five-example1" aria-selected="false">
-                                    <span class="font-weight-normal text-gray-600">Account details</span>
-                                </a>
-                            </li>
-                            <li class="nav-item mx-0">
-                                <a class="nav-link d-flex align-items-center px-0" href="/logout">
-                                    <span class="font-weight-normal text-gray-600">Logout</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="tab-content" id="pills-tabContent">
-                     
-                        <div class="tab-pane fade show active" id="pills-five-example1" role="tabpanel" aria-labelledby="pills-five-example1-tab">
-                            <div class="border-bottom mb-6 pb-6 mb-lg-8 pb-lg-9">
-                                <div class="pt-5 pl-md-5 pt-lg-8 pl-lg-9">
-                                    <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">Account Details</h6>
-                                    <div class="font-weight-medium font-size-22 mb-4 pb-xl-1">Edit Account</div>
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-                                            <div class="js-form-message">
-                                                <label for="exampleFormControlInput1">First name *</label>
-                                                <input type="text" class="form-control rounded-0 pl-3 placeholder-color-3" id="exampleFormControlInput1" name="name" aria-label="Jack Wayley" placeholder="Ali" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-                                            <div class="js-form-message">
-                                                <label for="exampleFormControlInput2">Last name *</label>
-                                                <input type="text" class="form-control rounded-0 pl-3 placeholder-color-3" id="exampleFormControlInput2" name="name" aria-label="Jack Wayley" placeholder="TUF.." required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 mb-4">
-                                            <div class="js-form-message">
-                                                <label for="exampleFormControlInput3">Display name</label>
-                                                <input type="text" class="form-control rounded-0" name="name" aria-label="Jack Wayley" id="exampleFormControlInput3" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 mb-4 mb-md-0">
-                                            <div class="js-form-message">
-                                                <label for="exampleFormControlInput4">Email address</label>
-                                                <input type="email" class="form-control rounded-0" name="name" id="exampleFormControlInput4" aria-label="Jack Wayley" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pl-md-5 pl-lg-9 space-bottom-2 space-bottom-lg-3">
-                                <div class="font-weight-medium font-size-22 mb-4 pb-xl-1">Password Change</div>
-                                <div class="row">
-                                    <div class="col-md-12 mb-4">
-                                        <div class="js-form-message">
-                                            <label for="exampleFormControlInput5">Current Password</label>
-                                            <input type="password" class="form-control rounded-0" name="name" id="exampleFormControlInput5" aria-label="Jack Wayley" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-4">
-                                        <div class="js-form-message">
-                                            <label for="exampleFormControlInput6">New Password</label>
-                                            <input type="password" class="form-control rounded-0" name="name" id="exampleFormControlInput6" aria-label="Jack Wayley" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-5">
-                                        <div class="js-form-message">
-                                            <label for="exampleFormControlInput7">Confirm new password</label>
-                                            <input type="password" class="form-control rounded-0" name="name" id="exampleFormControlInput7" aria-label="Jack Wayley" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
-                                        </div>
-                                    </div>
-                                    <div class="ml-3">
-                                        <button type="submit" class="btn btn-wide btn-dark text-white rounded-0 transition-3d-hover height-60 width-390">Save Changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+	<main id="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 border-right">
+					<h6
+						class="font-weight-medium font-size-7 pt-5 pt-lg-8  mb-5 mb-lg-7">My
+						account</h6>
+					<div class="tab-wrapper">
+						<ul class="my__account-nav nav flex-column mb-0" role="tablist"
+							id="pills-tab">
+							<li class="nav-item mx-0"><a
+								class="nav-link d-flex align-items-center px-0"
+								id="pills-two-example1-tab" href="/member/myorder" role="tab"
+								aria-controls="pills-two-example1" aria-selected="false"> <span
+									class="font-weight-normal text-gray-600">Orders</span>
+							</a></li>
+
+							<li class="nav-item mx-0"><a
+								class="nav-link d-flex align-items-center px-0"
+								id="pills-five-example1-tab" href="/member/mypage" role="tab"
+								aria-controls="pills-five-example1" aria-selected="false"> <span
+									class="font-weight-normal text-gray-600">Account details</span>
+							</a></li>
+							<li class="nav-item mx-0"><a
+								class="nav-link d-flex align-items-center px-0" href="/logout">
+									<span class="font-weight-normal text-gray-600">Logout</span>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="tab-content" id="pills-tabContent">
+
+						<div class="tab-pane fade show active" id="pills-five-example1"
+							role="tabpanel" aria-labelledby="pills-five-example1-tab">
+							<div class="border-bottom mb-6 pb-6 mb-lg-8 pb-lg-9">
+								<div class="pt-5 pl-md-5 pt-lg-8 pl-lg-9">
+									<h6
+										class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">Account
+										Details</h6>
+									<div class="font-weight-medium font-size-22 mb-4 pb-xl-1">회원
+										정보 수정</div>
+									<form action="" method="post">
+										<div class="row">
+											<div class="col-md-12 mb-4">
+												<div class="js-form-message">
+													<label class="form-label">아이디 : </label>
+												</div>
+											</div>
+											<div class="col-md-12 mb-4">
+												<div class="js-form-message">
+													<label class="form-label">현재 비밀번호</label> <input
+														type="password" style="width: 30%;"
+														class="form-control rounded-0 height-4 px-4"
+														name="password" id="password" placeholder="현재 비밀번호를 입력하세요"
+														aria-label="" aria-describedby="signinPasswordLabel1">
+												</div>
+											</div>
+											<div class="col-md-12 mb-4">
+												<div class="js-form-message">
+													<label class="form-label">새로운 비밀번호</label> <input
+														type="password" style="width: 30%;"
+														class="form-control rounded-0 height-4 px-4"
+														name="password" id="password"
+														placeholder="새로운 비밀번호를 입력하세요" aria-label=""
+														aria-describedby="signinPasswordLabel1">
+												</div>
+											</div>
+											<div class="col-md-12 mb-4">
+												<div class="js-form-message">
+													<label id="name" class="form-label">이름</label> <input
+														type="text" style="width: 30%;"
+														class="form-control rounded-0 pl-3 placeholder-color-3"
+														id="name" name="name" aria-label="Jack Wayley"
+														placeholder="이름 입력" data-error-class="u-has-error"
+														data-msg="Please enter your name."
+														data-success-class="u-has-success">
+												</div>
+											</div>
+											<div class="col-md-12 mb-4">
+												<div class="js-form-message js-focus-state">
+													<label class="form-label">전화번호</label>
+													<div class="telDiv">
+														<input type="text" maxlength="3" size="4" id="tel1"
+															onkeyup="to_auto_tel('tel1','tel2',3);"
+															class="tel_form form-control rounded-0 height-4 px-4">
+														- <input type="text" maxlength="4" size="5" id="tel2"
+															onkeyup="to_auto_tel('tel2','tel3',4);"
+															class="tel_form form-control rounded-0 height-4 px-4">
+														- <input type="text" maxlength="4" size="5" id="tel3"
+															class="tel_form form-control rounded-0 height-4 px-4">
+														<input type="hidden" name="phone" id="phone" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12 mb-4">
+												<div class="js-form-message">
+													<label class="form-label">이메일</label> <br> <input
+														type="text" style="width: 30%; display: inline-block;"
+														class="form-control rounded-0 height-4 px-4" name="email1"
+														id="email1" placeholder="이메일을 입력"> @ <input
+														type="text" class="form-control rounded-0 height-4 px-4"
+														id="emailDomain" name="emailDomain"
+														style="width: 30%; display: inline-block;"> <select
+														name="emailDomain" id="emailDomain"
+														onChange="selectEmailChange(this.value);" title="직접입력"
+														style="width: 20%;">
+														<option value="">직접입력</option>
+														<option value="hanmail.net">hanmail.net</option>
+														<option value="naver.com">naver.com</option>
+														<option value="yahoo.co.kr">yahoo.co.kr</option>
+														<option value="hotmail.com">hotmail.com</option>
+														<option value="paran.com">paran.com</option>
+														<option value="nate.com">nate.com</option>
+														<option value="google.com">google.com</option>
+														<option value="gmail.com">gmail.com</option>
+														<option value="empal.com">empal.com</option>
+														<option value="korea.com">korea.com</option>
+														<option value="freechal.com">freechal.com</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-12 mb-4">
+												<div class="js-form-message">
+													<label class="form-label">주소</label>
+													<div class="addrBtn">
+														<input type="text" style="width: 30%"
+															class="form-control rounded-0 height-2 px-2"
+															name="zipcode" id="zipcode" placeholder="우편번호" readonly>
+														<button type="button" class="btn btn-info"
+															onClick="goPopup();">주소검색</button>
+													</div>
+													도로명 주소 <input type="text" style="margin-top: 10px;"
+														class="form-control rounded-0 height-4 px-4"
+														name="roadAddress" id="roadAddress"
+														placeholder="주소검색을 해주세요" readonly> 상세 주소 <input
+														type="text" style="margin-top: 10px;"
+														class="form-control rounded-0 height-4 px-4"
+														name="otherAddress" id="otherAddress" placeholder="상세주소">
+												</div>
+											</div>
+										</div>
+										<div class="ml-3">
+											<button type="submit" style="margin-top: 10px;"
+												class="btn btn-wide btn-dark text-white rounded-0 transition-3d-hover height-60 width-390">
+												회원 정보 수정</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
 
 
 
@@ -152,7 +216,7 @@
 	<!-- footer 자리 -->
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
-
+	<script src="/js/member/mypage.js"></script>
 </body>
 </html>
 

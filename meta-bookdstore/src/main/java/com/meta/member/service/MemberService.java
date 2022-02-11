@@ -31,10 +31,10 @@ public class MemberService {
 		if(bindingResult.hasErrors()) {
 			return true;
 		}
-		if(memberRegDto.getPassword1().equals(memberRegDto.getPassword2())==false) {
-			bindingResult.rejectValue("password2", null,"비밀번호가 일치하지 않습니다.");
-			return true;
-		}
+//		if(memberRegDto.getPassword1().equals(memberRegDto.getPassword2())==false) {
+//			bindingResult.rejectValue("password2", null,"비밀번호가 일치하지 않습니다.");
+//			return true;
+//		}
 		//중복된 id로 가입한 유저가 있는지??
   		MemberVO vo = memberMapper.findByMemberId(memberRegDto.getId());
   		if(vo!=null) {

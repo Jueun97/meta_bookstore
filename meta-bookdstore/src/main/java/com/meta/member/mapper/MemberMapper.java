@@ -10,7 +10,7 @@ import com.meta.member.vo.MemberVO;
 public interface MemberMapper {
 	MemberVO findByMemberId(String username);
 	MemberVO findByMno(long m_no);
-	int register(MemberVO vo);
+	int register(MemberRegDto dto);
 	int update(MemberUpdateDto memberUpdateDto);
 	public String checkId(String id);
 }

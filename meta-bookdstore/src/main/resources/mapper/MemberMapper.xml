@@ -11,25 +11,31 @@
 	 	</select>
 	 	<!-- 2.회원가입 -->
   	<insert id="register">
-  		INSERT INTO member(m_no,
-  							id,
-  							password,
-  							name,
-  							phone, 
-  							email,
-  							zipcode,
-  							roadAddress,
-  							otherAddress)
-		VALUES(member_seq.nextval,
-				#{id},
-				#{password},
-				#{name},
-				#{phone},
-				#{email},
-				#{zipcode},
-				#{roadAddress},
-				#{otherAddress})
-  	</insert>
+  		INSERT INTO member
+  		(
+  		m_no,
+		id,
+		password,
+		name,
+		phone, 
+		email,
+		zipcode,
+		roadAddress,
+		otherAddress
+		)
+		VALUES
+		(
+		member_seq.nextval,
+		#{id},
+		#{password},
+		#{name},
+		#{phone},
+		#{email},
+		#{zipcode},
+		#{roadAddress},
+		#{otherAddress}
+		)
+	</insert>
 	 	<!-- 3-1.회원수정 -->
   	 <update id="update">
 	  	UPDATE member 

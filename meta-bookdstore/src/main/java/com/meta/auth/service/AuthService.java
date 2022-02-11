@@ -20,16 +20,24 @@ public class AuthService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 
-	public int register(MemberVO vo) {
+	public int register(MemberRegDto dto) {
 		//password bcrypt암호화 과정.
-		String rawPassword = vo.getPassword();
+		String rawPassword = dto.getPassword();
 		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-		vo.setPassword(encPassword);
-		return memberMapper.register(vo);
+		dto.setPassword(encPassword);
+		return memberMapper.register(dto);
 	}
 	
 	public String checkId(String id) {
 		String result = memberMapper.checkId(id);
 		return result;
 	}
+	
+	public boolean hasErrors(MemberRegDto memberRegDto,BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return true;
+		}
+		return false;
+	}
+	
 }

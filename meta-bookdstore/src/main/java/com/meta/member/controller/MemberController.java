@@ -1,6 +1,5 @@
 package com.meta.member.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -41,13 +39,6 @@ public class MemberController {
   		//model.addAttribute("memberRegDto",new MemberRegDto());
   		return "member/find";
   	}
-  	
-//  	//아이디 중복 검사
-//  	@PostMapping("checkId")
-//  	public @ResponseBody String idCheck(String id) {
-//  		String result = memberService.checkId(id);
-//  		return result;
-//  	}
   	
   	//회원 정보 수정 폼
   	@GetMapping("{m_no}/update")
