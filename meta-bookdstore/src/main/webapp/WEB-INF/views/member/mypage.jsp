@@ -51,7 +51,6 @@
 	<!--header자리 -->
 	<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/aside.jsp"></c:import>
-
 	<!--     content here 내용은 여기에 넣어주세용  -->
 	<main id="content">
 		<div class="container">
@@ -91,15 +90,19 @@
 							<div class="border-bottom mb-6 pb-6 mb-lg-8 pb-lg-9">
 								<div class="pt-5 pl-md-5 pt-lg-8 pl-lg-9">
 									<h6
-										class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">Account
-										Details</h6>
+										class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">회원 정보 조회</h6>
+											에러맵 : ${errorMap}
 									<div class="font-weight-medium font-size-22 mb-4 pb-xl-1">회원
 										정보 수정</div>
-									<form action="" method="post">
+									<form action="/member/mypage" method="post" onsubmit="return checkSubmit();">
+										<input type="hidden" name="m_no" value="${principal.member.m_no}">
 										<div class="row">
 											<div class="col-md-12 mb-4">
 												<div class="js-form-message">
-													<label class="form-label">아이디 : </label>
+													<label class="form-label">아이디 </label>
+													<input type="text" style="width: 30%;"
+													class="form-control rounded-0 height-4 px-4"
+													readonly="true" value="${principal.member.id}"/>
 												</div>
 											</div>
 											<div class="col-md-12 mb-4">
@@ -107,8 +110,7 @@
 													<label class="form-label">현재 비밀번호</label> <input
 														type="password" style="width: 30%;"
 														class="form-control rounded-0 height-4 px-4"
-														name="password" id="password" placeholder="현재 비밀번호를 입력하세요"
-														aria-label="" aria-describedby="signinPasswordLabel1">
+														name="password" id="password" placeholder="현재 비밀번호를 입력하세요">
 												</div>
 											</div>
 											<div class="col-md-12 mb-4">
@@ -116,20 +118,16 @@
 													<label class="form-label">새로운 비밀번호</label> <input
 														type="password" style="width: 30%;"
 														class="form-control rounded-0 height-4 px-4"
-														name="password" id="password"
-														placeholder="새로운 비밀번호를 입력하세요" aria-label=""
-														aria-describedby="signinPasswordLabel1">
+														name="newpassword" id="newpassword"
+														placeholder="새로운 비밀번호를 입력하세요">
 												</div>
 											</div>
 											<div class="col-md-12 mb-4">
 												<div class="js-form-message">
-													<label id="name" class="form-label">이름</label> <input
-														type="text" style="width: 30%;"
-														class="form-control rounded-0 pl-3 placeholder-color-3"
-														id="name" name="name" aria-label="Jack Wayley"
-														placeholder="이름 입력" data-error-class="u-has-error"
-														data-msg="Please enter your name."
-														data-success-class="u-has-success">
+													<label class="form-label">이름 </label>
+													<input type="text" style="width: 30%;"
+													class="form-control rounded-0 height-4 px-4"
+													readonly="true" value="${principal.member.name}"/>
 												</div>
 											</div>
 											<div class="col-md-12 mb-4">
@@ -173,23 +171,26 @@
 														<option value="korea.com">korea.com</option>
 														<option value="freechal.com">freechal.com</option>
 													</select>
+													<input type="hidden" name="email" id="email" />
 												</div>
 											</div>
 											<div class="col-md-12 mb-4">
 												<div class="js-form-message">
 													<label class="form-label">주소</label>
 													<div class="addrBtn">
-														<input type="text" style="width: 30%"
+														<input type="text" style="width: 30%" value="${principal.member.zipcode}"
 															class="form-control rounded-0 height-2 px-2"
 															name="zipcode" id="zipcode" placeholder="우편번호" readonly>
 														<button type="button" class="btn btn-info"
 															onClick="goPopup();">주소검색</button>
 													</div>
 													도로명 주소 <input type="text" style="margin-top: 10px;"
+														value="${principal.member.roadAddress}"
 														class="form-control rounded-0 height-4 px-4"
 														name="roadAddress" id="roadAddress"
 														placeholder="주소검색을 해주세요" readonly> 상세 주소 <input
 														type="text" style="margin-top: 10px;"
+														value="${principal.member.otherAddress}"
 														class="form-control rounded-0 height-4 px-4"
 														name="otherAddress" id="otherAddress" placeholder="상세주소">
 												</div>
@@ -217,6 +218,11 @@
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
 	<script src="/js/member/mypage.js"></script>
+	<script>
+	  	$(function(){
+	  		${(empty msg)?"":"alert('" += msg += "');"};
+	  	});
+	</script>
 </body>
 </html>
 

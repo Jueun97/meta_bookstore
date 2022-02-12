@@ -25,18 +25,16 @@ public class MemberRegDto {
 	@NotEmpty(message="전화번호는 필수입력 사항입니다.")
 	@NotBlank
 	private String phone;
+	private String tel1;
+	private String tel2;
+	private String tel3;
 	
 	@NotEmpty(message="이메일은 필수입력 사항입니다.")
 	@NotBlank
 	@Email
 	private String email;
-
 	private String email1;
 	private String emailDomain;
-	
-	private String tel1;
-	private String tel2;
-	private String tel3;
 	
 	@NotEmpty(message="우편번호는 필수입력 사항입니다.")
 	@NotBlank
@@ -49,15 +47,4 @@ public class MemberRegDto {
 	@NotEmpty(message="상세주소는 필수입력 사항입니다.")
 	@NotBlank
 	private String otherAddress;
-	
-//	public MemberVO toEntity() {
-//		return MemberVO.builder()
-//						.id(id)
-//						.password(password1)
-//						.name(name)
-//						.address(address)
-//						.phone(phone)
-//						.email(email)
-//						.build();
-//	}
 }

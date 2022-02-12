@@ -39,8 +39,14 @@
 	 	<!-- 3-1.회원수정 -->
   	 <update id="update">
 	  	UPDATE member 
-			SET password=#{password},name=#{name},phone=#{phone},email=#{email}
-			WHERE m_no=#{m_no}
+		SET 
+		password=#{newpassword},
+		phone=#{phone},
+		email=#{email},
+		zipcode=#{zipcode},
+		roadAddress=#{roadAddress},
+		otherAddress=#{otherAddress}
+		WHERE m_no=#{m_no}
 	  </update>
 	 	<!-- 3-2.회원수정,번호로 회원 객체찾기 -->
   	 <select id="findByMno" resultType="com.meta.member.vo.MemberVO">

@@ -39,7 +39,8 @@ public class AuthController {
 	
     //회원가입 폼 가기
 	@GetMapping("/auth/register")
-	public String registerForm() {
+	public String registerForm(Model model) {
+		model.addAttribute("memberRegDto",new MemberRegDto());
 		return "auth/register";
 	}
 	
