@@ -3,6 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<sec:authorize access="isAuthenticated()">
+	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
+	<sec:authentication property="principal" var="principal"/>
+	<!-- var="principal" : 세션정보를 담을 변수 => $principal.member~~}이런식으로 다른 jsp에서 쓰기--> 
+</sec:authorize>
 <header id="site-header" class="site-header__v3">
 	<div class="topbar border-bottom d-none d-md-block">
 		<div class="container">
@@ -13,6 +18,7 @@
 					<sec:authorize access="not authenticated">
 						<li class="nav-item"><span class="link-black-100">환영합니다!
 								로그인을 진행해주세요 :)</span></li>
+						
 					</sec:authorize>
 					<!-- 로그인 한 경우 인삿말  -->
 					<sec:authorize access="isAuthenticated()">
@@ -209,7 +215,7 @@
 						<sec:authorize access="not authenticated">
 							<li class="nav-item">
 								<!-- Account Sidebar Toggle Button --> <a id="sidebarNavToggler"
-								href="/member/login" role="button" class="text-white"
+								href="/auth/login" role="button" class="text-white"
 								aria-controls="sidebarContent" aria-haspopup="true"
 								aria-expanded="false" data-unfold-event="click"
 								data-unfold-hide-on-scroll="false"

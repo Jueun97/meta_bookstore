@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url var="R" value="/" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
@@ -44,6 +46,9 @@
 
 <!-- CSS Bookworm Template -->
 <link rel="stylesheet" href="/css/theme.css">
+<style>
+ .error { color: red; }
+</style>
 </head>
 <body>
 	<!--header자리 -->
@@ -51,7 +56,7 @@
 	<c:import url="/WEB-INF/views/include/aside.jsp"></c:import>
 
 	<!--     content here 내용은 여기에 넣어주세용  -->
-	<form class="account">
+	<form class="account" method="post" action="${R}auth/login">
 		<!-- Login -->
 		<div id="login" data-target-group="idForm">
 			<!-- Title -->
@@ -66,12 +71,9 @@
 				<!-- Form Group -->
 				<div class="form-group mb-4">
 					<div class="js-form-message js-focus-state">
-						<label id="signinEmailLabel" class="form-label" for="signinEmail">Username
-							or email *</label> <input type="email"
-							class="form-control rounded-0 height-4 px-4" name="email"
-							id="signinEmail" placeholder="creativelayers088@gmail.com"
-							aria-label="creativelayers088@gmail.com"
-							aria-describedby="signinEmailLabel" required>
+						<label id="id" class="form-label" for="id">아이디</label> <input type="text"
+							class="form-control rounded-0 height-4 px-4" name="id"
+							placeholder="아이디 입력" required>
 					</div>
 				</div>
 				<!-- End Form Group -->
@@ -79,30 +81,19 @@
 				<!-- Form Group -->
 				<div class="form-group mb-4">
 					<div class="js-form-message js-focus-state">
-						<label id="signinPasswordLabel" class="form-label"
-							for="signinPassword">Password *</label> <input type="password"
+						<label id="password" class="form-label"
+							for="password">Password *</label> <input type="password"
 							class="form-control rounded-0 height-4 px-4" name="password"
-							id="signinPassword" placeholder="" aria-label=""
+							id="signinPassword" placeholder="비밀번호 입력" aria-label=""
 							aria-describedby="signinPasswordLabel" required>
 					</div>
 				</div>
 				<!-- End Form Group -->
 
 				<div class="d-flex justify-content-between mb-5 align-items-center">
-					<!-- Checkbox -->
-					<div class="js-form-message">
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center text-muted">
-							<input type="checkbox" class="custom-control-input"
-								id="termsCheckbox" name="termsCheckbox" required> <label
-								class="custom-control-label" for="termsCheckbox"> <span
-								class="font-size-2 text-secondary-gray-700"> Remember me
-							</span>
-							</label>
-						</div>
-					</div>
-					<!-- End Checkbox -->
-
+				 <c:if test="${ param.error != null }">
+		      <div class="error">로그인 실패</div>
+		    </c:if>
 					<a
 						class="text-dark font-size-2 t-d-u link-muted font-weight-medium"
 						href="/member/find"
@@ -116,7 +107,7 @@
 				</div>
 
 				<div class="mb-2">
-					<a href="/member/register"
+					<a href="/auth/register"
 						class=" btn btn-block py-3 rounded-0 btn-outline-dark font-weight-medium"
 						data-target="#signup" data-link-group="idForm"
 						data-animation-in="fadeIn">Create Account</a>
@@ -134,5 +125,3 @@
 
 </body>
 </html>
-
-

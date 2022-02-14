@@ -14,7 +14,7 @@
     1.9. Buttons
     1.10. Transitions
     1.11. Dropdown
-    1.12. Button-group
+    1.12. Button-groupform-control
     1.13. Input-group
     1.14. Custom-forms
     1.15. Nav
@@ -3268,7 +3268,7 @@ footer .widget select.is-invalid:focus, .widget_search .is-invalid.search-field:
 .form-inline .form-check {
   width: 100%;
 }
-
+/*customizing*/
 @media (min-width: 576px) {
   .form-inline label {
     display: -ms-flexbox;
