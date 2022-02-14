@@ -44,6 +44,7 @@
 
 <!-- CSS Bookworm Template -->
 <link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/cart/cart.css">
 
 
 </head>
