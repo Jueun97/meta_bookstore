@@ -5,7 +5,13 @@
 <mapper namespace="com.meta.book.mapper.BookMapper">
 	<!-- 1.북 리스트 보기 -->
 	<select id="list" resultType="com.meta.book.vo.BookVO">
-		SELECT book_no,title,author,publisher,pubDate,description,price,cate_no
+		SELECT book_no,title,author,publisher,pubDate,description,price,image,cate_no
 		from book
+	</select>
+	
+	<select id="bookInfo" resultType="com.meta.book.vo.BookVO">
+		SELECT book_no,title,author,publisher,pubDate,description,price,image,cate_no
+		from book
+		where book_no=#{book_no}
 	</select>
 </mapper>

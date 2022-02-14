@@ -15,7 +15,7 @@ public interface CartMapper {
 	public CartVO getACart(int cart_no);
 	public long getSubTotalPrice();
 	public long getSelectedSubTotalPrice(List<CartVO> cartList);
-	public long getCartCount();
+	public long getCartCount(long m_no);
 	public int modifyQuantity(CartVO cartVo);
 	public int deleteCart(int cart_no);
 	public int deleteSelectedCart(List<CartVO> cartList);

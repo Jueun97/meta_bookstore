@@ -8,6 +8,8 @@ import com.meta.book.vo.BookVO;
 
 @Mapper
 public interface BookMapper {
-	
+
 	public List<BookVO> list();
+
+	public BookVO bookInfo(int book_no);
 }

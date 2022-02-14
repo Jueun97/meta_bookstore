@@ -38,8 +38,8 @@ public class CartService {
 	public long getSelectedSubTotalPrice(List<CartVO> cartList) {
 		return mapper.getSelectedSubTotalPrice(cartList);
 	}
-	public long getCartCount() {
-		return mapper.getCartCount();
+	public long getCartCount(long m_no) {
+		return mapper.getCartCount(m_no);
 	}
 	
 	public int modifyQuantity(CartVO cartVo) {

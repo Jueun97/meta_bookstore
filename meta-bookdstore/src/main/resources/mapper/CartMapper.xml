@@ -39,7 +39,7 @@
 	</select>
 
 	<select id="getCartCount" resultType="long">
-		SELECT count(*) FROM cart
+		SELECT count(*) FROM cart WHERE m_no = #{m_no}
 	</select>
 
 
