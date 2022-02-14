@@ -94,7 +94,6 @@
 									<h6
 										class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">회원
 										정보 조회</h6>
-									에러맵 : ${errorMap}
 									<div class="font-weight-medium font-size-22 mb-4 pb-xl-1">회원
 										정보 수정</div>
 									<form:form action="/member/mypage" method="post"
