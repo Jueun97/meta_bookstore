@@ -2,20 +2,27 @@ package com.meta.admin.controller;
 
 import com.meta.book.service.BookService;
 import com.meta.book.vo.BookVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+
+@Slf4j
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
 	@Autowired
 	private BookService bookService;
+
+	//파일 경로.
+	private String fileDownloadDirectory = "C:\\Users\\user\\Desktop\\metabook\\meta-bookdstore\\src\\main\\resources\\images\\";
 
 
 	//추후 admin의 메인 페이지로 사용할 예정. 아직 페이지 구성 미완료.
@@ -44,18 +51,42 @@ public class AdminController {
 	}
 
 	@GetMapping("bookInsertForm")
+
 	public String bookInsertForm(Model model){
 		System.out.println("bookInsertForm");
 
 		return "/admin/bookInsertForm";
 	}
 
-	@GetMapping("insert")
-	public String bookInsert(@ModelAttribute BookVO vo){
-		System.out.println("bookInsert");
-		System.out.println(vo.getImage());
+	//이미지 업로드 테스트
+	@GetMapping("test")
+	public String test(Model model){
+		System.out.println("test");
 
-		return "/admin/main";
+		return "/admin/test";
+	}
+
+	@PostMapping("bookInsert")
+	public String saveFile(@RequestParam(value = "filename", required = false) MultipartFile file ,
+						   HttpServletRequest request, @ModelAttribute BookVO vo) throws IOException {
+		log.info("request = {}", request);
+		log.info("multipartFile = {}", file);
+		log.info("BookVO = {}", vo);
+
+		if (!file.isEmpty()) {
+			String downloadPath = fileDownloadDirectory + file.getOriginalFilename();
+			log.info("파일 저장 경로 = {}", downloadPath);
+			file.transferTo(new File(downloadPath));
+			vo.setImage(downloadPath);
+			bookService.insert(vo);
+		}else{
+			log.info("선택된 파일이 없는 경우!!!");
+			file.transferTo(new File(fileDownloadDirectory + "base_book"));
+			vo.setImage(fileDownloadDirectory + "base_book");
+			bookService.insert(vo);
+		}
+
+		return "/admin/book";
 	}
 
 	@PostMapping("bookUpdate")

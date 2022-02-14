@@ -32,5 +32,9 @@ public class BookService {
 		mapper.update(vo);
 	}
 
+	public void insert(BookVO vo){
+		mapper.insert(vo);
+	}
+
 	//----------------------------------------------------------
 }

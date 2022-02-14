@@ -314,9 +314,10 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">파일 업로드 해보기 </h1>
 
-                <form class="board-form" method="post" action="/mysite/upload" enctype="multipart/form-data">
+                <form class="board-form" method="post" action="/upload" enctype="multipart/form-data">
 
                     <input type="file" name="filename1" size="50" maxlength="50">
+                    <input type="text" name="description" value="hi test!!!">
 
                     <div class="bottom">
                         <input type="submit" value="등록">

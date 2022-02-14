@@ -16,4 +16,6 @@ public interface BookMapper {
 	public List<BookVO> detailBookInfo(int book_no);
 
 	public void update(BookVO vo);
+
+	public void insert(BookVO vo);
 }

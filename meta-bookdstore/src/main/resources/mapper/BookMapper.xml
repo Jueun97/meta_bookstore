@@ -37,4 +37,13 @@
 			where book_no = #{book_no}
 		]]>
 	</update>
+
+	<!-- 5. 책 정보 등록하기 -->
+	<insert id="insert" parameterType="com.meta.book.vo.BookVO">
+		<![CDATA[
+		insert into book (book_no, title, author, publisher, pubdate, description, image, price)
+		values (seq_book_no, #{title}, #{author}, #{publisher}, sysdate, #{description}, #{image}, #{price})
+		]]>
+	</insert>
+
 </mapper>

@@ -316,7 +316,6 @@
                 <p class="mb-4">새로운 책을 등록하는 Page입니다.</p>
 
                 <form method="post" action="/admin/bookInsert" enctype="multipart/form-data">
-                    <input type="hidden" id="book_no" name="book_no" value="${bookinfo[0].book_no}">
                     <div class="mb-3">
                         <label for="title" class="form-label">Book Title</label>
                         <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" value="${bookinfo[0].title}">
@@ -339,7 +338,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
-                        <input type="text" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="${bookinfo[0].price}">
+                        <input type="number" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="${bookinfo[0].price}">
                         <div id="priceHelp" class="form-text">등록할 책의 가격을 입력해주세요.</div>
                     </div>
                     <div class="mb-3">
@@ -361,6 +360,11 @@
                             <option value="170">Economy</option>
                         </select>
                     </div>
+
+                    <div class="mb-3">
+                        <input type="file" name="filename" size="50" maxlength="50">
+                    </div>
+
                     <button type="submit" class="btn btn-outline-primary" style="float: right;">등록</button>
                     <button type="button" class="btn btn-outline-danger" onclick="history.back()" style="float: right; margin-right: 1rem;">취소</button>
                 </form>
