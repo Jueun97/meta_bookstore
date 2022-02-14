@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -18,12 +19,12 @@ public class AdminController {
 
 
 	//추후 admin의 메인 페이지로 사용할 예정. 아직 페이지 구성 미완료.
-	@RequestMapping("index")
+	@RequestMapping("")
 	public String index(Model model) {
-		return "/admin/index";
+		return "/admin/main";
 	}
 
-	//추후 admin의 책관리 페이지로 사용.
+	//추후 admin의 main 페이지로 사용.
 	@GetMapping("main")
 	public String adminMainView(Model model) {
 		System.out.println("adminTestView");
@@ -37,7 +38,6 @@ public class AdminController {
 	@GetMapping("book")
 	public String bookView(Model model) {
 		System.out.println("adminTestView");
-
 		model.addAttribute("bookdata", bookService.list());
 
 		return "/admin/book";
@@ -47,12 +47,30 @@ public class AdminController {
 	public String bookInsertForm(Model model){
 		System.out.println("bookInsertForm");
 
-		return "admin/bookInsertForm";
+		return "/admin/bookInsertForm";
 	}
 
-	@GetMapping("bookUpdate")
-	public String bookUpdate(@ModelAttribute BookVO vo, Model model){
+	@GetMapping("insert")
+	public String bookInsert(@ModelAttribute BookVO vo){
+		System.out.println("bookInsert");
+		System.out.println(vo.getImage());
+
+		return "/admin/main";
+	}
+
+	@PostMapping("bookUpdate")
+	public String bookUpdate(@ModelAttribute BookVO vo){
 		System.out.println("bookUpdate");
+		System.out.println(vo);
+
+		bookService.updateBookInfo(vo);
+
+		return "/admin/main";
+	}
+
+	@GetMapping("bookDetail")
+	public String bookDetail(@ModelAttribute BookVO vo, Model model){
+		System.out.println("bookDetail");
 		System.out.println(vo.getBook_no());
 		model.addAttribute("bookinfo", bookService.detailBookInfo(vo.getBook_no()));
 		System.out.println(bookService.detailBookInfo(vo.getBook_no()));

@@ -28,5 +28,9 @@ public class BookService {
 		return mapper.detailBookInfo(book_no);
 	}
 
+	public void updateBookInfo(BookVO vo){
+		mapper.update(vo);
+	}
+
 	//----------------------------------------------------------
 }

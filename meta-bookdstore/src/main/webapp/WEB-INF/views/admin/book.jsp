@@ -342,7 +342,7 @@
                                     <tbody>
                                     <c:forEach items="${bookdata}" var = "data">
                                         <tr id="trHover">
-                                            <td><a href="/admin/bookUpdate?book_no=${data.book_no}" style="color: #858796;">${data.title}</a></td>
+                                            <td><a href="/admin/bookDetail?book_no=${data.book_no}" style="color: #858796;">${data.title}</a></td>
                                             <td>${data.author}</td>
                                             <td>${data.publisher}</td>
                                             <td>${data.pubdate}</td>
