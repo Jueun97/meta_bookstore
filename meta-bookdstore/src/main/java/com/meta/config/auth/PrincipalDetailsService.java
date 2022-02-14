@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.meta.cart.mapper.CartMapper;
 import com.meta.member.mapper.MemberMapper;
 import com.meta.member.vo.MemberVO;
 
@@ -18,6 +19,8 @@ public class PrincipalDetailsService implements UserDetailsService{
 	
 	@Autowired
 	private MemberMapper mapper;
+	@Autowired
+	private CartMapper cartMapper;
 	
 	private static final Logger log = LoggerFactory.getLogger(PrincipalDetailsService.class);
 
@@ -32,6 +35,7 @@ public class PrincipalDetailsService implements UserDetailsService{
 		if(memberEntity==null) {
 			throw new UsernameNotFoundException(username);			
 		}else {
+			//memberEntity.setCartCount(cartMapper.getCartCount(memberEntity.getM_no()));
 			return new PrincipalDetails(memberEntity);
 		}
 	}
