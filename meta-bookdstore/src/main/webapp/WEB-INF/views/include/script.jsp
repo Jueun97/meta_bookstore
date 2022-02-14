@@ -19,9 +19,18 @@
     <script src="/js/components/hs.slick-carousel.js"></script>
     <script src="/js/components/hs.show-animation.js"></script>
     <script src="/js/components/hs.selectpicker.js"></script>
+    <script src="/js/components/hs.quantity-counter.js"></script>
+    <script src="/js/components/hs.fancybox.js"></script>
+    <script src="/js/components/hs.selectpicker.js"></script> 
+    <script src="/js/components/hs.onscroll-animation.js"></script>
+    <script  type="module" src="/js/components/hs.quantity-counter.js"></script>
+    <script src="/js/components/hs.scroll-nav.js"></script>
 
     <!-- JS Bookworm -->
     <!-- <script src="../../assets/js/bookworm.js"></script> -->
+    
+    <script src="/js/ajax.js"></script>
+    <script src="/js/checkbox.js"></script>
 
     <script>
         $(document).on('ready', function () {
@@ -37,6 +46,8 @@
 
             // initialization of show animations
             $.HSCore.components.HSShowAnimation.init('.js-animation-link');
+            
+            $.HSCore.components.HSQantityCounter.init('.js-quantity');
 
             // init zeynepjs
             var zeynep = $('.zeynep').zeynep({
