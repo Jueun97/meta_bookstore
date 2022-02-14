@@ -1,5 +1,8 @@
 package com.meta.auth.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -7,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.meta.auth.service.AuthService;
@@ -32,24 +37,35 @@ public class AuthController {
     }
     //스프링 시큐리티를 쓰기 때문에 post요청에 대한 URL을 만들지 않는다.
 	
+    //회원가입 폼 가기
 	@GetMapping("/auth/register")
-	public String registerForm() {
+	public String registerForm(Model model) {
+		model.addAttribute("memberRegDto",new MemberRegDto());
 		return "auth/register";
 	}
-//  	//회원 가입 처리 
-//  	@PostMapping("/auth/register")
-//  	public String register(@ModelAttribute("memberRegDto") @Valid MemberRegDto memberRegDto,BindingResult bindingResult
-//  			,RedirectAttributes rttr) {
-//  		log.info("register().dto : " + memberRegDto);
-//  		//회원가입 입력 폼에 에러가 있다면??
-//  		if(memberService.hasErrors(memberRegDto, bindingResult)) {
-//  			return "member/register";
-//  		}else {
-//  			memberService.register(memberRegDto);
-//  		}
-//  		rttr.addFlashAttribute("msg","회원가입이 완료되었습니다.");
-//  		return "redirect:login";
-//  	}
+	
+  	//회원 가입 처리 
+  	@PostMapping("/auth/register")
+  	public String register(@ModelAttribute("memberRegDto") @Valid MemberRegDto memberRegDto,BindingResult bindingResult
+  			,Model model,RedirectAttributes rttr) {
+  		log.info("register().dto : " + memberRegDto);
+  		if(authService.hasErrors(memberRegDto, bindingResult)) {
+  			Map<String,String> errorMap = new HashMap<>();
+  			for(FieldError error : bindingResult.getFieldErrors()) {
+  				// getFieldErrors() : 리스트 리턴
+  				errorMap.put(error.getField(), error.getDefaultMessage());
+//  			System.out.println("====================");
+//				System.out.println(error.getDefaultMessage()); //20자 이하여야 합니다.
+//				System.out.println("====================");
+  			}
+  			model.addAttribute("errorMap",errorMap);
+  			return "/auth/register";
+  		}else {
+  			authService.register(memberRegDto);  			
+  		}
+  		rttr.addFlashAttribute("msg","회원가입이 완료되었습니다.");
+  		return "redirect:/auth/login";
+  	}
 	
 	@RequestMapping("/auth/jusoPopup")
 	public String jusoPopup() {
@@ -63,5 +79,11 @@ public class AuthController {
   			return "redirect:/admin/index";
   		}
   		return "redirect:/";
+  	}
+  	
+  	@PostMapping("/checkId.do")
+  	public @ResponseBody String checkId(String id) {
+  		String resultId = authService.checkId(id);
+  		return resultId;
   	}
 }
