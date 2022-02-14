@@ -45,6 +45,7 @@ public class MemberController {
   	public String showMypage(Model model) {
   		model.addAttribute("memberUpdateDto",new MemberUpdateDto());
   		return "member/mypage";
+  		//좀되라..
   	}
   	
   	//회원 정보 수정 요청
