@@ -26,7 +26,7 @@ public class MemberService {
     public MemberVO findByMemberId(String id) {
         return memberMapper.findByMemberId(id);
     }
-		
+  	//https://cordingmonster.tistory.com/39 참조 땡큐	
 	public int update(MemberUpdateDto memberUpdateDto,@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		//password bcrypt암호화 과정.
 		String rawPassword = memberUpdateDto.getNewpassword();

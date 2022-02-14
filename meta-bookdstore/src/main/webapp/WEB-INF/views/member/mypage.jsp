@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <sec:authorize access="isAuthenticated()">
 	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
 	<sec:authentication property="principal" var="principal" />
@@ -46,6 +47,7 @@
 <link rel="stylesheet" href="/css/theme.css">
 <!-- 직접 만든 css -->
 <link rel="stylesheet" href="/css/member/mypage.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<!--header자리 -->
@@ -90,19 +92,23 @@
 							<div class="border-bottom mb-6 pb-6 mb-lg-8 pb-lg-9">
 								<div class="pt-5 pl-md-5 pt-lg-8 pl-lg-9">
 									<h6
-										class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">회원 정보 조회</h6>
-											에러맵 : ${errorMap}
+										class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">회원
+										정보 조회</h6>
+									에러맵 : ${errorMap}
 									<div class="font-weight-medium font-size-22 mb-4 pb-xl-1">회원
 										정보 수정</div>
-									<form action="/member/mypage" method="post" onsubmit="return checkSubmit();">
-										<input type="hidden" name="m_no" value="${principal.member.m_no}">
+									<form:form action="/member/mypage" method="post"
+										modelAttribute="memberUpdateDto"
+										onsubmit="return checkSubmit();">
+										<form:input path="m_no" type="hidden"
+											value="${principal.member.m_no}" />
 										<div class="row">
 											<div class="col-md-12 mb-4">
 												<div class="js-form-message">
-													<label class="form-label">아이디 </label>
-													<input type="text" style="width: 30%;"
-													class="form-control rounded-0 height-4 px-4"
-													readonly="true" value="${principal.member.id}"/>
+													<label class="form-label">아이디 </label> <input type="text"
+														style="width: 30%;" name="id"
+														class="form-control rounded-0 height-4 px-4"
+														readonly="true" value="${principal.member.id}" />
 												</div>
 											</div>
 											<div class="col-md-12 mb-4">
@@ -112,6 +118,9 @@
 														class="form-control rounded-0 height-4 px-4"
 														name="password" id="password" placeholder="현재 비밀번호를 입력하세요">
 												</div>
+												<c:if test="${!empty errorMap}">
+													<strong style="color: red;">${errorMap.password}</strong>
+												</c:if>
 											</div>
 											<div class="col-md-12 mb-4">
 												<div class="js-form-message">
@@ -121,41 +130,53 @@
 														name="newpassword" id="newpassword"
 														placeholder="새로운 비밀번호를 입력하세요">
 												</div>
+												<c:if test="${!empty errorMap}">
+													<strong style="color: red;">${errorMap.newpassword}</strong>
+												</c:if>
 											</div>
 											<div class="col-md-12 mb-4">
 												<div class="js-form-message">
-													<label class="form-label">이름 </label>
-													<input type="text" style="width: 30%;"
-													class="form-control rounded-0 height-4 px-4"
-													readonly="true" value="${principal.member.name}"/>
+													<label class="form-label">이름 </label> <input type="text"
+														style="width: 30%;" name="name"
+														class="form-control rounded-0 height-4 px-4"
+														readonly="true" value="${principal.member.name}" />
 												</div>
 											</div>
 											<div class="col-md-12 mb-4">
 												<div class="js-form-message js-focus-state">
 													<label class="form-label">전화번호</label>
 													<div class="telDiv">
-														<input type="text" maxlength="3" size="4" id="tel1"
-															onkeyup="to_auto_tel('tel1','tel2',3);"
-															class="tel_form form-control rounded-0 height-4 px-4">
-														- <input type="text" maxlength="4" size="5" id="tel2"
-															onkeyup="to_auto_tel('tel2','tel3',4);"
-															class="tel_form form-control rounded-0 height-4 px-4">
-														- <input type="text" maxlength="4" size="5" id="tel3"
-															class="tel_form form-control rounded-0 height-4 px-4">
+														<form:input path="tel1" type="text" maxlength="3" size="4"
+															id="tel1" onkeyup="to_auto_tel('tel1','tel2',3);"
+															class="tel_form form-control rounded-0 height-4 px-4" />
+														-
+														<form:input path="tel2" type="text" maxlength="4" size="5"
+															id="tel2" onkeyup="to_auto_tel('tel2','tel3',4);"
+															class="tel_form form-control rounded-0 height-4 px-4" />
+														-
+														<form:input path="tel3" type="text" maxlength="4" size="5"
+															id="tel3"
+															class="tel_form form-control rounded-0 height-4 px-4" />
 														<input type="hidden" name="phone" id="phone" />
 													</div>
 												</div>
+												<c:if test="${!empty errorMap}">
+													<strong style="color: red;">${errorMap.phone}</strong>
+												</c:if>
 											</div>
 											<div class="col-md-12 mb-4">
 												<div class="js-form-message">
-													<label class="form-label">이메일</label> <br> <input
-														type="text" style="width: 30%; display: inline-block;"
+													<label class="form-label">이메일</label> <br>
+													<form:input path="email1" type="text"
+														style="width: 30%; display: inline-block;"
 														class="form-control rounded-0 height-4 px-4" name="email1"
-														id="email1" placeholder="이메일을 입력"> @ <input
-														type="text" class="form-control rounded-0 height-4 px-4"
+														id="email1" placeholder="이메일을 입력" />
+													@
+													<form:input path="emailDomain" type="text"
+														class="form-control rounded-0 height-4 px-4"
 														id="emailDomain" name="emailDomain"
-														style="width: 30%; display: inline-block;"> <select
-														name="emailDomain" id="emailDomain"
+														style="width: 30%; display: inline-block;" />
+													<select name="emailDomain" id="emailDomain"
 														onChange="selectEmailChange(this.value);" title="직접입력"
 														style="width: 20%;">
 														<option value="">직접입력</option>
@@ -171,28 +192,42 @@
 														<option value="korea.com">korea.com</option>
 														<option value="freechal.com">freechal.com</option>
 													</select>
-													<input type="hidden" name="email" id="email" />
 												</div>
+												<c:if test="${!empty errorMap}">
+													<strong style="color: red;">${errorMap.email}</strong>
+												</c:if>
+												<input type="hidden" name="email" id="email" />
 											</div>
 											<div class="col-md-12 mb-4">
 												<div class="js-form-message">
 													<label class="form-label">주소</label>
 													<div class="addrBtn">
-														<input type="text" style="width: 30%" value="${principal.member.zipcode}"
+														<input type="text" style="width: 30%"
+															value="${principal.member.zipcode}"
 															class="form-control rounded-0 height-2 px-2"
 															name="zipcode" id="zipcode" placeholder="우편번호" readonly>
 														<button type="button" class="btn btn-info"
 															onClick="goPopup();">주소검색</button>
 													</div>
+													<c:if test="${!empty errorMap}">
+														<strong style="color: red;">${errorMap.zipcode}</strong>
+													</c:if>
 													도로명 주소 <input type="text" style="margin-top: 10px;"
 														value="${principal.member.roadAddress}"
 														class="form-control rounded-0 height-4 px-4"
 														name="roadAddress" id="roadAddress"
-														placeholder="주소검색을 해주세요" readonly> 상세 주소 <input
-														type="text" style="margin-top: 10px;"
+														placeholder="주소검색을 해주세요" readonly>
+													<c:if test="${!empty errorMap}">
+														<strong style="color: red;">${errorMap.roadAddress}</strong>
+													</c:if>
+													상세 주소 <input type="text" style="margin-top: 10px;"
 														value="${principal.member.otherAddress}"
 														class="form-control rounded-0 height-4 px-4"
 														name="otherAddress" id="otherAddress" placeholder="상세주소">
+													<br />
+													<c:if test="${!empty errorMap}">
+														<strong style="color: red;">${errorMap.otherAddress}</strong>
+													</c:if>
 												</div>
 											</div>
 										</div>
@@ -201,7 +236,7 @@
 												class="btn btn-wide btn-dark text-white rounded-0 transition-3d-hover height-60 width-390">
 												회원 정보 수정</button>
 										</div>
-									</form>
+									</form:form>
 								</div>
 							</div>
 						</div>
@@ -217,12 +252,22 @@
 	<!-- footer 자리 -->
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
-	<script src="/js/member/mypage.js"></script>
 	<script>
+		let principalPhone = '<c:out value='${principal.member.phone}'/>';
+		let phoneArr = principalPhone.split("-");
+		$("#tel1").val(phoneArr[0]);
+		$("#tel2").val(phoneArr[1]);
+		$("#tel3").val(phoneArr[2]);
+		
+		let completeEmail = '<c:out value='${principal.member.email}'/>';
+		let emailArr = completeEmail.split("@");
+		$("#email1").val(emailArr[0]);
+		$("#emailDomain").val(emailArr[1]);
 	  	$(function(){
 	  		${(empty msg)?"":"alert('" += msg += "');"};
 	  	});
 	</script>
+	<script src="/js/member/mypage.js"></script>
 </body>
 </html>
 

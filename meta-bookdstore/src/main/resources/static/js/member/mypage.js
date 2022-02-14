@@ -26,8 +26,8 @@ function to_auto_tel(thisStr, nextStr, len) {
 function makeConvention(){
 	var telForm = $("#tel1").val() + "-" + $("#tel2").val() + "-" + $("#tel3").val();
 	$("#phone").val(telForm);
-	//console.log("텔폼",telForm);
-	//console.log("폰 : "+$("#phone").val());
+	//alert("텔폼"+telForm);
+	//console.log("폰 : ",$("#phone").val());
 	var emailForm = $("#email1").val() + "@" +$("#emailDomain").val();
 	$("#email").val(emailForm);
 	//console.log("이메일 폼",emailForm);

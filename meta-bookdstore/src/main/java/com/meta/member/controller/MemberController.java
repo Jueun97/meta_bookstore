@@ -8,15 +8,18 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -36,13 +39,6 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
-
-  	//회원 정보 찾 폼 
-	@GetMapping("find")
-  	public String find(Model model) {
-  		//model.addAttribute("memberRegDto",new MemberRegDto());
-  		return "member/find";
-  	}
   	
   	//회원 정보 확인 폼 (디테일) 
   	@GetMapping("mypage")
@@ -51,7 +47,7 @@ public class MemberController {
   		return "member/mypage";
   	}
   	
-  //회원 정보 수정 요청
+  	//회원 정보 수정 요청
   	@PostMapping("mypage")
   	public String update(Model model,@AuthenticationPrincipal PrincipalDetails principalDetails,
   			@ModelAttribute("memberUpdateDto") @Valid MemberUpdateDto memberUpdateDto,BindingResult bindingResult
@@ -71,9 +67,10 @@ public class MemberController {
   			return "member/mypage";
   		}else {
   			int res = memberService.update(memberUpdateDto,principalDetails);
+  			principalDetails.setMember(memberUpdateDto.toEntity());
   			//MemberVO memberEntity =  memberService.updatedSel(memberUpdateDto.toEntity());
   			//principalDetails.setMember(memberEntity); //수정한 세션정보 변경
-  			log.warn(res);
+
   		}
   		rttr.addFlashAttribute("msg","회원정보 수정이 완료되었습니다.");
   		return "redirect:/member/mypage";
@@ -87,6 +84,11 @@ public class MemberController {
   		return "member/myorder";
   	}
 	
-	
+  	//회원 정보 찾 폼 
+	@GetMapping("find")
+  	public String find(Model model) {
+  		//model.addAttribute("memberRegDto",new MemberRegDto());
+  		return "member/find";
+  	}
 
 }

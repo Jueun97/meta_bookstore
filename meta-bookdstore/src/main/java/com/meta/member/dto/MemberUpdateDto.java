@@ -12,6 +12,8 @@ import lombok.Data;
 public class MemberUpdateDto {
 	
 	private int m_no;
+	private String id;
+	private String name;
 
 	@NotEmpty(message="기존 비밀번호를 입력하셔야 합니다.")
 	@NotBlank
@@ -47,15 +49,17 @@ public class MemberUpdateDto {
 	@NotBlank
 	private String otherAddress;
 	
-//	public MemberVO toEntity() {
-//		return MemberVO.builder()
-//						.m_no(m_no)
-//						.id(id)
-//						.password(password)
-//						.name(name)
-//						.address(address)
-//						.phone(phone)
-//						.email(email)
-//						.build();
-//	}
+	public MemberVO toEntity() {
+		return MemberVO.builder()
+						.m_no(m_no)
+						.id(id)
+						.name(name)
+						.password(newpassword)
+						.zipcode(zipcode)
+						.roadAddress(roadAddress)
+						.otherAddress(otherAddress)
+						.phone(phone)
+						.email(email)
+						.build();
+	}
 }
