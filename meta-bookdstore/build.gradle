@@ -20,6 +20,8 @@ repositories {
 }
 
 dependencies {
+	//thumbnailator
+	implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.11'
 
 	implementation 'org.json:json:20200518'
 	//jquery

@@ -11,7 +11,7 @@
 
 	<!-- 2. 책 1개 디테일 정보 보기 -->
 	<select id="detailBookInfo" resultType="com.meta.book.vo.BookVO">
-		SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no
+		SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, th_image, cate_no
 		from book
 		where book_no = #{book_no}
 	</select>
@@ -33,7 +33,9 @@
 				publisher = #{publisher},
 				pubdate = to_date(#{pubdate}, 'YYYY-MM-DD'),
 				price = #{price},
-				description = #{description}
+				description = #{description},
+				image = #{image},
+			    th_image = #{th_image}
 			where book_no = #{book_no}
 		]]>
 	</update>
@@ -41,8 +43,8 @@
 	<!-- 5. 책 정보 등록하기 -->
 	<insert id="insert" parameterType="com.meta.book.vo.BookVO">
 		<![CDATA[
-		insert into book (book_no, title, author, publisher, pubdate, description, image, price, cate_no)
-		values (seq_book_no.nextval, #{title}, #{author}, #{publisher}, sysdate, #{description}, #{image}, #{price}, #{cate_no})
+		insert into book (book_no, title, author, publisher, pubdate, description, image, price, cate_no, th_image)
+		values (seq_book_no.nextval, #{title}, #{author}, #{publisher}, sysdate, #{description}, #{image}, #{price}, #{cate_no}, #{th_image})
 		]]>
 	</insert>
 </mapper>
