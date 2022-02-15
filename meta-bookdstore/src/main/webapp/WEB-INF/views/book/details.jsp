@@ -44,6 +44,7 @@
 
 <!-- CSS Bookworm Template -->
 <link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/book/book.css">
 </head>
 <body>
 	<!--header자리 -->

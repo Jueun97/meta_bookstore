@@ -318,11 +318,7 @@
 														<span class="product__add-to-cart" onClick="addToCart(${bookVo.book_no},${bookVo.price})">ADD TO CART</span> <span
 															class="product__add-to-cart-icon font-size-4"><i
 															class="flaticon-icon-126515"></i></span>
-															 <a
-															href="../shop/single-product-v3.html"
-															class="h-p-bg btn btn-outline-dark border-0"> <i
-															class="flaticon-heart"></i>
-														</a>
+															 
 													</div>
 												</div>
 											</div>

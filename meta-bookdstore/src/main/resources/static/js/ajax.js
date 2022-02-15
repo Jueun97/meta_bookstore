@@ -36,12 +36,14 @@ function addToCart(book_no, price) {
 		type: "post",
 		data: data,
 		dataType: "json",
-		success: function(isDone) {
-			console.log("done", isDone)
-			if (isDone) {
+		success: function(result) {
+			console.log("done", result)
+			if (result === 1) {
 				alert("장바구니에 추가하였습니다.");
-			} else {
+			} else if(result === 0){
 				alert("로그인 후 장바구니에 추가해주세요.");
+			} else{
+				alert("이미 장바구니에 있습니다.");
 			}
 		}
 	})

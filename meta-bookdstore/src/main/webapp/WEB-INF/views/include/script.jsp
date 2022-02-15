@@ -29,8 +29,7 @@
     <!-- JS Bookworm -->
     <!-- <script src="../../assets/js/bookworm.js"></script> -->
     
-    <script src="/js/ajax.js"></script>
-    <script src="/js/checkbox.js"></script>
+    <script src="/js/ajax.js"></script>s
 
     <script>
         $(document).on('ready', function () {

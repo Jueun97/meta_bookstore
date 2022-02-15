@@ -9,11 +9,12 @@ import com.meta.cart.vo.CartVO;
 
 @Mapper
 public interface CartMapper {
-	
+	public int checkIfCartExisted(CartVO cartVo);
+	public int checkBookQuantity(CartVO cartVo);
 	public int addCart(CartVO cartVo);
 	public ArrayList<CartVO> getCartList(long m_no);
 	public CartVO getACart(int cart_no);
-	public long getSubTotalPrice();
+	public long getSubTotalPrice(long m_no);
 	public long getSelectedSubTotalPrice(List<CartVO> cartList);
 	public long getCartCount(long m_no);
 	public int modifyQuantity(CartVO cartVo);

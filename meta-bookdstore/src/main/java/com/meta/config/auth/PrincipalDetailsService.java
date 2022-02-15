@@ -35,7 +35,7 @@ public class PrincipalDetailsService implements UserDetailsService{
 		if(memberEntity==null) {
 			throw new UsernameNotFoundException(username);			
 		}else {
-			//memberEntity.setCartCount(cartMapper.getCartCount(memberEntity.getM_no()));
+			memberEntity.setCartCount(cartMapper.getCartCount(memberEntity.getM_no()));
 			return new PrincipalDetails(memberEntity);
 		}
 	}

@@ -3,6 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.meta.cart.mapper.CartMapper">
+
+	<select id="checkIfCartExisted" resultType="int">
+		SELECT count(*) 
+		FROM cart 
+		WHERE m_no=#{m_no} AND book_no=#{book_no}
+	</select>
+	
+	<select id="checkBookQuantity" resultType="int">
+		SELECT cart_book_qt
+		FROM cart 
+		WHERE m_no=#{m_no} AND book_no=#{book_no}
+	</select>
+	
 	<insert id="addCart">
 		INSERT INTO
 		cart(cart_no,m_no,book_no,cart_book_qt,cart_total_price)
@@ -25,9 +38,9 @@
 		cart_no=#{cart_no}
 	</select>
 
-	<select id="getSubTotalPrice" resultType="Long">
+	<select id="getSubTotalPrice" resultType="long">
 		SELECT
-		sum(cart_total_price) FROM cart
+		sum(cart_total_price) FROM cart WHERE m_no=#{m_no}
 	</select>
 
 	<select id="getSelectedSubTotalPrice" resultType="long">
@@ -39,7 +52,8 @@
 	</select>
 
 	<select id="getCartCount" resultType="long">
-		SELECT count(*) FROM cart WHERE m_no = #{m_no}
+		SELECT count(*) FROM cart
+		WHERE m_no = #{m_no}
 	</select>
 
 
@@ -48,7 +62,7 @@
 		UPDATE cart
 		SET cart_book_qt=#{cart_book_qt},
 		cart_total_price=#{cart_total_price}
-		WHERE cart_no=#{cart_no}
+		WHERE m_no=#{m_no} AND book_no=#{book_no}
 	</update>
 
 	<delete id="deleteCart">

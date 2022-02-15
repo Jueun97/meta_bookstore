@@ -18,6 +18,19 @@ public class CartService {
 	@Autowired
 	private CartMapper mapper;
 	
+	public boolean checkIfCartExisted(CartVO cartVo) {
+		if(mapper.checkIfCartExisted(cartVo)>0) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	public int checkBookQuantity(CartVO cartVo) {
+		return mapper.checkBookQuantity(cartVo);
+		
+	}
+	
 	public int addCart(CartVO cartVo) {
 		System.out.println("cart service = "+cartVo);
 		return mapper.addCart(cartVo);
@@ -29,11 +42,11 @@ public class CartService {
 	
 	public CartVO getACart(int cart_no) {
 		CartVO cartVo = mapper.getACart(cart_no);
-		cartVo.setSub_total_price(mapper.getSubTotalPrice());
+		cartVo.setSub_total_price(mapper.getSubTotalPrice(cartVo.getM_no()));
 		return cartVo;
 	}
-	public long getSubTotalPrice() {
-		return mapper.getSubTotalPrice();
+	public long getSubTotalPrice(long m_no) {
+		return mapper.getSubTotalPrice(m_no);
 	}
 	public long getSelectedSubTotalPrice(List<CartVO> cartList) {
 		return mapper.getSelectedSubTotalPrice(cartList);

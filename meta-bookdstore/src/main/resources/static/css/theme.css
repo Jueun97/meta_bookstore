@@ -22454,6 +22454,7 @@ h1.text-white > a, h2.text-white > a, h3.text-white > a, h4.text-white > a, h5.t
 .product__add-to-cart {
   position: relative;
   display: none;
+  cursor:pointer;
 }
 
 @media (min-width: 1200px) {

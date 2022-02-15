@@ -1,10 +1,7 @@
 package com.meta.cart.controller;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,33 +35,45 @@ public class CartController {
 	@PostMapping("/add")
 	@ResponseBody
 	public String addCart(@AuthenticationPrincipal PrincipalDetails principalDetails, @ModelAttribute CartVO cartVo) {
-		long memberId = principalDetails.getMember() != null ? principalDetails.getMember().getM_no() : 0;
+		long memberId = principalDetails != null ? principalDetails.getMember().getM_no() : 0;
 
 		if (memberId != 0) {
 			cartVo.setM_no(memberId);
-			cartService.addCart(cartVo);
-			System.out.println("cart" + cartVo.toString());
-			updateCartInfo(principalDetails);
-			return "true";
+			if (cartService.checkIfCartExisted(cartVo)) {
+				if (cartService.checkBookQuantity(cartVo) >= cartVo.getCart_book_qt()) {
+					return "2";
+				} else {
+					cartService.modifyQuantity(cartVo);
+					return "1";
+				}
+			} else {
+				cartService.addCart(cartVo);
+				updateCartInfo(principalDetails);
+				return "1";
+			}
+
 		} else {
-			return "false";
+			return "0";
 		}
 	}
 
 	@GetMapping("/details")
-	public String showCartDeatils(Model model,@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		System.out.println(">>>>"+principalDetails.getMember().getM_no());
+	public String showCartDeatils(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		long m_no = principalDetails.getMember().getM_no();
+
 		ArrayList<CartVO> list = cartService.getCartList(m_no);
 		model.addAttribute("cartList", list);
+		if (cartService.getCartCount(m_no) != 0) {
+			model.addAttribute("subTotalPrice", cartService.getSubTotalPrice(m_no));
+		}
 		return "cart/cart";
 
 	}
 
 	@PostMapping("/modify/quantity")
 	@ResponseBody
-	public CartVO modifyQuantity(@ModelAttribute CartVO cartVo, HttpServletRequest request,@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		System.out.println("result >> " + cartVo.toString());
+	public CartVO modifyQuantity(@ModelAttribute CartVO cartVo,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		cartService.modifyQuantity(cartVo);
 		updateCartInfo(principalDetails);
 		return cartService.getACart(cartVo.getCart_no());
@@ -72,11 +81,12 @@ public class CartController {
 
 	@PostMapping("/delete")
 	@ResponseBody
-	public long deleteCart(@ModelAttribute CartVO cartVo, HttpServletRequest request,@AuthenticationPrincipal PrincipalDetails principalDetails) {
+	public long deleteCart(@ModelAttribute CartVO cartVo, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		cartService.deleteCart(cartVo.getCart_no());
-		long count = cartService.getCartCount(principalDetails.getMember().getM_no());
+		long m_no = principalDetails.getMember().getM_no();
+		long count = cartService.getCartCount(m_no);
 		if (count > 0) {
-			long subTotal = cartService.getSubTotalPrice();
+			long subTotal = cartService.getSubTotalPrice(m_no);
 			updateCartInfo(principalDetails);
 			return subTotal;
 		} else {
@@ -88,7 +98,8 @@ public class CartController {
 
 	@PostMapping("/delete/selected")
 	@ResponseBody
-	public long deleteAllCart(HttpServletRequest request,@RequestParam String data) throws JSONException {
+	public long deleteAllCart(@RequestParam String data, @AuthenticationPrincipal PrincipalDetails principalDetails)
+			throws JSONException {
 		JSONArray jsonArray = new JSONArray(data);
 
 		if (jsonArray.length() == 0) {
@@ -104,9 +115,8 @@ public class CartController {
 
 				index++;
 			}
-
-			// jsonArray = (JSONArray) object.get("list");
 			cartService.deleteSelectedCart(cartList);
+			updateCartInfo(principalDetails);
 			return 0;
 		}
 
@@ -132,17 +142,13 @@ public class CartController {
 				index++;
 			}
 
-			// jsonArray = (JSONArray) object.get("list");
-
 			return cartService.getSelectedSubTotalPrice(cartList);
 		}
-		// System.out.println(data.getClass().getSimpleName());
 
 	}
 
 	public void updateCartInfo(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-	    
-		//session.setAttribute("subTotalPrice", formatter.format(subTotal));
+
 		long newCartCount = cartService.getCartCount(principalDetails.getMember().getM_no());
 		principalDetails.getMember().setCartCount(newCartCount);
 
