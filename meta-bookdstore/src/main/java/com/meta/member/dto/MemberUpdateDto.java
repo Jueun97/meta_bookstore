@@ -1,12 +1,11 @@
 package com.meta.member.dto;
 
+import com.meta.member.vo.MemberVO;
+import lombok.Data;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-
-import com.meta.member.vo.MemberVO;
-
-import lombok.Data;
 
 @Data
 public class MemberUpdateDto {

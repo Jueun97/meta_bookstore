@@ -289,10 +289,20 @@
 												<div
 													class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
 													<div class="woocommerce-loop-product__thumbnail">
-														<a href="/book/detail/${bookVo.book_no}" class="d-block"><img
-															src="${bookVo.image}"
-															class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-															alt="image-description"></a>
+														<a href="/book/detail/${bookVo.book_no}" class="d-block">
+														<c:choose>
+															<c:when test="${bookVo.book_no <= 140}">
+																<img src="${bookVo.image}"
+																class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
+																alt="image-description">
+															</c:when>
+															<c:otherwise>
+																<img src="/image/${bookVo.image}"
+																	 class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
+																	 alt="image-description">
+															</c:otherwise>
+														</c:choose>
+														</a>
 													</div>
 													<div
 														class="woocommerce-loop-product__body product__body pt-3 bg-white">
