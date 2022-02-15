@@ -3,15 +3,46 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.meta.book.mapper.BookMapper">
-	<!-- 1.북 리스트 보기 -->
+	<!-- 1. 책 리스트 보기 -->
 	<select id="list" resultType="com.meta.book.vo.BookVO">
-		SELECT book_no,title,author,publisher,pubDate,description,price,image,cate_no
+		SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no
 		from book
 	</select>
-	
-	<select id="bookInfo" resultType="com.meta.book.vo.BookVO">
-		SELECT book_no,title,author,publisher,pubDate,description,price,image,cate_no
+
+	<!-- 2. 책 1개 디테일 정보 보기 -->
+	<select id="detailBookInfo" resultType="com.meta.book.vo.BookVO">
+		SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no
 		from book
-		where book_no=#{book_no}
+		where book_no = #{book_no}
 	</select>
+
+	<!-- 3. 책 정보 지우기 -->
+	<delete id="delete" parameterType="com.meta.book.vo.BookVO">
+  		<![CDATA[
+			delete from book
+			where book_no = #{book_no}
+		]]>
+  </delete>
+
+	<!-- 4. 책 정보 수정하기 -->
+	<update id="update" parameterType="com.meta.book.vo.BookVO">
+		<![CDATA[
+			update book
+			set title = #{title},
+				author = #{author},
+				publisher = #{publisher},
+				pubdate = to_date(#{pubdate}, 'YYYY-MM-DD'),
+				price = #{price},
+				description = #{description}
+			where book_no = #{book_no}
+		]]>
+	</update>
+
+	<!-- 5. 책 정보 등록하기 -->
+	<insert id="insert" parameterType="com.meta.book.vo.BookVO">
+		<![CDATA[
+		insert into book (book_no, title, author, publisher, pubdate, description, image, price, cate_no)
+		values (seq_book_no.nextval, #{title}, #{author}, #{publisher}, sysdate, #{description}, #{image}, #{price}, #{cate_no})
+		]]>
+	</insert>
 </mapper>
