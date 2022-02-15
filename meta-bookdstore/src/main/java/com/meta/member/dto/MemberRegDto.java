@@ -48,3 +48,4 @@ public class MemberRegDto {
 	@NotBlank
 	private String otherAddress;
 }
+

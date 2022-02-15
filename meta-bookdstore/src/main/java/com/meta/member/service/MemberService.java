@@ -1,17 +1,15 @@
 package com.meta.member.service;
 
+import com.meta.config.auth.PrincipalDetails;
+import com.meta.member.dto.MemberUpdateDto;
+import com.meta.member.mapper.MemberMapper;
+import com.meta.member.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
-
-import com.meta.config.auth.PrincipalDetails;
-import com.meta.member.dto.MemberRegDto;
-import com.meta.member.dto.MemberUpdateDto;
-import com.meta.member.mapper.MemberMapper;
-import com.meta.member.vo.MemberVO;
 
 
 @Service

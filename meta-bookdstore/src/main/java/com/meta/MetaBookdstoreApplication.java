@@ -3,17 +3,14 @@ package com.meta;
 import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-public class MetaBookdstoreApplication extends SpringBootServletInitializer{
+@PropertySource(value = {"classpath:filepath.properties"})
+public class MetaBookdstoreApplication{
 
 	public static void main(String[] args) {
-		ApplicationContext ctx =SpringApplication.run(MetaBookdstoreApplication.class, args);
-		DispatcherServlet dispatcherServlet = (DispatcherServlet)ctx.getBean("dispatcherServlet");
-        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
+		SpringApplication.run(MetaBookdstoreApplication.class, args);
 	}
 
 }
