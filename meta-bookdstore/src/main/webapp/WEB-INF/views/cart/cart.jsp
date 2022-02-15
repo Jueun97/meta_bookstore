@@ -263,7 +263,7 @@
 						<form action="/order/checkout" method="post" class="checkout-form">
 							<div class="wc-proceed-to-checkout">
 								<input type="button" value="Proceed to checkout"
-									class="checkout-button button alt wc-forward btn btn-dark btn-block rounded-0 py-4">
+									class="checkout-button alt wc-forward btn btn-dark btn-block rounded-0 py-4">
 							</div>
 						</form>
 					</div>

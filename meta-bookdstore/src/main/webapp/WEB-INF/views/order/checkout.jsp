@@ -421,7 +421,7 @@
 			$("#otherAddress").val(otherAddress);
 		} else {
 			console.log("unchecked")
-			$("#name").val('');
+			$("#nameForm").val('');
 
 			$("#tel1").val('');
 			$("#tel2").val('');
