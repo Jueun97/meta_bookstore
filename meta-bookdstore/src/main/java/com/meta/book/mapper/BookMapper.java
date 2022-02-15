@@ -13,7 +13,7 @@ public interface BookMapper {
 	//관리자 페이지에서 사용하는 책 삭제 mapper
 	public void delete(Long book_no);
 
-	public List<BookVO> detailBookInfo(Long book_no);
+	public BookVO detailBookInfo(Long book_no);
 
 	public void update(BookVO vo);
 

@@ -23,7 +23,7 @@ public class BookService {
 		mapper.delete(book_no);
 	}
 
-	public List<BookVO> detailBookInfo(Long book_no){
+	public BookVO detailBookInfo(Long book_no){
 
 		return mapper.detailBookInfo(book_no);
 	}

@@ -314,8 +314,8 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">파일 업로드 해보기 </h1>
 
-                <h1> ${testData[0].title}</h1>
-                <img src="/image/${testData[0].image}">
+                <h1> ${testData.title}</h1>
+                <img src="/image/${testData.image}">
 
             </div>
             <!-- /.container-fluid -->

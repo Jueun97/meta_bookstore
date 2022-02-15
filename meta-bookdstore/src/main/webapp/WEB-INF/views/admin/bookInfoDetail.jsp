@@ -316,35 +316,35 @@
                 <p class="mb-4">책 리스트의 업데이트  페이지입니다. </p>
 
                 <form method="post" action="/admin/bookUpdate">
-                    <input type="hidden" id="book_no" name="book_no" value="${bookinfo[0].book_no}">
+                    <input type="hidden" id="book_no" name="book_no" value="${bookInfo.book_no}">
                     <div class="mb-3">
                         <label for="title" class="form-label">Book Title</label>
-                        <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" value="${bookinfo[0].title}">
+                        <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" value="${bookInfo.title}">
                         <div id="titleHelp" class="form-text">기존의 책 제목 확인 후, 수정할 책 제목을 입력해주세요.</div>
                     </div>
                     <div class="mb-3">
                         <label for="author" class="form-label">Author</label>
-                        <input type="text" class="form-control" id="author" name="author" aria-describedby="authorHelp" value="${bookinfo[0].author}">
+                        <input type="text" class="form-control" id="author" name="author" aria-describedby="authorHelp" value="${bookInfo.author}">
                         <div id="authorHelp" class="form-text">기존의 책 작가 확인 후, 수정할 책 작가를 입력해주세요.</div>
                     </div>
                     <div class="mb-3">
                         <label for="publisher" class="form-label">Publisher</label>
-                        <input type="text" class="form-control" id="publisher" name="publisher" aria-describedby="publisherHelp" value="${bookinfo[0].publisher}">
+                        <input type="text" class="form-control" id="publisher" name="publisher" aria-describedby="publisherHelp" value="${bookInfo.publisher}">
                         <div id="publisherHelp" class="form-text">기존의 출판사 확인 후, 수정할 출판사 입력해주세요.</div>
                     </div>
                     <div class="mb-3">
                         <label for="pubdate" class="form-label">Pubdate</label>
-                        <input type="text" class="form-control" id="pubdate" name="pubdate" aria-describedby="pubdateHelp" value="${bookinfo[0].pubdate}">
+                        <input type="text" class="form-control" id="pubdate" name="pubdate" aria-describedby="pubdateHelp" value="${bookInfo.pubdate}">
                         <div id="pubdateHelp" class="form-text">기존의 출판일자 확인 후, 수정할 출판일자를 형식에 맞게 입력해주세요.</div>
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
-                        <input type="text" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="${bookinfo[0].price}">
+                        <input type="text" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="${bookInfo.price}">
                         <div id="priceHelp" class="form-text">기존의 책 가격 확인 후, 수정할 책 가격을 입력해주세요.</div>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="5">${bookinfo[0].description}</textarea>
+                        <textarea class="form-control" id="description" name="description" rows="5">${bookInfo.description}</textarea>
                     </div>
                     <button type="submit" class="btn btn-outline-primary" style="float: right;">수정</button>
                     <button type="button" class="btn btn-outline-danger" onclick="history.back()" style="float: right; margin-right: 1rem;">취소</button>

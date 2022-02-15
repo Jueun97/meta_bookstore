@@ -107,7 +107,7 @@ public class AdminController {
 	public String bookDetail(@ModelAttribute BookVO vo, Model model){
 		System.out.println("bookDetail");
 		System.out.println(vo.getBook_no());
-		model.addAttribute("bookinfo", bookService.detailBookInfo(vo.getBook_no()));
+		model.addAttribute("bookInfo", bookService.detailBookInfo(vo.getBook_no()));
 		System.out.println(bookService.detailBookInfo(vo.getBook_no()));
 
 		return "/admin/bookInfoDetail";
