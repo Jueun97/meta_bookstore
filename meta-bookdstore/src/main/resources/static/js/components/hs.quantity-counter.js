@@ -5,9 +5,10 @@
  * @version 1.0
  *
  */
+
+ 
 ;(function ($) {
   'use strict';
-
   $.HSCore.components.HSQantityCounter = {
     /**
      *
@@ -33,7 +34,7 @@
      */
 
     init: function (selector, config) {
-
+	
       this.collection = selector && $(selector).length ? $(selector) : $();
       if (!$(selector).length) return;
 
@@ -68,19 +69,25 @@
           resultVal += 1;
 
           $result.val(resultVal);
+
+           $result.trigger('click');
+     
         });
 
         $minus.on('click', function (e) {
           e.preventDefault();
 
-          if (resultVal >= 1) {
+          if (resultVal >= 2) {
             resultVal -= 1;
 
             $result.val(resultVal);
+            $result.trigger('click');
+    
           } else {
             return false;
           }
         });
+       
 
         //Actions
         collection = collection.add($this);

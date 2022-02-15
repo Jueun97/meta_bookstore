@@ -18,4 +18,7 @@ public class BookService {
 	public List<BookVO> list() {
 		return mapper.list();
 	}
+	public BookVO getBookInfo(int book_no) {
+		return mapper.bookInfo(book_no);
+	}
 }

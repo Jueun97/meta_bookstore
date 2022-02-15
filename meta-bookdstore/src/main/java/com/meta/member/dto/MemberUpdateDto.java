@@ -44,6 +44,7 @@ public class MemberUpdateDto {
 	@NotEmpty(message="도로명주소는 필수입력 사항입니다.")
 	@NotBlank
 	private String roadAddress;
+
 	
 	@NotEmpty(message="상세주소는 필수입력 사항입니다.")
 	@NotBlank
@@ -62,4 +63,5 @@ public class MemberUpdateDto {
 						.email(email)
 						.build();
 	}
+
 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meta.cart.mapper.CartMapper">
+
+	<select id="checkIfCartExisted" resultType="int">
+		SELECT count(*) 
+		FROM cart 
+		WHERE m_no=#{m_no} AND book_no=#{book_no}
+	</select>
+	
+	<select id="checkBookQuantity" resultType="int">
+		SELECT cart_book_qt
+		FROM cart 
+		WHERE m_no=#{m_no} AND book_no=#{book_no}
+	</select>
+	
+	<insert id="addCart">
+		INSERT INTO
+		cart(cart_no,m_no,book_no,cart_book_qt,cart_total_price)
+		VALUES
+		(cart_seq.nextval,#{m_no},#{book_no},#{cart_book_qt},#{cart_total_price})
+	</insert>
+
+	<select id="getCartList" resultType="com.meta.cart.vo.CartVO">
+		SELECT
+		cart_no,m_no,cart.book_no,cart_book_qt,cart_total_price,title,author,price,image
+		FROM cart,book
+		WHERE cart.book_no=book.book_no AND m_no=#{m_no}
+	</select>
+
+	<select id="getACart" resultType="com.meta.cart.vo.CartVO">
+		SELECT
+		cart_no,m_no,cart.book_no,cart_book_qt,cart_total_price
+		FROM cart
+		WHERE
+		cart_no=#{cart_no}
+	</select>
+
+	<select id="getSubTotalPrice" resultType="long">
+		SELECT
+		sum(cart_total_price) FROM cart WHERE m_no=#{m_no}
+	</select>
+
+	<select id="getSelectedSubTotalPrice" resultType="long">
+		SELECT sum(cart_total_price) FROM cart WHERE cart_no IN
+		<foreach collection="list" item="item" open="(" close=")"
+			separator=",">
+			#{item.cart_no}
+		</foreach>
+	</select>
+
+	<select id="getCartCount" resultType="long">
+		SELECT count(*) FROM cart
+		WHERE m_no = #{m_no}
+	</select>
+
+
+
+	<update id="modifyQuantity">
+		UPDATE cart
+		SET cart_book_qt=#{cart_book_qt},
+		cart_total_price=#{cart_total_price}
+		WHERE m_no=#{m_no} AND book_no=#{book_no}
+	</update>
+
+	<delete id="deleteCart">
+		DELETE FROM cart WHERE cart_no=#{cart_no}
+	</delete>
+
+	<delete id="deleteSelectedCart">
+		DELETE FROM cart
+		WHERE cart_no IN
+		<foreach collection="list" item="item" open="(" close=")"
+			separator=",">
+			#{item.cart_no}
+		</foreach>
+	</delete>
+</mapper>

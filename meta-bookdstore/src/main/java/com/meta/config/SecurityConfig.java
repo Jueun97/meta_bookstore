@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.antMatchers("/order/**").authenticated()//로그인 해야 order페이지 접근가능
+			.antMatchers("/cart/**").authenticated()
 			.anyRequest().permitAll(); 
 		
 		//.formLogin() : 인증이 필요한 페이지로 갈때 form 로그인을 할거다.
