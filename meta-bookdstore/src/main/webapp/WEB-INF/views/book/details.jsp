@@ -65,8 +65,16 @@
 										data-pagi-classes="position-absolute text-center left-0 u-slick__pagination flex-column u-slick__pagination-centered--y ml-md-n4 ml-lg-0 mr-lg-5 mb-0"
 										data-vertical="true">
 										<div class="js-slide">
-											<img src="${bookInfo.image}" alt="Image Description"
-												class="mx-auto img-fluid">
+											<c:choose>
+												<c:when test="${bookInfo[0].book_no <= 140}">
+													<img src="${bookInfo[0].image}" alt="Image Description"
+														 class="mx-auto img-fluid">
+												</c:when>
+												<c:otherwise>
+													<img src="/image/${bookInfo[0].image}" alt="Image Description"
+														 class="mx-auto img-fluid">
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
 								</figure>
@@ -75,7 +83,7 @@
 								<div class="border bg-white">
 									<div class="py-4 px-5">
 										<div class="border-bottom mb-4">
-											<h1 class="product_title entry-title font-size-26 mb-3">${bookInfo.title }</h1>
+											<h1 class="product_title entry-title font-size-26 mb-3">${bookInfo[0].title }</h1>
 											<div class="font-size-2 mb-4">
 												<span class="text-yellow-darker"> <span
 													class="fas fa-star"></span> <span class="fas fa-star"></span>
@@ -83,13 +91,13 @@
 													<span class="fas fa-star"></span>
 												</span> <span class="ml-3">(3,714)</span> <span
 													class="ml-3 font-weight-medium">By (author)</span> <span
-													class="ml-2 text-gray-600">${bookInfo.author }</span>
+													class="ml-2 text-gray-600">${bookInfo[0].author }</span>
 											</div>
 
 										</div>
 										<p class="price font-size-22 font-weight-medium mb-4">
 											<span class="woocommerce-Price-amount amount">가격 :
-												${bookInfo.price} <span
+												${bookInfo[0].price} <span
 												class="woocommerce-Price-currencySymbol">원</span>
 											</span>
 										</p>
@@ -135,7 +143,7 @@
 											</div>
 
 											<button name="add-to-cart" value="7145"
-												onClick="addToCart(${bookInfo.book_no},${bookInfo.price})"
+												onClick="addToCart(${bookInfo[0].book_no},${bookInfo[0].price})"
 												class="btn btn-block ml-md-3 btn-dark border-0 rounded-0 p-3 single_add_to_cart_button button alt">Add
 												to cart</button>
 										</div>

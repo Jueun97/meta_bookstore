@@ -19,11 +19,11 @@ public class BookService {
 		return mapper.list();
 	}
 
-	public void delete(int book_no){
+	public void delete(Long book_no){
 		mapper.delete(book_no);
 	}
 
-	public List<BookVO> detailBookInfo(int book_no){
+	public List<BookVO> detailBookInfo(Long book_no){
 
 		return mapper.detailBookInfo(book_no);
 	}

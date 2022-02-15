@@ -29,9 +29,9 @@ public class BookController {
 	}
 	
 	@GetMapping("/detail/{book_no}")
-	public String showBookDetail(Model model,@PathVariable int book_no) {
+	public String showBookDetail(Model model,@PathVariable Long book_no) {
 		log.info("책 상세정보");
-		model.addAttribute("bookInfo",service.getBookInfo(book_no));
+		model.addAttribute("bookInfo",service.detailBookInfo(book_no));
 		return "book/details";
 	}
 }

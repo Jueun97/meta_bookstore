@@ -37,9 +37,6 @@ public class AdminController {
 	@GetMapping("main")
 	public String adminMainView(Model model) {
 		System.out.println("adminTestView");
-
-		model.addAttribute("bookdata", bookService.list());
-
 		return "/admin/main";
 	}
 
@@ -64,7 +61,7 @@ public class AdminController {
 	@GetMapping("test")
 	public String test(Model model){
 		System.out.println("test");
-		model.addAttribute("testData", bookService.detailBookInfo(150));
+		model.addAttribute("testData", bookService.detailBookInfo(150L));
 
 		return "/admin/test";
 	}

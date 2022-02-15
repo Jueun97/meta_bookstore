@@ -318,32 +318,32 @@
                 <form method="post" action="/admin/bookInsert" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="title" class="form-label">Book Title</label>
-                        <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" value="${bookinfo[0].title}">
+                        <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" value="${bookinfo.title}">
                         <div id="titleHelp" class="form-text">등록할 책의 제목을 입력해주세요.</div>
                     </div>
                     <div class="mb-3">
                         <label for="author" class="form-label">Author</label>
-                        <input type="text" class="form-control" id="author" name="author" aria-describedby="authorHelp" value="${bookinfo[0].author}">
+                        <input type="text" class="form-control" id="author" name="author" aria-describedby="authorHelp" value="${bookinfo.author}">
                         <div id="authorHelp" class="form-text">등록할 책의 작가를 입력해주세요.</div>
                     </div>
                     <div class="mb-3">
                         <label for="publisher" class="form-label">Publisher</label>
-                        <input type="text" class="form-control" id="publisher" name="publisher" aria-describedby="publisherHelp" value="${bookinfo[0].publisher}">
+                        <input type="text" class="form-control" id="publisher" name="publisher" aria-describedby="publisherHelp" value="${bookinfo.publisher}">
                         <div id="publisherHelp" class="form-text">등록할 책의 출판사를 입력해주세요.</div>
                     </div>
                     <div class="mb-3">
                         <label for="pubdate" class="form-label">Pubdate</label>
-                        <input type="text" class="form-control" id="pubdate" name="pubdate" aria-describedby="pubdateHelp" value="${bookinfo[0].pubdate}">
+                        <input type="text" class="form-control" id="pubdate" name="pubdate" aria-describedby="pubdateHelp" value="${bookinfo.pubdate}">
                         <div id="pubdateHelp" class="form-text">등록할 책의 출판일자를 형식에 맞게 입력해주세요.</div>
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
-                        <input type="number" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="${bookinfo[0].price}">
+                        <input type="number" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="${bookinfo.price}">
                         <div id="priceHelp" class="form-text">등록할 책의 가격을 입력해주세요.</div>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="5">${bookinfo[0].description}</textarea>
+                        <textarea class="form-control" id="description" name="description" rows="5">${bookinfo.description}</textarea>
                         <div class="form-text">등록할 책의 설명을 입력해주세요.</div>
                     </div>
 
@@ -351,13 +351,13 @@
                         <label for="description" class="form-label">Category</label>
                         <select class="form-select" aria-label="Default select example" name="cate_no" style="margin-left: 10px;">
                             <option selected>select</option>
-                            <option value="110">Fiction</option>
-                            <option value="120">Poetry</option>
-                            <option value="130">Humanity</option>
-                            <option value="140">House</option>
-                            <option value="150">Health</option>
-                            <option value="160">Leisure</option>
-                            <option value="170">Economy</option>
+                            <option value="100">Fiction</option>
+                            <option value="110">Poetry</option>
+                            <option value="120">Humanity</option>
+                            <option value="130">House</option>
+                            <option value="140">Health</option>
+                            <option value="150">Leisure</option>
+                            <option value="160">Economy</option>
                         </select>
                     </div>
 
