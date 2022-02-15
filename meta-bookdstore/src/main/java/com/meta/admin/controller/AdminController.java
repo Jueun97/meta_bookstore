@@ -4,6 +4,7 @@ import com.meta.book.service.BookService;
 import com.meta.book.vo.BookVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 @Slf4j
 @Controller
@@ -22,8 +24,8 @@ public class AdminController {
 	private BookService bookService;
 
 	//파일 경로.
-	private String fileDownloadDirectory = "C:\\Users\\user\\Desktop\\metabook\\meta-bookdstore\\src\\main\\resources\\images\\";
-
+	@Value("${file.path}")
+	private String fileDownloadDirectory;
 
 	//추후 admin의 메인 페이지로 사용할 예정. 아직 페이지 구성 미완료.
 	@RequestMapping("")
@@ -62,6 +64,7 @@ public class AdminController {
 	@GetMapping("test")
 	public String test(Model model){
 		System.out.println("test");
+		model.addAttribute("testData", bookService.detailBookInfo(150));
 
 		return "/admin/test";
 	}
@@ -73,20 +76,24 @@ public class AdminController {
 		log.info("multipartFile = {}", file);
 		log.info("BookVO = {}", vo);
 
+		String uploadFileName = file.getOriginalFilename();
+
+		UUID uuid = UUID.randomUUID();
+		uploadFileName = uuid.toString() + "_" + uploadFileName;
+
 		if (!file.isEmpty()) {
-			String downloadPath = fileDownloadDirectory + file.getOriginalFilename();
+			String downloadPath = fileDownloadDirectory + uploadFileName;
 			log.info("파일 저장 경로 = {}", downloadPath);
 			file.transferTo(new File(downloadPath));
-			vo.setImage(downloadPath);
+			vo.setImage(uploadFileName);
 			bookService.insert(vo);
 		}else{
 			log.info("선택된 파일이 없는 경우!!!");
-			file.transferTo(new File(fileDownloadDirectory + "base_book"));
 			vo.setImage(fileDownloadDirectory + "base_book");
 			bookService.insert(vo);
 		}
 
-		return "/admin/book";
+		return "redirect:/admin/book";
 	}
 
 	@PostMapping("bookUpdate")

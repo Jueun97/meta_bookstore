@@ -314,15 +314,8 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">파일 업로드 해보기 </h1>
 
-                <form class="board-form" method="post" action="/upload" enctype="multipart/form-data">
-
-                    <input type="file" name="filename1" size="50" maxlength="50">
-                    <input type="text" name="description" value="hi test!!!">
-
-                    <div class="bottom">
-                        <input type="submit" value="등록">
-                    </div>
-                </form>
+                <h1> ${testData[0].title}</h1>
+                <img src="/image/${testData[0].image}">
 
             </div>
             <!-- /.container-fluid -->
