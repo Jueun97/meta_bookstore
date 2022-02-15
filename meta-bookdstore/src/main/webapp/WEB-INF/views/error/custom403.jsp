@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>권한 없음</title>
+<title>403 권한 없음</title>
 </head>
 <body>
 	<div class="container">
-		<h3>권한이없음</h3>
+		<h3> 403 권한이없음</h3>
 	</div>
 </body>
 </html>

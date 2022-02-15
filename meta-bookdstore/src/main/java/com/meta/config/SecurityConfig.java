@@ -9,8 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.stereotype.Controller;
+
+import com.meta.handler.exceptions.CustomAccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity //해당 파일로 Security 활성화
@@ -64,5 +66,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //로그아웃 요청 URL
 			.logoutSuccessUrl("/auth/login") //로그아웃 성공시 여기로
 			.invalidateHttpSession(true); //세션지우기
+		//https://dkyou.tistory.com/28 참고
+		 // 인증 거부 관련 처리
+        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler());
 	}
+	
+	 private AccessDeniedHandler accessDeniedHandler() {
+	      CustomAccessDeniedHandler accessDeniedHandler = new CustomAccessDeniedHandler();
+	      accessDeniedHandler.setErrorPage("/denied");
+	      return accessDeniedHandler;
+	    }
 }
