@@ -7,9 +7,10 @@ import java.util.List;
 
 @Mapper
 public interface BookMapper {
-	
+
 	public List<BookVO> list();
 
+<<<<<<< HEAD
 	//관리자 페이지에서 사용하는 책 삭제 mapper
 	public void delete(int book_no);
 
@@ -18,4 +19,7 @@ public interface BookMapper {
 	public void update(BookVO vo);
 
 	public void insert(BookVO vo);
+=======
+	public BookVO bookInfo(int book_no);
+>>>>>>> main
 }

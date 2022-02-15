@@ -45,5 +45,4 @@
 		values (seq_book_no.nextval, #{title}, #{author}, #{publisher}, sysdate, #{description}, #{image}, #{price}, #{cate_no})
 		]]>
 	</insert>
-
 </mapper>

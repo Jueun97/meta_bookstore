@@ -44,6 +44,7 @@
 
 <!-- CSS Bookworm Template -->
 <link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/book/book.css">
 </head>
 <body>
 	<!--header자리 -->
@@ -64,8 +65,8 @@
 										data-pagi-classes="position-absolute text-center left-0 u-slick__pagination flex-column u-slick__pagination-centered--y ml-md-n4 ml-lg-0 mr-lg-5 mb-0"
 										data-vertical="true">
 										<div class="js-slide">
-											<img src="../../assets/img/sample/book-sample.jpg"
-												alt="Image Description" class="mx-auto img-fluid">
+											<img src="${bookInfo.image}" alt="Image Description"
+												class="mx-auto img-fluid">
 										</div>
 									</div>
 								</figure>
@@ -74,8 +75,7 @@
 								<div class="border bg-white">
 									<div class="py-4 px-5">
 										<div class="border-bottom mb-4">
-											<h1 class="product_title entry-title font-size-26 mb-3">Where
-												the Crawdads Sing</h1>
+											<h1 class="product_title entry-title font-size-26 mb-3">${bookInfo.title }</h1>
 											<div class="font-size-2 mb-4">
 												<span class="text-yellow-darker"> <span
 													class="fas fa-star"></span> <span class="fas fa-star"></span>
@@ -83,27 +83,21 @@
 													<span class="fas fa-star"></span>
 												</span> <span class="ml-3">(3,714)</span> <span
 													class="ml-3 font-weight-medium">By (author)</span> <span
-													class="ml-2 text-gray-600">Anna Banks</span>
+													class="ml-2 text-gray-600">${bookInfo.author }</span>
 											</div>
-											<div
-												class="woocommerce-product-details__short-description font-size-2 mb-5">
-												<p class="">Lorem ipsum dolor sit amet, consectetur
-													adipiscing elit, sed exercitation ullamco laboris nisi ut
-													aliquip exea</p>
-											</div>
+
 										</div>
 										<p class="price font-size-22 font-weight-medium mb-4">
-											<span class="woocommerce-Price-amount amount"> <span
-												class="woocommerce-Price-currencySymbol">$</span>29.95
-											</span> – <span class="woocommerce-Price-amount amount"> <span
-												class="woocommerce-Price-currencySymbol">$</span>59.95
+											<span class="woocommerce-Price-amount amount">가격 :
+												${bookInfo.price} <span
+												class="woocommerce-Price-currencySymbol">원</span>
 											</span>
 										</p>
 
 
 
-										<form class="cart mb-4 d-md-flex align-items-end"
-											method="post" enctype="multipart/form-data">
+										<div class="cart mb-4 d-md-flex align-items-end" method=""
+											enctype="multipart/form-data">
 
 											<div class="quantity mb-4 mb-md-0">
 												<label class="form-label font-size-2 font-weight-medium">Quantity</label>
@@ -121,7 +115,7 @@
 																		fill-rule="evenodd" fill="rgb(22, 22, 25)"
 																		d="M-0.000,-0.000 L10.000,-0.000 L10.000,1.000 L-0.000,1.000 L-0.000,-0.000 Z" />
                                                                 </svg>
-															</a> <input type="number"
+															</a> <input type="number" id="input-number"
 																class="input-text qty text js-result form-control text-center border-0"
 																step="1" min="1" max="100" name="quantity" value="1"
 																title="Qty"> <a class="js-plus text-dark"
@@ -140,10 +134,11 @@
 												<!-- End Quantity -->
 											</div>
 
-											<button type="submit" name="add-to-cart" value="7145"
+											<button name="add-to-cart" value="7145"
+												onClick="addToCart(${bookInfo.book_no},${bookInfo.price})"
 												class="btn btn-block ml-md-3 btn-dark border-0 rounded-0 p-3 single_add_to_cart_button button alt">Add
 												to cart</button>
-										</form>
+										</div>
 
 
 									</div>

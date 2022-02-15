@@ -210,7 +210,7 @@
 							</div>
 						</form>
 					</div>
-					<ul class="nav d-none d-md-flex">
+					<ul class="nav d-none d-md-flex align-items-center">
 						<!-- 로그인 안한 경우 - 유저아이콘 클릭 시 로그인 페이지 이동 / 장바구니 사용 불가 -->
 						<sec:authorize access="not authenticated">
 							<li class="nav-item">
@@ -257,8 +257,8 @@
 							</li>
 							<li class="nav-item">
 								<!-- Cart Sidebar Toggle Button --> <a id="sidebarNavToggler1"
-								href="javascript:;" role="button"
-								class="nav-link pr-0 text-white position-relative"
+								href="/cart/details" role="button"
+								class="nav-link pr-0 text-white position-relative d-flex align-items-center"
 								aria-controls="sidebarContent1" aria-haspopup="true"
 								aria-expanded="false" data-unfold-event="click"
 								data-unfold-hide-on-scroll="false"
@@ -271,10 +271,10 @@
                                     }'
 								data-unfold-animation-in="fadeInRight"
 								data-unfold-animation-out="fadeOutRight"
-								data-unfold-duration="500"> <span
-									class="position-absolute bg-primary-yellow width-16 height-16 rounded-circle d-flex align-items-center justify-content-center text-dark font-size-n9 left-0">3</span>
-									<i class="glph-icon flaticon-icon-126515 font-size-4"></i> <span
-									class="d-none d-xl-inline h6 mb-0 ml-1">$40.93</span>
+								data-unfold-duration="500"> 
+									<i class="glph-icon flaticon-icon-126515 font-size-4"></i>
+									<span
+									class="bg-primary-yellow width-16 height-16 rounded-circle d-flex align-items-center justify-content-center text-dark font-size-n9 left-0">${principal.member.cartCount}</span>
 							</a> <!-- End Cart Sidebar Toggle Button -->
 							</li>
 						</sec:authorize>
