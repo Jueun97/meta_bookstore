@@ -61,7 +61,7 @@ public class CartController {
 	public String showCartDeatils(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		long m_no = principalDetails.getMember().getM_no();
 
-		ArrayList<CartVO> list = cartService.getCartList(m_no);
+		List<CartVO> list = cartService.getCartList(m_no);
 		model.addAttribute("cartList", list);
 		if (cartService.getCartCount(m_no) != 0) {
 			model.addAttribute("subTotalPrice", cartService.getSubTotalPrice(m_no));

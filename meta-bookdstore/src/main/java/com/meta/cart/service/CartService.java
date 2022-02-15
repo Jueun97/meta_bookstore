@@ -36,7 +36,7 @@ public class CartService {
 		return mapper.addCart(cartVo);
 	}
 	
-	public ArrayList<CartVO> getCartList(long m_no) {
+	public List<CartVO> getCartList(long m_no) {
 		return mapper.getCartList(m_no);
 	}
 	
@@ -44,6 +44,9 @@ public class CartService {
 		CartVO cartVo = mapper.getACart(cart_no);
 		cartVo.setSub_total_price(mapper.getSubTotalPrice(cartVo.getM_no()));
 		return cartVo;
+	}
+	public List<CartVO> getCheckedoutCartList(List<CartVO> checkoutList){
+		return mapper.getCheckedoutCartList(checkoutList);
 	}
 	public long getSubTotalPrice(long m_no) {
 		return mapper.getSubTotalPrice(m_no);

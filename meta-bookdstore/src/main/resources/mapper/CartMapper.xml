@@ -5,17 +5,18 @@
 <mapper namespace="com.meta.cart.mapper.CartMapper">
 
 	<select id="checkIfCartExisted" resultType="int">
-		SELECT count(*) 
-		FROM cart 
+		SELECT count(*)
+		FROM
+		cart
 		WHERE m_no=#{m_no} AND book_no=#{book_no}
 	</select>
-	
+
 	<select id="checkBookQuantity" resultType="int">
 		SELECT cart_book_qt
-		FROM cart 
+		FROM cart
 		WHERE m_no=#{m_no} AND book_no=#{book_no}
 	</select>
-	
+
 	<insert id="addCart">
 		INSERT INTO
 		cart(cart_no,m_no,book_no,cart_book_qt,cart_total_price)
@@ -36,6 +37,21 @@
 		FROM cart
 		WHERE
 		cart_no=#{cart_no}
+	</select>
+
+	<select id="getCheckedoutCartList"
+		resultType="com.meta.cart.vo.CartVO">
+		SELECT *
+		FROM cart,book
+		WHERE cart.book_no = book.BOOK_NO
+		AND
+		book.book_no IN
+		(SELECT book_no FROM cart WHERE cart_no IN
+		<foreach collection="list" item="item" open="(" close=")"
+			separator=",">
+			#{item.cart_no}
+		</foreach>
+		)
 	</select>
 
 	<select id="getSubTotalPrice" resultType="long">
@@ -62,7 +78,8 @@
 		UPDATE cart
 		SET cart_book_qt=#{cart_book_qt},
 		cart_total_price=#{cart_total_price}
-		WHERE m_no=#{m_no} AND book_no=#{book_no}
+		WHERE m_no=#{m_no} AND
+		book_no=#{book_no}
 	</update>
 
 	<delete id="deleteCart">
