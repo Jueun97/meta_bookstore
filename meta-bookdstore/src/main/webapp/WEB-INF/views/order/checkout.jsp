@@ -285,9 +285,8 @@
 																			${list.cart_book_qt}</strong>
 																	</td>
 																	<td class="product-total"><span
-																		class="woocommerce-Price-amount amount d-flex"><span
-																			class="woocommerce-Price-currencySymbol">₩</span> <fmt:formatNumber
-																				value="${list.cart_total_price}" pattern="###,###"></fmt:formatNumber></span></td>
+																		class="woocommerce-Price-amount amount d-flex"  style="width: max-content;"><fmt:formatNumber
+																				value="${list.cart_total_price}" pattern="###,###"></fmt:formatNumber>원</span></td>
 																</tr>
 															</c:forEach>
 
@@ -296,17 +295,15 @@
 														<tfoot class="d-none">
 															<tr class="cart-subtotal">
 																<th>Subtotal</th>
-																<td><span class="woocommerce-Price-amount amount"><span
-																		class="woocommerce-Price-currencySymbol">₩</span> <fmt:formatNumber
-																			value="${sub_total_price}" pattern="###,###"></fmt:formatNumber></span></td>
+																<td><span class="woocommerce-Price-amount amount"><fmt:formatNumber
+																			value="${sub_total_price}" pattern="###,###"></fmt:formatNumber>원</span></td>
 															</tr>
 
 															<tr class="order-total">
 																<th>Total</th>
 																<td><strong><span
-																		class="woocommerce-Price-amount amount "><span
-																			class="woocommerce-Price-currencySymbol">₩</span> <fmt:formatNumber
-																				value="${sub_total_price}" pattern="###,###"></fmt:formatNumber></span></strong></td>
+																		class="woocommerce-Price-amount amount "><fmt:formatNumber
+																				value="${sub_total_price}" pattern="###,###"></fmt:formatNumber>원</span></strong></td>
 															</tr>
 														</tfoot>
 													</table>
@@ -349,10 +346,9 @@
 															<tr class="checkout-subtotal">
 																<th>Subtotal</th>
 																<td data-title="Subtotal"><span
-																	class="woocommerce-Price-amount amount d-flex"><span
-																		class="woocommerce-Price-currencySymbol">₩</span>
+																	class="woocommerce-Price-amount amount d-flex">
 																	<fmt:formatNumber value="${sub_total_price}"
-																			pattern="###,###"></fmt:formatNumber></span></td>
+																			pattern="###,###"></fmt:formatNumber>원</span></td>
 															</tr>
 
 															<tr class="order-shipping">

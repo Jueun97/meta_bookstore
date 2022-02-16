@@ -104,23 +104,23 @@
 													<tr class="woocommerce-cart-form__cart-item cart_item">
 														<td class="product-name" data-title="Product">
 															<div class="d-flex align-items-center">
-																<a href="/book/detail/${cart.book_no }"> <img
-																	src="${cart.image }"
+																<a href="/book/detail/${cart.book_no}"> <img
+																	src="${cart.image}"
 																	class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
 																	alt="">
 																</a>
 																<div class="ml-3 m-w-200-lg-down">
 																	<a href="/book/detail/${cart.book_no}">${cart.title}</a>
 																	<a href="/book/detail/${cart.book_no}"
-																		class="text-gray-700 font-size-2 d-block" tabindex="0">${cart.author }s</a>
+																		class="text-gray-700 font-size-2 d-block" tabindex="0">${cart.author}</a>
 																</div>
 															</div>
 														</td>
 
-														<td class="product-price" data-title="Price"><span
-															class="woocommerce-Price-amount amount"><span
-																class="woocommerce-Price-currencySymbol">₩</span> <fmt:formatNumber
-																	value="${cart.price}" pattern="###,###"></fmt:formatNumber></span></td>
+														<td class="product-price" data-title="Price"
+															><span
+															class="woocommerce-Price-amount amount" style="width: max-content;"><fmt:formatNumber
+																	value="${cart.price}" pattern="###,###"></fmt:formatNumber>원</span></td>
 
 														<td class="product-quantity" data-title="Quantity">
 															<div class="quantity d-flex align-items-center">
@@ -160,10 +160,9 @@
 															</div>
 														</td>
 
-														<td class="product-subtotal" data-title="Total"><span
-															class="woocommerce-Price-amount amount"><span
-																class="woocommerce-Price-currencySymbol">₩</span> <fmt:formatNumber
-																	value="${cart.cart_total_price }" pattern="###,###"></fmt:formatNumber></span></td>
+														<td class="product-subtotal" data-title="Total" ><span
+															class="woocommerce-Price-amount amount" style="width: max-content;"><fmt:formatNumber
+																	value="${cart.cart_total_price}" pattern="###,###"></fmt:formatNumber>원</span></td>
 														<td class="product-remove"><input type="checkbox"
 															class="cart-checkbox" data-cart_no="${cart.cart_no}"
 															checked> <svg class="product-remove-icon"
@@ -233,7 +232,9 @@
 												<th>Subtotal</th>
 												<td data-title="Subtotal"><span
 													class="woocommerce-Price-amount amount"><span
-														class="woocommerce-Price-currencySymbol">₩</span>${subTotalPrice }</span></td>
+														class="woocommerce-Price-currencySymbol"></span>
+													<fmt:formatNumber value="${subTotalPrice}"
+															pattern="###,###"></fmt:formatNumber>원</span></td>
 											</tr>
 
 											<tr class="order-shipping">
@@ -253,8 +254,9 @@
 											<th>Total</th>
 											<td data-title="Total"><strong><span
 													class="woocommerce-Price-amount amount"><span
-														class="woocommerce-Price-currencySymbol">₩</span>${subTotalPrice}원
-												</span></strong></td>
+														class="woocommerce-Price-currencySymbol"></span>
+													<fmt:formatNumber value="${subTotalPrice}"
+															pattern="###,###"></fmt:formatNumber>원 </span></strong></td>
 										</tr>
 									</tbody>
 								</table>

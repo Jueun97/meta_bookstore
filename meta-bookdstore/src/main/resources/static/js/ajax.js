@@ -243,7 +243,7 @@ $('.checkout-button').on('click', function() {
 	$checkoutForm = $('.checkout-form');
 	$('.cart-checkbox').each(function() {
 		if ($(this).is(":checked")) {
-			$checkoutForm.append($('<input/>', { type: 'hidden', name: 'cart_no', value:$(this).data('cart_no') }));
+			$checkoutForm.append($('<input/>', { type: 'hidden', name: 'cart_no', value: $(this).data('cart_no') }));
 		} else {
 			console.log("unhecked")
 
