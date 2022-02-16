@@ -279,8 +279,8 @@
 				<div class="tab-pane fade active show" id="pills-one-example2"
 					role="tabpanel" aria-labelledby="pills-one-example2-tab">
 					<div class="pt-2 book_div_start">
+					<!-- 여기서부터 바꾸기 -->
 						<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6">
-						<!-- 여기서부터 바꾸기 -->
 							<c:forEach items="${bookList}" var="bookVo">
 								<div class="col">
 									<div class="mb-5 products">

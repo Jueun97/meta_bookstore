@@ -10,7 +10,7 @@ function makebookList(AjaxBookdata){
 													<div class="woocommerce-loop-product__thumbnail">
 														<a href="/book/detail/${AjaxBookdata[i].book_no}" class="d-block">`;
 														
-	string += (AjaxBookdata[i].book_no <= 140) ? `<img src="${AjaxBookdata[i].image}"
+	string += (AjaxBookdata[i].image.substr(0,5) == 'https') ? `<img src="${AjaxBookdata[i].image}"
 																class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
 																alt="image-description">` : `<img src="/image/${AjaxBookdata[i].image}"
 																	 class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
@@ -66,7 +66,7 @@ $("#cate_hover li").hover(function(){
 		//alert("성공");
 		console.log("전체데이터",res);
 		let bookItem = makebookList(res);
-		console.log(bookItem);
+		//console.log(bookItem);
 		$(".book_div_start").html(bookItem);
 
 	}).fail(error=>{
