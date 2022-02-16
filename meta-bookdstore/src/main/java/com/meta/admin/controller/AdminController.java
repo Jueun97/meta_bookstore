@@ -31,7 +31,6 @@ public class AdminController {
 	//썸네일 경로.
 	@Value("${thumb.path}")
 	private String thumbnailDirectory;
-	//= "C:\\Users\\user\\Desktop\\metabook\\meta-bookdstore\\src\\main\\resources\\th_images\\"
 
 	//추후 admin의 메인 페이지로 사용할 예정. 아직 페이지 구성 미완료.
 	@RequestMapping("")
@@ -52,15 +51,16 @@ public class AdminController {
 		System.out.println("adminTestView");
 		model.addAttribute("bookdata", bookService.list());
 
-		return "/admin/book";
+		return "/admin/book/bookList";
 	}
 
 	@GetMapping("bookInsertForm")
 
 	public String bookInsertForm(Model model){
 		System.out.println("bookInsertForm");
+		model.addAttribute("cateInfo", bookService.cateList());
 
-		return "/admin/bookInsertForm";
+		return "admin/book/bookInsertForm";
 	}
 
 	//이미지 업로드 테스트
@@ -190,9 +190,10 @@ public class AdminController {
 		System.out.println("bookDetail");
 		System.out.println(vo.getBook_no());
 		model.addAttribute("bookInfo", bookService.detailBookInfo(vo.getBook_no()));
+		model.addAttribute("cateInfo", bookService.cateList());
 		System.out.println(bookService.detailBookInfo(vo.getBook_no()));
 
-		return "/admin/bookInfoDetail";
+		return "admin/book/bookInfoDetail";
 	}
 
 	//책의 정보의 삭제
@@ -242,5 +243,12 @@ public class AdminController {
 
 		//과정이 끝난 후에는 책관리 페이지로 다시 redirecting한다.
 		return "redirect:/admin/book";
+	}
+
+	@GetMapping("memeber")
+	public String memberView(){
+		System.out.println(">>> "+this.getClass()+ " 호출됨!");
+
+		return "/admin/memeber/memberList";
 	}
 }

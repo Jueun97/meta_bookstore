@@ -35,7 +35,8 @@
 				price = #{price},
 				description = #{description},
 				image = #{image},
-			    th_image = #{th_image}
+			    th_image = #{th_image},
+			    cate_no = #{cate_no}
 			where book_no = #{book_no}
 		]]>
 	</update>
@@ -47,4 +48,12 @@
 		values (seq_book_no.nextval, #{title}, #{author}, #{publisher}, sysdate, #{description}, #{image}, #{price}, #{cate_no}, #{th_image})
 		]]>
 	</insert>
+
+	<!-- 6. 카테고리 정보 가져오기 -->
+	<select id="cateList" resultType="com.meta.book.vo.CateVO">
+		<![CDATA[
+			select *
+			from category
+		]]>
+	</select>
 </mapper>
