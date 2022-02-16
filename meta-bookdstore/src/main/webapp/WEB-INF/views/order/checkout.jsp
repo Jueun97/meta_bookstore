@@ -85,9 +85,9 @@
 							<div class="woocommerce">
 
 								<form name="checkout" method="post"
-									class="checkout woocommerce-checkout row mt-8"
-									action="http://127.0.0.1:5501/html/shop/order-received.html"
-									enctype="multipart/form-data" novalidate="novalidate">
+									class="checkout-form checkout woocommerce-checkout row mt-8"
+									action="/order/received" enctype="multipart/form-data"
+									novalidate="novalidate">
 									<div class="col2-set col-md-6 col-lg-7 col-xl-8 mb-6 mb-md-0"
 										id="customer_details">
 										<div class="px-4 pt-5 bg-white border">
@@ -105,7 +105,9 @@
 															<label id="name" class="form-label" for="name">이름</label>
 															<input path="name" type="text" style="width: 100%"
 																class="form-control rounded-0 height-4 px-4 "
-																name="name" id="nameForm" placeholder="이름을 입력하세요" />
+																name="receiver_name" id="nameForm"
+																placeholder="이름을 입력하세요" /> <input type="hidden"
+																name="m_no" value="${principal.member.m_no}">
 														</div>
 														<c:if test="${!empty errorMap}">
 															<strong style="color: red;">${errorMap.name}</strong>
@@ -127,7 +129,7 @@
 																- <input path="tel3" type="text" maxlength="4" size="5"
 																	id="tel3"
 																	class="tel_form form-control rounded-0 height-4 px-4" />
-																<input type="hidden" name="phone" id="phone" />
+																<input type="hidden" name="receiver_phone" id="phone" />
 															</div>
 														</div>
 														<c:if test="${!empty errorMap}">
@@ -142,12 +144,12 @@
 																path="email1" type="text"
 																style="width: 30%; display: inline-block;"
 																class="form-control rounded-0 height-4 px-4"
-																name="email1" id="email1" placeholder="이메일을 입력" /> @ <input
-																path="emailDomain" type="text"
+																name="receiver_email" id="email1" placeholder="이메일을 입력" />
+															@ <input path="emailDomain" type="text"
 																class="form-control rounded-0 height-4 px-4"
-																id="emailDomain" name="emailDomain"
+																id="emailDomain" name="receiver_emailDomain"
 																style="width: 30%; display: inline-block;" /> <select
-																name="emailDomain" id="emailDomain"
+																name="receiver_emailDomain" id="emailDomain"
 																onChange="selectEmailChange(this.value);" title="직접입력"
 																style="width: 20%;">
 																<option value="">직접입력</option>
@@ -167,7 +169,7 @@
 														<c:if test="${!empty errorMap}">
 															<strong style="color: red;">${errorMap.email}</strong>
 														</c:if>
-														<input type="hidden" name="email" id="email" />
+
 													</div>
 													<!-- End Form Group -->
 													<!-- Form Group -->
@@ -177,7 +179,8 @@
 															<div class="addrBtn">
 																<input type="text" style="width: 30%"
 																	class="form-control rounded-0 height-2 px-2 order-form"
-																	name="zipcode" id="zipcode" placeholder="우편번호" readonly />
+																	name="receiver_zipcode" id="zipcode" placeholder="우편번호"
+																	readonly />
 																<button type="button" class="btn btn-info"
 																	onClick="goPopup();">주소검색</button>
 															</div>
@@ -187,7 +190,7 @@
 															<br /> 도로명 주소 <input type="text" path="roadAddress"
 																style="margin-top: 10px;"
 																class="form-control rounded-0 height-4 px-4"
-																name="roadAddress" id="roadAddress"
+																name="receiver_roadAddress" id="roadAddress"
 																placeholder="주소검색을 해주세요" readonly />
 															<c:if test="${!empty errorMap}">
 																<strong style="color: red;">${errorMap.roadAddress}</strong>
@@ -195,8 +198,8 @@
 															<br /> 상세 주소 <input type="text" path="otherAddress"
 																type="text" style="margin-top: 10px;"
 																class="form-control rounded-0 height-4 px-4"
-																name="otherAddress" id="otherAddress" placeholder="상세주소" />
-															<br />
+																name="receiver_otherAddress" id="otherAddress"
+																placeholder="상세주소" /> <br />
 															<c:if test="${!empty errorMap}">
 																<strong style="color: red;">${errorMap.otherAddress}</strong>
 															</c:if>
@@ -217,8 +220,8 @@
 														id="order_comments_field" data-priority="">
 														<label for="order_comments" class="form-label">Order
 															notes (optional)</label>
-														<textarea name="order_comments"
-															class="input-text form-control" id="order_comments"
+														<textarea name="msg" class="input-text form-control"
+															id="order_comments"
 															placeholder="Notes about your order, e.g. special notes for delivery."
 															rows="8" cols="5"></textarea>
 													</p>
@@ -274,6 +277,8 @@
 														</thead>
 														<tbody>
 															<c:forEach items="${checkoutList}" var="list">
+																<input type="hidden" name="cart_no"
+																	value="${list.cart_no}">
 																<tr class="cart_item">
 																	<td class="product-name">${list.title }&nbsp;<strong
 																		class="product-quantity">×
@@ -345,7 +350,9 @@
 																<th>Subtotal</th>
 																<td data-title="Subtotal"><span
 																	class="woocommerce-Price-amount amount d-flex"><span
-																		class="woocommerce-Price-currencySymbol">₩</span><fmt:formatNumber value="${sub_total_price}" pattern="###,###"></fmt:formatNumber></span></td>
+																		class="woocommerce-Price-currencySymbol">₩</span>
+																	<fmt:formatNumber value="${sub_total_price}"
+																			pattern="###,###"></fmt:formatNumber></span></td>
 															</tr>
 
 															<tr class="order-shipping">
@@ -359,13 +366,13 @@
 
 										</div>
 										<div class="form-row place-order">
-											<input type="submit"
-												class="button alt btn btn-dark btn-block rounded-0 py-4"
-												name="woocommerce_checkout_place_order" id="place_order"
-												value="Place order" data-value="Place order"> <input
-												type="hidden" id="_wpnonce" name="_wpnonce"
-												value="926470d564"><input type="hidden"
-												name="_wp_http_referer"
+											<input type="hidden" name="order_price"
+												value="${sub_total_price}"> <input type="button"
+												class="form-button button alt btn btn-dark btn-block rounded-0 py-4"
+												id="place_order" value="Place order"
+												data-value="Place order"> <input type="hidden"
+												id="_wpnonce" value="926470d564"><input
+												type="hidden"
 												value="/storefront/?wc-ajax=update_order_review">
 										</div>
 									</div>
@@ -391,52 +398,62 @@
 	<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
 	<script src="/js/auth/register.js"></script>
 	<script>
-	$('#checkout-checkbox').change(function(){
-		console.log("hey")
-		if ($(this).is(":checked")) {
-			console.log("checked")
-		
-			
-			let name = '<c:out value='${principal.member.name}'/>';
-			let phone = '<c:out value='${principal.member.phone}'/>';
-			let email = '<c:out value='${principal.member.email}'/>';
-			let roadAddress = '<c:out value='${principal.member.roadAddress}'/>';
-			let zipcode = '<c:out value='${principal.member.zipcode}'/>';
-			let otherAddress = '<c:out value='${principal.member.otherAddress}'/>';
-			
-			console.log(name)
-			$("#nameForm").val(name);
-			
-			let phoneArr = phone.split("-");
-			$("#tel1").val(phoneArr[0]);
-			$("#tel2").val(phoneArr[1]);
-			$("#tel3").val(phoneArr[2]);
+		$('#checkout-checkbox')
+				.change(
+						function() {
+							console.log("hey")
+							if ($(this).is(":checked")) {
 
-			let emailArr = email.split("@");
-			$("#email1").val(emailArr[0]);
-			$("#emailDomain").val(emailArr[1]);
+								let name = '<c:out value='${principal.member.name}'/>';
+								let phone = '<c:out value='${principal.member.phone}'/>';
+								let email = '<c:out value='${principal.member.email}'/>';
+								let roadAddress = '<c:out value='${principal.member.roadAddress}'/>';
+								let zipcode = '<c:out value='${principal.member.zipcode}'/>';
+								let otherAddress = '<c:out value='${principal.member.otherAddress}'/>';
 
-			$("#roadAddress").val(roadAddress);
-			$("#zipcode").val(zipcode);
-			$("#otherAddress").val(otherAddress);
-		} else {
-			console.log("unchecked")
-			$("#nameForm").val('');
+								console.log(name)
+								$("#nameForm").val(name);
 
-			$("#tel1").val('');
-			$("#tel2").val('');
-			$("#tel3").val('');
+								let phoneArr = phone.split("-");
+								$("#tel1").val(phoneArr[0]);
+								$("#tel2").val(phoneArr[1]);
+								$("#tel3").val(phoneArr[2]);
 
-			$("#email1").val('');
-			$("#emailDomain").val('');
+								let emailArr = email.split("@");
+								$("#email1").val(emailArr[0]);
+								$("#emailDomain").val(emailArr[1]);
 
-			$("#roadAddress").val('');
-			$("#zipcode").val('');
-			$("#otherAddress").val('');
-		}
+								$("#roadAddress").val(roadAddress);
+								$("#zipcode").val(zipcode);
+								$("#otherAddress").val(otherAddress);
+							} else {
+								console.log("unchecked")
+								$("#nameForm").val('');
 
-	})
-		
+								$("#tel1").val('');
+								$("#tel2").val('');
+								$("#tel3").val('');
+
+								$("#email1").val('');
+								$("#emailDomain").val('');
+
+								$("#roadAddress").val('');
+								$("#zipcode").val('');
+								$("#otherAddress").val('');
+							}
+
+						})
+
+		$('.form-button').on(
+				'click',
+				function() {
+					$('#phone').val(
+							$("#tel1").val() + '-' + $("#tel2").val() + '-'
+									+ $("#tel3").val());
+
+					$('.checkout-form').submit();
+
+				})
 	</script>
 
 </body>

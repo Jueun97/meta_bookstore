@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.meta.cart.service.CartService;
 import com.meta.cart.vo.CartVO;
 import com.meta.config.auth.PrincipalDetails;
+import com.meta.util.dataUtil;
 
 @Controller
 @RequestMapping("/cart")
@@ -48,7 +49,7 @@ public class CartController {
 				}
 			} else {
 				cartService.addCart(cartVo);
-				updateCartInfo(principalDetails);
+				dataUtil.updateCartInfo(principalDetails,cartService);
 				return "1";
 			}
 
@@ -75,7 +76,7 @@ public class CartController {
 	public CartVO modifyQuantity(@ModelAttribute CartVO cartVo,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		cartService.modifyQuantity(cartVo);
-		updateCartInfo(principalDetails);
+		dataUtil.updateCartInfo(principalDetails,cartService);
 		return cartService.getACart(cartVo.getCart_no());
 	}
 
@@ -87,10 +88,10 @@ public class CartController {
 		long count = cartService.getCartCount(m_no);
 		if (count > 0) {
 			long subTotal = cartService.getSubTotalPrice(m_no);
-			updateCartInfo(principalDetails);
+			dataUtil.updateCartInfo(principalDetails,cartService);
 			return subTotal;
 		} else {
-			updateCartInfo(principalDetails);
+			dataUtil.updateCartInfo(principalDetails,cartService);
 			return 0;
 		}
 
@@ -116,7 +117,8 @@ public class CartController {
 				index++;
 			}
 			cartService.deleteSelectedCart(cartList);
-			updateCartInfo(principalDetails);
+
+			dataUtil.updateCartInfo(principalDetails,cartService);
 			return 0;
 		}
 
@@ -147,11 +149,5 @@ public class CartController {
 
 	}
 
-	public void updateCartInfo(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-
-		long newCartCount = cartService.getCartCount(principalDetails.getMember().getM_no());
-		principalDetails.getMember().setCartCount(newCartCount);
-
-	}
 
 }

@@ -1,5 +1,7 @@
 package com.meta.order.controller;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.meta.cart.service.CartService;
 import com.meta.cart.vo.CartVO;
 import com.meta.config.auth.PrincipalDetails;
+import com.meta.order.service.OrderService;
+import com.meta.order.vo.OrderItemsVO;
+import com.meta.order.vo.OrderVO;
+import com.meta.util.dataUtil;
 
 @Controller
 @RequestMapping("/order")
@@ -28,6 +34,9 @@ public class OrderController {
 
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	@GetMapping("list")
 	public String order(@AuthenticationPrincipal PrincipalDetails principalDetails) {
@@ -42,12 +51,42 @@ public class OrderController {
 		List<CartVO> list = new ArrayList<CartVO>();
 		for(int i=0 ; i<data.length ; i++) {
 			CartVO cartVo = new CartVO();
-			cartVo.setCart_no(	Integer.parseInt(data[i]));
+			cartVo.setCart_no(Integer.parseInt(data[i]));
 			list.add(cartVo);
 		}
 		System.out.println("주문 정보 : " + data[0]);
 		model.addAttribute("checkoutList", cartService.getCheckedoutCartList(list));
 		model.addAttribute("sub_total_price", cartService.getSelectedSubTotalPrice(list));
 		return "order/checkout";
+	}
+	
+	@PostMapping("received")
+	public String received(OrderVO orderVo,HttpServletRequest request,@AuthenticationPrincipal PrincipalDetails principalDetails,Model model) {
+		String[] cartData = request.getParameterValues("cart_no");
+		orderVo.setOrder_count(cartData.length);
+		orderService.insertOrder(orderVo);
+		List<CartVO> cartList = new ArrayList<CartVO>();
+		String order_no = orderVo.getOrder_no();
+		for(int i=0 ; i<cartData.length ; i++) {
+			CartVO cartVo = new CartVO();
+			OrderItemsVO itemVo = new OrderItemsVO();
+			int cart_no = Integer.parseInt(cartData[i]);
+			cartVo = cartService.getACart(cart_no);
+			itemVo.setOrder_no(order_no);
+			itemVo.setBook_no(cartVo.getBook_no());
+			itemVo.setOrder_qt(cartVo.getCart_book_qt());
+			itemVo.setTotal_price(cartVo.getCart_total_price());
+			if(orderService.insertOrderItem(itemVo)>0) {
+				cartList.add(cartVo);
+			}
+		}
+		if(cartService.deleteSelectedCart(cartList)>0) {
+			dataUtil.updateCartInfo(principalDetails,cartService);
+		}
+		
+		model.addAttribute("orderItemsList", orderService.getOrderItems(order_no));
+		model.addAttribute("orderInfo", orderService.getOrderInfo(order_no));
+
+		return "order/order-received";
 	}
 }
