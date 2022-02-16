@@ -309,44 +309,71 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid" style="padding-left: 20.5rem; padding-right: 20.5rem;">
+            <div class="container-fluid" style="padding-left: 17.5rem; padding-right: 17.5rem;">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Update page</h1>
-                <p class="mb-4">책 리스트의 업데이트  페이지입니다. </p>
+                <h1 class="h3 mb-2 text-gray-800">Book Insert Form</h1>
+                <p class="mb-4">새로운 책을 등록하는 Page입니다.</p>
 
-                <form method="post" action="/admin/bookUpdate">
-                    <input type="hidden" id="book_no" name="book_no" value="${bookInfo.book_no}">
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Book Title</label>
-                        <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" value="${bookInfo.title}">
-                        <div id="titleHelp" class="form-text">기존의 책 제목 확인 후, 수정할 책 제목을 입력해주세요.</div>
+                <form method="post" action="/admin/bookInsert" enctype="multipart/form-data" onsubmit="return checkSubmit()">
+                    <div style="display: inline-block; width: 100%;">
+                        <div style="float: left; width: 40%;">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Book Title</label>
+                                <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" value="${bookInfo.title}"
+                                       style="width: 100%;">
+                                <div id="titleHelp" class="form-text">등록할 책의 제목을 입력해주세요.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="author" class="form-label">Author</label>
+                                <input type="text" class="form-control" id="author" name="author" aria-describedby="authorHelp" value="${bookInfo.author}"
+                                       style="width: 100%;">
+                                <div id="authorHelp" class="form-text">등록할 책의 작가를 입력해주세요.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="publisher" class="form-label">Publisher</label>
+                                <input type="text" class="form-control" id="publisher" name="publisher" aria-describedby="publisherHelp" value="${bookInfo.publisher}"
+                                       style="width: 100%;">
+                                <div id="publisherHelp" class="form-text">등록할 책의 출판사 입력해주세요.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pubdate" class="form-label">Pubdate - ex) 2022-02-16</label>
+                                <input type="text" class="form-control" id="pubdate" name="pubdate" aria-describedby="pubdateHelp" value="${bookInfo.pubdate}"
+                                       style="width: 100%;">
+                                <div id="pubdateHelp" class="form-text">등록할 책의 출판일자를 형식에 맞게 입력해주세요.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Price</label>
+                                <input type="text" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="${bookInfo.price}"
+                                       style="width: 100%;">
+                                <div id="priceHelp" class="form-text">등록할 책 가격을 입력해주세요.</div>
+                            </div>
+                        </div>
+                        <div style="float: left; margin-left: 8rem; margin-top: 6rem; text-align: center">
+                            <div class="mb-3" style="margin-left: 5.5rem;">
+                                <label for="description" class="form-label">Image</label>
+                                <input type="file" name="filename" onchange="readURL(this);" size="50" maxlength="50">
+                            </div>
+                            <div class="mb-3">
+                                <img id="preview" src="" alt="none" style="width: 166px; height: 205px;">
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="author" class="form-label">Author</label>
-                        <input type="text" class="form-control" id="author" name="author" aria-describedby="authorHelp" value="${bookInfo.author}">
-                        <div id="authorHelp" class="form-text">기존의 책 작가 확인 후, 수정할 책 작가를 입력해주세요.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="publisher" class="form-label">Publisher</label>
-                        <input type="text" class="form-control" id="publisher" name="publisher" aria-describedby="publisherHelp" value="${bookInfo.publisher}">
-                        <div id="publisherHelp" class="form-text">기존의 출판사 확인 후, 수정할 출판사 입력해주세요.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="pubdate" class="form-label">Pubdate</label>
-                        <input type="text" class="form-control" id="pubdate" name="pubdate" aria-describedby="pubdateHelp" value="${bookInfo.pubdate}">
-                        <div id="pubdateHelp" class="form-text">기존의 출판일자 확인 후, 수정할 출판일자를 형식에 맞게 입력해주세요.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Price</label>
-                        <input type="text" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="${bookInfo.price}">
-                        <div id="priceHelp" class="form-text">기존의 책 가격 확인 후, 수정할 책 가격을 입력해주세요.</div>
-                    </div>
+
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
                         <textarea class="form-control" id="description" name="description" rows="5">${bookInfo.description}</textarea>
                     </div>
-                    <button type="submit" class="btn btn-outline-primary" style="float: right;">수정</button>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Category</label>
+                        <select class="form-select" aria-label="Default select example" name="cate_no" style="margin-left: 10px;">
+                            <c:forEach items="${cateInfo}" var="info">
+                                <option value="${info.cate_no}">${info.cate_name}</option>
+                            </c:forEach>
+
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary" style="float: right;">등록</button>
                     <button type="button" class="btn btn-outline-danger" onclick="history.back()" style="float: right; margin-right: 1rem;">취소</button>
                 </form>
 
@@ -413,6 +440,24 @@
 
 <!-- Page level custom scripts -->
 <script src="/js/demo/datatables-demo.js"></script>
+
+<!-- insert Form validation 역할 -->
+<script src="/js/admin/insertBook.js"></script>
+
+<!-- Image Upload -->
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('preview').src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            document.getElementById('preview').src = "";
+        }
+    }
+</script>
 
 </body>
 
