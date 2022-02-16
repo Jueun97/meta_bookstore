@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
+import java.util.List;
+
 
 @Service
 @Transactional
@@ -58,6 +60,12 @@ public class MemberService {
 			return true;
 		}
 		return false;
+	}
+
+	//--------------------------------관리자 ----------------------------------------------------------
+
+	public List<MemberVO> memberList(){
+		return memberMapper.memberList();
 	}
 	
 }

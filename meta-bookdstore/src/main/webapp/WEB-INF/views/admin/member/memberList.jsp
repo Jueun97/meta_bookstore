@@ -330,23 +330,23 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr id="tablehover">
-                                    <th>책 제목</th>
-                                    <th>작가</th>
-                                    <th>출판사</th>
-                                    <th>출판일</th>
-                                    <th>가격</th>
+                                    <th>ID</th>
+                                    <th>이름</th>
+                                    <th>핸드폰</th>
+                                    <th>이메일</th>
+                                    <th>가입일</th>
                                     <th>setting</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${bookdata}" var = "data">
+                                <c:forEach items="${memberInfo}" var = "info">
                                     <tr id="trHover">
-                                        <td><a href="/admin/bookDetail?book_no=${data.book_no}" style="color: #858796;">${data.title}</a></td>
-                                        <td>${data.author}</td>
-                                        <td>${data.publisher}</td>
-                                        <td>${data.pubdate}</td>
-                                        <td>${data.price}</td>
-                                        <td><a href="/admin/bookDelete?book_no=${data.book_no}">삭제</a></td>
+                                        <td><a href="#" style="color: #858796;">${info.id}</a></td>
+                                        <td>${info.name}</td>
+                                        <td>${info.phone}</td>
+                                        <td>${info.email}</td>
+                                        <td>${info.regDate}</td>
+                                        <td><a href="#">삭제</a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

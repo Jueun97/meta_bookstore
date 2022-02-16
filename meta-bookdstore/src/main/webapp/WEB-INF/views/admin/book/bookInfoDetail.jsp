@@ -61,7 +61,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/admin/memeber">
                 <i class="fas fa-fw fa-table"></i>
                 <span>회원 정보 관리</span></a>
         </li>

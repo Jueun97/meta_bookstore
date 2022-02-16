@@ -2,6 +2,7 @@ package com.meta.admin.controller;
 
 import com.meta.book.service.BookService;
 import com.meta.book.vo.BookVO;
+import com.meta.member.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class AdminController {
 
 	@Autowired
 	private BookService bookService;
+
+	@Autowired
+	private MemberService memberService;
 
 	//파일 경로.
 	@Value("${file.path}")
@@ -246,9 +250,10 @@ public class AdminController {
 	}
 
 	@GetMapping("memeber")
-	public String memberView(){
+	public String memberView(Model model){
 		System.out.println(">>> "+this.getClass()+ " 호출됨!");
+		model.addAttribute("memberInfo", memberService.memberList());
 
-		return "/admin/memeber/memberList";
+		return "/admin/member/memberList";
 	}
 }

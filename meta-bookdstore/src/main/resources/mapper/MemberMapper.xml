@@ -59,4 +59,14 @@
   		SELECT id FROM member 
   		WHERE id = #{id}
   	</select>
+
+	<!-- 관리자 -->
+	<!-- 1. 회원 리스트 -->
+	<select id="memberList" resultType="com.meta.member.vo.MemberVO">
+		<![CDATA[
+			select m_no, id, password, name, zipcode, roadAddress, otherAddress, phone, email, grade, TO_CHAR(regDate, 'YYYY-MM-DD') as regDate
+			from member
+			order by m_no desc
+		]]>
+	</select>
   </mapper>
