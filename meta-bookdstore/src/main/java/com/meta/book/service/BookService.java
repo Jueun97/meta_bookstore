@@ -1,11 +1,15 @@
 package com.meta.book.service;
 
 import com.meta.book.mapper.BookMapper;
+
 import com.meta.book.vo.BookVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -37,4 +41,12 @@ public class BookService {
 	}
 
 	//----------------------------------------------------------
+	
+	//-------------------민기작성----------------------------------
+	public List<BookVO> bookByCate(String cate_no){
+		List<BookVO> bookByCateList = new ArrayList<BookVO>();
+		bookByCateList = mapper.selectBookList(cate_no);
+		return bookByCateList;
+	}
+
 }

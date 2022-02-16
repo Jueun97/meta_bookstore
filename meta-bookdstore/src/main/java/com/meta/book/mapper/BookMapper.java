@@ -18,4 +18,7 @@ public interface BookMapper {
 	public void update(BookVO vo);
 
 	public void insert(BookVO vo);
+	
+	//-------------------민기작성----------------------------------
+	public List<BookVO> selectBookList(String cate_no);
 }
