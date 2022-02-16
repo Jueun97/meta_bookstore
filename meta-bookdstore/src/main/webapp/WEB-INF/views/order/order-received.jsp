@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <sec:authorize access="isAuthenticated()">
 	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
 	<sec:authentication property="principal" var="principal" />
@@ -82,9 +83,10 @@
 									</thead>
 									<tbody>
 										<tr>
-											<th scope="row" class="pr-0 py-0 font-weight-medium">1779</th>
-											<td class="pr-0 py-0 font-weight-medium">March 24, 2020</td>
-											<td class="pr-0 py-0 font-weight-medium text-md-center">$2930</td>
+											<th scope="row" class="pr-0 py-0 font-weight-medium">${orderInfo.order_no}</th>
+											<td class="pr-0 py-0 font-weight-medium">${orderInfo.order_date}</td>
+											<td class="pr-0 py-0 font-weight-medium text-md-center"> <fmt:formatNumber
+																				value="${orderInfo.order_price}" pattern="###,###"></fmt:formatNumber>원</td>
 											<td class="pr-md-4 py-0 font-weight-medium text-md-right">Direct
 												bank transfer</td>
 										</tr>
@@ -97,32 +99,21 @@
 								<div class="ml-md-2">
 									<h6 class="font-size-3 on-weight-medium mb-4 pb-1">Order
 										Details</h6>
-									<div class="d-flex justify-content-between mb-4">
-										<div class="d-flex align-items-baseline">
-											<div>
-												<h6 class="font-size-2 font-weight-normal mb-1">
-													The Overdue Life of <br> Amy Byler
-												</h6>
-												<span class="font-size-2 text-gray-600">(Paperback,
-													English)</span>
+									<c:forEach items="${orderItemsList}" var="item">
+										<div class="d-flex justify-content-between mb-4"
+											style="width: 100%;">
+											<div class="d-flex align-items-center" style="width: 40%;">
+												<div style="width: 100%;">
+													<h6 class="font-size-2 font-weight-normal mb-1">
+														${item.title}</h6>
+													<span class="font-size-2 text-gray-600">${item.author}</span>
+												</div>
+												<span class="font-size-2 ml-4 ml-md-8">x${item.order_qt}</span>
 											</div>
-											<span class="font-size-2 ml-4 ml-md-8">x7</span>
+											<span class="font-weight-medium font-size-2"><fmt:formatNumber
+																				value="${item.total_price}" pattern="###,###"></fmt:formatNumber>원</span>
 										</div>
-										<span class="font-weight-medium font-size-2">$951</span>
-									</div>
-									<div class="d-flex justify-content-between">
-										<div class="d-flex align-items-baseline">
-											<div>
-												<h6 class="font-size-2 font-weight-normal mb-1">
-													All You Can Ever Know: <br> A Memoir
-												</h6>
-												<span class="font-size-2 text-gray-600">(Paperback,
-													English)</span>
-											</div>
-											<span class="font-size-2 ml-2 ml-md-6">x3</span>
-										</div>
-										<span class="font-weight-medium font-size-2">$348</span>
-									</div>
+									</c:forEach>
 								</div>
 							</div>
 						</div>
@@ -130,7 +121,8 @@
 							<ul class="list-unstyled px-3 pl-md-5 pr-md-4 mb-0">
 								<li class="d-flex justify-content-between py-2"><span
 									class="font-weight-medium font-size-2">Subtotal:</span> <span
-									class="font-weight-medium font-size-2">$951</span></li>
+									class="font-weight-medium font-size-2"><fmt:formatNumber
+																				value="${orderInfo.order_price}" pattern="###,###"></fmt:formatNumber>원</span></li>
 								<li class="d-flex justify-content-between py-2"><span
 									class="font-weight-medium font-size-2">Shipping:</span> <span
 									class="font-weight-medium font-size-2">Free Shipping</span></li>
@@ -144,7 +136,8 @@
 							<div class="px-3 pl-md-5 pr-md-4">
 								<div class="d-flex justify-content-between">
 									<span class="font-size-2 font-weight-medium">Total</span> <span
-										class="font-weight-medium fon-size-2">$2498</span>
+										class="font-weight-medium fon-size-2"><fmt:formatNumber
+																				value="${orderInfo.order_price}" pattern="###,###"></fmt:formatNumber>원</span>
 								</div>
 							</div>
 						</div>
@@ -155,11 +148,12 @@
 										<h6 class="font-weight-medium font-size-22 mb-3">Billing
 											Address</h6>
 										<address class="d-flex flex-column mb-0">
-											<span class="text-gray-600 font-size-2">Ali Tufan</span> <span
-												class="text-gray-600 font-size-2">Bedford St,</span> <span
-												class="text-gray-600 font-size-2">Covent Garden, </span> <span
-												class="text-gray-600 font-size-2">London WC2E 9ED</span> <span
-												class="text-gray-600 font-size-2">United Kingdom</span>
+											<span class="text-gray-600 font-size-2">${principal.member.name}</span>
+											<span class="text-gray-600 font-size-2">${principal.member.roadAddress}</span>
+											<span class="text-gray-600 font-size-2">${principal.member.otherAddress}</span>
+											<span class="text-gray-600 font-size-2">${principal.member.zipcode}</span>
+											<span class="text-gray-600 font-size-2">Republic Of
+												Korea</span>
 										</address>
 									</div>
 								</div>
@@ -167,11 +161,12 @@
 									<h6 class="font-weight-medium font-size-22 mb-3">Shipping
 										Address</h6>
 									<address class="d-flex flex-column mb-0">
-										<span class="text-gray-600 font-size-2">Ali Tufan</span> <span
-											class="text-gray-600 font-size-2">Bedford St,</span> <span
-											class="text-gray-600 font-size-2">Covent Garden, </span> <span
-											class="text-gray-600 font-size-2">London WC2E 9ED</span> <span
-											class="text-gray-600 font-size-2">United Kingdom</span>
+										<span class="text-gray-600 font-size-2">${orderInfo.receiver_name }</span>
+										<span class="text-gray-600 font-size-2">${orderInfo.receiver_roadAddress }</span>
+										<span class="text-gray-600 font-size-2">${orderInfo.receiver_otherAddress }</span>
+										<span class="text-gray-600 font-size-2">${orderInfo.receiver_zipcode }</span>
+										<span class="text-gray-600 font-size-2">Republic Of
+											Korea</span>
 									</address>
 								</div>
 							</div>

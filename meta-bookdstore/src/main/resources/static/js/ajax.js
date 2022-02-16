@@ -40,9 +40,9 @@ function addToCart(book_no, price) {
 			console.log("done", result)
 			if (result === 1) {
 				alert("장바구니에 추가하였습니다.");
-			} else if(result === 0){
+			} else if (result === 0) {
 				alert("로그인 후 장바구니에 추가해주세요.");
-			} else{
+			} else {
 				alert("이미 장바구니에 있습니다.");
 			}
 		}
@@ -238,3 +238,19 @@ $('.cart-checkbox').change(function() {
 
 	})
 })
+
+$('.checkout-button').on('click', function() {
+	$checkoutForm = $('.checkout-form');
+	$('.cart-checkbox').each(function() {
+		if ($(this).is(":checked")) {
+			$checkoutForm.append($('<input/>', { type: 'hidden', name: 'cart_no', value: $(this).data('cart_no') }));
+		} else {
+			console.log("unhecked")
+
+		}
+	})
+	$checkoutForm.submit();
+})
+
+
+

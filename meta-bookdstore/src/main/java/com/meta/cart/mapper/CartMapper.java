@@ -12,7 +12,7 @@ public interface CartMapper {
 	public int checkIfCartExisted(CartVO cartVo);
 	public int checkBookQuantity(CartVO cartVo);
 	public int addCart(CartVO cartVo);
-	public ArrayList<CartVO> getCartList(long m_no);
+	public List<CartVO> getCartList(long m_no);
 	public CartVO getACart(int cart_no);
 	public long getSubTotalPrice(long m_no);
 	public long getSelectedSubTotalPrice(List<CartVO> cartList);
@@ -20,4 +20,5 @@ public interface CartMapper {
 	public int modifyQuantity(CartVO cartVo);
 	public int deleteCart(int cart_no);
 	public int deleteSelectedCart(List<CartVO> cartList);
+	public List<CartVO> getCheckedoutCartList(List<CartVO> checkoutList);
 }
