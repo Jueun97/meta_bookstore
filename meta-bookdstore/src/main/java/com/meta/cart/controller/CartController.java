@@ -1,21 +1,28 @@
 package com.meta.cart.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.google.gson.Gson;
 import com.meta.cart.service.CartService;
 import com.meta.cart.vo.CartVO;
 import com.meta.config.auth.PrincipalDetails;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.meta.util.dataUtil;
 
 @Controller
 @RequestMapping("/cart")
@@ -42,7 +49,7 @@ public class CartController {
 				}
 			} else {
 				cartService.addCart(cartVo);
-				updateCartInfo(principalDetails);
+				dataUtil.updateCartInfo(principalDetails,cartService);
 				return "1";
 			}
 
@@ -55,7 +62,7 @@ public class CartController {
 	public String showCartDeatils(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		long m_no = principalDetails.getMember().getM_no();
 
-		ArrayList<CartVO> list = cartService.getCartList(m_no);
+		List<CartVO> list = cartService.getCartList(m_no);
 		model.addAttribute("cartList", list);
 		if (cartService.getCartCount(m_no) != 0) {
 			model.addAttribute("subTotalPrice", cartService.getSubTotalPrice(m_no));
@@ -69,7 +76,7 @@ public class CartController {
 	public CartVO modifyQuantity(@ModelAttribute CartVO cartVo,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		cartService.modifyQuantity(cartVo);
-		updateCartInfo(principalDetails);
+		dataUtil.updateCartInfo(principalDetails,cartService);
 		return cartService.getACart(cartVo.getCart_no());
 	}
 
@@ -81,10 +88,10 @@ public class CartController {
 		long count = cartService.getCartCount(m_no);
 		if (count > 0) {
 			long subTotal = cartService.getSubTotalPrice(m_no);
-			updateCartInfo(principalDetails);
+			dataUtil.updateCartInfo(principalDetails,cartService);
 			return subTotal;
 		} else {
-			updateCartInfo(principalDetails);
+			dataUtil.updateCartInfo(principalDetails,cartService);
 			return 0;
 		}
 
@@ -110,7 +117,8 @@ public class CartController {
 				index++;
 			}
 			cartService.deleteSelectedCart(cartList);
-			updateCartInfo(principalDetails);
+
+			dataUtil.updateCartInfo(principalDetails,cartService);
 			return 0;
 		}
 
@@ -141,11 +149,5 @@ public class CartController {
 
 	}
 
-	public void updateCartInfo(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-
-		long newCartCount = cartService.getCartCount(principalDetails.getMember().getM_no());
-		principalDetails.getMember().setCartCount(newCartCount);
-
-	}
 
 }

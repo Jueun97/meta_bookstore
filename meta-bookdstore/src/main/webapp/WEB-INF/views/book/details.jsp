@@ -65,16 +65,8 @@
 										data-pagi-classes="position-absolute text-center left-0 u-slick__pagination flex-column u-slick__pagination-centered--y ml-md-n4 ml-lg-0 mr-lg-5 mb-0"
 										data-vertical="true">
 										<div class="js-slide">
-											<c:choose>
-												<c:when test="${bookInfo.book_no <= 140}">
-													<img src="${bookInfo.image}" alt="Image Description"
-														 class="mx-auto img-fluid">
-												</c:when>
-												<c:otherwise>
-													<img src="/image/${bookInfo.image}" alt="Image Description"
-														 class="mx-auto img-fluid">
-												</c:otherwise>
-											</c:choose>
+											<img src="${bookInfo.image}" alt="Image Description"
+												class="mx-auto img-fluid">
 										</div>
 									</div>
 								</figure>

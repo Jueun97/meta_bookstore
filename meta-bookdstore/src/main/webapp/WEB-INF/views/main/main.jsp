@@ -280,8 +280,7 @@
 				<div class="tab-pane fade active show" id="pills-one-example2"
 					role="tabpanel" aria-labelledby="pills-one-example2-tab">
 					<div class="pt-2">
-						<div
-							class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6 ">
+						<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6 ">
 							<c:forEach items="${bookList}" var="bookVo">
 								<div class="col">
 									<div class="mb-5 products">
