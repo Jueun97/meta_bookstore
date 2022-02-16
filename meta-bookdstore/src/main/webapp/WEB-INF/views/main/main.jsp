@@ -277,16 +277,15 @@
 			<div class="tab-content">
 				<div class="tab-pane fade active show" id="pills-one-example2"
 					role="tabpanel" aria-labelledby="pills-one-example2-tab">
-					<div class="pt-2">
+					<div class="pt-2 book_div_start">
+						<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6">
 						<!-- 여기서부터 바꾸기 -->
-						<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6 ">
 							<c:forEach items="${bookList}" var="bookVo">
 								<div class="col">
 									<div class="mb-5 products">
 										<div class="product product__space border rounded-md bg-white">
 											<div class="product__inner overflow-hidden p-3 p-md-4d875">
-												<div
-													class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
+												<div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
 													<div class="woocommerce-loop-product__thumbnail">
 														<a href="/book/detail/${bookVo.book_no}" class="d-block">
 														<c:choose>
