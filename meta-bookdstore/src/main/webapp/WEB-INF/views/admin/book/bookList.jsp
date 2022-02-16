@@ -309,7 +309,6 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
 
                 </nav>
@@ -347,7 +346,7 @@
                                             <td>${data.publisher}</td>
                                             <td>${data.pubdate}</td>
                                             <td>${data.price}</td>
-                                            <td><a href="/admin/delete?book_no=${data.book_no}">삭제</a></td>
+                                            <td><a href="/admin/bookDelete?book_no=${data.book_no}">삭제</a></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

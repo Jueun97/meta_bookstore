@@ -3,6 +3,7 @@ package com.meta.book.service;
 import com.meta.book.mapper.BookMapper;
 
 import com.meta.book.vo.BookVO;
+import com.meta.book.vo.CateVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,10 @@ public class BookService {
 
 	public void insert(BookVO vo){
 		mapper.insert(vo);
+	}
+
+	public List<CateVO> cateList(){
+		return mapper.cateList();
 	}
 
 	//----------------------------------------------------------

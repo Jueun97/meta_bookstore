@@ -1,6 +1,7 @@
 package com.meta.book.mapper;
 
 import com.meta.book.vo.BookVO;
+import com.meta.book.vo.CateVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -18,7 +19,10 @@ public interface BookMapper {
 	public void update(BookVO vo);
 
 	public void insert(BookVO vo);
+
+	public List<CateVO> cateList();
 	
 	//-------------------민기작성----------------------------------
 	public List<BookVO> selectBookList(String cate_no);
 }
+

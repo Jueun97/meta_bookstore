@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <sec:authorize access="isAuthenticated()">
 	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
 	<sec:authentication property="principal" var="principal" />
@@ -289,7 +290,7 @@
 													<div class="woocommerce-loop-product__thumbnail">
 														<a href="/book/detail/${bookVo.book_no}" class="d-block">
 														<c:choose>
-															<c:when test="${bookVo.book_no <= 140}">
+															<c:when test="${fn:substring(bookVo.image, 0, 5) eq 'https'}">
 																<img src="${bookVo.image}"
 																class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
 																alt="image-description">
