@@ -67,7 +67,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/admin/member">
                     <i class="fas fa-fw fa-table"></i>
                     <span>회원 정보 관리</span></a>
             </li>
@@ -334,7 +334,7 @@
                                             <th>작가</th>
                                             <th>출판사</th>
                                             <th>출판일</th>
-                                            <th>가격</th>
+                                            <th style="width: 29px;">가격</th>
                                             <th>setting</th>
                                         </tr>
                                     </thead>

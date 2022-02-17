@@ -1,6 +1,7 @@
 package com.meta.member.service;
 
 import com.meta.config.auth.PrincipalDetails;
+import com.meta.member.dto.MemberUpdateAdminDto;
 import com.meta.member.dto.MemberUpdateDto;
 import com.meta.member.mapper.MemberMapper;
 import com.meta.member.vo.MemberVO;
@@ -10,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
+
+import java.util.List;
 
 
 @Service
@@ -58,6 +61,30 @@ public class MemberService {
 			return true;
 		}
 		return false;
+	}
+
+	//--------------------------------관리자 ----------------------------------------------------------
+
+	public List<MemberVO> memberList(){
+		return memberMapper.memberList();
+	}
+
+	public MemberVO memberDetailInfo(long m_no){
+		return memberMapper.memberDetailInfo(m_no);
+	}
+
+	public int memberUpdate(MemberUpdateAdminDto memberUpdateAdminDto){
+		//변경된 비밀번호 암호화
+		String encPassword = bCryptPasswordEncoder.encode(memberUpdateAdminDto.getNewpassword());
+		memberUpdateAdminDto.setNewpassword(encPassword);
+
+		//시큐리티 세션에 암호화된 비밀번호 변경
+		//principalDetails.getMember().setPassword(encPassword);
+		return memberMapper.memberUpdate(memberUpdateAdminDto);
+	}
+
+	public int memberDelete(Long m_no){
+		return memberMapper.memberDelete(m_no);
 	}
 	
 }

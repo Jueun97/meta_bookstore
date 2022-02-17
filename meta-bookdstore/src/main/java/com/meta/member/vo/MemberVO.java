@@ -3,8 +3,6 @@ package com.meta.member.vo;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class MemberVO {
 	private long m_no;
@@ -17,12 +15,12 @@ public class MemberVO {
 	private String phone;
 	private String email;
 	private String grade;
-	private Date regDate;
+	private String regDate;
 	private long cartCount;
 	
 	@Builder
 	public MemberVO(long m_no, String id, String password, String name, String zipcode, String roadAddress,
-			String otherAddress, String phone, String email, String grade, Date regDate) {
+			String otherAddress, String phone, String email, String grade, String regDate) {
 		super();
 		this.m_no = m_no;
 		this.id = id;
