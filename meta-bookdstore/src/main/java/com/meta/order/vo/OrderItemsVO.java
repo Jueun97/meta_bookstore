@@ -10,4 +10,6 @@ public class OrderItemsVO {
 	private int total_price;
 	private String title;
 	private String author;
+	private String image;
+	private String price;
 }

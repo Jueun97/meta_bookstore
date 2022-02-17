@@ -51,7 +51,7 @@ public class ApiController {
 		// json 결과
 		String apiURL = "https://openapi.naver.com/v1/search/book_adv.json?d_catg=" + no + "&d_titl=a&display=20";
 
-		// api요
+		// api요청
 		Map<String, String> requestHeaders = new HashMap<>();
 		requestHeaders.put("X-Naver-Client-Id", clientId);
 		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
