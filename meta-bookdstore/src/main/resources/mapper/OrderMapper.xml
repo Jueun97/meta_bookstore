@@ -32,19 +32,47 @@
 
 	</insert>
 
-	<select id="getOrderInfo" resultType="com.meta.order.vo.OrderVO">
+	<select id="getOrderList" resultType="com.meta.order.vo.OrderVO">
 		SELECT order_no, m_no,
 		receiver_email,
 		receiver_zipcode,
 		receiver_roadAddress,
 		receiver_otherAddress,receiver_phone,receiver_name,order_count,order_price,
-		to_char(order_date,'yyyy/mm/dd') order_date,status_code FROM orders
+		to_char(order_date,'yyyy/mm/dd') order_date,order_status.status_code ,
+		order_status.status
+		FROM orders,order_status
+		WHERE m_no=#{m_no}
+		AND
+		orders.STATUS_CODE = order_status.STATUS_CODE
+	</select>
+	<select id="getOrderInfo" resultType="com.meta.order.vo.OrderVO">
+		SELECT order_no, m_no, msg,
+		receiver_email,
+		receiver_zipcode,
+		receiver_roadAddress,
+		receiver_otherAddress,receiver_phone,receiver_name,order_count,order_price,
+		to_char(order_date,'yyyy/mm/dd') order_date,status_code
+		FROM orders
 		WHERE order_no=#{order_no}
 	</select>
 
 	<select id="getOrderItems"
 		resultType="com.meta.order.vo.OrderItemsVO">
-		SELECT order_items.*, title,author FROM order_items, book
-		WHERE order_items.book_no = book.book_no AND order_no=#{order_no}
+		SELECT order_items.*, title,author,image,price FROM
+		order_items, book
+		WHERE order_items.book_no = book.book_no AND
+		order_no=#{order_no}
 	</select>
+	
+	<update id="updateOrderInfo">
+		UPDATE orders SET receiver_email=#{receiver_email},
+		receiver_zipcode=#{receiver_zipcode},
+		receiver_roadAddress=#{receiver_roadAddress},
+		receiver_otherAddress=#{receiver_otherAddress},receiver_phone=#{receiver_phone},receiver_name=#{receiver_name},
+		msg=#{msg}
+		WHERE order_no=#{order_no}
+	</update>
+	<delete id="deleteOrder">
+		DELETE FROM orders WHERE order_no=#{order_no}
+	</delete>
 </mapper>

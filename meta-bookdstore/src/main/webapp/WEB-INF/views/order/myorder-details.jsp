@@ -57,13 +57,13 @@
 			<div class="container">
 				<div class="py-5 py-lg-7">
 					<h6 class="font-weight-medium font-size-7 text-center mt-lg-1">Order
-						Received</h6>
+						Information</h6>
 				</div>
 				<div class="max-width-890 mx-auto">
 					<div class="bg-white pt-6 border">
 						<h6
-							class="font-size-3 font-weight-medium text-center mb-4 pb-xl-1">Thank
-							you. Your order has been received.</h6>
+							class="font-size-3 font-weight-medium text-center mb-4 pb-xl-1">Your
+							order information is here</h6>
 						<div
 							class="border-bottom mb-5 pb-5 overflow-auto overflow-md-visible">
 							<div class="pl-3">
@@ -85,8 +85,10 @@
 										<tr>
 											<th scope="row" class="pr-0 py-0 font-weight-medium">${orderInfo.order_no}</th>
 											<td class="pr-0 py-0 font-weight-medium">${orderInfo.order_date}</td>
-											<td class="pr-0 py-0 font-weight-medium text-md-center"> <fmt:formatNumber
-																				value="${orderInfo.order_price}" pattern="###,###"></fmt:formatNumber>원</td>
+											<td class="pr-0 py-0 font-weight-medium text-md-center">
+												<fmt:formatNumber value="${orderInfo.order_price}"
+													pattern="###,###"></fmt:formatNumber>원
+											</td>
 											<td class="pr-md-4 py-0 font-weight-medium text-md-right">Direct
 												bank transfer</td>
 										</tr>
@@ -99,30 +101,82 @@
 								<div class="ml-md-2">
 									<h6 class="font-size-3 on-weight-medium mb-4 pb-1">Order
 										Details</h6>
-									<c:forEach items="${orderItemsList}" var="item">
-										<div class="d-flex justify-content-between mb-4"
-											style="width: 100%;">
-											<div class="d-flex align-items-center" style="width: 40%;">
-												<div style="width: 100%;">
-													<h6 class="font-size-2 font-weight-normal mb-1">
-														${item.title}</h6>
-													<span class="font-size-2 text-gray-600">${item.author}</span>
-												</div>
-												<span class="font-size-2 ml-4 ml-md-8">x${item.order_qt}</span>
-											</div>
-											<span class="font-weight-medium font-size-2"><fmt:formatNumber
-																				value="${item.total_price}" pattern="###,###"></fmt:formatNumber>원</span>
-										</div>
-									</c:forEach>
+									<table
+										class="shop_table shop_table_responsive cart woocommerce-cart-form__contents">
+										<thead>
+											<tr>
+												<th class="product-name">Product</th>
+												<th class="product-price">Price</th>
+												<th class="product-quantity">Quantity</th>
+												<th class="product-subtotal">Total</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<c:forEach items="${orderItems}" var="item">
+												<tr class="woocommerce-cart-form__cart-item order_items">
+													<td class="product-name" data-title="Product"
+														style="padding: 1.6rem 1rem;">
+														<div class="d-flex align-items-center">
+															<a href="/book/detail/${cart.book_no}"> <img
+																src="${item.image}"
+																class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
+																alt="">
+															</a>
+															<div class="ml-3 m-w-200-lg-down">
+																<a href="/book/detail/${item.book_no}">${item.title}</a>
+																<a href="/book/detail/${item.book_no}"
+																	class="text-gray-700 font-size-2 d-block" tabindex="0">${item.author}</a>
+															</div>
+														</div>
+													</td>
+
+													<td class="product-price" data-title="Price"
+														style="padding: 1.6rem 1rem;"><span
+														class="woocommerce-Price-amount amount"><fmt:formatNumber
+																value="${item.price}" pattern="###,###"></fmt:formatNumber>원</span></td>
+
+													<td class="product-quantity" data-title="Quantity"
+														style="padding: 1.6rem 1rem;">
+														<div class="quantity d-flex align-items-center">
+															<!-- Quantity -->
+															<div class="px-3">
+																<div class="js-quantity">
+																	<div class="d-flex align-items-center">
+																		${item.order_qt} 개</div>
+																</div>
+															</div>
+															<!-- End Quantity -->
+														</div>
+													</td>
+
+													<td class="product-subtotal" data-title="Total"
+														style="padding: 1.6rem 1rem;"><span
+														class="woocommerce-Price-amount amount"
+														style="width: max-content;"><fmt:formatNumber
+																value="${item.total_price}" pattern="###,###"></fmt:formatNumber>원</span></td>
+
+												</tr>
+											</c:forEach>
+
+										</tbody>
+									</table>
+
+								</div>
+								<div>
+									<h6 class="font-size-3 on-weight-medium mb-4 mt-4 pb-1">Order
+										Notes</h6>
+										<div style="padding: 1.6rem 1rem;border: 1px solid #eae8e4;"> ${orderInfo.msg}</div>
 								</div>
 							</div>
+
 						</div>
 						<div class="border-bottom mb-5 pb-5">
 							<ul class="list-unstyled px-3 pl-md-5 pr-md-4 mb-0">
 								<li class="d-flex justify-content-between py-2"><span
 									class="font-weight-medium font-size-2">Subtotal:</span> <span
 									class="font-weight-medium font-size-2"><fmt:formatNumber
-																				value="${orderInfo.order_price}" pattern="###,###"></fmt:formatNumber>원</span></li>
+											value="${orderInfo.order_price}" pattern="###,###"></fmt:formatNumber>원</span></li>
 								<li class="d-flex justify-content-between py-2"><span
 									class="font-weight-medium font-size-2">Shipping:</span> <span
 									class="font-weight-medium font-size-2">Free Shipping</span></li>
@@ -137,7 +191,7 @@
 								<div class="d-flex justify-content-between">
 									<span class="font-size-2 font-weight-medium">Total</span> <span
 										class="font-weight-medium fon-size-2"><fmt:formatNumber
-																				value="${orderInfo.order_price}" pattern="###,###"></fmt:formatNumber>원</span>
+											value="${orderInfo.order_price}" pattern="###,###"></fmt:formatNumber>원</span>
 								</div>
 							</div>
 						</div>
@@ -161,7 +215,7 @@
 									<h6 class="font-weight-medium font-size-22 mb-3">Shipping
 										Address</h6>
 									<address class="d-flex flex-column mb-0">
-										<span class="text-gray-600 font-size-2">${orderInfo.receiver_name } | ${orderInfo.receiver_phone}</span>
+										<span class="text-gray-600 font-size-2">${orderInfo.receiver_name} | ${orderInfo.receiver_phone }</span>
 										<span class="text-gray-600 font-size-2">${orderInfo.receiver_roadAddress }</span>
 										<span class="text-gray-600 font-size-2">${orderInfo.receiver_otherAddress }</span>
 										<span class="text-gray-600 font-size-2">${orderInfo.receiver_zipcode }</span>
@@ -172,11 +226,28 @@
 							</div>
 						</div>
 					</div>
+					<div class="d-flex justify-content-end" style="margin-top: 7px;">
+						<form action="/order/myorder/update" method="POST">
+							<input type="hidden" name="order_no"
+								value="${orderInfo.order_no}"> <input type="submit"
+								value="배송지수정"
+								class="btn btn-dark rounded-1 btn-short font-weight-medium"
+								style="margin: 0 5px;">
+						</form>
+						<form action="/order/myorder/delete" method="POST">
+							<input type="hidden" name="order_no"
+								value="${orderInfo.order_no}"> <input type="submit"
+								value="주문취소"
+								class="btn btn-dark rounded-1 btn-short font-weight-medium"
+								style="margin: 0 5px;">
+						</form>
+					</div>
+
+
 				</div>
 			</div>
 		</div>
 	</main>
-
 
 
 
