@@ -69,4 +69,29 @@
 			order by m_no desc
 		]]>
 	</select>
+
+	<!-- 2. 회원 한명의 정보 -->
+	<select id="memberDetailInfo" resultType="com.meta.member.vo.MemberVO">
+		<![CDATA[
+		select *
+		from member
+		where m_no = #{m_no}
+		]]>
+	</select>
+
+	<update id="memberUpdate">
+		<![CDATA[
+			UPDATE member
+			SET
+			    name = #{name},
+				password = #{newpassword},
+				phone = #{phone},
+				email = #{email},
+				zipcode = #{zipcode},
+				roadAddress = #{roadAddress},
+				otherAddress = #{otherAddress},
+				grade = #{grade}
+			WHERE m_no = #{m_no}
+		]]>
+	</update>
   </mapper>

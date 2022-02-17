@@ -2,17 +2,22 @@ package com.meta.admin.controller;
 
 import com.meta.book.service.BookService;
 import com.meta.book.vo.BookVO;
+import com.meta.member.dto.MemberUpdateAdminDto;
 import com.meta.member.service.MemberService;
+import com.meta.member.vo.MemberVO;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
@@ -249,11 +254,33 @@ public class AdminController {
 		return "redirect:/admin/book";
 	}
 
-	@GetMapping("memeber")
+	/////////////////////////////////////////////////////////////////////////////
+	// Member >>>>>>>
+	/////////////////////////////////////////////////////////////////////////////
+	@GetMapping("member")
 	public String memberView(Model model){
 		System.out.println(">>> "+this.getClass()+ " 호출됨!");
 		model.addAttribute("memberInfo", memberService.memberList());
-
 		return "/admin/member/memberList";
+	}
+
+	@GetMapping("memberUpdate")
+	public String memberUpdate(@ModelAttribute MemberVO vo, Model model){
+		System.out.println(">>> "+this.getClass()+ " 호출됨!");
+		model.addAttribute("memberInfo", memberService.memberDetailInfo(vo.getM_no()));
+		model.addAttribute("memberUpdateAdminDto", new MemberUpdateAdminDto());
+
+		return "/admin/member/memberUpdateForm";
+	}
+
+	//회원 정보 수정 요청
+	@PostMapping("memberUpdate")
+	public String update(Model model, @ModelAttribute("memberUpdateAdminDto") @Valid MemberUpdateAdminDto memberUpdateAdminDto,
+						  BindingResult bindingResult, RedirectAttributes rttr) {
+		log.info("update().dto : " + memberUpdateAdminDto);
+
+		int res = memberService.memberUpdate(memberUpdateAdminDto);
+		log.info("회원정보 수정이" + res + "건 완료되었습니다.");
+		return "redirect:/admin/member";
 	}
 }

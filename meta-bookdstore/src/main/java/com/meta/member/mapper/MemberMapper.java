@@ -1,6 +1,7 @@
 package com.meta.member.mapper;
 
 import com.meta.member.dto.MemberRegDto;
+import com.meta.member.dto.MemberUpdateAdminDto;
 import com.meta.member.dto.MemberUpdateDto;
 import com.meta.member.vo.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,4 +18,6 @@ public interface MemberMapper {
 
 	//-----------관리자-------------------------
 	public List<MemberVO> memberList();
+	public MemberVO memberDetailInfo(Long m_no);
+	public int memberUpdate(MemberUpdateAdminDto memberUpdateAdminDto);
 }

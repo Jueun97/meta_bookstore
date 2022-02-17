@@ -326,7 +326,7 @@
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <button type="button" class="btn btn-primary" style="float: right; margin-left:50px;" onclick="location.href='/admin/bookInsertForm' ">회원 등록</button>
+                            <button type="button" class="btn btn-primary" style="float: right; margin-left:50px;" onclick="location.href='/admin/memberRegisterForm' ">회원 등록</button>
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr id="tablehover">
@@ -335,17 +335,19 @@
                                     <th>핸드폰</th>
                                     <th>이메일</th>
                                     <th>가입일</th>
+                                    <th>권한</th>
                                     <th>setting</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${memberInfo}" var = "info">
                                     <tr id="trHover">
-                                        <td><a href="#" style="color: #858796;">${info.id}</a></td>
+                                        <td><a href="/admin/memberUpdate?m_no=${info.m_no}" style="color: #858796;">${info.id}</a></td>
                                         <td>${info.name}</td>
                                         <td>${info.phone}</td>
                                         <td>${info.email}</td>
                                         <td>${info.regDate}</td>
+                                        <td>${info.grade}</td>
                                         <td><a href="#">삭제</a></td>
                                     </tr>
                                 </c:forEach>
