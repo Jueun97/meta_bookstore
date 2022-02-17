@@ -12,6 +12,10 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
@@ -68,11 +72,26 @@ public class ApiController {
 				
 				//카테고리 넘버입력(파라미터에서 값 받아옴) 
 				apiVo.setCate_no(no);
+				String scrappingUrl = apiVo.getLink();
+				try {
+				
+				Document document = Jsoup.connect(scrappingUrl).get();
+				Elements container = document.getElementById("bookIntroContent").getElementsByTag("p");
+				String description = container.toString();
+				
+				apiVo.setDescription(description);
 
 				//데이터 DB삽입 
-				apiService.insert(apiVo);
+			
+				}catch(Exception e) {
+					System.out.println("error : " + scrappingUrl);
+					apiVo.setDescription("");
+				}finally{
+					index++;
+					apiService.insert(apiVo);
+				}
 
-				index++;
+			
 			}
 
 		} catch (Exception e) {
@@ -80,7 +99,6 @@ public class ApiController {
 			e.printStackTrace();
 		}
 
-		System.out.println(">>");
 
 	}
 

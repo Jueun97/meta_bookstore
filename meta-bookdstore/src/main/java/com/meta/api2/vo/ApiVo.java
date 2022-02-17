@@ -13,5 +13,6 @@ public class ApiVo {
 	private String publisher;
 	private String pubdate;
 	private String description;
+	private String link;
 	private int cate_no;
 }

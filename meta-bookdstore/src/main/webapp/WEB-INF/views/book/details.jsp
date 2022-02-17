@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <sec:authorize access="isAuthenticated()">
 	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
 	<sec:authentication property="principal" var="principal" />
@@ -59,17 +60,9 @@
 					<div class="container">
 						<div class="row space-2">
 							<div
-								class="col-md-6 col-lg-5 offset-lg-1 woocommerce-product-gallery woocommerce-product-gallery--with-images images">
-								<figure class="woocommerce-product-gallery__wrapper mb-6 b-md-0">
-									<div class="js-slick-carousel u-slick"
-										data-pagi-classes="position-absolute text-center left-0 u-slick__pagination flex-column u-slick__pagination-centered--y ml-md-n4 ml-lg-0 mr-lg-5 mb-0"
-										data-vertical="true">
-										<div class="js-slide">
-											<img src="${bookInfo.image}" alt="Image Description"
-												class="mx-auto img-fluid">
-										</div>
-									</div>
-								</figure>
+								class="d-flex align-items-center col-md-6 col-lg-5 offset-lg-1 woocommerce-product-gallery woocommerce-product-gallery--with-images images">
+								<img src="${bookInfo.image}" alt="Image Description"
+									class="mx-auto img-fluid" style="width: 35%;">
 							</div>
 							<div class="col-md-6 col-lg-5 summary entry-summary">
 								<div class="border bg-white">
@@ -77,20 +70,18 @@
 										<div class="border-bottom mb-4">
 											<h1 class="product_title entry-title font-size-26 mb-3">${bookInfo.title }</h1>
 											<div class="font-size-2 mb-4">
-												<span class="text-yellow-darker"> <span
-													class="fas fa-star"></span> <span class="fas fa-star"></span>
-													<span class="fas fa-star"></span> <span class="fas fa-star"></span>
-													<span class="fas fa-star"></span>
-												</span> <span class="ml-3">(3,714)</span> <span
-													class="ml-3 font-weight-medium">By (author)</span> <span
-													class="ml-2 text-gray-600">${bookInfo.author }</span>
+												<span class="ml-3 font-weight-medium">By (author)</span> 
+												<span class="ml-2 text-gray-600">${bookInfo.author}</span>
+												<span class="ml-3 font-weight-medium"> | </span>
+												<span class="ml-3">${bookInfo.publisher}</span> 
+												<span class="ml-3 font-weight-medium"> | </span>
+												<span class="ml-3">${bookInfo.pubdate}</span> 
 											</div>
 
 										</div>
 										<p class="price font-size-22 font-weight-medium mb-4">
-											<span class="woocommerce-Price-amount amount">가격 :
-												${bookInfo.price} <span
-												class="woocommerce-Price-currencySymbol">원</span>
+											<span class="woocommerce-Price-amount amount">가격 : <fmt:formatNumber
+													value="${bookInfo.price}" pattern="###,###"></fmt:formatNumber>원
 											</span>
 										</p>
 
@@ -168,37 +159,9 @@
 						<div
 							class="woocommerce-Tabs-panel panel col-xl-8 offset-xl-2 entry-content wc-tab tab-pane fade pt-9 show active"
 							id="pills-one-example1" role="tabpanel"
-							aria-labelledby="pills-one-example1-tab">
-							<!-- Mockup Block -->
-							<p class="mb-0">We aim to show you accurate product
-								information. Manufacturers, suppliers and others provide what
-								you see here, and we have not verified it. See our disclaimer</p>
-							<p class="mb-0">#1 New York Times Bestseller</p>
-							<p class="mb-0">A Reese Witherspoon x Hello Sunshine Book
-								Club Pick</p>
-							<p class="mb-4">"I can't even express how much I love this
-								book! I didn't want this story to end!"--Reese Witherspoon</p>
-							<p class="mb-4">"Painfully beautiful."--The New York Times
-								Book Review</p>
-							<p>"Perfect for fans of Barbara Kingsolver."--Bustle</p>
-							<p class="mb-4">For years, rumors of the "Marsh Girl" have
-								haunted Barkley Cove, a quiet town on the North Carolina coast.
-								So in late 1969, when handsome Chase Andrews is found dead, the
-								locals immediately suspect Kya Clark, the so-called Marsh Girl.
-								But Kya is not what they say. Sensitive and intelligent, she has
-								survived for years alone in the marsh that she calls home,
-								finding friends in the gulls and lessons in the sand. Then the
-								time comes when she yearns to be touched and loved. When two
-								young men from town become intrigued by her wild beauty, Kya
-								opens herself to a new life--until the unthinkable happens.</p>
-							<p class="mb-4">Perfect for fans of Barbara Kingsolver and
-								Karen Russell, Where the Crawdads Sing is at once an exquisite
-								ode to the natural world, a heartbreaking coming-of-age story,
-								and a surprising tale of possible murder. Owens reminds us that
-								we are forever shaped by the children we once were, and that we
-								are all subject to the beautiful and violent secrets that nature
-								keeps</p>
-							<p>WHERE THE CRAWDADS LP</p>
+							aria-labelledby="pills-one-example1-tab"
+							style="font-size: 1.135rem;">
+							${bookInfo.description}
 							<!-- End Mockup Block -->
 						</div>
 					</div>
