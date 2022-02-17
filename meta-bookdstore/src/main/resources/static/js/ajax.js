@@ -30,7 +30,6 @@ function addToCart(book_no, price) {
 	var quantity = $("[name=quantity]").val() !== undefined ? $("[name=quantity]").val() : 1;
 
 	var data = { book_no: book_no, cart_book_qt: quantity, cart_total_price: price * quantity };
-	console.log(data);
 	$.ajax({
 		url: "/cart/add",
 		type: "post",
