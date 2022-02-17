@@ -16,9 +16,11 @@
 
 		<selectKey keyProperty="order_no"
 			resultType="java.lang.String" order="AFTER">
-			SELECT (CONCAT(CONCAT(
-			to_char(sysdate,'yyyymmdd'),'-'),orders_seq.currval)) FROM dual
+			SELECT
+			(CONCAT(CONCAT(to_char(sysdate,'yyyymmdd'),'-'),orders_seq.currval))
+			FROM dual
 		</selectKey>
+
 	</insert>
 
 	<insert id="insertOrderItem">
@@ -30,13 +32,14 @@
 
 	</insert>
 
-	<select id="getOrderInfo"
-		resultType="com.meta.order.vo.OrderVO">
-		SELECT order_no, m_no, receiver_email,
+	<select id="getOrderInfo" resultType="com.meta.order.vo.OrderVO">
+		SELECT order_no, m_no,
+		receiver_email,
 		receiver_zipcode,
 		receiver_roadAddress,
 		receiver_otherAddress,receiver_phone,receiver_name,order_count,order_price,
-	to_char(order_date,'yyyy/mm/dd') order_date,status_code FROM orders WHERE order_no=#{order_no}
+		to_char(order_date,'yyyy/mm/dd') order_date,status_code FROM orders
+		WHERE order_no=#{order_no}
 	</select>
 
 	<select id="getOrderItems"
@@ -44,7 +47,4 @@
 		SELECT order_items.*, title,author FROM order_items, book
 		WHERE order_items.book_no = book.book_no AND order_no=#{order_no}
 	</select>
-
-
-
 </mapper>

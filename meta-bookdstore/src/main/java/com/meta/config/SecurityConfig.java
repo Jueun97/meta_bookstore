@@ -44,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			//.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.antMatchers("/order/**").authenticated()//로그인 해야 order페이지 접근가능
+			.antMatchers("/cart/add").permitAll()
 			.antMatchers("/cart/**").authenticated()
 			.anyRequest().permitAll(); 
 		
