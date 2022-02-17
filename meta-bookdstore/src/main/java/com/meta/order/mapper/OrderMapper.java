@@ -13,4 +13,7 @@ public interface OrderMapper {
 	public int insertOrderItem(OrderItemsVO itemVo);
 	public List<OrderItemsVO> getOrderItems(String order_no);
 	public OrderVO getOrderInfo(String order_no);
+	public List<OrderVO> getOrderList(long m_no);
+	public int deleteOrder(String order_no);
+	public int updateOrderInfo(OrderVO orderVo);
 }

@@ -140,16 +140,19 @@
 													<!-- Form Group -->
 													<div class="form-group mb-4">
 														<div class="js-form-message js-focus-state">
-															<label class="form-label">이메일</label> <br> <input
+															<label class="form-label">이메일</label> <br> 
+															<input type="hidden"
+																id="receiver_email" name="receiver_email"> 
+															<input
 																path="email1" type="text"
 																style="width: 30%; display: inline-block;"
+																class="form-control rounded-0 height-4 px-4" id="email1"
+																placeholder="이메일을 입력" /> @ <input
+																path="emailDomain" type="text"
 																class="form-control rounded-0 height-4 px-4"
-																name="receiver_email" id="email1" placeholder="이메일을 입력" />
-															@ <input path="emailDomain" type="text"
-																class="form-control rounded-0 height-4 px-4"
-																id="emailDomain" name="receiver_emailDomain"
+																id="emailDomain" 
 																style="width: 30%; display: inline-block;" /> <select
-																name="receiver_emailDomain" id="emailDomain"
+																id="emailDomain"
 																onChange="selectEmailChange(this.value);" title="직접입력"
 																style="width: 20%;">
 																<option value="">직접입력</option>
@@ -285,7 +288,8 @@
 																			${list.cart_book_qt}</strong>
 																	</td>
 																	<td class="product-total"><span
-																		class="woocommerce-Price-amount amount d-flex"  style="width: max-content;"><fmt:formatNumber
+																		class="woocommerce-Price-amount amount d-flex"
+																		style="width: max-content;"><fmt:formatNumber
 																				value="${list.cart_total_price}" pattern="###,###"></fmt:formatNumber>원</span></td>
 																</tr>
 															</c:forEach>
@@ -347,8 +351,9 @@
 																<th>Subtotal</th>
 																<td data-title="Subtotal"><span
 																	class="woocommerce-Price-amount amount d-flex">
-																	<fmt:formatNumber value="${sub_total_price}"
-																			pattern="###,###"></fmt:formatNumber>원</span></td>
+																		<fmt:formatNumber value="${sub_total_price}"
+																			pattern="###,###"></fmt:formatNumber>원
+																</span></td>
 															</tr>
 
 															<tr class="order-shipping">
@@ -447,6 +452,8 @@
 							$("#tel1").val() + '-' + $("#tel2").val() + '-'
 									+ $("#tel3").val());
 
+					$('#receiver_email').val($("#email1").val() + '@' + $("#emailDomain").val());
+					
 					$('.checkout-form').submit();
 
 				})

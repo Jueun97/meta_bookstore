@@ -1,9 +1,10 @@
 package com.meta.member.controller;
 
-import com.meta.config.auth.PrincipalDetails;
-import com.meta.member.dto.MemberUpdateDto;
-import com.meta.member.service.MemberService;
-import lombok.extern.log4j.Log4j2;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
+import com.meta.config.auth.PrincipalDetails;
+import com.meta.member.dto.MemberUpdateDto;
+import com.meta.member.service.MemberService;
+import com.meta.order.service.OrderService;
+import com.meta.order.vo.OrderVO;
+
+import lombok.extern.log4j.Log4j2;
 
 
 @Controller
@@ -28,6 +33,8 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private OrderService orderService;
 
 	//회원 정보 확인 폼 (디테일)
 	@GetMapping("mypage")
@@ -67,17 +74,13 @@ public class MemberController {
 	}
 
 
-	//회원 주문 정보 확인 폼
-	@GetMapping("myorder")
-	public String showMyorder(Model model) {
-		model.addAttribute("memberUpdateDto",new MemberUpdateDto());
-		return "member/myorder";
-	}
-
+	
+	
 	//회원 정보 찾 폼
 	@GetMapping("find")
-	public String find(Model model) {
+	public String find(String order_no,Model model) {
 		//model.addAttribute("memberRegDto",new MemberRegDto());
+	
 		return "member/find";
 	}
 

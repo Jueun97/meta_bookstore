@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <sec:authorize access="isAuthenticated()">
 	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
 	<sec:authentication property="principal" var="principal" />
@@ -63,15 +64,13 @@
 							id="pills-tab">
 							<li class="nav-item mx-0"><a
 								class="nav-link d-flex align-items-center px-0"
-								id="pills-two-example1-tab"  
-								href="/member/myorder" role="tab"
+								id="pills-two-example1-tab" href="/order/myorder" role="tab"
 								aria-controls="pills-two-example1" aria-selected="false"> <span
 									class="font-weight-normal text-gray-600">Orders</span>
 							</a></li>
 							<li class="nav-item mx-0"><a
 								class="nav-link d-flex align-items-center px-0"
-								id="pills-five-example1-tab"  
-								href="/member/mypage" role="tab"
+								id="pills-five-example1-tab" href="/member/mypage" role="tab"
 								aria-controls="pills-five-example1" aria-selected="false"> <span
 									class="font-weight-normal text-gray-600">Account details</span>
 							</a></li>
@@ -107,48 +106,30 @@
 									</thead>
 
 									<tbody>
-										<tr class="border">
-											<th class="pl-3 pl-md-5 font-weight-normal align-middle py-6">#30785</th>
-											<td class="align-middle py-5">March 26, 2020</td>
-											<td class="align-middle py-5">On hold</td>
-											<td class="align-middle py-5"><span class="text-primary">$1,855.00</span>
-												for 5 items</td>
-											<td class="align-middle py-5">
-												<div class="d-flex justify-content-center">
-													<button type="submit"
-														class="btn btn-dark rounded-0 btn-wide font-weight-medium">View
-													</button>
-												</div>
-											</td>
-										</tr>
-										<tr class="border">
-											<th class="pl-3 pl-md-5 font-weight-normal align-middle py-6">#30785</th>
-											<td class="align-middle py-5">March 26, 2020</td>
-											<td class="align-middle py-5">On hold</td>
-											<td class="align-middle py-5"><span class="text-primary">$1,855.00</span>
-												for 5 items</td>
-											<td class="align-middle py-5">
-												<div class="d-flex justify-content-center">
-													<button type="submit"
-														class="btn btn-dark rounded-0 btn-wide font-weight-medium">View
-													</button>
-												</div>
-											</td>
-										</tr>
-										<tr class="border">
-											<th class="pl-3 pl-md-5 font-weight-normal align-middle py-6">#30785</th>
-											<td class="align-middle py-5">March 26, 2020</td>
-											<td class="align-middle py-5">On hold</td>
-											<td class="align-middle py-5"><span class="text-primary">$1,855.00</span>
-												for 5 items</td>
-											<td class="align-middle py-5">
-												<div class="d-flex justify-content-center">
-													<button type="submit"
-														class="btn btn-dark rounded-0 btn-wide font-weight-medium">View
-													</button>
-												</div>
-											</td>
-										</tr>
+										<c:forEach items="${orderList}" var="order">
+											<tr class="border">
+												<th
+													class="pl-3 pl-md-5 font-weight-normal align-middle py-6">${order.order_no}</th>
+												<td class="align-middle py-5">${order.order_date}</td>
+												<td class="align-middle py-5">${order.status}</td>
+												<td class="align-middle py-5"><span
+													class="text-primary">₩<fmt:formatNumber
+															value="${order.order_price}" pattern="###,###"></fmt:formatNumber></span>
+													for ${order.order_count} items</td>
+												<td class="align-middle py-5">
+													<div class="d-flex justify-content-center">
+														<form action="/order/myorder/details" method="POST">
+														<input type="hidden" name="order_no" value="${order.order_no}">
+															<input type="submit" value="View"
+																class="btn btn-dark rounded-0 btn-wide font-weight-medium">
+
+														</form>
+													</div>
+												</td>
+											</tr>
+										</c:forEach>
+
+
 									</tbody>
 								</table>
 							</div>
