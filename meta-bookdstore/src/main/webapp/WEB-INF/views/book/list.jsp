@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="pageObject" tagdir="/WEB-INF/tags" %>
 <sec:authorize access="isAuthenticated()">
 	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
 	<sec:authentication property="principal" var="principal" />
@@ -885,25 +886,9 @@
 								</ul>
 							</c:if>
 						</div>
-						<nav aria-label="Page navigation example">
-							<ul
-								class="pagination pagination__custom justify-content-md-center flex-nowrap flex-md-wrap overflow-auto overflow-md-visble">
-								<li class="flex-shrink-0 flex-md-shrink-1 page-item"><a
-									class="page-link" href="#">Previous</a></li>
-								<li class="flex-shrink-0 flex-md-shrink-1 page-item"><a
-									class="page-link" href="#">1</a></li>
-								<li class="flex-shrink-0 flex-md-shrink-1 page-item"><a
-									class="page-link" href="#">2</a></li>
-								<li class="flex-shrink-0 flex-md-shrink-1 page-item active"
-									aria-current="page"><a class="page-link" href="#">3</a></li>
-								<li class="flex-shrink-0 flex-md-shrink-1 page-item"><a
-									class="page-link" href="#">4</a></li>
-								<li class="flex-shrink-0 flex-md-shrink-1 page-item"><a
-									class="page-link" href="#">5</a></li>
-								<li class="flex-shrink-0 flex-md-shrink-1 page-item"><a
-									class="page-link" href="#">Next</a></li>
-							</ul>
-						</nav>
+						<!-- pageNation -->
+						테스트 : ${pageObject}
+						<pageObject:pageNav listURI="/book/list"></pageObject:pageNav>
 					</div>
 					<div id="secondary" class="sidebar widget-area order-1"
 						role="complementary"></div>
