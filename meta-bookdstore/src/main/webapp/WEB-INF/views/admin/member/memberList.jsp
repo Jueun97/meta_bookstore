@@ -326,7 +326,9 @@
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="table-responsive">
+                            <!-- 혹시모를 추가 기능을 위한 버튼 남겨놓기
                             <button type="button" class="btn btn-primary" style="float: right; margin-left:50px;" onclick="location.href='/admin/memberRegisterForm' ">회원 등록</button>
+                            -->
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr id="tablehover">
@@ -348,7 +350,7 @@
                                         <td>${info.email}</td>
                                         <td>${info.regDate}</td>
                                         <td>${info.grade}</td>
-                                        <td><a href="#">삭제</a></td>
+                                        <td><a href="/admin/memberDelete?m_no=${info.m_no}">삭제</a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

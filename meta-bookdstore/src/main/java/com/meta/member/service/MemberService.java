@@ -82,5 +82,9 @@ public class MemberService {
 		//principalDetails.getMember().setPassword(encPassword);
 		return memberMapper.memberUpdate(memberUpdateAdminDto);
 	}
+
+	public int memberDelete(Long m_no){
+		return memberMapper.memberDelete(m_no);
+	}
 	
 }

@@ -20,4 +20,5 @@ public interface MemberMapper {
 	public List<MemberVO> memberList();
 	public MemberVO memberDetailInfo(Long m_no);
 	public int memberUpdate(MemberUpdateAdminDto memberUpdateAdminDto);
+	public int memberDelete(Long m_no);
 }

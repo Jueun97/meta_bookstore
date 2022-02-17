@@ -318,7 +318,7 @@
             <div class="container-fluid" style="padding-left: 19.5rem; padding-right: 19.5rem;">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Member Register Page</h1>
+                <h1 class="h3 mb-2 text-gray-800">Member Update Page</h1>
                 <p class="mb-4">회원 관리 페이지 입니다. </p>
 
                 <div>
@@ -426,7 +426,7 @@
                                     <c:if test="${!empty errorMap}">
                                         <strong style="color: red;">${errorMap.zipcode}</strong>
                                     </c:if>
-                                    도로명 주소 <input type="text" style="margin-top: 10px; margin-bottom: 10px;"
+                                    도로명 주소 <input type="text" style="margin-top: 15px; margin-bottom: 15px;"
                                                   value="${memberInfo.roadAddress}"
                                                   class="form-control rounded-0 height-4 px-4"
                                                   name="roadAddress" id="roadAddress"
@@ -434,7 +434,7 @@
                                     <c:if test="${!empty errorMap}">
                                         <strong style="color: red;">${errorMap.roadAddress}</strong>
                                     </c:if>
-                                    상세 주소 <input type="text" style="margin-top: 10px;"
+                                    상세 주소 <input type="text" style="margin-top: 15px;"
                                                  value="${memberInfo.otherAddress}"
                                                  class="form-control rounded-0 height-4 px-4"
                                                  name="otherAddress" id="otherAddress" placeholder="상세주소">
@@ -446,7 +446,9 @@
                             </div>
 
                             <div class="col-md-12 mb-4">
-                                권한
+                                <div style="margin-bottom: 10px;">
+                                    관리자 권한 설정
+                                </div>
                                 <label class="switch">
                                     <c:choose>
                                         <c:when test="${memberInfo.grade eq 'ADMIN'}">

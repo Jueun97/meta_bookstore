@@ -94,4 +94,11 @@
 			WHERE m_no = #{m_no}
 		]]>
 	</update>
+
+	<delete id="memberDelete">
+		<![CDATA[
+			delete from member
+			where m_no = #{m_no}
+		]]>
+	</delete>
   </mapper>

@@ -283,4 +283,15 @@ public class AdminController {
 		log.info("회원정보 수정이" + res + "건 완료되었습니다.");
 		return "redirect:/admin/member";
 	}
+
+	//회원 정보 삭제
+	@GetMapping("memberDelete")
+	public String memberDelete(@ModelAttribute MemberVO vo){
+		System.out.println(">>> "+this.getClass()+ " 호출됨!");
+		int check = memberService.memberDelete(vo.getM_no());
+
+		log.info("회원 삭제가 " + check + "건 완료되었습니다.");
+
+		return "redirect:/admin/member";
+	}
 }
