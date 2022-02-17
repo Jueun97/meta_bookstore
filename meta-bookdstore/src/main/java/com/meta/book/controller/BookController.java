@@ -11,20 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.meta.book.service.BookService;
 
+import lombok.extern.log4j.Log4j2;
+
 
 @Controller
+@Log4j2
 @RequestMapping("/book")
 public class BookController {
-	
-	private static final Logger log = LoggerFactory.getLogger(BookController.class);
 	
 	@Autowired
 	private BookService service;
 	
 	@GetMapping("list")
-	public String booklist(Model model) {
+	public String booklist(Model model,String cate_no) {
 		log.info("북인포");
-		model.addAttribute("bookList",service.list());
+		model.addAttribute("bookList",service.userBookList(cate_no));
 		return "book/list";
 	}
 	

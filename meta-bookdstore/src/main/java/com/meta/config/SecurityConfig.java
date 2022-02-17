@@ -81,15 +81,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	      accessDeniedHandler.setErrorPage("/denied");
 	      return accessDeniedHandler;
 	    }
-	 
-	 @Override
-	 public void configure(WebSecurity web) throws Exception {
-	     web.httpFirewall(defaultHttpFirewall());
-	 }
-	  
-	 @Bean
-	 public HttpFirewall defaultHttpFirewall() {
-	     return new DefaultHttpFirewall();
-	 }
+	 //<-- 시큐리티 "//" 경로 에러 발생시 해결코드 -->
+//	 @Override
+//	 public void configure(WebSecurity web) throws Exception {
+//	     web.httpFirewall(defaultHttpFirewall());
+//	 }
+//	  
+//	 @Bean
+//	 public HttpFirewall defaultHttpFirewall() {
+//	     return new DefaultHttpFirewall();
+//	 }
 
 }

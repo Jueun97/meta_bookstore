@@ -189,8 +189,8 @@
 				role="tablist">
 				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="100"><a
 					class="nav-link font-weight-medium active nav-link-caret"
-					id="pills-one-example2-tab" data-toggle="pill"
-					href="/main?cate_no=100" role="tab"
+					id="pills-one-example2-tab" 
+					href="/book/list?cate_no=100" role="tab"
 					aria-controls="pills-one-example2" aria-selected="true">
 						<div class="text-center">
 							<figure class="d-md-block mb-0 text-primary-indigo">
@@ -201,8 +201,8 @@
 				</a></li>
 				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="110"><a
 					class="nav-link font-weight-medium nav-link-caret"
-					id="pills-two-example2-tab" data-toggle="pill"
-					href="/main?cate_no=110" role="tab"
+					id="pills-two-example2-tab"
+					href="/book/list?cate_no=110" role="tab"
 					aria-controls="pills-two-example2" aria-selected="true">
 						<div class="text-center">
 							<figure class="d-md-block mb-0 text-tangerine">
@@ -213,8 +213,8 @@
 				</a></li>
 				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="120"><a
 					class="nav-link font-weight-medium nav-link-caret"
-					id="pills-three-example2-tab" data-toggle="pill"
-					href="/main?cate_no=120" role="tab"
+					id="pills-three-example2-tab"
+					href="/book/list?cate_no=120" role="tab"
 					aria-controls="pills-three-example2" aria-selected="true">
 						<div class="text-center">
 							<figure class="d-md-block mb-0 text-chili">
@@ -226,7 +226,7 @@
 				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="130">
 					<a class="nav-link font-weight-medium nav-link-caret"
 						id="pills-four-example2-tab" 
-						href="#" role="tab" data-toggle="pill"
+						href="#" role="tab"
 						aria-controls="pills-four-example2" aria-selected="true">
 							<div class="text-center">
 								<figure class="d-md-block mb-0 text-carolina">
@@ -238,8 +238,8 @@
 				</li>
 				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="140"><a
 					class="nav-link font-weight-medium nav-link-caret"
-					id="pills-five-example2-tab" data-toggle="pill"
-					href="/main?cate_no=140" role="tab"
+					id="pills-five-example2-tab"
+					href="/book/list?cate_no=140" role="tab"
 					aria-controls="pills-five-example2" aria-selected="true">
 						<div class="text-center">
 							<figure class="d-md-block mb-0 text-punch">
@@ -250,8 +250,8 @@
 				</a></li>
 				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="150"><a
 					class="nav-link font-weight-medium nav-link-caret"
-					id="pills-six-example2-tab" data-toggle="pill"
-					href="/main?cate_no=150" role="tab"
+					id="pills-six-example2-tab"
+					href="/book/list?cate_no=150" role="tab"
 					aria-controls="pills-six-example2" aria-selected="true">
 						<div class="text-center">
 							<figure class="d-md-block mb-0">
@@ -262,8 +262,8 @@
 				</a></li>
 				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="160"><a
 					class="nav-link font-weight-medium nav-link-caret"
-					id="pills-seven-example2-tab" data-toggle="pill"
-					href="/main?cate_no=160" role="tab"
+					id="pills-seven-example2-tab"
+					href="/book/list?cate_no=160" role="tab"
 					aria-controls="pills-seven-example2" aria-selected="true">
 						<div class="text-center">
 							<figure class="d-md-block mb-0">

@@ -24,5 +24,7 @@ public interface BookMapper {
 	
 	//-------------------민기작성----------------------------------
 	public List<BookVO> selectBookList(String cate_no);
+	public List<BookVO> userBookList(String cate_no);
+	
 }
 

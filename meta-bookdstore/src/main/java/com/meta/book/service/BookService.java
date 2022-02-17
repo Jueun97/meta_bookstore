@@ -53,5 +53,10 @@ public class BookService {
 		bookByCateList = mapper.selectBookList(cate_no);
 		return bookByCateList;
 	}
+	//유저가 접근했을때 List
+	public List<BookVO> userBookList(String cate_no) {
+
+		return mapper.userBookList(cate_no);
+	}
 
 }

@@ -65,4 +65,18 @@
 		WHERE cate_no=#{cate_no}
 		ORDER BY book_no
 	</select>
+	<!-- 민기 작성,/book/list의 카테고리 별 책리스트 select -->	
+	<select id="userBookList" resultType="com.meta.book.vo.BookVO">
+		SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no
+		FROM book
+		<include refid="cate_search"/>
+		ORDER BY book_no
+	</select>
+	<!-- 카테고리 search WHERE절 -->
+	<!-- cate_no가 없으면 전체 bookList보이게 -->
+	<sql id="cate_search">
+		<if test="cate_no!=null and cate_no.toString()!=''">
+			WHERE cate_no=#{cate_no}
+		</if>
+	</sql>
 </mapper>
