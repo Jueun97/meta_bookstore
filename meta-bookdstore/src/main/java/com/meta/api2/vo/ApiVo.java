@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class ApiVo {
-	private int book_no;
+	private long book_no;
 	private String title;
 	private String image;
 	private String author;
