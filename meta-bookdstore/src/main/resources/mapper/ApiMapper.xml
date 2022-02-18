@@ -9,5 +9,10 @@
 		INSERT INTO book (book_no, title, author, publisher, pubdate, description,
 		image, price,cate_no )
 		values(seq_book_no.nextval,#{title},#{author},#{publisher},to_date(#{pubdate},'yyyy-mm-dd'),#{description},#{image},#{price},#{cate_no})
+		
+		<selectKey keyProperty="book_no"
+			resultType="long" order="AFTER">
+			SELECT seq_book_no.currval FROM dual
+		</selectKey>
 	</insert>
 </mapper>
