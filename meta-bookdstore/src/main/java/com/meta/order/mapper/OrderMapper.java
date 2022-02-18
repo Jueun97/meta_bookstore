@@ -16,4 +16,5 @@ public interface OrderMapper {
 	public List<OrderVO> getOrderList(long m_no);
 	public int deleteOrder(String order_no);
 	public int updateOrderInfo(OrderVO orderVo);
+	public int setOrderCount(OrderVO orderCountVo);
 }

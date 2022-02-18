@@ -79,9 +79,12 @@
 											</div>
 
 										</div>
-										<p class="price font-size-22 font-weight-medium mb-4">
+										<p class="price font-size-22 font-weight-medium mb-4 d-flex justify-content-between">
 											<span class="woocommerce-Price-amount amount">가격 : <fmt:formatNumber
 													value="${bookInfo.price}" pattern="###,###"></fmt:formatNumber>원
+											</span>
+											<span class="woocommerce-Price-amount amount-for-checkout" data-price="${bookInfo.price}">[ 주문금액 : <fmt:formatNumber
+													value="${bookInfo.price}" pattern="###,###"></fmt:formatNumber>원 ]
 											</span>
 										</p>
 
@@ -108,7 +111,9 @@
                                                                 </svg>
 															</a> <input type="number" id="input-number"
 																class="input-text qty text js-result form-control text-center border-0"
-																step="1" min="1" max="100" name="quantity" value="1"
+																step="1" min="1" max="${bookInfo.stock}"
+																	data-action="details"
+																	 name="quantity" value="1"
 																title="Qty"> <a class="js-plus text-dark"
 																href="javascript:;"> <svg
 																	xmlns="http://www.w3.org/2000/svg"

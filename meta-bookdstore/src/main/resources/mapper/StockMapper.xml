@@ -9,5 +9,12 @@
 		INSERT INTO stock (stock_no, stock, book_no)
 		VALUES (stock_seq.nextval, 100, #{book_no})
 	</insert>
+	
+	<update id="addStockWhenCheckedout">
+		UPDATE stock SET stock=stock-#{sold_cnt}, sold_cnt=sold_cnt+#{sold_cnt} WHERE book_no=#{book_no}
+	</update>
+	<update id="removeStockWhenCancelled">
+		UPDATE stock SET stock=stock+#{sold_cnt}, sold_cnt=sold_cnt-#{sold_cnt} WHERE book_no=#{book_no}
+	</update>
 
 </mapper>

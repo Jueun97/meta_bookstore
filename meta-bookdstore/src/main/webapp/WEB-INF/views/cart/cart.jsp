@@ -141,6 +141,7 @@
 																				class="input-text qty text js-result form-control text-center border-0"
 																				step="1" min="1" max="100" name="quantity"
 																				value="${cart.cart_book_qt}" title="Qty"
+																				data-action="cart"
 																				data-book_no="${cart.book_no}"
 																				data-m_no="${cart.m_no}" data-price="${cart.price}"
 																				data-cart_no="${cart.cart_no}"> <a

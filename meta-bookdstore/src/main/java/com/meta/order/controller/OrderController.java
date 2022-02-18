@@ -61,10 +61,13 @@ public class OrderController {
 	public String received(OrderVO orderVo, HttpServletRequest request,
 			@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
 		String[] cartData = request.getParameterValues("cart_no");
-		orderVo.setOrder_count(cartData.length);
 		orderService.insertOrder(orderVo);
+		
 		List<CartVO> cartList = new ArrayList<CartVO>();
 		String order_no = orderVo.getOrder_no();
+		
+		int order_count = 0;
+		
 		for (int i = 0; i < cartData.length; i++) {
 			CartVO cartVo = new CartVO();
 			OrderItemsVO itemVo = new OrderItemsVO();
@@ -77,7 +80,13 @@ public class OrderController {
 			if (orderService.insertOrderItem(itemVo) > 0) {
 				cartList.add(cartVo);
 			}
+			order_count+=cartVo.getCart_book_qt();
 		}
+		OrderVO orderCountVo = new OrderVO();
+		orderCountVo.setOrder_count(order_count);
+		orderCountVo.setOrder_no(order_no);
+		orderService.setOrderCount(orderCountVo);
+		
 		if (cartService.deleteSelectedCart(cartList) > 0) {
 			dataUtil.updateCartInfo(principalDetails, cartService);
 		}
