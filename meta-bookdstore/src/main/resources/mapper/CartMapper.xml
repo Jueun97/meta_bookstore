@@ -26,9 +26,9 @@
 
 	<select id="getCartList" resultType="com.meta.cart.vo.CartVO">
 		SELECT
-		cart_no,m_no,cart.book_no,cart_book_qt,cart_total_price,title,author,price,image
-		FROM cart,book
-		WHERE cart.book_no=book.book_no AND m_no=#{m_no}
+		cart_no,m_no,cart.book_no,cart_book_qt,cart_total_price,title,author,price,image,stock
+		FROM cart,book,stock
+		WHERE cart.book_no=book.book_no AND m_no=#{m_no} and book.book_no = stock.book_no
 	</select>
 
 	<select id="getACart" resultType="com.meta.cart.vo.CartVO">
@@ -72,14 +72,11 @@
 		WHERE m_no = #{m_no}
 	</select>
 
-
-
 	<update id="modifyQuantity">
 		UPDATE cart
 		SET cart_book_qt=#{cart_book_qt},
 		cart_total_price=#{cart_total_price}
-		WHERE m_no=#{m_no} AND
-		book_no=#{book_no}
+		WHERE cart_no=#{cart_no}
 	</update>
 
 	<delete id="deleteCart">

@@ -1,8 +1,17 @@
 package com.meta.api2.controller;
 
-import com.google.gson.Gson;
-import com.meta.api2.service.ApiService;
-import com.meta.api2.vo.ApiVo;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -13,19 +22,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
+import com.google.gson.Gson;
+import com.meta.api2.service.ApiService;
+import com.meta.api2.vo.ApiVo;
+import com.meta.stock.service.StockService;
 
 @Controller
 public class ApiController {
 
 	@Autowired
 	private ApiService apiService;
+	@Autowired
+	private StockService stockService;
 
 	@RequestMapping("api/insert/book/{no}")
 	public void main(@PathVariable int no) {
@@ -83,6 +91,7 @@ public class ApiController {
 				}finally{
 					index++;
 					apiService.insert(apiVo);
+					stockService.initializeStock(apiVo.getBook_no());
 				}
 
 			

@@ -11,9 +11,9 @@
 
 	<!-- 2. 책 1개 디테일 정보 보기 -->
 	<select id="detailBookInfo" resultType="com.meta.book.vo.BookVO">
-		SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, th_image, cate_no
-		from book
-		where book_no = #{book_no}
+		SELECT book.book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, th_image, cate_no,stock
+		from book,stock
+		where book.book_no = #{book_no} AND book.book_no = stock.book_no
 	</select>
 
 	<!-- 3. 책 정보 지우기 -->

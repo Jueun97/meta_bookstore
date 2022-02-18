@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <sec:authorize access="isAuthenticated()">
 	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
 	<sec:authentication property="principal" var="principal" />
@@ -33,8 +33,11 @@
 	rel="stylesheet">
 
 <!-- CSS Implementing Plugins -->
+<link rel="stylesheet" href="/vendor/font-awesome-free/css/all.css">
 <link rel="stylesheet"
-	href="/vendor/font-awesome/css/fontawesome-all.min.css">
+	href="/vendor/font-awesome-free/css/fontawesome.css">
+<link rel="stylesheet" href="/vendor/font-awesome-free/css/solid.css">
+
 <link rel="stylesheet" href="/vendor/flaticon/font/flaticon.css">
 <link rel="stylesheet" href="/vendor/animate.css/animate.css">
 <link rel="stylesheet"
@@ -301,6 +304,8 @@
 					<div class="pt-2 book_div_start">
 					<!-- 여기서부터 바꾸기 -->
 						<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6">
+					<div class="pt-2">
+						<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6 ">
 							<c:forEach items="${bookList}" var="bookVo">
 								<div class="col">
 									<div class="mb-5 products">
@@ -309,18 +314,19 @@
 												<div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
 													<div class="woocommerce-loop-product__thumbnail">
 														<a href="/book/detail/${bookVo.book_no}" class="d-block">
-														<c:choose>
-															<c:when test="${fn:substring(bookVo.image, 0, 5) eq 'https'}">
-																<img src="${bookVo.image}"
-																class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-																alt="image-description">
-															</c:when>
-															<c:otherwise>
-																<img src="/image/${bookVo.image}"
-																	 class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-																	 alt="image-description">
-															</c:otherwise>
-														</c:choose>
+															<c:choose>
+																<c:when
+																	test="${fn:substring(bookVo.image, 0, 5) eq 'https'}">
+																	<img src="${bookVo.image}"
+																		class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
+																		alt="image-description">
+																</c:when>
+																<c:otherwise>
+																	<img src="/image/${bookVo.image}"
+																		class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
+																		alt="image-description">
+																</c:otherwise>
+															</c:choose>
 														</a>
 													</div>
 													<div
@@ -339,9 +345,8 @@
 															<span class="woocommerce-Price-amount amount"><span
 																class="woocommerce-Price-currencySymbol">₩</span>${bookVo.price}</span>
 														</div>
-												
+
 													</div>
-													
 													<div class="product__hover d-flex align-items-center">
 														<span class="product__add-to-cart-text" onClick="addToCart(${bookVo.book_no},${bookVo.price})">ADD TO CART</span>
 													</div>
@@ -356,6 +361,8 @@
 				</div>
 			</div>
 		</div>
+		</div>
+	</div>
 	</section>
 
 
