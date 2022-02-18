@@ -31,6 +31,10 @@
 		#{total_price})
 
 	</insert>
+	
+	<update id="setOrderCount">
+		UPDATE orders SET order_count=#{order_count} where order_no=#{order_no}
+	</update>
 
 	<select id="getOrderList" resultType="com.meta.order.vo.OrderVO">
 		SELECT order_no, m_no,

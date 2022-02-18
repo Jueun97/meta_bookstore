@@ -117,55 +117,79 @@
 															</div>
 														</td>
 
-														<td class="product-price" data-title="Price"
-															><span
-															class="woocommerce-Price-amount amount" style="width: max-content;"><fmt:formatNumber
+														<td class="product-price" data-title="Price"><span
+															class="woocommerce-Price-amount amount"
+															style="width: max-content;"><fmt:formatNumber
 																	value="${cart.price}" pattern="###,###"></fmt:formatNumber>원</span></td>
 
 														<td class="product-quantity" data-title="Quantity">
 															<div class="quantity d-flex align-items-center">
 																<!-- Quantity -->
-																<div class="border px-3 width-120">
-																	<div class="js-quantity">
-																		<div class="d-flex align-items-center">
-																			<label class="screen-reader-text sr-only">Quantity</label>
-																			<a class="js-minus text-dark" href="javascript:;">
-																				<svg xmlns="http://www.w3.org/2000/svg"
-																					xmlns:xlink="http://www.w3.org/1999/xlink"
-																					width="10px" height="1px">
+																<div class="border px-3 width-120 text-center">
+																	<c:choose>
+																		<c:when test="${cart.stock != 0 }">
+																			<div class="js-quantity">
+
+																				<div class="d-flex align-items-center">
+																					<label class="screen-reader-text sr-only">Quantity</label>
+																					<a class="js-minus text-dark" href="javascript:;">
+																						<svg xmlns="http://www.w3.org/2000/svg"
+																							xmlns:xlink="http://www.w3.org/1999/xlink"
+																							width="10px" height="1px">
                                                                                 <path
-																						fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																						d="M-0.000,-0.000 L10.000,-0.000 L10.000,1.000 L-0.000,1.000 L-0.000,-0.000 Z" />
+																								fill-rule="evenodd" fill="rgb(22, 22, 25)"
+																								d="M-0.000,-0.000 L10.000,-0.000 L10.000,1.000 L-0.000,1.000 L-0.000,-0.000 Z" />
                                                                             </svg>
-																			</a> <input type="number"
-																				class="input-text qty text js-result form-control text-center border-0"
-																				step="1" min="1" max="100" name="quantity"
-																				value="${cart.cart_book_qt}" title="Qty"
-																				data-book_no="${cart.book_no}"
-																				data-m_no="${cart.m_no}" data-price="${cart.price}"
-																				data-cart_no="${cart.cart_no}"> <a
-																				class="js-plus text-dark" href="javascript:;"> <svg
-																					xmlns="http://www.w3.org/2000/svg"
-																					xmlns:xlink="http://www.w3.org/1999/xlink"
-																					width="10px" height="10px">
+																					</a> <input type="number"
+																						class="input-text qty text js-result form-control text-center border-0"
+																						step="1" min="1" max="${cart.stock}"
+																						name="quantity" value="${cart.cart_book_qt}"
+																						title="Qty" data-action="cart"
+																						data-book_no="${cart.book_no}"
+																						data-m_no="${cart.m_no}"
+																						data-price="${cart.price}"
+																						data-cart_no="${cart.cart_no}"> <a
+																						class="js-plus text-dark" href="javascript:;">
+																						<svg xmlns="http://www.w3.org/2000/svg"
+																							xmlns:xlink="http://www.w3.org/1999/xlink"
+																							width="10px" height="10px">
                                                                                 <path
-																						fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																						d="M10.000,5.000 L6.000,5.000 L6.000,10.000 L5.000,10.000 L5.000,5.000 L-0.000,5.000 L-0.000,4.000 L5.000,4.000 L5.000,-0.000 L6.000,-0.000 L6.000,4.000 L10.000,4.000 L10.000,5.000 Z" />
+																								fill-rule="evenodd" fill="rgb(22, 22, 25)"
+																								d="M10.000,5.000 L6.000,5.000 L6.000,10.000 L5.000,10.000 L5.000,5.000 L-0.000,5.000 L-0.000,4.000 L5.000,4.000 L5.000,-0.000 L6.000,-0.000 L6.000,4.000 L10.000,4.000 L10.000,5.000 Z" />
                                                                             </svg>
-																			</a>
-																		</div>
-																	</div>
+																					</a>
+																				</div>
+																			</div>
+																		</c:when>
+																		<c:otherwise>
+																			<span style="color:red"> 품절</span>
+																		</c:otherwise>
+																	</c:choose>
+																	<!-- End Quantity -->
+
 																</div>
-																<!-- End Quantity -->
 															</div>
 														</td>
 
-														<td class="product-subtotal" data-title="Total" ><span
-															class="woocommerce-Price-amount amount" style="width: max-content;"><fmt:formatNumber
+														<td class="product-subtotal" data-title="Total"><span
+															class="woocommerce-Price-amount amount"
+															style="width: max-content;"><fmt:formatNumber
 																	value="${cart.cart_total_price}" pattern="###,###"></fmt:formatNumber>원</span></td>
-														<td class="product-remove"><input type="checkbox"
+														<td class="product-remove">
+														<c:choose>
+														<c:when test="${cart.stock !=0 }">
+														<input type="checkbox"
 															class="cart-checkbox" data-cart_no="${cart.cart_no}"
-															checked> <svg class="product-remove-icon"
+															checked> 
+														</c:when>
+														<c:otherwise>
+														<input type="checkbox"
+															class="cart-checkbox" data-cart_no="${cart.cart_no}" disabled
+															> 
+														</c:otherwise>
+														</c:choose>
+														
+															<svg class="product-remove-icon"
 																data-cart_no="${cart.cart_no}"
 																xmlns="http://www.w3.org/2000/svg"
 																xmlns:xlink="http://www.w3.org/1999/xlink" width="15px"
@@ -232,9 +256,8 @@
 												<th>Subtotal</th>
 												<td data-title="Subtotal"><span
 													class="woocommerce-Price-amount amount"><span
-														class="woocommerce-Price-currencySymbol"></span>
-													<fmt:formatNumber value="${subTotalPrice}"
-															pattern="###,###"></fmt:formatNumber>원</span></td>
+														class="woocommerce-Price-currencySymbol"></span> <fmt:formatNumber
+															value="${subTotalPrice}" pattern="###,###"></fmt:formatNumber>원</span></td>
 											</tr>
 
 											<tr class="order-shipping">
@@ -254,9 +277,9 @@
 											<th>Total</th>
 											<td data-title="Total"><strong><span
 													class="woocommerce-Price-amount amount"><span
-														class="woocommerce-Price-currencySymbol"></span>
-													<fmt:formatNumber value="${subTotalPrice}"
-															pattern="###,###"></fmt:formatNumber>원 </span></strong></td>
+														class="woocommerce-Price-currencySymbol"></span> <fmt:formatNumber
+															value="${subTotalPrice}" pattern="###,###"></fmt:formatNumber>원
+												</span></strong></td>
 										</tr>
 									</tbody>
 								</table>

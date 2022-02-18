@@ -50,45 +50,57 @@ function addToCart(book_no, price) {
 }
 
 $('.js-result').on('click', function() {
+	if ($(this).data('action') === 'cart') {
+		var quantity = $(this).val();
+		var total_price = $(this).data('price') * quantity;
+		var data = {
+			cart_no: $(this).data('cart_no'),
+			book_no: $(this).data('book_no'),
+			cart_book_qt: quantity,
+			m_no: $(this).data('m_no'),
+			cart_total_price: total_price
+		};
+		console.log(data);
 
-	var quantity = $(this).val();
-	var total_price = $(this).data('price') * quantity;
-	var data = {
-		cart_no: $(this).data('cart_no'),
-		book_no: $(this).data('book_no'),
-		cart_book_qt: quantity,
-		m_no: $(this).data('m_no'),
-		cart_total_price: total_price
-	};
-	console.log(data);
+		$container = $(this).closest('td').parent()
+			.find('.product-subtotal')
+			.find('.woocommerce-Price-amount');
+		$checkbox = $(this).closest('td').parent().find('.cart-checkbox');
+		console.log(">>>", $(this).closest('td').parent().find('.cart-checkbox').is(':checked'));
+		$subTotalContainer = $('#cartAccordion').find('.woocommerce-Price-amount');
 
-	$container = $(this).closest('td').parent()
-		.find('.product-subtotal')
-		.find('.woocommerce-Price-amount');
-	$checkbox = $(this).closest('td').parent().find('.cart-checkbox');
-	console.log(">>>", $(this).closest('td').parent().find('.cart-checkbox').is(':checked'));
-	$subTotalContainer = $('#cartAccordion').find('.woocommerce-Price-amount');
+		$.ajax({
+			url: '/cart/modify/quantity',
+			type: 'post',
+			data: data,
+			dataType: 'json',
+			success: function(modifiedData) {
+				console.log(modifiedData);
+				var total_price = modifiedData['cart_total_price'];
+				var sub_total_price = modifiedData['sub_total_price'];
+				var regexp = /\B(?=(\d{3})+(?!\d))/g;
 
-	$.ajax({
-		url: '/cart/modify/quantity',
-		type: 'post',
-		data: data,
-		dataType: 'json',
-		success: function(modifiedData) {
-			console.log(modifiedData);
-			var total_price = modifiedData['cart_total_price'];
-			var sub_total_price = modifiedData['sub_total_price'];
-			var regexp = /\B(?=(\d{3})+(?!\d))/g;
+				if ($checkbox.is(':checked')) {
+					$subTotalContainer.html(`${sub_total_price.toString().replace(regexp, ',')}원 `)
+				}
 
-			if ($checkbox.is(':checked')) {
-				$subTotalContainer.html(`<span class="woocommerce-Price-currencySymbol">₩</span>${sub_total_price.toString().replace(regexp, ',')}`)
+				$container.html(`${total_price.toString().replace(regexp, ',')}원`);
+
 			}
 
-			$container.html(`<span class="woocommerce-Price-currencySymbol">₩</span>${total_price.toString().replace(regexp, ',')}</span>`);
+		})
+	} else {
+		var quantity = $(this).val();
+		var price = $('.amount-for-checkout').data('price');
+		var total_price = price * quantity;
+		var regexp = /\B(?=(\d{3})+(?!\d))/g;
+		$('.amount-for-checkout').html(
+			`[ 주문금액 : ${total_price.toString().replace(regexp, ',')}원 ]`
+		)
+	
+	
+	}
 
-		}
-
-	})
 })
 
 $('.product-remove-icon').on('click', function() {
@@ -162,7 +174,7 @@ $('.delete_cart-all').on('click', function() {
 		data: { data: JSON.stringify(data) },
 		dataType: 'json',
 		success: function(sub_total_price) {
-			$subTotalContainer.html(`<span class="woocommerce-Price-currencySymbol" >₩</span>${0}`);
+			$subTotalContainer.html(`${0}원`);
 			$('.cart-count').data('cart', $('.cart-count').data('cart') - data.length)
 			$('.cart-count').text(`Your cart:
 					${$('.cart-count').data('cart')} items`);
@@ -201,7 +213,7 @@ $('.cart-checkbox-all').change(function() {
 		data: { data: JSON.stringify(data) },
 		dataType: 'json',
 		success: function(sub_total_price) {
-			$subTotalContainer.html(`<span class="woocommerce-Price-currencySymbol" >₩</span>${sub_total_price.toString().replace(regexp, ',')}`)
+			$subTotalContainer.html(`${sub_total_price.toString().replace(regexp, ',')}원`)
 		}
 
 
@@ -231,7 +243,7 @@ $('.cart-checkbox').change(function() {
 		data: { data: JSON.stringify(data) },
 		dataType: 'json',
 		success: function(sub_total_price) {
-			$subTotalContainer.html(`<span class="woocommerce-Price-currencySymbol" >₩</span>${sub_total_price.toString().replace(regexp, ',')}`)
+			$subTotalContainer.html(`${sub_total_price.toString().replace(regexp, ',')}원`)
 		}
 
 
