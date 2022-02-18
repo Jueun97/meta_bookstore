@@ -26,7 +26,7 @@ public class MainController {
 	
 	//메인화면 폼 
 	@GetMapping("main")
-	public String main(Model model,String cate_no) {
+	public String main(Model model,String cate_no,@ModelAttribute BookPageObject bookPageObject) {
 		model.addAttribute("bookList",service.selectMainBookList());
 		log.warn("cate_no : " + cate_no);
 		return "main/main";
