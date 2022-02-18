@@ -1,11 +1,10 @@
 package com.meta.order.mapper;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
-
 import com.meta.order.vo.OrderItemsVO;
 import com.meta.order.vo.OrderVO;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface OrderMapper {
@@ -16,4 +15,7 @@ public interface OrderMapper {
 	public List<OrderVO> getOrderList(long m_no);
 	public int deleteOrder(String order_no);
 	public int updateOrderInfo(OrderVO orderVo);
+
+	//-----------------------------------------관리자----------------------------------------------
+	public List<OrderVO> orderList();
 }

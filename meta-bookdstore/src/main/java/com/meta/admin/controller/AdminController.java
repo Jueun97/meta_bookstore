@@ -5,6 +5,7 @@ import com.meta.book.vo.BookVO;
 import com.meta.member.dto.MemberUpdateAdminDto;
 import com.meta.member.service.MemberService;
 import com.meta.member.vo.MemberVO;
+import com.meta.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class AdminController {
 
 	@Autowired
 	private MemberService memberService;
+
+	@Autowired
+	private OrderService orderService;
 
 	//파일 경로.
 	@Value("${file.path}")
@@ -293,5 +297,19 @@ public class AdminController {
 		log.info("회원 삭제가 " + check + "건 완료되었습니다.");
 
 		return "redirect:/admin/member";
+	}
+
+	//////////////////////////////////////////////////////////////////////
+	//>> Order 관리
+	//////////////////////////////////////////////////////////////////////
+
+	//주문 리스트 조회
+	@GetMapping("order")
+	public String orderList(Model model){
+		System.out.println(">>> "+this.getClass()+ " 호출됨!");
+
+		model.addAttribute("orderInfo", orderService.orderList());
+
+		return "/admin/order/orderList";
 	}
 }

@@ -326,8 +326,7 @@
 													<div class="product__hover d-flex align-items-center">
 													
 														<span class="product__add-to-cart" onClick="addToCart(${bookVo.book_no},${bookVo.price})">ADD TO CART</span> <span
-															class="product__add-to-cart-icon font-size-4"><i
-															class="flaticon-icon-126515"></i></span>
+															class="product__add-to-cart-icon font-size-4"></span>
 															 
 													</div>
 												</div>

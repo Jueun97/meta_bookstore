@@ -1,13 +1,12 @@
 package com.meta.order.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.meta.order.mapper.OrderMapper;
 import com.meta.order.vo.OrderItemsVO;
 import com.meta.order.vo.OrderVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OrderService {
@@ -38,5 +37,10 @@ public class OrderService {
 	}
 	public int updateOrderInfo(OrderVO orderVo) {
 		return mapper.updateOrderInfo(orderVo);
+	}
+
+	//------------------------------------------관리자---------------------------------------------------
+	public List<OrderVO> orderList(){
+		return mapper.orderList();
 	}
 }
