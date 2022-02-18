@@ -15,6 +15,13 @@
 
     <title>Meta-Book Admin</title>
 
+    <!-- table관련 hover이벤트 -->
+    <style>
+        table#trHover tr:hover{
+            background-color: #b8f1fb;
+        }
+    </style>
+
     <!-- Custom fonts for this template -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -80,7 +87,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/admin/order">
                 <i class="fas fa-fw fa-table"></i>
                 <span>주문 관리</span></a>
         </li>
@@ -302,7 +309,6 @@
                             </a>
                         </div>
                     </li>
-
                 </ul>
 
             </nav>
@@ -312,8 +318,46 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Main Page</h1>
-                <p class="mb-4">메인 페이지입니다. 추후 관리요망. </p>
+                <h1 class="h3 mb-2 text-gray-800">주문 관리</h1>
+                <p class="mb-4"회원들의 주문 정보들을 조회 및 관리할 수 있는 페이지입니다. 이 곳에 있는 기능을 통해 관리를 진행해주세요. </p>
+
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <!-- 혹시모를 추가 기능을 위한 버튼 남겨놓기
+                            <button type="button" class="btn btn-primary" style="float: right; margin-left:50px;" onclick="location.href='/admin/memberRegisterForm' ">회원 등록</button>
+                            -->
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr id="tablehover">
+                                    <th>주문번호</th>
+                                    <th>이름</th>
+                                    <th>주소</th>
+                                    <th>주문날짜</th>
+                                    <th>가격</th>
+                                    <th>배송상태</th>
+                                    <th>setting</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${orderInfo}" var = "info">
+                                    <tr id="trHover">
+                                        <td><a href="#" style="color: #858796;">${info.order_no}</a></td>
+                                        <td>${info.receiver_name}</td>
+                                        <td>${info.receiver_roadAddress}</td>
+                                        <td>${info.order_date}</td>
+                                        <td>${info.order_price}</td>
+                                        <td>${info.status}</td>
+                                        <td><a href="#">삭제</a></td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <!-- /.container-fluid -->

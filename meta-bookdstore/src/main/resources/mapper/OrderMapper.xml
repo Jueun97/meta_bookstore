@@ -88,7 +88,7 @@
 			       receiver_otheraddress,
 			       receiver_phone,
 			       receiver_name,
-			       to_char(order_date, 'YYYY-MM-DD'),
+			       to_char(order_date, 'YYYY-MM-DD') as order_date,
 			       order_count,
 			       order_price,
 			       os.status

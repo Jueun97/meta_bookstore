@@ -87,7 +87,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/admin/order">
                 <i class="fas fa-fw fa-table"></i>
                 <span>주문 관리</span></a>
         </li>
