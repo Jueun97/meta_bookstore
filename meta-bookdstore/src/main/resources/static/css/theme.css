@@ -22451,19 +22451,19 @@ h1.text-white > a, h2.text-white > a, h3.text-white > a, h4.text-white > a, h5.t
   margin-left: -1px;
 }
 
-.product__add-to-cart {
+.product__add-to-cart-text {
   position: relative;
   display: none;
   cursor:pointer;
 }
 
 @media (min-width: 1200px) {
-  .product__add-to-cart {
+  .product__add-to-cart-text {
     display: block;
   }
 }
 
-.product__add-to-cart::after {
+.product__add-to-cart-text::after {
   content: "";
   position: absolute;
   bottom: -4px;
@@ -22476,7 +22476,7 @@ h1.text-white > a, h2.text-white > a, h3.text-white > a, h4.text-white > a, h5.t
   transition: all 0.2s ease-in-out;
 }
 
-.product__add-to-cart:hover::after {
+.product__add-to-cart-text:hover::after {
   width: 100%;
   opacity: 1;
 }

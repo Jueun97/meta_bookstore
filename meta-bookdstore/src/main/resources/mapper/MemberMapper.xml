@@ -59,4 +59,46 @@
   		SELECT id FROM member 
   		WHERE id = #{id}
   	</select>
+
+	<!-- 관리자 -->
+	<!-- 1. 회원 리스트 -->
+	<select id="memberList" resultType="com.meta.member.vo.MemberVO">
+		<![CDATA[
+			select m_no, id, password, name, zipcode, roadAddress, otherAddress, phone, email, grade, TO_CHAR(regDate, 'YYYY-MM-DD') as regDate
+			from member
+			order by m_no desc
+		]]>
+	</select>
+
+	<!-- 2. 회원 한명의 정보 -->
+	<select id="memberDetailInfo" resultType="com.meta.member.vo.MemberVO">
+		<![CDATA[
+		select *
+		from member
+		where m_no = #{m_no}
+		]]>
+	</select>
+
+	<update id="memberUpdate">
+		<![CDATA[
+			UPDATE member
+			SET
+			    name = #{name},
+				password = #{newpassword},
+				phone = #{phone},
+				email = #{email},
+				zipcode = #{zipcode},
+				roadAddress = #{roadAddress},
+				otherAddress = #{otherAddress},
+				grade = #{grade}
+			WHERE m_no = #{m_no}
+		]]>
+	</update>
+
+	<delete id="memberDelete">
+		<![CDATA[
+			delete from member
+			where m_no = #{m_no}
+		]]>
+	</delete>
   </mapper>

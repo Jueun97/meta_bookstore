@@ -66,7 +66,7 @@
 							id="pills-tab">
 							<li class="nav-item mx-0"><a
 								class="nav-link d-flex align-items-center px-0"
-								id="pills-two-example1-tab" href="/member/myorder" role="tab"
+								id="pills-two-example1-tab" href="/order/myorder" role="tab"
 								aria-controls="pills-two-example1" aria-selected="false"> <span
 									class="font-weight-normal text-gray-600">Orders</span>
 							</a></li>

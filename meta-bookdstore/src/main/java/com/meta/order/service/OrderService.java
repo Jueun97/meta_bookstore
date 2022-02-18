@@ -28,4 +28,15 @@ public class OrderService {
 	public OrderVO getOrderInfo(String order_no) {
 		return mapper.getOrderInfo(order_no);
 	}
+	
+	public List<OrderVO> getOrderList(long m_no){
+		return mapper.getOrderList(m_no);
+	}
+	
+	public int deleteOrder(String order_no) {
+		return mapper.deleteOrder(order_no);
+	}
+	public int updateOrderInfo(OrderVO orderVo) {
+		return mapper.updateOrderInfo(orderVo);
+	}
 }
