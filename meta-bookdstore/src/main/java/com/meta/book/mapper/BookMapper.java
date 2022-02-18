@@ -1,7 +1,10 @@
 package com.meta.book.mapper;
 
 import com.meta.book.vo.BookVO;
+
 import com.meta.book.vo.CateVO;
+import com.meta.util.BookPageObject;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -24,7 +27,8 @@ public interface BookMapper {
 	
 	//-------------------민기작성----------------------------------
 	public List<BookVO> selectBookList(String cate_no);
-	public List<BookVO> userBookList(String cate_no);
-	
+	public List<BookVO> userBookList(BookPageObject bookPageObject);
+	//페이징처리 위한 책 갯수 구하기
+	public Long getTotalRow(BookPageObject pageObject);
 }
 

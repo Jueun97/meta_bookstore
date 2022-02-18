@@ -226,7 +226,7 @@
 				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="130">
 					<a class="nav-link font-weight-medium nav-link-caret"
 						id="pills-four-example2-tab" 
-						href="#" role="tab"
+						href="/book/list?cate_no=130" role="tab"
 						aria-controls="pills-four-example2" aria-selected="true">
 							<div class="text-center">
 								<figure class="d-md-block mb-0 text-carolina">

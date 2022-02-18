@@ -188,20 +188,21 @@
 					</div>
 					<div
 						class="site-search ml-xl-0 ml-md-auto w-r-100 flex-grow-1 mr-md-5 mt-2 mt-md-0 py-2 py-md-0">
-						<form class="form-inline my-2 my-xl-0">
+						<form class="form-inline my-2 my-xl-0" action="/book/list">
+							<!-- 검색을 하면 새로운 페이지인 1페이지로 갈수있게 page=1 -->
+							<input type="hidden" name="page" value="1"/> 
+	  						<input type="hidden" name="perPageNum" value="${bookPageObject.perPageNum}"/>
 							<div class="input-group input-group-borderless w-100">
-								<input type="text"
+								<input type="text" name="word" value="${bookPageObject.word}"
 									class="form-control rounded-left-1 px-3 border-right"
 									placeholder="Search for books by keyword"
 									aria-label="Amount (to the nearest dollar)">
 								<div class="input-group-append ml-0">
-									<select
+									<select name="key"
 										class="d-none d-lg-block custom-select pr-7 pl-4 rounded-0 shadow-none border-0 text-dark"
 										id="inputGroupSelect01">
-										<option selected>All Categories</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
+										<option selected="selected" value="t" ${(bookPageObject.key == "t")?"selected":""}>Title</option>
+										<option value="a" ${(bookPageObject.key == "a")?"selected":""}>Author</option>
 									</select>
 									<button class="btn btn-primary-yellow px-3 py-2" type="submit">
 										<i class="mx-1 glph-icon flaticon-loupe text-dark"></i>

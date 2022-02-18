@@ -4,7 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@taglib prefix="pageObject" tagdir="/WEB-INF/tags" %>
 <sec:authorize access="isAuthenticated()">
 	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
 	<sec:authentication property="principal" var="principal" />
@@ -886,10 +885,84 @@
 								</ul>
 							</c:if>
 						</div>
-						<!-- pageNation -->
-						테스트 : ${pageObject}
-						<pageObject:pageNav listURI="/book/list"></pageObject:pageNav>
-					</div>
+						테스트 : ${bookPageObject} <br><hr>
+<!-- pageNation -->
+<nav aria-label="Page navigation example">
+	<ul 
+		class="pagination pagination__custom justify-content-md-center flex-nowrap flex-md-wrap overflow-auto overflow-md-visble">
+		<li class="flex-shrink-0 flex-md-shrink-1 page-item" data-page="${bookPageObject.startPage-1}">
+			<!-- ◀에 해당되는 Previous기능 -->
+			<c:if test="${bookPageObject.startPage>1}">
+				<c:if test="${!empty bookPageObject.cate_no}">
+					<a class="page-link" href="/book/list?cate_no=${bookPageObject.cate_no}&page=${bookPageObject.startPage-1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }">
+						Previous
+					</a>
+				</c:if>
+				<c:if test="${empty bookPageObject.cate_no}">
+					<a class="page-link" href="/book/list?page=${bookPageObject.startPage-1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }">
+						Previous
+					</a>
+				</c:if>
+			</c:if>
+			<c:if test="${bookPageObject.startPage==1}">
+				<a href="" onclick="return false" class="page-link">
+					Previous
+				</a>
+			</c:if>
+		</li>
+		<!-- c:forEach : 숫자부분 -->
+		<c:forEach begin="${bookPageObject.startPage}" end="${bookPageObject.endPage}" var="cnt">
+			<li ${(bookPageObject.page==cnt)?"class=\"flex-shrink-0 flex-md-shrink-1 page-item active\" aria-current=\"page\" ":"flex-shrink-0 flex-md-shrink-1 page-item"} 
+					data-page="${cnt}">
+					<!-- 페이지와 cnt가 같으면 링크가 없음 -->
+					<c:if test="${bookPageObject.page==cnt}">
+						<a href="" onclick="return false" class="page-link">${cnt}</a>
+					</c:if>
+					<!--페이지와 cnt가 같지않으면 링크가 있음--> 
+					<c:if test="${bookPageObject.page!=cnt}">
+						<!-- 카테고리 번호가 있을경우 -->
+						<c:if test="${!empty bookPageObject.cate_no}">
+							<a
+								href="/book/list?cate_no=${bookPageObject.cate_no}?page=${cnt}&perPageNum=${bookPageObject.perPageNum}${query}"
+								class="page-link"> ${cnt} </a>
+						</c:if>
+						<!-- 카테고리 번호가 없을 경우 -->
+						<c:if test="${empty bookPageObject.cate_no}">
+							<a
+								href="/book/list?page=${cnt}&perPageNum=${bookPageObject.perPageNum}${query}"
+								class="page-link"> ${cnt} </a>
+						</c:if>
+					</c:if>
+			</li>
+		</c:forEach>
+		<!-- ▶부분 -->
+		<c:if test="${bookPageObject.endPage<bookPageObject.totalPage}">
+			<li data-page="${bookPageObject.endPage+1}">
+				<!-- 카테고리 번호가 있을경우 -->
+				<c:if test="${!empty bookPageObject.cate_no}">
+					<a
+						href="/book/list?cate_no=${bookPageObject.cate_no}&page=${bookPageObject.endPage+1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
+						class="page-link"> Next </a>
+				</c:if>
+				<!-- 카테고리 번호가 없을 경우 -->
+				<c:if test="${empty bookPageObject.cate_no}">
+					<a
+						href="/book/list?page=${bookPageObject.endPage+1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
+						class="page-link"> Next </a>
+				</c:if>
+			</li>
+		</c:if>
+		<c:if test="${bookPageObject.endPage==bookPageObject.totalPage}">
+			<li data-page="${bookPageObject.endPage+1}">
+				<a href="" onclick="return false" class="page-link">
+					Next
+				</a>
+			</li>
+		</c:if>
+	</ul>
+</nav>
+<!-- end PageNation -->
+				</div>
 					<div id="secondary" class="sidebar widget-area order-1"
 						role="complementary"></div>
 				</div>

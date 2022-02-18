@@ -2,7 +2,7 @@ package com.meta.util;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class PageObject {
+public class BookPageObject {
 	// 현재 페이지를 DB에서 가져 올때 필요한 정보
 		private long page; // 현재 페이지
 		private long perPageNum; // 페이지당 보여지는 글의 갯수
@@ -28,8 +28,10 @@ public class PageObject {
 		private String accepter;
 		// 보여 줄 메시지 모드 : 1 - 받은 메시지, 2 - 보낸 메시지, 3 - 모든 메시지
 		private int acceptMode = 1;
+		//책별 카테고리번호
+		private String cate_no;
 		
-		public PageObject(long page, long perPageNum) {
+		public BookPageObject(long page, long perPageNum) {
 			this.page = page;
 			this.perPageNum = perPageNum;
 			// 시작 줄번호와 끝 줄번호 계산
@@ -43,7 +45,7 @@ public class PageObject {
 		}
 		
 		// Spring에서는 파라메터 값을 전달 받을때 기본 생성자와 setter()를 이용해서 데이터를 전달 받는다.
-		public PageObject() {
+		public BookPageObject() {
 			// 처음 리스트로 들어올 때는 데이터가 안 넘어 오므로 초기값을 1페이지에
 			// 한페이당 10개의 글을 보이도록 셋팅한다.
 			this.page = 1;
@@ -60,11 +62,11 @@ public class PageObject {
 		}
 		
 		// 객체로 만들어 주는 메서드 -> 웹프로젝트의  request 객체를 이용해서
-		public static PageObject getInstance(HttpServletRequest request) throws Exception {
+		public static BookPageObject getInstance(HttpServletRequest request) throws Exception {
 
 			// 페이지 처리를 위한 프로그램
 			// 페이지 처리를 위한 객체 사용
-			PageObject pageObject = new PageObject();
+			BookPageObject pageObject = new BookPageObject();
 			// 페이지에 대한 정보를 받는다.
 			// page는 jsp에서 기본객체로 사용하고 있다. -> 페이지의 정보가 담겨져 있다.
 			String strPage = request.getParameter("page");
@@ -86,11 +88,11 @@ public class PageObject {
 		}
 		
 		// 댓글의 페이지 처리를 위한 객체로 만들어 주는 메서드 -> 웹프로젝트의  request 객체를 이용해서
-		public static PageObject getInstance(HttpServletRequest request, String pageName, String perPageNumName) throws Exception {
+		public static BookPageObject getInstance(HttpServletRequest request, String pageName, String perPageNumName) throws Exception {
 			
 			// 페이지 처리를 위한 프로그램
 			// 페이지 처리를 위한 객체 사용
-			PageObject pageObject = new PageObject();
+			BookPageObject pageObject = new BookPageObject();
 			// 페이지에 대한 정보를 받는다.
 			// page는 jsp에서 기본객체로 사용하고 있다. -> 페이지의 정보가 담겨져 있다.
 			String strPage = request.getParameter(pageName);
@@ -113,6 +115,14 @@ public class PageObject {
 			return pageObject;
 		}
 		
+		public String getCate_no() {
+			return cate_no;
+		}
+
+		public void setCate_no(String cate_no) {
+			this.cate_no = cate_no;
+		}
+
 		public long getPage() {
 			return page;
 		}
@@ -221,12 +231,15 @@ public class PageObject {
 		public Long getLimit() {
 			return (page - 1) * perPageNum;
 		}
-		
+
 		@Override
 		public String toString() {
-			return "PageObject [page=" + page + ", perPageNum=" + perPageNum + ", startRow=" + startRow + ", endRow="
-					+ endRow + ", perGroupPageNum=" + perGroupPageNum + ", startPage=" + startPage + ", endPage=" + endPage
-					+ ", totalPage=" + totalPage + ", totalRow=" + totalRow + ", key=" + key + ", word=" + word
-					+ ", period=" + period + ", accepter=" + accepter + ", acceptMode=" + acceptMode + "]";
+			return "BookPageObject [page=" + page + ", perPageNum=" + perPageNum + ", startRow=" + startRow
+					+ ", endRow=" + endRow + ", perGroupPageNum=" + perGroupPageNum + ", startPage=" + startPage
+					+ ", endPage=" + endPage + ", totalPage=" + totalPage + ", totalRow=" + totalRow + ", key=" + key
+					+ ", word=" + word + ", period=" + period + ", accepter=" + accepter + ", acceptMode=" + acceptMode
+					+ ", cate_no=" + cate_no + "]";
 		}
+		
+	
 }

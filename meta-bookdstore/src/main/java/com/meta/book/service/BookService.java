@@ -4,7 +4,11 @@ import com.meta.book.mapper.BookMapper;
 
 import com.meta.book.vo.BookVO;
 import com.meta.book.vo.CateVO;
+import com.meta.util.BookPageObject;
+
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,6 +18,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
+@Log4j2
 public class BookService {
 	
 	private final BookMapper mapper;
@@ -48,15 +53,18 @@ public class BookService {
 	//----------------------------------------------------------
 	
 	//-------------------민기작성----------------------------------
+	//main페이지에서 category별 book리스트 보여주기 (/main 경로)
 	public List<BookVO> bookByCate(String cate_no){
 		List<BookVO> bookByCateList = new ArrayList<BookVO>();
 		bookByCateList = mapper.selectBookList(cate_no);
 		return bookByCateList;
 	}
-	//유저가 접근했을때 List
-	public List<BookVO> userBookList(String cate_no) {
-
-		return mapper.userBookList(cate_no);
+	//유저가 접근했을때 List (/book/list 경로)
+	public List<BookVO> userBookList(BookPageObject bookPageObject) {
+		bookPageObject.setTotalRow(mapper.getTotalRow(bookPageObject));
+		//setTotalRow : startRow와 endRow계산
+		log.info("service 계산 후 bookPageObject : " + bookPageObject);
+		return mapper.userBookList(bookPageObject);
 	}
 
 }

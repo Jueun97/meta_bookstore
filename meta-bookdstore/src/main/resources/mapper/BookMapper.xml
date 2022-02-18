@@ -57,7 +57,7 @@
 		]]>
 	</select>
 	
-	
+	<!-- 민기 작성 : 메인페이지 북리스트(/main/main), (/book/list)의 북리스트 -->
 	<!-- 민기 작성,메인페이지의 카테고리 별 책리스트 select -->	
 	<select id="selectBookList" resultType="com.meta.book.vo.BookVO">
 		SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no
@@ -67,10 +67,19 @@
 	</select>
 	<!-- 민기 작성,/book/list의 카테고리 별 책리스트 select -->	
 	<select id="userBookList" resultType="com.meta.book.vo.BookVO">
-		SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no
-		FROM book
-		<include refid="cate_search"/>
-		ORDER BY book_no
+		SELECT rnum,book_no,title,author,publisher,pubdate,description, price, image, cate_no
+		FROM
+		(
+		     SELECT ROWNUM rnum,book_no,title,author,publisher,pubdate,description, price, image, cate_no
+		     FROM(
+		            SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate
+		            ,description, price, image, cate_no 
+		            FROM book 
+ 					<include refid="cate_search"/>
+		            ORDER BY book_no DESC
+		        )
+		)
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
 	</select>
 	<!-- 카테고리 search WHERE절 -->
 	<!-- cate_no가 없으면 전체 bookList보이게 -->
@@ -79,4 +88,9 @@
 			WHERE cate_no=#{cate_no}
 		</if>
 	</sql>
+	<!-- 책 전체 갯수 구하기 -->
+ 	<select id="getTotalRow" resultType="java.lang.Long">
+ 		SELECT COUNT(*) FROM book
+ 		<include refid="cate_search"/>
+ 	</select>
 </mapper>
