@@ -41,32 +41,32 @@
                                     <ul>
 
                                         <li class="has-submenu">
-                                            <a href="#" data-submenu="art-photo">Fiction</a>
+                                            <a href="/book/list?cate_no=100" data-submenu="art-photo">Fiction</a>
 
                                         </li>
 
                                         <li class="has-submenu">
-                                            <a href="#" data-submenu="biography">Poetry</a>
+                                            <a href="/book/list?cate_no=110" data-submenu="biography">Poetry</a>
                                         </li>
 
                                         <li class="has-submenu">
-                                            <a href="#" data-submenu="children">Humanity</a>
+                                            <a href="/book/list?cate_no=120" data-submenu="children">Humanity</a>
                                         </li>
 
                                         <li class="has-submenu">
-                                            <a href="#" data-submenu="computers">House</a>
+                                            <a href="/book/list?cate_no=130" data-submenu="computers">House</a>
                                         </li>
 
                                         <li class="has-submenu">
-                                            <a href="#" data-submenu="cookbook">Health</a>
+                                            <a href="/book/list?cate_no=140" data-submenu="cookbook">Health</a>
                                         </li>
 
                                         <li class="has-submenu">
-                                            <a href="#" data-submenu="education">Leisure</a>
+                                            <a href="/book/list?cate_no=150" data-submenu="education">Leisure</a>
                                         </li>
 
                                         <li class="has-submenu">
-                                            <a href="#" data-submenu="health">Economy</a>
+                                            <a href="/book/list?cate_no=160" data-submenu="health">Economy</a>
                                         </li>
 
                                     </ul>

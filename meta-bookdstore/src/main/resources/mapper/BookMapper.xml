@@ -58,12 +58,24 @@
 	</select>
 	
 	<!-- 민기 작성 : 메인페이지 북리스트(/main/main), (/book/list)의 북리스트 -->
+	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 	<!-- 민기 작성,메인페이지의 카테고리 별 책리스트 select -->	
-	<select id="selectBookList" resultType="com.meta.book.vo.BookVO">
-		SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no
-		FROM book
-		WHERE cate_no=#{cate_no}
-		ORDER BY book_no
+	<select id="selectMainBookList" resultType="com.meta.book.vo.BookVO">
+		<![CDATA[
+			SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no
+			FROM book
+			WHERE ROWNUM<=18
+			ORDER BY book_no
+		]]>
+	</select>
+	<!-- 민기 작성,메인페이지의 카테고리 별 책리스트 select -->	
+	<select id="selectBookListByCateNo" resultType="com.meta.book.vo.BookVO">
+		<![CDATA[
+			SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no
+			FROM book
+			WHERE cate_no=#{cate_no} AND ROWNUM<=12
+			ORDER BY book_no
+		]]>
 	</select>
 	<!-- 민기 작성,/book/list의 카테고리 별 책리스트 select -->	
 	<select id="userBookList" resultType="com.meta.book.vo.BookVO">
@@ -71,7 +83,8 @@
 		FROM
 		(
 		     SELECT ROWNUM rnum,book_no,title,author,publisher,pubdate,description, price, image, cate_no
-		     FROM(
+		     FROM
+		     	(
 		            SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate
 		            ,description, price, image, cate_no 
 		            FROM book 
@@ -81,12 +94,42 @@
 		)
 		WHERE rnum BETWEEN #{startRow} AND #{endRow}
 	</select>
-	<!-- 카테고리 search WHERE절 -->
+	<!-- 카테고리 번호가 있는지 없는지에 따른 search WHERE절 -->
 	<!-- cate_no가 없으면 전체 bookList보이게 -->
 	<sql id="cate_search">
-		<if test="cate_no!=null and cate_no.toString()!=''">
-			WHERE cate_no=#{cate_no}
-		</if>
+		<choose>
+			<when test="cate_no!=null and cate_no.toString()!=''">
+				WHERE cate_no=#{cate_no}
+				<!-- 검색어가 있다면?? -->
+				<if test="word!=null and word.toString()!=''">
+					AND 1=0
+					<if test="key=='t'.toString()">
+		 				OR title LIKE '%'||#{word}||'%'
+		 			</if>
+		 			<if test="key=='a'.toString()">
+		 				OR AUTHOR LIKE '%'||#{word}||'%'
+		 			</if>
+		 			<if test="key=='p'.toString()">
+		 				OR PUBLISHER LIKE '%'||#{word}||'%'
+		 			</if>
+				</if>
+			</when>
+			<otherwise>
+				<!-- 검색어가 있다면?? -->
+				<if test="word!=null and word.toString()!=''">
+					WHERE 1=0
+					<if test="key=='t'.toString()">
+		 				OR title LIKE '%'||#{word}||'%'
+		 			</if>
+		 			<if test="key=='a'.toString()">
+		 				OR AUTHOR LIKE '%'||#{word}||'%'
+		 			</if>
+		 			<if test="key=='p'.toString()">
+		 				OR PUBLISHER LIKE '%'||#{word}||'%'
+		 			</if>
+				</if>
+			</otherwise>
+		</choose>
 	</sql>
 	<!-- 책 전체 갯수 구하기 -->
  	<select id="getTotalRow" resultType="java.lang.Long">

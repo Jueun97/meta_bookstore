@@ -26,7 +26,8 @@ public interface BookMapper {
 	public List<CateVO> cateList();
 	
 	//-------------------민기작성----------------------------------
-	public List<BookVO> selectBookList(String cate_no);
+	public List<BookVO> selectMainBookList();
+	public List<BookVO> selectBookListByCateNo(String cate_no);
 	public List<BookVO> userBookList(BookPageObject bookPageObject);
 	//페이징처리 위한 책 갯수 구하기
 	public Long getTotalRow(BookPageObject pageObject);

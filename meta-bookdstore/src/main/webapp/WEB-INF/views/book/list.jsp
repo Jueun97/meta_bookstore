@@ -79,14 +79,16 @@
 							<form class="woocommerce-ordering mb-4 m-md-0" method="get">
 								<!-- Select -->
 								<select class="js-select selectpicker dropdown-select orderby"
-									name="orderby"
+									name="orderby" id="sel_cateNo"
 									data-style="border-bottom shadow-none outline-none py-2">
-									<option value="popularity">Sort by popularity</option>
-									<option value="default" selected="selected">Default
-										sorting</option>
-									<option value="date">Sort by newness</option>
-									<option value="price">Sort by price: low to high</option>
-									<option value="price-desc">Sort by price: high to low</option>
+									<option value="" selected="selected">All Books</option>
+									<option value="100" ${(bookPageObject.cate_no == 100)?"selected":"" }>Fiction</option>
+									<option value="110" ${(bookPageObject.cate_no == 110)?"selected":"" }>Poetry</option>
+									<option value="120" ${(bookPageObject.cate_no == 120)?"selected":"" }>Humanity</option>
+									<option value="130" ${(bookPageObject.cate_no == 130)?"selected":"" }>House</option>
+									<option value="140" ${(bookPageObject.cate_no == 140)?"selected":"" }>Health</option>
+									<option value="150" ${(bookPageObject.cate_no == 150)?"selected":"" }>Leisure</option>
+									<option value="160" ${(bookPageObject.cate_no == 160)?"selected":"" }>Economy</option>
 								</select>
 								<!-- End Select -->
 							</form>
@@ -98,12 +100,12 @@
 								<select class="js-select selectpicker dropdown-select orderby"
 									name="orderby"
 									data-style="border-bottom shadow-none outline-none py-2"
-									data-width="fit">
-									<option value="show10">Show 10</option>
-									<option value="show15">Show 15</option>
-									<option value="show20" selected="selected">Show 20</option>
-									<option value="show25">Show 25</option>
-									<option value="show30">Show 30</option>
+									data-width="fit" id="sel_perPageNum">
+									<option value="10" ${(bookPageObject.perPageNum == 10)?"selected":"" }>Show 10</option>
+									<option value="15" ${(bookPageObject.perPageNum == 15)?"selected":"" }>Show 15</option>
+									<option value="20" selected="selected" ${(bookPageObject.perPageNum == 20)?"selected":"" }>Show 20</option>
+									<option value="25" ${(bookPageObject.perPageNum == 25)?"selected":"" }>Show 25</option>
+									<option value="30" ${(bookPageObject.perPageNum == 30)?"selected":"" }>Show 30</option>
 								</select>
 								<!-- End Select -->
 							</form>
@@ -867,12 +869,11 @@
 														</div>
 													</div>
 													<div class="product__hover d-flex align-items-center">
-														<a href="../shop/single-product-v6.html"
-															class="text-uppercase text-dark h-dark font-weight-medium mr-auto"
+														<a class="text-uppercase text-dark h-dark font-weight-medium mr-auto"
 															data-toggle="tooltip" data-placement="right" title=""
 															data-original-title="ADD TO CART"> <span
 															onClick="addToCart(${bookVo.book_no},${bookVo.price})"
-															class="product__add-to-cart">ADD TO CART</span> <span
+															class="product__add-to-cart-text">ADD TO CART</span> <span
 															class="product__add-to-cart-icon font-size-4"><i
 																class="flaticon-icon-126515"></i></span>
 														</a>
@@ -923,13 +924,13 @@
 						<!-- 카테고리 번호가 있을경우 -->
 						<c:if test="${!empty bookPageObject.cate_no}">
 							<a
-								href="/book/list?cate_no=${bookPageObject.cate_no}?page=${cnt}&perPageNum=${bookPageObject.perPageNum}${query}"
+								href="/book/list?cate_no=${bookPageObject.cate_no}&page=${cnt}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
 								class="page-link"> ${cnt} </a>
 						</c:if>
 						<!-- 카테고리 번호가 없을 경우 -->
 						<c:if test="${empty bookPageObject.cate_no}">
 							<a
-								href="/book/list?page=${cnt}&perPageNum=${bookPageObject.perPageNum}${query}"
+								href="/book/list?page=${cnt}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
 								class="page-link"> ${cnt} </a>
 						</c:if>
 					</c:if>
@@ -975,6 +976,20 @@
 		<!-- footer 자리 -->
 		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 		<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
+		<script>
+			$("#sel_perPageNum").change(function(){
+				// 다시 리스트 불러오기 - 전달 정보는 페이지:1, perPageNum을 선택된 값을 전달.
+				location = "/book/list?page=1&perPageNum="+$(this).val();
+			});
+			$("#sel_cateNo").change(function(){
+				console.log("값 변경",$(this).val());
+				if(!$(this).val()){
+					location = "/book/list";
+				}else{
+					location = "/book/list?cate_no="+$(this).val();
+				}
+			});
+		</script>
 </body>
 </html>
 

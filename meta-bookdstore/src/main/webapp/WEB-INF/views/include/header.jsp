@@ -58,10 +58,10 @@
 					</div>
 					<div class="site-navigation mr-auto d-none d-xl-block">
 						<ul class="nav">
-							<li class="nav-item"><a href="#"
+							<li class="nav-item"><a href="/main"
 								class="nav-link link-black-100 mx-3 px-0 py-3 font-weight-medium">Home</a></li>
 
-							<li class="nav-item"><a href="#"
+							<li class="nav-item"><a href="/book/list"
 								class="nav-link link-black-100 mx-3 px-0 py-3 font-weight-medium">Shop</a></li>
 							<li class="nav-item dropdown"><a id="shopDropdownInvoker"
 								href="#"
@@ -75,20 +75,20 @@
 								<ul id="shopDropdownMenu"
 									class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900"
 									aria-labelledby="homeDropdownInvoker">
-									<li><a href=""
+									<li><a href="/book/list?cate_no=100"
 										class="dropdown-item link-black-100">Fiction</a></li>
-									<li><a href=""
+									<li><a href="/book/list?cate_no=110"
 										class="dropdown-item link-black-100">Poetry</a></li>
-									<li><a href=""
+									<li><a href="/book/list?cate_no=120"
 										class="dropdown-item link-black-100">Humanity</a></li>
-									<li><a href=""
+									<li><a href="/book/list?cate_no=130"
 										class="dropdown-item link-black-100">House</a></li>
-									<li><a href=""
+									<li><a href="/book/list?cate_no=140"
 										class="dropdown-item link-black-100">Health</a></li>
-									<li><a href=""
+									<li><a href="/book/list?cate_no=150"
 										class="dropdown-item link-black-100">Leisure</a></li>
-										<li><a href=""
-										class="dropdown-item link-black-100">Economy</a></li>
+									<li><a href="/book/list?cate_no=160"
+									class="dropdown-item link-black-100">Economy</a></li>
 								</ul></li>
 							<li class="nav-item"><a href="#"
 								class="nav-link link-black-100 mx-3 px-0 py-3 font-weight-medium">About
@@ -192,6 +192,7 @@
 							<!-- 검색을 하면 새로운 페이지인 1페이지로 갈수있게 page=1 -->
 							<input type="hidden" name="page" value="1"/> 
 	  						<input type="hidden" name="perPageNum" value="${bookPageObject.perPageNum}"/>
+	  						<input type="hidden" name="cate_no" value="${bookPageObject.cate_no}"/>
 							<div class="input-group input-group-borderless w-100">
 								<input type="text" name="word" value="${bookPageObject.word}"
 									class="form-control rounded-left-1 px-3 border-right"
@@ -203,6 +204,7 @@
 										id="inputGroupSelect01">
 										<option selected="selected" value="t" ${(bookPageObject.key == "t")?"selected":""}>Title</option>
 										<option value="a" ${(bookPageObject.key == "a")?"selected":""}>Author</option>
+										<option value="p" ${(bookPageObject.key == "p")?"selected":""}>Publisher</option>
 									</select>
 									<button class="btn btn-primary-yellow px-3 py-2" type="submit">
 										<i class="mx-1 glph-icon flaticon-loupe text-dark"></i>

@@ -26,10 +26,8 @@ public class MainController {
 	
 	//메인화면 폼 
 	@GetMapping("main")
-	public String main(Model model,String cate_no,@ModelAttribute BookPageObject bookPageObject) {
-		//파라매터에 pageObject 써줌으로써, bookPageObject가 생성되며 생성자 기본값이 셋팅됨
-		//기본값 : BookPageObject [page=1, perPageNum=10, startRow=0, endRow=0 ~~
-		model.addAttribute("bookList",service.list());
+	public String main(Model model,String cate_no) {
+		model.addAttribute("bookList",service.selectMainBookList());
 		log.warn("cate_no : " + cate_no);
 		return "main/main";
 	}
@@ -45,6 +43,6 @@ public class MainController {
 	@GetMapping("/viewMainBook")
 	public List<BookVO> viewMainBook(String cate_no) {
 		log.warn("카테고리 번호 : " + cate_no);
-		return service.bookByCate(cate_no);
+		return service.selectBookListByCateNo(cate_no);
 	}
 }

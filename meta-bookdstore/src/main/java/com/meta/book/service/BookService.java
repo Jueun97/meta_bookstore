@@ -53,10 +53,14 @@ public class BookService {
 	//----------------------------------------------------------
 	
 	//-------------------민기작성----------------------------------
+	//main페이지에서 전체 book리스트 보여주기 (/main 경로)
+	public List<BookVO> selectMainBookList(){
+		return mapper.selectMainBookList();
+	}
 	//main페이지에서 category별 book리스트 보여주기 (/main 경로)
-	public List<BookVO> bookByCate(String cate_no){
+	public List<BookVO> selectBookListByCateNo(String cate_no){
 		List<BookVO> bookByCateList = new ArrayList<BookVO>();
-		bookByCateList = mapper.selectBookList(cate_no);
+		bookByCateList = mapper.selectBookListByCateNo(cate_no);
 		return bookByCateList;
 	}
 	//유저가 접근했을때 List (/book/list 경로)
