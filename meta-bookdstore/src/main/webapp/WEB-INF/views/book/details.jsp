@@ -70,21 +70,23 @@
 										<div class="border-bottom mb-4">
 											<h1 class="product_title entry-title font-size-26 mb-3">${bookInfo.title }</h1>
 											<div class="font-size-2 mb-4">
-												<span class="ml-3 font-weight-medium">By (author)</span> 
-												<span class="ml-2 text-gray-600">${bookInfo.author}</span>
-												<span class="ml-3 font-weight-medium"> | </span>
-												<span class="ml-3">${bookInfo.publisher}</span> 
-												<span class="ml-3 font-weight-medium"> | </span>
-												<span class="ml-3">${bookInfo.pubdate}</span> 
+												<span class="ml-3 font-weight-medium">By (author)</span> <span
+													class="ml-2 text-gray-600">${bookInfo.author}</span> <span
+													class="ml-3 font-weight-medium"> | </span> <span
+													class="ml-3">${bookInfo.publisher}</span> <span
+													class="ml-3 font-weight-medium"> | </span> <span
+													class="ml-3">${bookInfo.pubdate}</span>
 											</div>
 
 										</div>
-										<p class="price font-size-22 font-weight-medium mb-4 d-flex justify-content-between">
+										<p
+											class="price font-size-22 font-weight-medium mb-4 d-flex justify-content-between">
 											<span class="woocommerce-Price-amount amount">가격 : <fmt:formatNumber
 													value="${bookInfo.price}" pattern="###,###"></fmt:formatNumber>원
-											</span>
-											<span class="woocommerce-Price-amount amount-for-checkout" data-price="${bookInfo.price}">[ 주문금액 : <fmt:formatNumber
-													value="${bookInfo.price}" pattern="###,###"></fmt:formatNumber>원 ]
+											</span> <span class="woocommerce-Price-amount amount-for-checkout"
+												data-price="${bookInfo.price}">[ 주문금액 : <fmt:formatNumber
+													value="${bookInfo.price}" pattern="###,###"></fmt:formatNumber>원
+												]
 											</span>
 										</p>
 
@@ -92,48 +94,53 @@
 
 										<div class="cart mb-4 d-md-flex align-items-end" method=""
 											enctype="multipart/form-data">
-
-											<div class="quantity mb-4 mb-md-0">
-												<label class="form-label font-size-2 font-weight-medium">Quantity</label>
-												<!-- Quantity -->
-												<div class="border px-3 w-100 d-flex align-items-center">
-													<div class="js-quantity">
-														<div class="d-flex align-items-center">
-
-															<label class="screen-reader-text sr-only">Quantity</label>
-															<a class="js-minus text-dark" href="javascript:;"> <svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	xmlns:xlink="http://www.w3.org/1999/xlink" width="10px"
-																	height="1px">
+											<c:choose>
+												<c:when test="${bookInfo.stock > 0}">
+													<div class="quantity mb-4 mb-md-0">
+														<label class="form-label font-size-2 font-weight-medium">Quantity</label>
+														<!-- Quantity -->
+														<div class="border px-3 w-100 d-flex align-items-center">
+															<div class="js-quantity">
+																<div class="d-flex align-items-center">
+																	<label class="screen-reader-text sr-only">Quantity</label>
+																	<a class="js-minus text-dark" href="javascript:;">
+																		<svg xmlns="http://www.w3.org/2000/svg"
+																			xmlns:xlink="http://www.w3.org/1999/xlink"
+																			width="10px" height="1px">
                                                                     <path
-																		fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																		d="M-0.000,-0.000 L10.000,-0.000 L10.000,1.000 L-0.000,1.000 L-0.000,-0.000 Z" />
+																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
+																				d="M-0.000,-0.000 L10.000,-0.000 L10.000,1.000 L-0.000,1.000 L-0.000,-0.000 Z" />
                                                                 </svg>
-															</a> <input type="number" id="input-number"
-																class="input-text qty text js-result form-control text-center border-0"
-																step="1" min="1" max="${bookInfo.stock}"
-																	data-action="details"
-																	 name="quantity" value="1"
-																title="Qty"> <a class="js-plus text-dark"
-																href="javascript:;"> <svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	xmlns:xlink="http://www.w3.org/1999/xlink" width="10px"
-																	height="10px">
+																	</a> <input type="number" id="input-number"
+																		class="input-text qty text js-result form-control text-center border-0"
+																		step="1" min="1" max="${bookInfo.stock}"
+																		data-action="details" name="quantity" value="1"
+																		title="Qty"> <a class="js-plus text-dark"
+																		href="javascript:;"> <svg
+																			xmlns="http://www.w3.org/2000/svg"
+																			xmlns:xlink="http://www.w3.org/1999/xlink"
+																			width="10px" height="10px">
                                                                     <path
-																		fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																		d="M10.000,5.000 L6.000,5.000 L6.000,10.000 L5.000,10.000 L5.000,5.000 L-0.000,5.000 L-0.000,4.000 L5.000,4.000 L5.000,-0.000 L6.000,-0.000 L6.000,4.000 L10.000,4.000 L10.000,5.000 Z" />
+																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
+																				d="M10.000,5.000 L6.000,5.000 L6.000,10.000 L5.000,10.000 L5.000,5.000 L-0.000,5.000 L-0.000,4.000 L5.000,4.000 L5.000,-0.000 L6.000,-0.000 L6.000,4.000 L10.000,4.000 L10.000,5.000 Z" />
                                                                 </svg>
-															</a>
+																	</a>
+																</div>
+															</div>
 														</div>
+														<!-- End Quantity -->
 													</div>
-												</div>
-												<!-- End Quantity -->
-											</div>
+													<button name="add-to-cart" value="7145"
+														onClick="addToCart(${bookInfo.book_no},${bookInfo.price})"
+														class="btn btn-block ml-md-3 btn-dark border-0 rounded-0 p-3 single_add_to_cart_button button alt">Add
+														to cart</button>
+												</c:when>
+												<c:otherwise>
+													<button name="add-to-cart" value="7145"
+														class="btn btn-block ml-md-3 btn-dark border-0 rounded-0 p-3 single_add_to_cart_button button alt">품절</button>
+												</c:otherwise>
+											</c:choose>
 
-											<button name="add-to-cart" value="7145"
-												onClick="addToCart(${bookInfo.book_no},${bookInfo.price})"
-												class="btn btn-block ml-md-3 btn-dark border-0 rounded-0 p-3 single_add_to_cart_button button alt">Add
-												to cart</button>
 										</div>
 
 
