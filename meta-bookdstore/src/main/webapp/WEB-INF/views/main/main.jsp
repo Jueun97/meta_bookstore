@@ -48,6 +48,7 @@
 
 <!-- CSS Bookworm Template -->
 <link rel="stylesheet" href="/css/theme.css">
+	<link rel="stylesheet" href="/css/font.css">
 <style>
 figure.mb-0 {
 	display: flex;
