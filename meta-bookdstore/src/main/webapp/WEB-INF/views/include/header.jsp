@@ -190,7 +190,7 @@
 						<form class="form-inline my-2 my-xl-0" action="/book/list">
 							<!-- 검색을 하면 새로운 페이지인 1페이지로 갈수있게 page=1 -->
 							<input type="hidden" name="page" value="1"/> 
-	  						<input type="hidden" name="perPageNum" value="${bookPageObject.perPageNum}"/>
+	  						<input type="hidden" name="perPageNum" value="10"/>
 	  						<input type="hidden" name="cate_no" value="${bookPageObject.cate_no}"/>
 							<div class="input-group input-group-borderless w-100">
 								<input type="text" name="word" value="${bookPageObject.word}"
