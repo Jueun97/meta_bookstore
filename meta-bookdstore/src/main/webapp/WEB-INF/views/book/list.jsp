@@ -53,8 +53,8 @@
 
 	<div class="site-content" id="content">
 		<div class="container">
-			<div class="row">
-				<div id="primary" class="content-area order-2">
+			<div class="row justify-content-center">
+				<div id="primary" class="content-area order-2" style="width: 100%;">
 					<div
 						class="shop-control-bar d-lg-flex justify-content-between align-items-center mt-5 mb-5 text-center text-md-left">
 						<div class="shop-control-bar__left mb-4 m-lg-0">
@@ -94,13 +94,13 @@
 									name="orderby"
 									data-style="border-bottom shadow-none outline-none py-2"
 									data-width="fit" id="sel_perPageNum">
-									<option value="10"
+									<option value="10" selected="selected"
 										${(bookPageObject.perPageNum == 10)?"selected":"" }>Show
 										10</option>
 									<option value="15"
 										${(bookPageObject.perPageNum == 15)?"selected":"" }>Show
 										15</option>
-									<option value="20" selected="selected"
+									<option value="20"
 										${(bookPageObject.perPageNum == 20)?"selected":"" }>Show
 										20</option>
 									<option value="25"
@@ -121,9 +121,7 @@
 							role="tabpanel" aria-labelledby="pills-one-example1-tab">
 							<!--bookList 데이터가 없는 경우 표시 -->
 							<c:if test="${empty bookList}">
-								<tr>
-									<td>데이터가 존재하지 않습니다..</td>
-								</tr>
+								<div style="text-align: center;">데이터가 존재하지 않습니다.</div>
 							</c:if>
 							<!-- DB뿌리기 c:if 시작-->
 							<c:if test="${!empty bookList}">
@@ -157,7 +155,7 @@
 														<!-- 책제목 -->
 														<h2
 															class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark">
-															<a href="../shop/single-product-v6.html">${bookVo.title}</a>
+															<a href="/book/detail/${bookVo.book_no}">${bookVo.title}</a>
 														</h2>
 														<div class="font-size-2  mb-1 text-truncate">
 															<a href="../others/authors-single.html"
