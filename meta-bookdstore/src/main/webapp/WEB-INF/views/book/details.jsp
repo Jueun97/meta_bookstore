@@ -79,8 +79,7 @@
 											</div>
 
 										</div>
-										<p
-											class="price font-size-22 font-weight-medium mb-4 d-flex justify-content-between">
+										<p class="price font-size-22 font-weight-medium mb-4 d-flex justify-content-between">
 											<span class="woocommerce-Price-amount amount">가격 : <fmt:formatNumber
 													value="${bookInfo.price}" pattern="###,###"></fmt:formatNumber>원
 											</span> <span class="woocommerce-Price-amount amount-for-checkout"

@@ -23,4 +23,14 @@ public class StockService {
 	public int removeStockWhenCancelled(StockVO stockVo) {
 		return mapper.removeStockWhenCancelled(stockVo);
 	}
+
+
+	//----------------------------------관리자---------------------------------------
+	public int updateStock(StockVO stockVO){
+		return mapper.updateStock(stockVO);
+	}
+
+	public int insertStock(StockVO stockVO){
+		return mapper.insertStock(stockVO);
+	}
 }
