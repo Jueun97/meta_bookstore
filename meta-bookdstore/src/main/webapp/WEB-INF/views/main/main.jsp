@@ -48,7 +48,19 @@
 
 <!-- CSS Bookworm Template -->
 <link rel="stylesheet" href="/css/theme.css">
-
+<style>
+	figure.mb-0 {
+		display: flex;
+		flex-direction:column;
+		align-items:center;
+	}
+	figure.mb-0 img{
+		width: 50%;
+	}
+	figure.mb-0 span{
+		margin-top:20px;
+	}
+</style>
 </head>
 <body>
 	<!--header자리 -->
@@ -182,98 +194,105 @@
 			<header
 				class="d-md-flex justify-content-between align-items-center mb-5">
 				<h2 class="font-size-7 mb-4 mb-md-0">Featured Categories</h2>
-				<a href="../shop/v3.html" class="d-flex h-primary">All
+				<a href="/book/list" class="d-flex h-primary">All
 					Categories<span class="flaticon-next font-size-3 ml-2"></span>
 				</a>
 			</header>
 
-			<ul
-				class="px-5 nav justify-content-between bg-gray-200 rounded-md pb-2 py-md-3 mb-5 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visible"
+			<ul id="cate_hover"
+				class="px-5 nav justify-content-between bg-gray-200 rounded-md pb-2 py-md-3 mb-5 flex-nowrap  overflow-auto overflow-xl-visible"
 				role="tablist">
-				<li class="nav-item flex-shrink-0 flex-xl-shrink-1"><a
+				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="100"><a
 					class="nav-link font-weight-medium active nav-link-caret"
-					id="pills-one-example2-tab" data-toggle="pill"
-					href="#pills-one-example2" role="tab"
+					id="pills-one-example2-tab" 
+					href="/book/list?cate_no=100" role="tab"
 					aria-controls="pills-one-example2" aria-selected="true">
 						<div class="text-center">
-							<figure class="d-md-block mb-0 text-primary-indigo">
-								<i class="fa-solid fa-book font-size-12"></i>
+							<figure class="mb-0 text-primary-indigo">
+<!-- 								<i class="glyph-icon flaticon-gallery font-size-12"></i> -->
+								<img src="/img/mainImg/100_fiction.png" alt="fiction"/>
+								<span class="tabtext font-size-3 font-weight-medium text-dark">Fiction</span>
 							</figure>
-							<span class="tabtext font-size-3 font-weight-medium text-dark">Arts
-								& Photography</span>
 						</div>
 				</a></li>
-				<li class="nav-item flex-shrink-0 flex-xl-shrink-1"><a
+				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="110"><a
 					class="nav-link font-weight-medium nav-link-caret"
-					id="pills-two-example2-tab" data-toggle="pill"
-					href="#pills-two-example2" role="tab"
+					id="pills-two-example2-tab"
+					href="/book/list?cate_no=110" role="tab"
 					aria-controls="pills-two-example2" aria-selected="true">
 						<div class="text-center">
-							<figure class="d-md-block mb-0 text-tangerine">
-								<i class="glyph-icon flaticon-cook font-size-12"></i>
+							<figure class="mb-0 text-tangerine">
+<!-- 								<i class="glyph-icon flaticon-cook font-size-12"></i> -->
+								<img src="/img/mainImg/110_poetry.png" alt="Poetry"/>
+								<span class="tabtext font-size-3 font-weight-medium text-dark">Poetry</span>
 							</figure>
-							<span class="tabtext font-size-3 font-weight-medium text-dark">Food
-								& Drink</span>
 						</div>
 				</a></li>
-				<li class="nav-item flex-shrink-0 flex-xl-shrink-1"><a
+				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="120"><a
 					class="nav-link font-weight-medium nav-link-caret"
-					id="pills-three-example2-tab" data-toggle="pill"
-					href="#pills-three-example2" role="tab"
+					id="pills-three-example2-tab"
+					href="/book/list?cate_no=120" role="tab"
 					aria-controls="pills-three-example2" aria-selected="true">
 						<div class="text-center">
-							<figure class="d-md-block mb-0 text-chili">
-								<i class="glyph-icon flaticon-like font-size-12"></i>
+							<figure class="mb-0 text-chili">
+<!-- 								<i class="glyph-icon flaticon-like font-size-12"></i> -->
+								<img src="/img/mainImg/120_Humanity.png" alt="Humanity"/>
+								<span class="tabtext font-size-3 font-weight-medium text-dark">Humanity</span>
 							</figure>
-							<span class="tabtext font-size-3 font-weight-medium text-dark">Romance</span>
 						</div>
 				</a></li>
-				<li class="nav-item flex-shrink-0 flex-xl-shrink-1"><a
+				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="130">
+					<a class="nav-link font-weight-medium nav-link-caret"
+						id="pills-four-example2-tab" 
+						href="/book/list?cate_no=130" role="tab"
+						aria-controls="pills-four-example2" aria-selected="true">
+							<div class="text-center">
+								<figure class="mb-0 text-carolina">
+<!-- 									<i class="glyph-icon flaticon-doctor font-size-12"></i> -->
+									<img src="/img/mainImg/130_house.png" alt="house"/>
+									<span class="tabtext font-size-3 font-weight-medium text-dark">House</span>
+								</figure>
+								
+							</div>
+					</a>
+				</li>
+				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="140"><a
 					class="nav-link font-weight-medium nav-link-caret"
-					id="pills-four-example2-tab" data-toggle="pill"
-					href="#pills-four-example2" role="tab"
-					aria-controls="pills-four-example2" aria-selected="true">
-						<div class="text-center">
-							<figure class="d-md-block mb-0 text-carolina">
-								<i class="glyph-icon flaticon-doctor font-size-12"></i>
-							</figure>
-							<span class="tabtext font-size-3 font-weight-medium text-dark">Health</span>
-						</div>
-				</a></li>
-				<li class="nav-item flex-shrink-0 flex-xl-shrink-1"><a
-					class="nav-link font-weight-medium nav-link-caret"
-					id="pills-five-example2-tab" data-toggle="pill"
-					href="#pills-five-example2" role="tab"
+					id="pills-five-example2-tab"
+					href="/book/list?cate_no=140" role="tab"
 					aria-controls="pills-five-example2" aria-selected="true">
 						<div class="text-center">
-							<figure class="d-md-block mb-0 text-punch">
-								<i class="glyph-icon flaticon-resume font-size-12"></i>
+							<figure class="mb-0 text-punch">
+<!-- 								<i class="glyph-icon flaticon-resume font-size-12"></i> -->
+								<img src="/img/mainImg/140_Health.png" alt="health"/>
+								<span class="tabtext font-size-3 font-weight-medium text-dark">Health</span>
 							</figure>
-							<span class="tabtext font-size-3 font-weight-medium text-dark">Biography</span>
 						</div>
 				</a></li>
-				<li class="nav-item flex-shrink-0 flex-xl-shrink-1"><a
+				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="150"><a
 					class="nav-link font-weight-medium nav-link-caret"
-					id="pills-six-example2-tab" data-toggle="pill"
-					href="#pills-six-example2" role="tab"
+					id="pills-six-example2-tab"
+					href="/book/list?cate_no=150" role="tab"
 					aria-controls="pills-six-example2" aria-selected="true">
 						<div class="text-center">
-							<figure class="d-md-block mb-0">
-								<i class="icon glyph-icon flaticon-jogging font-size-12"></i>
+							<figure class="mb-0">
+<!-- 								<i class="icon glyph-icon flaticon-jogging font-size-12"></i> -->
+								<img src="/img/mainImg/150_Leisure.png" alt="Leisure"/>
+								<span class="tabtext font-size-3 font-weight-medium text-dark">Leisure</span>
 							</figure>
-							<span class="tabtext font-size-3 font-weight-medium text-dark">Sports</span>
 						</div>
 				</a></li>
-				<li class="nav-item flex-shrink-0 flex-xl-shrink-1"><a
+				<li class="nav-item flex-shrink-0 flex-xl-shrink-1" data-cateno="160"><a
 					class="nav-link font-weight-medium nav-link-caret"
-					id="pills-seven-example2-tab" data-toggle="pill"
-					href="#pills-seven-example2" role="tab"
+					id="pills-seven-example2-tab"
+					href="/book/list?cate_no=160" role="tab"
 					aria-controls="pills-seven-example2" aria-selected="true">
 						<div class="text-center">
-							<figure class="d-md-block mb-0">
-								<i class="icon glyph-icon flaticon-baby-boy font-size-12"></i>
+							<figure class="mb-0">
+<!-- 								<i class="icon glyph-icon flaticon-baby-boy font-size-12"></i> -->
+								<img src="/img/mainImg/160_Economy.png" alt="Economy"/>
+								<span class="tabtext font-size-3 font-weight-medium text-dark">Economy</span>
 							</figure>
-							<span class="tabtext font-size-3 font-weight-medium text-dark">Children</span>
 						</div>
 				</a></li>
 			</ul>
@@ -282,16 +301,17 @@
 			<div class="tab-content">
 				<div class="tab-pane fade active show" id="pills-one-example2"
 					role="tabpanel" aria-labelledby="pills-one-example2-tab">
+					<div class="pt-2 book_div_start">
+					<!-- 여기서부터 바꾸기 -->
+						<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6">
 					<div class="pt-2">
-						<div
-							class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6 ">
+						<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6 ">
 							<c:forEach items="${bookList}" var="bookVo">
 								<div class="col">
 									<div class="mb-5 products">
 										<div class="product product__space border rounded-md bg-white">
 											<div class="product__inner overflow-hidden p-3 p-md-4d875">
-												<div
-													class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
+												<div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
 													<div class="woocommerce-loop-product__thumbnail">
 														<a href="/book/detail/${bookVo.book_no}" class="d-block">
 															<c:choose>
@@ -327,12 +347,8 @@
 														</div>
 
 													</div>
-
 													<div class="product__hover d-flex align-items-center">
-														<span class="product__add-to-cart-text"
-															onClick="addToCart(${bookVo.book_no},${bookVo.price})">ADD
-															TO CART</span>
-
+														<span class="product__add-to-cart-text" onClick="addToCart(${bookVo.book_no},${bookVo.price})">ADD TO CART</span>
 													</div>
 												</div>
 											</div>
@@ -340,14 +356,13 @@
 									</div>
 								</div>
 							</c:forEach>
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		</div>
-		</div>
+	</div>
 	</section>
 
 
@@ -355,7 +370,6 @@
 	<!-- footer 자리 -->
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
-
 </body>
 </html>
 

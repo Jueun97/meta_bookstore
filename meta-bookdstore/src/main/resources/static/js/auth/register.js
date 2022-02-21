@@ -15,7 +15,7 @@ function jusoCallBack(roadAddrPart1, addrDetail, zipNo) {
 	zipNoEl.value = zipNo;
 }
 function selectEmailChange(value) {
-	//alert("값 변경 테스트" + value);
+	//alert("값 변경 테스트 : " + value);
 	var emailDomain = document.getElementById("emailDomain");
 	emailDomain.value = value;
 }

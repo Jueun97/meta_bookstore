@@ -5,11 +5,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.firewall.DefaultHttpFirewall;
+import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.meta.handler.exceptions.CustomAccessDeniedHandler;
+
 
 @Configuration
 @EnableWebSecurity //해당 파일로 Security 활성화
@@ -65,5 +72,36 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //로그아웃 요청 URL
 			.logoutSuccessUrl("/auth/login") //로그아웃 성공시 여기로
 			.invalidateHttpSession(true); //세션지우기
+		//https://dkyou.tistory.com/28 참고
+		 // 인증 거부 관련 처리
+        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler());
 	}
+	
+	
+	
+	
+	//403에러 처리 화면 보여주는 페이지
+	 private AccessDeniedHandler accessDeniedHandler() {
+	      CustomAccessDeniedHandler accessDeniedHandler = new CustomAccessDeniedHandler();
+	      accessDeniedHandler.setErrorPage("/denied");
+	      return accessDeniedHandler;
+	    }
+	 
+	 
+	 
+	 
+	 
+	 
+	 //<-- 시큐리티 "//" 경로 에러 발생시 해결코드 -->
+	 //이거 주석해제하시오.
+//	 @Override
+//	 public void configure(WebSecurity web) throws Exception {
+//	     web.httpFirewall(defaultHttpFirewall());
+//	 }
+//	  
+//	 @Bean
+//	 public HttpFirewall defaultHttpFirewall() {
+//	     return new DefaultHttpFirewall();
+//	 }
+
 }

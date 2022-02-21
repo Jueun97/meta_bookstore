@@ -171,11 +171,10 @@
 														class="form-control rounded-0 height-4 px-4" name="email1"
 														id="email1" placeholder="이메일을 입력" />
 													@
-													<form:input path="emailDomain" type="text"
-														class="form-control rounded-0 height-4 px-4"
-														id="emailDomain" name="emailDomain"
-														style="width: 30%; display: inline-block;" />
-													<select name="emailDomain" id="emailDomain"
+													<form:input path="emailDomain"  type="text"
+													class="form-control rounded-0 height-4 px-4"  
+													 style="width: 30%; display: inline-block;"/>
+													<select id="emailDomain"
 														onChange="selectEmailChange(this.value);" title="직접입력"
 														style="width: 20%;">
 														<option value="">직접입력</option>
@@ -201,28 +200,27 @@
 												<div class="js-form-message">
 													<label class="form-label">주소</label>
 													<div class="addrBtn">
-														<input type="text" style="width: 30%"
-															value="${principal.member.zipcode}"
-															class="form-control rounded-0 height-2 px-2"
-															name="zipcode" id="zipcode" placeholder="우편번호" readonly>
+														<form:input type="text" style="width: 30%" path="zipcode"
+														class="form-control rounded-0 height-2 px-2" name="zipcode"
+														value="${principal.member.zipcode}"
+														id="zipcode" placeholder="우편번호" readonly="true"/>
 														<button type="button" class="btn btn-info"
 															onClick="goPopup();">주소검색</button>
 													</div>
 													<c:if test="${!empty errorMap}">
 														<strong style="color: red;">${errorMap.zipcode}</strong>
 													</c:if>
-													도로명 주소 <input type="text" style="margin-top: 10px;"
-														value="${principal.member.roadAddress}"
-														class="form-control rounded-0 height-4 px-4"
-														name="roadAddress" id="roadAddress"
-														placeholder="주소검색을 해주세요" readonly>
+													도로명 주소 <form:input type="text" path="roadAddress" style="margin-top: 10px;"
+													class="form-control rounded-0 height-4 px-4" name="roadAddress"
+													value="${principal.member.roadAddress}"
+													id="roadAddress" placeholder="주소검색을 해주세요" readonly="true"/>
 													<c:if test="${!empty errorMap}">
 														<strong style="color: red;">${errorMap.roadAddress}</strong>
 													</c:if>
-													상세 주소 <input type="text" style="margin-top: 10px;"
+													상세 주소 <form:input path="otherAddress" type="text" style="margin-top: 10px;"
 														value="${principal.member.otherAddress}"
-														class="form-control rounded-0 height-4 px-4"
-														name="otherAddress" id="otherAddress" placeholder="상세주소">
+														class="form-control rounded-0 height-4 px-4" name="otherAddress"
+														id="otherAddress" placeholder="상세주소"/>
 													<br />
 													<c:if test="${!empty errorMap}">
 														<strong style="color: red;">${errorMap.otherAddress}</strong>
