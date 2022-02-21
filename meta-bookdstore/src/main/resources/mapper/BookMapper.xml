@@ -8,6 +8,7 @@
 		SELECT book.book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no, stock
 		from book, stock
 		where book.book_no = stock.book_no
+		order by book.book_no desc
 	</select>
 
 	<!-- 2. 책 1개 디테일 정보 보기 -->
