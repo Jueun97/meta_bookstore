@@ -17,4 +17,20 @@
 		UPDATE stock SET stock=stock+#{sold_cnt}, sold_cnt=sold_cnt-#{sold_cnt} WHERE book_no=#{book_no}
 	</update>
 
+	<!-- 관리자 -->
+	<!-- 1. 수량 변경 -->
+	<update id="updateStock">
+		<![CDATA[
+			update stock
+			set stock = #{stock}
+			where book_no = #{book_no}
+		]]>
+	</update>
+
+	<!-- 2. 수량 정보 입력 -->
+	<insert id="insertStock">
+		INSERT INTO stock (stock_no, stock, book_no)
+		VALUES (stock_seq.nextval, #{stock}, seq_book_no.currval)
+	</insert>
+
 </mapper>

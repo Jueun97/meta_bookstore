@@ -330,12 +330,13 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr id="tablehover">
-                                            <th>책 제목</th>
-                                            <th>작가</th>
-                                            <th>출판사</th>
-                                            <th>출판일</th>
-                                            <th style="width: 29px;">가격</th>
-                                            <th>setting</th>
+                                            <th style="width: 35%;">책 제목</th>
+                                            <th style="width: 30%;">작가</th>
+                                            <th style="width: 10%;">출판사</th>
+                                            <th style="width: 10%;">출판일</th>
+                                            <th style="width: 5%;">재고</th>
+                                            <th style="width: 5%;">가격</th>
+                                            <th style="width: 5%;">setting</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -345,6 +346,7 @@
                                             <td>${data.author}</td>
                                             <td>${data.publisher}</td>
                                             <td>${data.pubdate}</td>
+                                            <td>${data.stock}</td>
                                             <td>${data.price}</td>
                                             <td><a href="/admin/bookDelete?book_no=${data.book_no}">삭제</a></td>
                                         </tr>

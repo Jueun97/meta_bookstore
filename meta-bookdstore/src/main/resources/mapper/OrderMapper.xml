@@ -117,7 +117,7 @@
 			       o.status_code,
 			       os.status
 			FROM orders o, ORDER_STATUS os
-			WHERE order_no='20220218-8'
+			WHERE order_no=#{order_no}
 			AND o.STATUS_CODE = os.STATUS_CODE
 		]]>
 	</select>

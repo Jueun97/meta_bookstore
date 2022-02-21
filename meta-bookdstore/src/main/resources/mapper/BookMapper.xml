@@ -5,8 +5,9 @@
 <mapper namespace="com.meta.book.mapper.BookMapper">
 	<!-- 1. 책 리스트 보기 -->
 	<select id="list" resultType="com.meta.book.vo.BookVO">
-		SELECT book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no
-		from book
+		SELECT book.book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no, stock
+		from book, stock
+		where book.book_no = stock.book_no
 	</select>
 
 	<!-- 2. 책 1개 디테일 정보 보기 -->

@@ -373,6 +373,10 @@
 
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">책 재고</label>
+                        <input type="number" id="stock" name="stock" value="0"  style="text-align:center; margin-left: 1rem;"/>
+                    </div>
                     <button type="submit" class="btn btn-outline-primary" style="float: right;">등록</button>
                     <button type="button" class="btn btn-outline-danger" onclick="history.back()" style="float: right; margin-right: 1rem;">취소</button>
                 </form>

@@ -391,6 +391,10 @@
                             </c:forEach>
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">책 재고</label>
+                        <input type="number" id="stock" name="stock" value="${bookInfo.stock}"  style="text-align:center; margin-left: 1rem;"/>
+                    </div>
                     <button type="submit" class="btn btn-outline-primary" style="float: right;">수정</button>
                     <button type="button" class="btn btn-outline-danger" onclick="history.back()" style="float: right; margin-right: 1rem;">취소</button>
                 </form>
@@ -461,6 +465,9 @@
 
 <!-- insert Form validation 역할 -->
 <script src="/js/admin/insertBook.js"></script>
+
+<!-- 수량제어 script -->
+<script src="/js/admin/updateBook.js"></script>
 
 <!-- Image Upload -->
 <script>

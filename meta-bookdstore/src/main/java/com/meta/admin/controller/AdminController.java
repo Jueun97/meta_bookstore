@@ -7,6 +7,8 @@ import com.meta.member.service.MemberService;
 import com.meta.member.vo.MemberVO;
 import com.meta.order.service.OrderService;
 import com.meta.order.vo.OrderVO;
+import com.meta.stock.service.StockService;
+import com.meta.stock.vo.StockVO;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,9 @@ public class AdminController {
 
 	@Autowired
 	private OrderService orderService;
+
+	@Autowired
+	private StockService stockService;
 
 	//파일 경로.
 	@Value("${file.path}")
@@ -88,7 +93,7 @@ public class AdminController {
 
 	@PostMapping("bookInsert")
 	public String saveFile(@RequestParam(value = "filename", required = false) MultipartFile file ,
-						   HttpServletRequest request, @ModelAttribute BookVO vo) throws IOException {
+						   HttpServletRequest request, @ModelAttribute BookVO vo, @ModelAttribute StockVO stockVO) throws IOException {
 		log.info("request = {}", request);
 		log.info("multipartFile = {}", file);
 		log.info("BookVO = {}", vo);
@@ -114,24 +119,25 @@ public class AdminController {
 					.toFile(thumbnailDirectory + thumbnailFileName);
 			vo.setImage(uploadFileName);
 			vo.setTh_image(thumbnailFileName);
-			bookService.insert(vo);
 		}else{
 			log.info("선택된 파일이 없는 경우!!!");
 			vo.setImage(fileDownloadDirectory + "base_book");
 			vo.setTh_image(fileDownloadDirectory + "base_book");
-			bookService.insert(vo);
 		}
+		bookService.insert(vo);
+		stockService.insertStock(stockVO);
 
 		return "redirect:/admin/book";
 	}
 
 	@PostMapping("bookUpdate")
 	public String bookUpdate(@RequestParam(value = "filename", required = false) MultipartFile file ,
-							 HttpServletRequest request, @ModelAttribute BookVO vo) throws IOException {
+							 HttpServletRequest request, @ModelAttribute BookVO vo, @ModelAttribute StockVO stockVO) throws IOException {
 		System.out.println("bookUpdate");
 		log.info("request = {}", request);
 		log.info("multipartFile = {}", file);
 		log.info("BookVO = {}", vo);
+		log.info("StockVO = {}", stockVO);
 
 		//지울이름!
 		String imageName = vo.getImage();
@@ -195,6 +201,7 @@ public class AdminController {
 		}
 
 		bookService.updateBookInfo(vo);
+		stockService.updateStock(stockVO);
 
 		return "/admin/main";
 	}
