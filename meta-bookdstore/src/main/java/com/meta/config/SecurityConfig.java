@@ -77,12 +77,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler());
 	}
 	
+	
+	
+	
+	//403에러 처리 화면 보여주는 페이지
 	 private AccessDeniedHandler accessDeniedHandler() {
 	      CustomAccessDeniedHandler accessDeniedHandler = new CustomAccessDeniedHandler();
 	      accessDeniedHandler.setErrorPage("/denied");
 	      return accessDeniedHandler;
 	    }
+	 
+	 
+	 
+	 
+	 
+	 
 	 //<-- 시큐리티 "//" 경로 에러 발생시 해결코드 -->
+	 //이거 주석해제하시오.
 //	 @Override
 //	 public void configure(WebSecurity web) throws Exception {
 //	     web.httpFirewall(defaultHttpFirewall());

@@ -32,6 +32,7 @@ public class MemberRegDto {
 	@NotEmpty(message="이메일은 필수입력 사항입니다.")
 	@NotBlank
 	@Email
+	@Pattern(regexp="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,9}$", message="이메일은 영문과 숫자만 사용가능합니다.")
 	private String email;
 	private String email1;
 	private String emailDomain;

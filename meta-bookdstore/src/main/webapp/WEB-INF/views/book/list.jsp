@@ -913,7 +913,7 @@
 		</li>
 		<!-- c:forEach : 숫자부분 -->
 		<c:forEach begin="${bookPageObject.startPage}" end="${bookPageObject.endPage}" var="cnt">
-			<li ${(bookPageObject.page==cnt)?"class=\"flex-shrink-0 flex-md-shrink-1 page-item active\" aria-current=\"page\" ":"flex-shrink-0 flex-md-shrink-1 page-item"} 
+			<li ${(bookPageObject.page==cnt)?"class=\"flex-shrink-0 flex-md-shrink-1 page-item active\" aria-current=\"page\" ":"class=\"flex-shrink-0 flex-md-shrink-1\" page-item "} 
 					data-page="${cnt}">
 					<!-- 페이지와 cnt가 같으면 링크가 없음 -->
 					<c:if test="${bookPageObject.page==cnt}">
