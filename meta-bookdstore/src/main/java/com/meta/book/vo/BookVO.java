@@ -14,4 +14,5 @@ public class BookVO {
 	private int cate_no;
 	private String image;
 	private String th_image;
+	private int stock;
 }

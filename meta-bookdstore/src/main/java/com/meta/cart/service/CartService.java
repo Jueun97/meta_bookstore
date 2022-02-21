@@ -36,7 +36,22 @@ public class CartService {
 	}
 	
 	public List<CartVO> getCartList(long m_no) {
-		return mapper.getCartList(m_no);
+		List<CartVO> cartList = mapper.getCartList(m_no);
+		for(int i=0 ;i <cartList.size() ; i++) {
+			CartVO cartVo = cartList.get(i);
+			int stock = cartVo.getStock();
+			if(stock == 0) {
+				cartVo.setCart_book_qt(0);
+				cartVo.setCart_total_price(0);
+				mapper.modifyQuantity(cartVo);
+			}else if(stock < cartVo.getCart_book_qt()) {
+				int price = cartVo.getPrice();
+				cartVo.setCart_book_qt(stock);
+				cartVo.setCart_total_price(price*stock);
+				mapper.modifyQuantity(cartVo);
+			}
+		}
+		return cartList;
 	}
 	
 	public CartVO getACart(int cart_no) {

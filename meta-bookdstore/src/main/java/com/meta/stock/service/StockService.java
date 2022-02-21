@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.meta.stock.mapper.StockMapper;
+import com.meta.stock.vo.StockVO;
 
 
 
@@ -15,5 +16,11 @@ public class StockService {
 	
 	public int initializeStock(long book_no) {
 		return mapper.initializeStock(book_no);
+	}
+	public int addStockWhenCheckedout(StockVO stockVo) {
+		return mapper.addStockWhenCheckedout(stockVo);
+	}
+	public int removeStockWhenCancelled(StockVO stockVo) {
+		return mapper.removeStockWhenCancelled(stockVo);
 	}
 }
