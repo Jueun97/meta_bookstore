@@ -886,7 +886,7 @@
 								</ul>
 							</c:if>
 						</div>
-						테스트 : ${bookPageObject} <br><hr>
+					 <br><hr>
 <!-- pageNation -->
 <nav aria-label="Page navigation example">
 	<ul 
@@ -938,7 +938,7 @@
 		</c:forEach>
 		<!-- ▶부분 -->
 		<c:if test="${bookPageObject.endPage<bookPageObject.totalPage}">
-			<li data-page="${bookPageObject.endPage+1}">
+			<li class="flex-shrink-0 flex-md-shrink-1 page-item" data-page="${bookPageObject.endPage+1}">
 				<!-- 카테고리 번호가 있을경우 -->
 				<c:if test="${!empty bookPageObject.cate_no}">
 					<a
@@ -954,7 +954,7 @@
 			</li>
 		</c:if>
 		<c:if test="${bookPageObject.endPage==bookPageObject.totalPage}">
-			<li data-page="${bookPageObject.endPage+1}">
+			<li class="flex-shrink-0 flex-md-shrink-1 page-item" data-page="${bookPageObject.endPage+1}">
 				<a href="" onclick="return false" class="page-link">
 					Next
 				</a>
