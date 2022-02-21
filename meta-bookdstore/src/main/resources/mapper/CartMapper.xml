@@ -51,7 +51,13 @@
 			separator=",">
 			#{item.cart_no}
 		</foreach>
-		)
+		) 
+		AND
+		cart_no IN
+		<foreach collection="list" item="item" open="(" close=")"
+			separator=",">
+			#{item.cart_no}
+		</foreach>
 	</select>
 
 	<select id="getSubTotalPrice" resultType="long">
@@ -76,7 +82,7 @@
 		UPDATE cart
 		SET cart_book_qt=#{cart_book_qt},
 		cart_total_price=#{cart_total_price}
-		WHERE cart_no=#{cart_no}
+		WHERE book_no=#{book_no} and m_no=#{m_no}
 	</update>
 
 	<delete id="deleteCart">

@@ -50,6 +50,7 @@ public class OrderController {
 			CartVO cartVo = new CartVO();
 			cartVo.setCart_no(Integer.parseInt(data[i]));
 			list.add(cartVo);
+			System.out.println("cart no " +Integer.parseInt(data[i]));
 		}
 		System.out.println("주문 정보 : " + data[0]);
 		model.addAttribute("checkoutList", cartService.getCheckedoutCartList(list));
