@@ -1,7 +1,6 @@
 package com.meta.handler;
 
 import org.slf4j.Logger;
-
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
@@ -11,8 +10,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import com.meta.handler.exceptions.CustomAccessDeniedHandler;
+
 @ControllerAdvice
-public class CommonExceptionHandler {
+public class CommonExceptionHandler{
 	
 	
 	private static final Logger log = LoggerFactory.getLogger(CommonExceptionHandler.class);
@@ -21,15 +22,8 @@ public class CommonExceptionHandler {
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public String handle404(NoHandlerFoundException ex) {
-		log.info("handle404() - 요청하신 페이지가 존재하지 않습니다.");
+		log.info("들어오니?");
 		return "error/custom404";
-	}
-	//403예외 처리 : 권한 없음
-	@ExceptionHandler(AccessDeniedException.class)
-	@ResponseStatus(HttpStatus.FORBIDDEN)
-	public String handle403(NoHandlerFoundException ex) {
-		log.info("handle403() - 권한이 없습니다..");
-		return "error/custom403";
 	}
 	
 	//500예외 처리

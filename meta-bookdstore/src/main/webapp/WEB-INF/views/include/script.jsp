@@ -29,8 +29,8 @@
     <!-- JS Bookworm -->
     <!-- <script src="../../assets/js/bookworm.js"></script> -->
     
-    <script src="/js/ajax.js"></script>s
-
+    <script src="/js/ajax.js"></script>
+	<script src="/js/main/main.js"></script>
     <script>
         $(document).on('ready', function () {
         	console.log("hello");
