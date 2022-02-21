@@ -31,6 +31,7 @@ public class MainController {
 		log.warn("cate_no : " + cate_no);
 		return "main/main";
 	}
+
 	
 	//루트경로로 들어오면 /main으로 redirect 
 	@GetMapping("/")

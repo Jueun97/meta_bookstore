@@ -17,7 +17,7 @@
 					<!-- 로그인 안한 경우 인삿말  -->
 					<sec:authorize access="not authenticated">
 						<li class="nav-item"><span class="link-black-100">환영합니다!
-								로그인을 진행해주세요 :)</span></li>
+								<a href="/auth/login">로그인</a>을 진행해주세요 :)</span></li>
 						
 					</sec:authorize>
 					<!-- 로그인 한 경우 인삿말  -->
@@ -28,7 +28,7 @@
 
 				</ul>
 				<ul class="topbar__nav--right nav">
-					<li class="nav-item"><a href="#"
+					<li class="nav-item"><a href="/others/storelocation"
 						class="nav-link p-2 link-black-100 d-flex align-items-center"><i
 							class="glph-icon flaticon-pin mr-2 font-size-3"></i>Store
 							Location</a></li>
@@ -90,10 +90,10 @@
 									<li><a href="/book/list?cate_no=160"
 									class="dropdown-item link-black-100">Economy</a></li>
 								</ul></li>
-							<li class="nav-item"><a href="#"
+							<li class="nav-item"><a href="/others/about"
 								class="nav-link link-black-100 mx-3 px-0 py-3 font-weight-medium">About
 									Us</a></li>
-							<li class="nav-item"><a href="#"
+							<li class="nav-item"><a href="/others/contact"
 								class="nav-link link-black-100 mx-3 px-0 py-3 font-weight-medium">Contact
 									Us</a></li>
 						</ul>
