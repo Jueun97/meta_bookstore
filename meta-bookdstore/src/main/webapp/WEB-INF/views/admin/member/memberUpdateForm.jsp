@@ -33,6 +33,16 @@
     <link rel="stylesheet" href="/css/member/mypage.css">
     <link rel="stylesheet" href="/css/admin/memberUpdate.css">
 
+    <style>
+        .telDiv{
+            display: flex;
+        }
+
+        .tel_form{
+            width: 15%;
+        }
+    </style>
+
 </head>
 
 <body id="page-top">
@@ -76,17 +86,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item active">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-table"></i>
-                <span>책 재고 관리</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Tables -->
-        <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/admin/order">
                 <i class="fas fa-fw fa-table"></i>
                 <span>주문 관리</span></a>
         </li>
@@ -420,8 +420,7 @@
                                                value="${memberInfo.zipcode}"
                                                class="form-control rounded-0 height-2 px-2"
                                                name="zipcode" id="zipcode" placeholder="우편번호" readonly>
-                                        <button type="button" class="btn btn-info"
-                                                onClick="goPopup();">주소검색</button>
+                                        <button type="button" class="btn btn-info" onClick="goPopup();" style="margin-top: 10px;">주소검색</button>
                                     </div>
                                     <c:if test="${!empty errorMap}">
                                         <strong style="color: red;">${errorMap.zipcode}</strong>

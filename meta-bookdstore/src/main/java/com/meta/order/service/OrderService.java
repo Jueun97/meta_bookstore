@@ -1,15 +1,15 @@
 package com.meta.order.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.meta.order.mapper.OrderMapper;
 import com.meta.order.vo.OrderItemsVO;
+import com.meta.order.vo.OrderStatusVO;
 import com.meta.order.vo.OrderVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
 import com.meta.stock.mapper.StockMapper;
 import com.meta.stock.vo.StockVO;
+
 
 @Service
 public class OrderService {
@@ -64,5 +64,22 @@ public class OrderService {
 	}
 	public int updateOrderInfo(OrderVO orderVo) {
 		return orderMapper.updateOrderInfo(orderVo);
+	}
+
+	//------------------------------------------관리자---------------------------------------------------
+	public List<OrderVO> orderList(){
+		return orderMapper.orderList();
+	}
+
+	public OrderVO getOneOrderInfo(String order_no){
+		return orderMapper.getOneOrderInfo(order_no);
+	}
+
+	public List<OrderStatusVO> getOrderStatusInfo(){
+		return orderMapper.getOrderStatusInfo();
+	}
+
+	public int updateOrderAdmin(OrderVO orderVo){
+		return orderMapper.updateOrderAdmin(orderVo);
 	}
 }

@@ -79,4 +79,66 @@
 	<delete id="deleteOrder">
 		DELETE FROM orders WHERE order_no=#{order_no}
 	</delete>
+
+	<!-- 관리자 -->
+	<!-- 1. Order List 가져오기 -->
+	<select id="orderList" resultType="com.meta.order.vo.OrderVO">
+		<![CDATA[
+			select order_no,
+			       msg,
+			       receiver_email,
+			       receiver_zipcode,
+			       receiver_roadaddress,
+			       receiver_otheraddress,
+			       receiver_phone,
+			       receiver_name,
+			       to_char(order_date, 'YYYY-MM-DD') as order_date,
+			       order_count,
+			       order_price,
+			       os.status
+			from orders o, order_status os
+			where o.status_code = os.status_code
+		]]>
+	</select>
+
+	<!-- 2. Order 1개 데이터 가져오기 -->
+	<select id="getOneOrderInfo" resultType="com.meta.order.vo.OrderVO">
+		<![CDATA[
+			SELECT o.order_no, o.m_no, o.msg,
+				   o.receiver_email,
+				   o.receiver_zipcode,
+				   o.receiver_roadAddress,
+				   o.receiver_otherAddress,
+			       o.receiver_phone,
+			       o.receiver_name,
+			       o.order_count,
+			       o.order_price,
+				   to_char(o.order_date,'yyyy/mm/dd') order_date,
+			       o.status_code,
+			       os.status
+			FROM orders o, ORDER_STATUS os
+			WHERE order_no=#{order_no}
+			AND o.STATUS_CODE = os.STATUS_CODE
+		]]>
+	</select>
+
+	<!-- 3. Status 정보 가져오기 -->
+	<select id="getOrderStatusInfo" resultType="com.meta.order.vo.OrderStatusVO">
+		<![CDATA[
+			select * from order_status
+		]]>
+	</select>
+
+	<!-- 4. order 정보 주소 수정 및 배송상태 변경 기능 -->
+	<update id="updateOrderAdmin">
+		<![CDATA[
+			UPDATE orders
+			SET receiver_zipcode=#{receiver_zipcode},
+				receiver_roadAddress=#{receiver_roadAddress},
+				receiver_otherAddress=#{receiver_otherAddress},
+			    status_code = #{status_code}
+			WHERE order_no=#{order_no}
+		]]>
+	</update>
+
 </mapper>
