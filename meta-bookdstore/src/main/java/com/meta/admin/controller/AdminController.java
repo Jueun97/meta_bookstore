@@ -6,6 +6,7 @@ import com.meta.member.dto.MemberUpdateAdminDto;
 import com.meta.member.service.MemberService;
 import com.meta.member.vo.MemberVO;
 import com.meta.order.service.OrderService;
+import com.meta.order.vo.OrderVO;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -312,4 +313,39 @@ public class AdminController {
 
 		return "/admin/order/orderList";
 	}
+
+	//주문 삭제
+	@GetMapping("orderDelete")
+	public String orderDelete(String order_no){
+		System.out.println(">>> "+this.getClass()+ " 호출됨!");
+
+		int count = orderService.deleteOrder(order_no);
+
+		return "redirect:/admin/order";
+	}
+
+	//주문 정보 관리
+	@GetMapping("orderUpdate")
+	public String orderUpdate(String order_no, Model model){
+		System.out.println(">>> "+this.getClass()+ " 호출됨!");
+
+		model.addAttribute("orderInfo", orderService.getOneOrderInfo(order_no));
+		model.addAttribute("orderItems", orderService.getOrderItems(order_no));
+		model.addAttribute("orderStatus", orderService.getOrderStatusInfo());
+
+		return "/admin/order/orderUpdate";
+
+	}
+
+	//주문 정보 관리 처리
+	@PostMapping("orderUpdate")
+	public String update(@ModelAttribute OrderVO orderVo){
+		System.out.println(">>> "+this.getClass()+ " 호출됨!");
+		log.info(String.valueOf(orderVo));
+		int count = orderService.updateOrderAdmin(orderVo);
+
+		log.info("주문 정보 변경이 " + count + "건 처리되었습니다.");
+		return "redirect:/admin/order";
+	}
+
 }

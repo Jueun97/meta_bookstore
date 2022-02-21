@@ -1,6 +1,7 @@
 package com.meta.order.mapper;
 
 import com.meta.order.vo.OrderItemsVO;
+import com.meta.order.vo.OrderStatusVO;
 import com.meta.order.vo.OrderVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -18,4 +19,7 @@ public interface OrderMapper {
 
 	//-----------------------------------------관리자----------------------------------------------
 	public List<OrderVO> orderList();
+	public OrderVO getOneOrderInfo(String order_no);
+	public List<OrderStatusVO> getOrderStatusInfo();
+	public int updateOrderAdmin(OrderVO orderVo);
 }

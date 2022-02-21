@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -14,13 +15,6 @@
     <meta name="author" content="">
 
     <title>Meta-Book Admin</title>
-
-    <!-- table관련 hover이벤트 -->
-    <style>
-        table#trHover tr:hover{
-            background-color: #b8f1fb;
-        }
-    </style>
 
     <!-- Custom fonts for this template -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -309,6 +303,7 @@
                             </a>
                         </div>
                     </li>
+
                 </ul>
 
             </nav>
@@ -318,46 +313,169 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">주문 관리</h1>
-                <p class="mb-4">회원들의 주문 정보들을 조회 및 관리할 수 있는 페이지입니다. 이 곳에 있는 기능을 통해 관리를 진행해주세요. </p>
+                <h1 class="h3 mb-2 text-gray-800">Order Update Page</h1>
+                <p class="mb-4">주문정보 관리 페이지 입니다. </p>
 
+                <div class=" space-bottom-3">
+                    <div class="container" style="margin-bottom: 8rem;">
+                        <div class="py-5 py-lg-7" style="padding-top: 1rem!important; padding-bottom: 1rem!important;">
+                            <h3 class="font-weight-medium font-size-7 text-center mt-lg-1">주문 정보</h3>
+                        </div>
+                        <div class="max-width-890 mx-auto">
+                            <div class="bg-white pt-6 border">
+                                <div class="border-bottom mb-5 pb-5 overflow-auto overflow-md-visible" style="overflow: hidden!important;">
+                                    <div class="pl-3" style="text-align: center; margin-top: 3rem; padding-left: 0rem!important;">
+                                        <table class="table table-borderless mb-0 ml-1">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col" class="font-size-2 font-weight-normal py-0" style="width: 10rem;">Order number:</th>
+                                                <th scope="col" class="font-size-2 font-weight-normal py-0" style="width: 10rem;">Date:</th>
+                                                <th scope="col" class="font-size-2 font-weight-normal py-0" style="width: 10rem;">Total:</th>
+                                                <th scope="col" class="font-size-2 font-weight-normal py-0" style="width: 10rem;">Payment method:</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row" class="pr-0 py-0 font-weight-medium" style="padding: 0rem;">${orderInfo.order_no}</th>
+                                                <td class="pr-0 py-0 font-weight-medium" style="padding: 0rem;">${orderInfo.order_date}</td>
+                                                <td class="pr-0 py-0 font-weight-medium" style="padding: 0rem;">
+                                                    <fmt:formatNumber value="${orderInfo.order_price}" pattern="###,###">
+                                                    </fmt:formatNumber>원</td>
+                                                <td class="pr-0 py-0 font-weight-medium" style="padding: 0rem;">Direct bank transfer</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="border-bottom mb-5 pb-6">
+                                    <div class="px-3 px-md-4" style="padding-left: 5rem!important; padding-right: 4rem!important;">
+                                        <div class="ml-md-2">
+                                            <h6 class="font-size-3 on-weight-medium mb-4 pb-1">Order Details</h6>
+                                            <c:forEach items="${orderItems}" var="item">
+                                                <div class="d-flex justify-content-between mb-4"
+                                                     style="width: 100%;">
+                                                    <div class="d-flex align-items-center" style="width: 40%;">
+                                                        <div style="width: 100%; margin-bottom: 2rem;">
+                                                            <h6 class="font-size-2 font-weight-normal mb-1">
+                                                                    ${item.title}</h6>
+                                                            <span class="font-size-2 text-gray-600">< ${item.author} ></span>
+                                                        </div>
+                                                        <span class="font-size-2 ml-4 ml-md-8">x${item.order_qt}</span>
+                                                    </div>
+                                                    <span class="font-weight-medium font-size-2"><fmt:formatNumber
+                                                            value="${item.total_price}" pattern="###,###"></fmt:formatNumber>원</span>
+                                                </div>
+                                            </c:forEach>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-bottom mb-5 pb-5" style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                                    <ul class="list-unstyled px-3 pl-md-5 pr-md-4 mb-0">
+                                        <li class="d-flex justify-content-between py-2"><span
+                                                class="font-weight-medium font-size-2">Subtotal:</span> <span
+                                                class="font-weight-medium font-size-2"><fmt:formatNumber
+                                                value="${orderInfo.order_price}" pattern="###,###"></fmt:formatNumber>원</span></li>
+                                        <li class="d-flex justify-content-between py-2"><span
+                                                class="font-weight-medium font-size-2">Shipping:</span> <span
+                                                class="font-weight-medium font-size-2">Free Shipping</span></li>
+                                        <li class="d-flex justify-content-between pt-2"><span
+                                                class="font-weight-medium font-size-2">Payment Method:</span> <span
+                                                class="font-weight-medium font-size-2">Direct bank
+										transfer</span></li>
+                                    </ul>
+                                </div>
+                                <div class="border-bottom mb-5 pb-4" style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                                    <div class="px-3 pl-md-5 pr-md-4">
+                                        <div class="d-flex justify-content-between" style="margin-bottom: 1.5rem;">
+                                            <span class="font-size-2 font-weight-medium">Total</span> <span
+                                                class="font-weight-medium fon-size-2"><fmt:formatNumber
+                                                value="${orderInfo.order_price}" pattern="###,###"></fmt:formatNumber>원</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form method="post" action="/admin/orderUpdate">
+                                <div class="border-bottom mb-5 pb-4" style="padding-left: 5.5rem;">
+                                    <div class="row row-cols-1 row-cols-md-2">
+                                        <div class="col" style="max-width: 45%;">
+                                            <h6 class="font-weight-medium font-size-22 mb-3">Shipping
+                                                Address</h6>
+                                            <address class="d-flex flex-column mb-0">
+                                                <span class="text-gray-600 font-size-2">${orderInfo.receiver_name } | ${orderInfo.receiver_phone}</span>
+                                                <span class="text-gray-600 font-size-2">${orderInfo.receiver_roadAddress }</span>
+                                                <span class="text-gray-600 font-size-2">${orderInfo.receiver_otherAddress }</span>
+                                                <span class="text-gray-600 font-size-2">${orderInfo.receiver_zipcode }</span>
+                                                <span class="text-gray-600 font-size-2">Republic Of Korea</span>
+                                            </address>
+                                        </div>
+                                        <div>
 
-                <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <!-- 혹시모를 추가 기능을 위한 버튼 남겨놓기
-                            <button type="button" class="btn btn-primary" style="float: right; margin-left:50px;" onclick="location.href='/admin/memberRegisterForm' ">회원 등록</button>
-                            -->
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr id="tablehover">
-                                    <th>주문번호</th>
-                                    <th>이름</th>
-                                    <th>주소</th>
-                                    <th>주문날짜</th>
-                                    <th>가격</th>
-                                    <th>배송상태</th>
-                                    <th>setting</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${orderInfo}" var = "info">
-                                    <tr id="trHover">
-                                        <td><a href="/admin/orderUpdate?order_no=${info.order_no}" style="color: #858796;">${info.order_no}</a></td>
-                                        <td>${info.receiver_name}</td>
-                                        <td>${info.receiver_roadAddress}</td>
-                                        <td>${info.order_date}</td>
-                                        <td>${info.order_price}</td>
-                                        <td>${info.status}</td>
-                                        <td><a href="/admin/orderDelete?order_no=${info.order_no}">삭제</a></td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
+                                                <div class="mb-3">
+                                                    <div>
+                                                        <label class="form-label">< 배송지 주소 변경 ></label>
+                                                    </div>
+                                                    <label class="form-label">우편번호</label>
+                                                    <div class="addrBtn" style="margin-bottom: 10px;">
+                                                        <input type="text" style="width: 30%; margin-bottom: 1rem;"
+                                                               value="${orderInfo.receiver_zipcode}"
+                                                               class="form-control rounded-0 height-2 px-2"
+                                                               name="receiver_zipcode" id="receiver_zipcode" placeholder="우편번호" readonly>
+                                                        <button type="button" class="btn btn-info" onClick="goPopup();">주소검색</button>
+                                                    </div>
+                                                    <c:if test="${!empty errorMap}">
+                                                        <strong style="color: red;">${errorMap.zipcode}</strong>
+                                                    </c:if>
+                                                    도로명 주소 <input type="text" style="margin-top: 15px; margin-bottom: 15px;"
+                                                                  value="${orderInfo.receiver_roadAddress}"
+                                                                  class="form-control rounded-0 height-4 px-4"
+                                                                  name="receiver_roadAddress" id="receiver_roadAddress"
+                                                                  placeholder="주소검색을 해주세요" readonly>
+                                                    <c:if test="${!empty errorMap}">
+                                                        <strong style="color: red;">${errorMap.roadAddress}</strong>
+                                                    </c:if>
+                                                    상세 주소 <input type="text" style="margin-top: 15px;"
+                                                                 value="${orderInfo.receiver_otherAddress}"
+                                                                 class="form-control rounded-0 height-4 px-4"
+                                                                 name="receiver_otherAddress" id="receiver_otherAddress" placeholder="상세주소">
+                                                    <br />
+                                                    <c:if test="${!empty errorMap}">
+                                                        <strong style="color: red;">${errorMap.otherAddress}</strong>
+                                                    </c:if>
+                                                </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-5 pb-4" style="padding-left: 5.5rem;">
+                                    <h5 style="margin-bottom: 1.5rem;">배송상태 변경</h5>
+                                    <c:forEach items="${orderStatus}" var="statusInfo">
+                                        <c:choose>
+                                            <c:when test="${orderInfo.status_code eq statusInfo.status_code}">
+                                                <label style="margin-right: 1rem;">
+                                                    <input type="radio" name="status_code" value="${statusInfo.status_code}" checked>
+                                                        ${statusInfo.status}
+                                                </label>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <label style="margin-right: 1rem;">
+                                                    <input type="radio" name="status_code" value="${statusInfo.status_code}">
+                                                        ${statusInfo.status}
+                                                </label>
+                                            </c:otherwise>
+
+                                        </c:choose>
+                                    </c:forEach>
+
+                                </div>
+                                    <input type="hidden" name="order_no" value="${orderInfo.order_no}">
+                                    <button type="submit" class="btn btn-outline-primary" style="float: right;">변경</button>
+                                    <button type="button" class="btn btn-outline-danger" onclick="history.back()" style="float: right; margin-right: 1rem;">취소</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
 
             </div>
             <!-- /.container-fluid -->
@@ -422,6 +540,9 @@
 
 <!-- Page level custom scripts -->
 <script src="/js/demo/datatables-demo.js"></script>
+
+<!-- 주소를 업데이트 하는 경우 -->
+<script src="/js/admin/updateOrder.js"></script>
 
 </body>
 
