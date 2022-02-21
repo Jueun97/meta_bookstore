@@ -139,12 +139,12 @@
 																	test="${fn:substring(bookVo.image, 0, 5) eq 'https'}">
 																	<img src="${bookVo.image}"
 																		class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-																		alt="image-description">
+																		alt="image-description"  style="max-width: 45%;">
 																</c:when>
 																<c:otherwise>
 																	<img src="/image/${bookVo.image}"
 																		class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-																		alt="image-description">
+																		alt="image-description"  style="max-width: 45%;">
 																</c:otherwise>
 															</c:choose>
 														</a>
