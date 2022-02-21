@@ -158,8 +158,7 @@
 															<a href="/book/detail/${bookVo.book_no}">${bookVo.title}</a>
 														</h2>
 														<div class="font-size-2  mb-1 text-truncate">
-															<a href="../others/authors-single.html"
-																class="text-gray-700">${bookVo.author}</a>
+															<span class="text-gray-700">${bookVo.author}</span>
 														</div>
 														<div
 															class="price d-flex align-items-center font-weight-medium font-size-3">
@@ -167,17 +166,22 @@
 																class="woocommerce-Price-currencySymbol">$</span>${bookVo.price}</span>
 														</div>
 													</div>
-													<div class="product__hover d-flex align-items-center">
-														<a
-															class="text-uppercase text-dark h-dark font-weight-medium mr-auto"
-															data-toggle="tooltip" data-placement="right" title=""
-															data-original-title="ADD TO CART"> <span
-															onClick="addToCart(${bookVo.book_no},${bookVo.price})"
-															class="product__add-to-cart-text">ADD TO CART</span> <span
-															class="product__add-to-cart-icon font-size-4"><i
-																class="flaticon-icon-126515"></i></span>
-														</a>
-													</div>
+													<c:choose>
+														<c:when test="${bookVo.stock != 0}">
+															<div class="product__hover d-flex align-items-center">
+																<span class="product__add-to-cart-text"
+																	onClick="addToCart(${bookVo.book_no},${bookVo.price})">ADD
+																	TO CART</span>
+															</div>
+														</c:when>
+														<c:otherwise>
+															<div class="product__hover d-flex align-items-center">
+																<span style="color: red;">품절</span>
+															</div>
+														</c:otherwise>
+													</c:choose>
+
+
 												</div>
 											</div>
 										</li>

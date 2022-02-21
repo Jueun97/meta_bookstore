@@ -306,69 +306,79 @@ figure.mb-0 span {
 					role="tabpanel" aria-labelledby="pills-one-example2-tab">
 					<div class="pt-2 book_div_start">
 						<!-- 여기서부터 바꾸기 -->
-							<div class="pt-2">
-								<div
-									class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6 ">
-									<c:forEach items="${bookList}" var="bookVo">
-										<div class="col">
-											<div class="mb-5 products">
-												<div
-													class="product product__space border rounded-md bg-white">
-													<div class="product__inner overflow-hidden p-3 p-md-4d875">
+						<div class="pt-2">
+							<div
+								class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6 ">
+								<c:forEach items="${bookList}" var="bookVo">
+									<div class="col">
+										<div class="mb-5 products">
+											<div
+												class="product product__space border rounded-md bg-white">
+												<div class="product__inner overflow-hidden p-3 p-md-4d875">
+													<div
+														class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
+														<div class="woocommerce-loop-product__thumbnail">
+															<a href="/book/detail/${bookVo.book_no}" class="d-block">
+																<c:choose>
+																	<c:when
+																		test="${fn:substring(bookVo.image, 0, 5) eq 'https'}">
+																		<img src="${bookVo.image}"
+																			class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
+																			alt="image-description">
+																	</c:when>
+																	<c:otherwise>
+																		<img src="/image/${bookVo.image}"
+																			class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
+																			alt="image-description">
+																	</c:otherwise>
+																</c:choose>
+															</a>
+														</div>
 														<div
-															class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
-															<div class="woocommerce-loop-product__thumbnail">
-																<a href="/book/detail/${bookVo.book_no}" class="d-block">
-																	<c:choose>
-																		<c:when
-																			test="${fn:substring(bookVo.image, 0, 5) eq 'https'}">
-																			<img src="${bookVo.image}"
-																				class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-																				alt="image-description">
-																		</c:when>
-																		<c:otherwise>
-																			<img src="/image/${bookVo.image}"
-																				class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-																				alt="image-description">
-																		</c:otherwise>
-																	</c:choose>
-																</a>
+															class="woocommerce-loop-product__body product__body pt-3 bg-white">
+
+															<h2
+																class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark">
+																<a href="/book/detail/${bookVo.book_no}">${bookVo.title}</a>
+															</h2>
+															<div class="font-size-2  mb-1 text-truncate">
+																<span
+																	class="text-gray-700">${bookVo.author}</span>
 															</div>
 															<div
-																class="woocommerce-loop-product__body product__body pt-3 bg-white">
-
-																<h2
-																	class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark">
-																	<a href="/book/detail/${bookVo.book_no}">${bookVo.title}</a>
-																</h2>
-																<div class="font-size-2  mb-1 text-truncate">
-																	<a href="../others/authors-single.html"
-																		class="text-gray-700">${bookVo.author}</a>
-																</div>
-																<div
-																	class="price d-flex align-items-center font-weight-medium font-size-3">
-																	<span class="woocommerce-Price-amount amount"><span
-																		class="woocommerce-Price-currencySymbol">₩</span>${bookVo.price}</span>
-																</div>
-
+																class="price d-flex align-items-center font-weight-medium font-size-3">
+																<span class="woocommerce-Price-amount amount"><span
+																	class="woocommerce-Price-currencySymbol">₩</span>${bookVo.price}</span>
 															</div>
-															<div class="product__hover d-flex align-items-center">
-																<span class="product__add-to-cart-text"
-																	onClick="addToCart(${bookVo.book_no},${bookVo.price})">ADD
-																	TO CART</span>
-															</div>
+
 														</div>
+														<c:choose>
+															<c:when test="${bookVo.stock != 0}">
+																<div class="product__hover d-flex align-items-center">
+																	<span class="product__add-to-cart-text"
+																		onClick="addToCart(${bookVo.book_no},${bookVo.price})">ADD
+																		TO CART</span>
+																</div>
+															</c:when>
+															<c:otherwise>
+																<div class="product__hover d-flex align-items-center">
+																	<span style="color:red;">품절</span>
+																</div>
+															</c:otherwise>
+														</c:choose>
+
 													</div>
 												</div>
 											</div>
 										</div>
-									</c:forEach>
-								</div>
+									</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 	</section>
 
 
