@@ -106,7 +106,7 @@
 								class="d-flex align-items-center text-dark font-size-2 text-lh-sm">
 								<i class="flaticon-question font-size-5 mt-2 mr-1"></i>
 								<div class="ml-2">
-									<span class="text-secondary-gray-1090 font-size-1">info@bookworm.com</span>
+									<span class="text-secondary-gray-1090 font-size-1">info@metanet.co.kr</span>
 									<div class="h6 mb-0">Any questions</div>
 								</div>
 							</div>
@@ -119,8 +119,7 @@
 								class="d-flex align-items-center text-dark font-size-2 text-lh-sm">
 								<i class="flaticon-phone font-size-5 mt-2 mr-1"></i>
 								<div class="ml-2">
-									<span class="text-secondary-gray-1090 font-size-1">+1
-										246-345-0695</span>
+									<span class="text-secondary-gray-1090 font-size-1">02-3704-5000</span>
 									<div class="h6 mb-0">Call toll-free</div>
 								</div>
 							</div>
