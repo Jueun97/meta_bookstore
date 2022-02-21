@@ -71,8 +71,8 @@
 
 								<form name="checkout" method="post"
 									class="checkout-form checkout woocommerce-checkout row order-update-form"
-									action="/order/myorder/update/process" enctype="multipart/form-data"
-									novalidate="novalidate">
+									action="/order/myorder/update/process"
+									enctype="multipart/form-data" novalidate="novalidate">
 									<div
 										class="col2-set col-md-6 col-lg-7 col-xl-8 mb-6 mb-md-0  m-auto"
 										id="customer_details">
@@ -89,7 +89,8 @@
 															<input path="name" type="text" style="width: 100%"
 																class="form-control rounded-0 height-4 px-4 "
 																name="receiver_name" id="nameForm"
-																value="${orderInfo.receiver_name}" placeholder="이름을 입력하세요" />
+																value="${orderInfo.receiver_name}"
+																placeholder="이름을 입력해주세요." />
 														</div>
 														<c:if test="${!empty errorMap}">
 															<strong style="color: red;">${errorMap.name}</strong>
@@ -104,13 +105,13 @@
 															<div class="telDiv">
 																<input path="tel1" type="text" maxlength="3" size="4"
 																	id="tel1" onkeyup="to_auto_tel('tel1','tel2',3);"
-																	class="tel_form form-control rounded-0 height-4 px-4" />
+																	class="tel_form form-control rounded-0 height-4 px-4" placeholder="01x"/>
 																- <input path="tel2" type="text" maxlength="4" size="5"
 																	id="tel2" onkeyup="to_auto_tel('tel2','tel3',4);"
-																	class="tel_form form-control rounded-0 height-4 px-4" />
+																	class="tel_form form-control rounded-0 height-4 px-4" placeholder="xxxx" />
 																- <input path="tel3" type="text" maxlength="4" size="5"
 																	id="tel3"
-																	class="tel_form form-control rounded-0 height-4 px-4" />
+																	class="tel_form form-control rounded-0 height-4 px-4"placeholder="xxxx"  />
 																<input type="hidden" name="receiver_phone" id="phone" />
 															</div>
 														</div>
@@ -122,18 +123,16 @@
 													<!-- Form Group -->
 													<div class="form-group mb-4">
 														<div class="js-form-message js-focus-state">
-															<label class="form-label">이메일</label> <br> 
-															<input type="hidden" name="receiver_email" id="receiver_email">
-															<input
-																path="email1" type="text"
+															<label class="form-label">이메일</label> <br> <input
+																type="hidden" name="receiver_email" id="receiver_email">
+															<input path="email1" type="text"
 																style="width: 30%; display: inline-block;"
-																class="form-control rounded-0 height-4 px-4"
-																 id="email1" placeholder="이메일을 입력" />
-															@ <input path="emailDomain" type="text"
-																class="form-control rounded-0 height-4 px-4"
-																id="emailDomain" name="receiver_emailDomain"
+																class="form-control rounded-0 height-4 px-4" id="email1"
+																placeholder="이메일을 입력해주세요." /> @ <input path="emailDomain"
+																type="text" class="form-control rounded-0 height-4 px-4"
+																id="emailDomain" name="receiver_emailDomain" placeholder="도메인을 선택해주세요."
 																style="width: 30%; display: inline-block;" /> <select
-																 id="emailDomain"
+																id="emailDomain"
 																onChange="selectEmailChange(this.value);" title="직접입력"
 																style="width: 20%;">
 																<option value="">직접입력</option>
@@ -163,9 +162,8 @@
 															<div class="addrBtn">
 																<input type="text" style="width: 30%"
 																	class="form-control rounded-0 height-2 px-2 order-form"
-																	name="receiver_zipcode" id="zipcode" placeholder="우편번호"
-																	value="${orderInfo.receiver_zipcode}" 
-																	readonly />
+																	name="receiver_zipcode" id="zipcode" placeholder="우편번호를 입력해주세요."
+																	value="${orderInfo.receiver_zipcode}" readonly />
 																<button type="button" class="btn btn-info"
 																	onClick="goPopup();">주소검색</button>
 															</div>
@@ -176,9 +174,8 @@
 																style="margin-top: 10px;"
 																class="form-control rounded-0 height-4 px-4"
 																name="receiver_roadAddress" id="roadAddress"
-																placeholder="주소검색을 해주세요" 
-																value="${orderInfo.receiver_roadAddress}" 
-																readonly />
+																placeholder="주소검색을 해주세요."
+																value="${orderInfo.receiver_roadAddress}" readonly />
 															<c:if test="${!empty errorMap}">
 																<strong style="color: red;">${errorMap.roadAddress}</strong>
 															</c:if>
@@ -186,9 +183,9 @@
 																type="text" style="margin-top: 10px;"
 																class="form-control rounded-0 height-4 px-4"
 																name="receiver_otherAddress" id="otherAddress"
-																placeholder="상세주소"
-																	value="${orderInfo.receiver_otherAddress}" 
-																	 /> <br />
+																placeholder="상세주소를 입력해주세요."
+																value="${orderInfo.receiver_otherAddress}" />
+															<br />
 															<c:if test="${!empty errorMap}">
 																<strong style="color: red;">${errorMap.otherAddress}</strong>
 															</c:if>
@@ -219,7 +216,7 @@
 										</div>
 										<input type="hidden" name="order_no"
 											value="${orderInfo.order_no}"> <input type="button"
-											value="수정 완료"
+											value="수정 완료" data-status="update"
 											class="btn btn-dark rounded-1 btn-short font-weight-medium form-button"
 											style="margin: 20px auto; display: block;">
 									</div>
@@ -244,7 +241,7 @@
 	<!-- footer 자리 -->
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
-	<script src="/js/auth/register.js"></script>
+	<script src="/js/order/checkout.js"></script>
 	<script>
 		$(function() {
 			let principalPhone = '<c:out value='${orderInfo.receiver_phone}'/>';
@@ -259,19 +256,6 @@
 			$("#emailDomain").val(emailArr[1]);
 
 		})
-
-		$('.form-button').on(
-				'click',
-				function() {
-					$('#phone').val(
-							$("#tel1").val() + '-' + $("#tel2").val() + '-'
-									+ $("#tel3").val());
-		
-					$('#receiver_email').val($("#email1").val() + '@' + $("#emailDomain").val());
-				    alert("수정완료되었습니다.");
-					$('.order-update-form').submit();
-
-				})
 	</script>
 
 </body>

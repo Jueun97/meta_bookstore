@@ -1,34 +1,48 @@
 @charset "UTF-8";
 
-.addrBtn{
-	display:flex;
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
 }
-.telDiv{
+
+.addrBtn {
 	display: flex;
 }
 
-.telDiv > input{
-	width:100%;
+.telDiv {
+	display: flex;
 }
 
-.tel_form{
+.telDiv>input {
+	width: 100%;
+}
+
+.tel_form {
 	width: 15%;
 }
 
-.addrBtn button{
+.addrBtn button {
 	margin-left: 10px;
 }
-.order-form{
-	background-color:white;
+
+.order-form {
+	background-color: white;
 }
-#nameForm{
-	width:100%;
+
+#nameForm {
+	width: 100%;
 }
-#roadAddress,#zipcode{
-	background-color:white;
+
+#roadAddress, #zipcode {
+	background-color: white;
 }
-.checkout-header{
+
+.checkout-header {
 	margin-left: 20px;
-	color:darkgray
-	
+	color: darkgray
+}
+
+.changeplaceholder::placeholder {
+	color: red;
 }
