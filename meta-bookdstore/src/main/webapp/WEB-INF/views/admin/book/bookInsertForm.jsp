@@ -70,17 +70,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item active">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-table"></i>
-                <span>책 재고 관리</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Tables -->
-        <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/admin/order">
                 <i class="fas fa-fw fa-table"></i>
                 <span>주문 관리</span></a>
         </li>
@@ -372,6 +362,10 @@
                             </c:forEach>
 
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">책 재고</label>
+                        <input type="number" id="stock" name="stock" value="0"  style="text-align:center; margin-left: 1rem;"/>
                     </div>
                     <button type="submit" class="btn btn-outline-primary" style="float: right;">등록</button>
                     <button type="button" class="btn btn-outline-danger" onclick="history.back()" style="float: right; margin-right: 1rem;">취소</button>

@@ -11,4 +11,8 @@ public interface StockMapper {
 	public int addStockWhenCheckedout(StockVO stockVo);
 	public int removeStockWhenCancelled(StockVO stockVo);
 
+	//----------------------------------관리자--------------------------------------
+	public int updateStock(StockVO stockVO);
+	public int insertStock(StockVO stockVO);
+
 }

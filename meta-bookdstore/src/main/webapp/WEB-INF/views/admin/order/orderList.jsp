@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -15,6 +14,13 @@
     <meta name="author" content="">
 
     <title>Meta-Book Admin</title>
+
+    <!-- table관련 hover이벤트 -->
+    <style>
+        table#trHover tr:hover{
+            background-color: #b8f1fb;
+        }
+    </style>
 
     <!-- Custom fonts for this template -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -293,101 +299,55 @@
                             </a>
                         </div>
                     </li>
-
                 </ul>
 
             </nav>
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid" style="padding-left: 19.5rem; padding-right: 19.5rem;">
+            <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Update page</h1>
-                <p class="mb-4">책 리스트의 업데이트  페이지입니다. </p>
+                <h1 class="h3 mb-2 text-gray-800">주문 관리</h1>
+                <p class="mb-4">회원들의 주문 정보들을 조회 및 관리할 수 있는 페이지입니다. 이 곳에 있는 기능을 통해 관리를 진행해주세요. </p>
 
-                <form method="post" action="/admin/bookUpdate" enctype="multipart/form-data" onsubmit="return checkSubmit()">
-                    <input type="hidden" id="book_no" name="book_no" value="${bookInfo.book_no}" >
-                    <input type="hidden" id="image" name="image" value="${bookInfo.image}">
-                    <input type="hidden" id="th_image" name="th_image" value="${bookInfo.th_image}">
-                    <div style="display: inline-block; width: 100%;">
-                        <div style="float: left; width: 40%;">
-                            <div class="mb-3">
-                                <label for="title" class="form-label">Book Title</label>
-                                <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" value="${bookInfo.title}"
-                                       style="width: 100%;">
-                                <div id="titleHelp" class="form-text">기존의 책 제목 확인 후, 수정할 책 제목을 입력해주세요.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="author" class="form-label">Author</label>
-                                <input type="text" class="form-control" id="author" name="author" aria-describedby="authorHelp" value="${bookInfo.author}"
-                                       style="width: 100%;">
-                                <div id="authorHelp" class="form-text">기존의 책 작가 확인 후, 수정할 책 작가를 입력해주세요.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="publisher" class="form-label">Publisher</label>
-                                <input type="text" class="form-control" id="publisher" name="publisher" aria-describedby="publisherHelp" value="${bookInfo.publisher}"
-                                       style="width: 100%;">
-                                <div id="publisherHelp" class="form-text">기존의 출판사 확인 후, 수정할 출판사 입력해주세요.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="pubdate" class="form-label">Pubdate</label>
-                                <input type="text" class="form-control" id="pubdate" name="pubdate" aria-describedby="pubdateHelp" value="${bookInfo.pubdate}"
-                                       style="width: 100%;">
-                                <div id="pubdateHelp" class="form-text">기존의 출판일자 확인 후, 수정할 출판일자를 형식에 맞게 입력해주세요.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="${bookInfo.price}"
-                                       style="width: 100%;">
-                                <div id="priceHelp" class="form-text">기존의 책 가격 확인 후, 수정할 책 가격을 입력해주세요.</div>
-                            </div>
-                        </div>
-                        <div style="float: left; margin-left: 8rem; margin-top: 6rem; text-align: center">
-                            <div class="mb-3" style="margin-left: 5.5rem;">
-                                <label for="description" class="form-label">Image</label>
-                                <input type="file" name="filename" onchange="readURL(this);" size="50" maxlength="50">
-                            </div>
-                            <div class="mb-3">
-                                <c:choose>
-                                    <c:when test="${fn:substring(bookInfo.image, 0, 5) eq 'https'}">
-                                        <img id="preview" src="${bookInfo.image}" alt="기존 사진" style="width: 166px; height: 205px;">
-                                    </c:when>
-                                    <c:otherwise>
-                                        <img id="preview" src="/image/${bookInfo.image}" alt="기존 사진" style="width: 166px; height: 205px;">
-                                    </c:otherwise>
-                                </c:choose>
 
-                            </div>
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <!-- 혹시모를 추가 기능을 위한 버튼 남겨놓기
+                            <button type="button" class="btn btn-primary" style="float: right; margin-left:50px;" onclick="location.href='/admin/memberRegisterForm' ">회원 등록</button>
+                            -->
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr id="tablehover">
+                                    <th>주문번호</th>
+                                    <th>이름</th>
+                                    <th>주소</th>
+                                    <th>주문날짜</th>
+                                    <th>가격</th>
+                                    <th>배송상태</th>
+                                    <th>setting</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${orderInfo}" var = "info">
+                                    <tr id="trHover">
+                                        <td><a href="/admin/orderUpdate?order_no=${info.order_no}" style="color: #858796;">${info.order_no}</a></td>
+                                        <td>${info.receiver_name}</td>
+                                        <td>${info.receiver_roadAddress}</td>
+                                        <td>${info.order_date}</td>
+                                        <td>${info.order_price}</td>
+                                        <td>${info.status}</td>
+                                        <td><a href="/admin/orderDelete?order_no=${info.order_no}">삭제</a></td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="5">${bookInfo.description}</textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Category</label>
-                        <select class="form-select" aria-label="Default select example" name="cate_no" style="margin-left: 10px;">
-                            <c:forEach items="${cateInfo}" var="info">
-                                <c:choose>
-                                    <c:when test="${bookInfo.cate_no eq info.cate_no}">
-                                        <option selected value="${info.cate_no}">${info.cate_name}</option>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option value="${info.cate_no}">${info.cate_name}</option>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label">책 재고</label>
-                        <input type="number" id="stock" name="stock" value="${bookInfo.stock}"  style="text-align:center; margin-left: 1rem;"/>
-                    </div>
-                    <button type="submit" class="btn btn-outline-primary" style="float: right;">수정</button>
-                    <button type="button" class="btn btn-outline-danger" onclick="history.back()" style="float: right; margin-right: 1rem;">취소</button>
-                </form>
+                </div>
 
             </div>
             <!-- /.container-fluid -->
@@ -452,28 +412,6 @@
 
 <!-- Page level custom scripts -->
 <script src="/js/demo/datatables-demo.js"></script>
-
-<!-- insert Form validation 역할 -->
-<script src="/js/admin/insertBook.js"></script>
-
-<!-- 수량제어 script -->
-<script src="/js/admin/updateBook.js"></script>
-
-<!-- Image Upload -->
-<script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('preview').src = e.target.result;
-            };
-            reader.readAsDataURL(input.files[0]);
-        } else {
-            document.getElementById('preview').src = "";
-        }
-    }
-</script>
-
 
 </body>
 
