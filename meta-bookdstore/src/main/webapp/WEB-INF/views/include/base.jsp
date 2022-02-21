@@ -42,7 +42,9 @@
 <link rel="stylesheet"
 	href="/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
 
-<!-- CSS Bookworm Template -->
+	<link rel="stylesheet" href="/css/font.css">
+
+	<!-- CSS Bookworm Template -->
 <link rel="stylesheet" href="/css/theme.css">
 </head>
 <body>
