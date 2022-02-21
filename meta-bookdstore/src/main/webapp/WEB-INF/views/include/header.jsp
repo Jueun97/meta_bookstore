@@ -32,8 +32,6 @@
 						class="nav-link p-2 link-black-100 d-flex align-items-center"><i
 							class="glph-icon flaticon-pin mr-2 font-size-3"></i>Store
 							Location</a></li>
-
-					
 				</ul>
 			</div>
 		</div>
@@ -43,7 +41,7 @@
 			<div class="container py-3 py-md-4">
 				<div class="d-flex align-items-center position-relative flex-wrap">
 					<div class="site-branding pr-md-7 mx-auto mx-md-0">
-						<a style="font-size: 3rem; color: black!important;" href="/main">MetaBook</a>
+						<a style="font-size: 3rem; color: black!important; font-family: 'CookieRun-Regular';" href="/main">MetaBook</a>
 					</div>
 					<div class="site-navigation mr-auto d-none d-xl-block">
 						<ul class="nav">
