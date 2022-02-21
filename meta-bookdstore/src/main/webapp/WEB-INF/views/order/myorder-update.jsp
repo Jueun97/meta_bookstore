@@ -268,6 +268,7 @@
 									+ $("#tel3").val());
 		
 					$('#receiver_email').val($("#email1").val() + '@' + $("#emailDomain").val());
+				    alert("수정완료되었습니다.");
 					$('.order-update-form').submit();
 
 				})

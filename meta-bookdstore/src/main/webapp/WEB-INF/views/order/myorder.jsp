@@ -75,8 +75,8 @@
 									class="font-weight-normal text-gray-600">Account details</span>
 							</a></li>
 							<li class="nav-item mx-0"><a
-								class="nav-link d-flex align-items-center px-0" href="#"> <span
-									class="font-weight-normal text-gray-600">Logout</span>
+								class="nav-link d-flex align-items-center px-0" href="javascript:alertLogout();">
+									<span class="font-weight-normal text-gray-600">Logout</span>
 							</a></li>
 						</ul>
 					</div>
@@ -119,8 +119,9 @@
 												<td class="align-middle py-5">
 													<div class="d-flex justify-content-center">
 														<form action="/order/myorder/details" method="POST">
-														<input type="hidden" name="order_no" value="${order.order_no}">
-															<input type="submit" value="View"
+															<input type="hidden" name="order_no"
+																value="${order.order_no}"> <input type="submit"
+																value="View"
 																class="btn btn-dark rounded-0 btn-wide font-weight-medium">
 
 														</form>
@@ -147,6 +148,13 @@
 	<!-- footer 자리 -->
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
+	<script>
+	function alertLogout(){
+		if(window.confirm("로그아웃하시겠습니까?")){
+			location.href="/logout";
+		}
+	}
+	</script>
 
 </body>
 </html>

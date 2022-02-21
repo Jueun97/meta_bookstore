@@ -53,23 +53,6 @@
 	<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/aside.jsp"></c:import>
 
-	<!--     content here 내용은 여기에 넣어주세용  -->
-	<div class="page-header border-bottom">
-		<div class="container">
-			<div
-				class="d-md-flex justify-content-between align-items-center py-4">
-				<h1 class="page-title font-size-3 font-weight-medium m-0 text-lh-lg">Shop
-					Single</h1>
-				<nav class="woocommerce-breadcrumb font-size-2">
-					<a href="#" class="h-primary">Home</a> <span
-						class="breadcrumb-separator mx-1"><i
-						class="fas fa-angle-right"></i></span> <a href="#" class="h-primary">Shop</a>
-					<span class="breadcrumb-separator mx-1"><i
-						class="fas fa-angle-right"></i></span>Shop Single
-				</nav>
-			</div>
-		</div>
-	</div>
 	<div class="site-content  overflow-hidden" id="content">
 		<div class="container">
 			<header

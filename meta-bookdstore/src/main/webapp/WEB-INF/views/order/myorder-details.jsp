@@ -166,7 +166,8 @@
 								<div>
 									<h6 class="font-size-3 on-weight-medium mb-4 mt-4 pb-1">Order
 										Notes</h6>
-										<div style="padding: 1.6rem 1rem;border: 1px solid #eae8e4;"> ${orderInfo.msg}</div>
+									<div style="padding: 1.6rem 1rem; border: 1px solid #eae8e4;">
+										${orderInfo.msg}</div>
 								</div>
 							</div>
 
@@ -202,8 +203,9 @@
 										<h6 class="font-weight-medium font-size-22 mb-3">Billing
 											Address</h6>
 										<address class="d-flex flex-column mb-0">
-											<span class="text-gray-600 font-size-2">${principal.member.name} | ${principal.member.phone}</span>
-											<span class="text-gray-600 font-size-2">${principal.member.roadAddress}</span>
+											<span class="text-gray-600 font-size-2">${principal.member.name}
+												| ${principal.member.phone}</span> <span
+												class="text-gray-600 font-size-2">${principal.member.roadAddress}</span>
 											<span class="text-gray-600 font-size-2">${principal.member.otherAddress}</span>
 											<span class="text-gray-600 font-size-2">${principal.member.zipcode}</span>
 											<span class="text-gray-600 font-size-2">Republic Of
@@ -215,8 +217,9 @@
 									<h6 class="font-weight-medium font-size-22 mb-3">Shipping
 										Address</h6>
 									<address class="d-flex flex-column mb-0">
-										<span class="text-gray-600 font-size-2">${orderInfo.receiver_name} | ${orderInfo.receiver_phone }</span>
-										<span class="text-gray-600 font-size-2">${orderInfo.receiver_roadAddress }</span>
+										<span class="text-gray-600 font-size-2">${orderInfo.receiver_name}
+											| ${orderInfo.receiver_phone }</span> <span
+											class="text-gray-600 font-size-2">${orderInfo.receiver_roadAddress }</span>
 										<span class="text-gray-600 font-size-2">${orderInfo.receiver_otherAddress }</span>
 										<span class="text-gray-600 font-size-2">${orderInfo.receiver_zipcode }</span>
 										<span class="text-gray-600 font-size-2">Republic Of
@@ -226,23 +229,26 @@
 							</div>
 						</div>
 					</div>
-					<div class="d-flex justify-content-end" style="margin-top: 7px;">
-						<form action="/order/myorder/update" method="POST">
-							<input type="hidden" name="order_no"
-								value="${orderInfo.order_no}"> <input type="submit"
-								value="배송지수정"
-								class="btn btn-dark rounded-1 btn-short font-weight-medium"
-								style="margin: 0 5px;">
-						</form>
-						<form action="/order/myorder/delete" method="POST">
-							<input type="hidden" name="order_no"
-								value="${orderInfo.order_no}"> <input type="submit"
-								value="주문취소"
-								class="btn btn-dark rounded-1 btn-short font-weight-medium"
-								style="margin: 0 5px;">
-						</form>
-					</div>
-
+					<c:if test="${orderInfo.status_code==100}">
+						<div class="d-flex justify-content-end" style="margin-top: 7px;">
+							<form action="/order/myorder/update" method="POST"
+								class="updateAddress">
+								<input type="hidden" name="order_no"
+									value="${orderInfo.order_no}"> <input type="button"
+									value="배송지수정"
+									class="updateAddressBtn btn btn-dark rounded-1 btn-short font-weight-medium"
+									style="margin: 0 5px;">
+							</form>
+							<form action="/order/myorder/delete" method="POST"
+								class="cancelOrder">
+								<input type="hidden" name="order_no"
+									value="${orderInfo.order_no}"> <input type="button"
+									value="주문취소"
+									class="cancelOrderBtn btn btn-dark rounded-1 btn-short font-weight-medium"
+									style="margin: 0 5px;">
+							</form>
+						</div>
+					</c:if>
 
 				</div>
 			</div>
@@ -254,6 +260,18 @@
 	<!-- footer 자리 -->
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
+	<script>
+		$('.updateAddressBtn').on('click', function() {
+			if (window.confirm("배송지를 수정하시겠습니까?")) {
+				$('.updateAddress').submit();
+			}
+		})
+		$('.cancelOrderBtn').on('click', function() {
+			if (window.confirm("주문을 취소하시갰습니까?")) {
+				$('.cancelOrder').submit();
+			}
+		})
+	</script>
 
 </body>
 </html>

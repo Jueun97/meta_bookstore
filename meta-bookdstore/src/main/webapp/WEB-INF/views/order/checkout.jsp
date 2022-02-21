@@ -54,23 +54,6 @@
 	<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/aside.jsp"></c:import>
 
-	<!--     content here 내용은 여기에 넣어주세용  -->
-	<div class="page-header border-bottom">
-		<div class="container">
-			<div
-				class="d-md-flex justify-content-between align-items-center py-4">
-				<h1 class="page-title font-size-3 font-weight-medium m-0 text-lh-lg">Shop
-					Single</h1>
-				<nav class="woocommerce-breadcrumb font-size-2">
-					<a href="#" class="h-primary">Home</a> <span
-						class="breadcrumb-separator mx-1"><i
-						class="fas fa-angle-right"></i></span> <a href="#" class="h-primary">Shop</a>
-					<span class="breadcrumb-separator mx-1"><i
-						class="fas fa-angle-right"></i></span>Shop Single
-				</nav>
-			</div>
-		</div>
-	</div>
 	<div id="content" class="site-content  space-bottom-3">
 		<div class="col-full container">
 			<div id="primary" class="content-area">
@@ -140,17 +123,14 @@
 													<!-- Form Group -->
 													<div class="form-group mb-4">
 														<div class="js-form-message js-focus-state">
-															<label class="form-label">이메일</label> <br> 
-															<input type="hidden"
-																id="receiver_email" name="receiver_email"> 
-															<input
-																path="email1" type="text"
+															<label class="form-label">이메일</label> <br> <input
+																type="hidden" id="receiver_email" name="receiver_email">
+															<input path="email1" type="text"
 																style="width: 30%; display: inline-block;"
 																class="form-control rounded-0 height-4 px-4" id="email1"
-																placeholder="이메일을 입력" /> @ <input
-																path="emailDomain" type="text"
-																class="form-control rounded-0 height-4 px-4"
-																id="emailDomain" 
+																placeholder="이메일을 입력" /> @ <input path="emailDomain"
+																type="text" class="form-control rounded-0 height-4 px-4"
+																id="emailDomain"
 																style="width: 30%; display: inline-block;" /> <select
 																id="emailDomain"
 																onChange="selectEmailChange(this.value);" title="직접입력"
@@ -448,6 +428,8 @@
 		$('.form-button').on(
 				'click',
 				function() {
+					if (window.confirm("주문 진행하시겠습니까?")) {
+						 
 					$('#phone').val(
 							$("#tel1").val() + '-' + $("#tel2").val() + '-'
 									+ $("#tel3").val());
@@ -455,8 +437,9 @@
 					$('#receiver_email').val($("#email1").val() + '@' + $("#emailDomain").val());
 					
 					$('.checkout-form').submit();
-
+					}
 				})
+			
 	</script>
 
 </body>
