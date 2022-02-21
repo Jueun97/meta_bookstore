@@ -54,106 +54,32 @@
 	<main id="content">
 		<div class="row no-gutters">
 			<div class="col-lg-5 order-1 order-lg-0">
-				<div class="p-4 px-md-9 pt-md-9 pb-md-10">
-					<h6 class="font-weight-medium font-size-7 mb-5">Locate a Store</h6>
-					<div class="mb-5">
-						<!-- Search Property Input -->
-						<form class="js-focus-state">
-							<div class="input-group border">
-								<input type="text"
-									class="form-control rounded-0 border-0 placeholder-color-3 pl-4 font-size-2"
-									name="email" id="searchSrEmailExample1"
-									placeholder="Country/Region, state, city, street…"
-									aria-label="Your email address"
-									aria-describedby="searchButtonExample2" required>
-								<div class="input-group-append">
-									<button
-										class="btn bg-white pr-3 rounded-0 box-shadow-focus-none"
-										type="submit" id="searchButtonExample2">
-										<span class="flaticon-loupe text-dark"></span>
-									</button>
-								</div>
-							</div>
-						</form>
-						<!-- Search Property Input -->
-					</div>
-					<div>
-						<button type="submit"
-							class="btn btn-wide btn-dark text-white rounded-0 transition-3d-hover height-60 w-100">Near
-							Me</button>
-					</div>
+				<div class="p-2 px-md-7 pt-md-7 pb-md-8">
+					<h6 class="font-weight-medium font-size-7 mb-5">Preview</h6>
+					<img src="/img/metabookstore.png" style="width: 100%;">
 				</div>
 				<div class="js-scrollbar height-100vh-main pt-8">
 					<h6 class="font-size-7 font-weight-medium mb-4 pl-4 pl-md-9">Our
-						Stores</h6>
+						Store</h6>
 					<ul class="list-unstyled">
 						<li class="px-5 px-md-9">
 							<div class="border-bottom mb-5 pb-5">
-								<h6 class="font-size-3 font-weight-medium">London</h6>
+								<h6 class="font-size-3 font-weight-medium">Seoul</h6>
 								<address class="font-size-2 mb-2">
-									<span class="font-weight-normal text-gray-600"> Bedford
-										St, Covent Garden, London WC2E 9ED <br> United Kingdom
-									</span>
+									<span class="font-weight-normal text-gray-600"> 서울특별시
+										종로구 연지동 종로33길 15 </span>
 								</address>
-								<span class="font-size-2 d-block link-black-100">+1
-									246-345-0695 </span>
-							</div>
-						</li>
-						<li class="px-5 px-md-9">
-							<div class="border-bottom mb-5 pb-5">
-								<h6 class="font-size-3 font-weight-medium">London</h6>
-								<address class="font-size-2 mb-2">
-									<span class="font-weight-normal text-gray-600"> Bedford
-										St, Covent Garden, London WC2E 9ED <br> United Kingdom
-									</span>
-								</address>
-								<span class="font-size-2 d-block link-black-100">+1
-									246-345-0695 </span>
-							</div>
-						</li>
-						<li class="px-5 px-md-9">
-							<div class="border-bottom mb-5 pb-5">
-								<h6 class="font-size-3 font-weight-medium">London</h6>
-								<address class="font-size-2 mb-2">
-									<span class="font-weight-normal text-gray-600"> Bedford
-										St, Covent Garden, London WC2E 9ED <br> United Kingdom
-									</span>
-								</address>
-								<span class="font-size-2 d-block link-black-100">+1
-									246-345-0695 </span>
-							</div>
-						</li>
-						<li class="px-5 px-md-9">
-							<div class="border-bottom mb-5 pb-5">
-								<h6 class="font-size-3 font-weight-medium">London</h6>
-								<address class="font-size-2 mb-2">
-									<span class="font-weight-normal text-gray-600"> Bedford
-										St, Covent Garden, London WC2E 9ED <br> United Kingdom
-									</span>
-								</address>
-								<span class="font-size-2 d-block link-black-100">+1
-									246-345-0695 </span>
-							</div>
-						</li>
-						<li class="px-5 px-md-9">
-							<div class="border-bottom mb-0 pb-5">
-								<h6 class="font-size-3 font-weight-medium">London</h6>
-								<address class="font-size-2 mb-2">
-									<span class="font-weight-normal text-gray-600"> Bedford
-										St, Covent Garden, London WC2E 9ED <br> United Kingdom
-									</span>
-								</address>
-								<span class="font-size-2 d-block link-black-100">+1
-									246-345-0695 </span>
+								<span class="font-size-2 d-block link-black-100">02-3704-5000s</span>
 							</div>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<div class="col-lg-7 height-400-md-down">
+			<div class="col-lg-7 height-400-md-down mt-8" >
 				<iframe
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15544.315136188916!2d80.28787859999998!3d13.09419335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7f6b00bf787831af!2sApollo%20City%20Centre%20Hospital%20Sowcarpet!5e0!3m2!1sen!2sin!4v1580992215999!5m2!1sen!2sin"
-					style="border: 0; width: 100%; height: 100%;" allowfullscreen=""></iframe>
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4305.093522671271!2d126.99290336805144!3d37.567930320720606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2e6172ee243%3A0x724f226c9b2c836f!2z66mU7YOA64S3!5e0!3m2!1sko!2skr!4v1645429743414!5m2!1sko!2skr"
+					style="border: 0; width: 95%; height: 80%;" allowfullscreen=""
+					loading="lazy"></iframe>
 			</div>
 		</div>
 	</main>
