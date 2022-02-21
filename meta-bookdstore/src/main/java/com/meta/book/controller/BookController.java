@@ -1,8 +1,10 @@
 package com.meta.book.controller;
 
 import com.meta.book.service.BookService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.meta.book.vo.BookVO;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +38,14 @@ public class BookController {
 	@GetMapping("/detail/{book_no}")
 	public String showBookDetail(Model model,@PathVariable Long book_no) {
 		log.info("책 상세정보");
-		model.addAttribute("bookInfo",service.detailBookInfo(book_no));
+		BookVO bookVo = service.detailBookInfo(book_no);
+		int cate_no = bookVo.getCate_no();
+		//카테고리 별 책리스트 뿌리기
+		List<BookVO> relatedBookList = service.relatedBookList(cate_no);
+		//상세보기 시 하는거.
+		model.addAttribute("bookInfo",bookVo);		
+		//카테고리별 연관 북리스트
+		model.addAttribute("related_BookList",relatedBookList);		
 		return "book/details";
 	}
 
