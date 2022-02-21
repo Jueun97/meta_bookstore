@@ -97,75 +97,66 @@ $('.js-result').on('click', function() {
 		$('.amount-for-checkout').html(
 			`[ 주문금액 : ${total_price.toString().replace(regexp, ',')}원 ]`
 		)
-	
-	
+
+
 	}
 
 })
 
 $('.product-remove-icon').on('click', function() {
-	var data = {
-		cart_no: $(this).data('cart_no')
-	};
-	console.log(data)
-	$subTotalContainer = $('#cartAccordion').find('.woocommerce-Price-amount');
-	$cartCaontainer = $(this);
-	var regexp = /\B(?=(\d{3})+(?!\d))/g;
-	$.ajax({
-		url: '/cart/delete',
-		type: 'post',
-		data: data,
-		dataType: 'json',
-		success: function(sub_total_price) {
-			console.log("subTotalPrice" + sub_total_price)
-			$cartCaontainer.closest('tr').remove();
-			$('.cart-count').data('cart', $('.cart-count').data('cart') - 1)
-			$('.cart-count').text(`Your cart:
+	if (window.confirm("장바구니에서 제거하시겠습니까?")) {
+
+		var data = {
+			cart_no: $(this).data('cart_no')
+		};
+		console.log(data)
+		$subTotalContainer = $('#cartAccordion').find('.woocommerce-Price-amount');
+		$cartCaontainer = $(this);
+		var regexp = /\B(?=(\d{3})+(?!\d))/g;
+		$.ajax({
+			url: '/cart/delete',
+			type: 'post',
+			data: data,
+			dataType: 'json',
+			success: function(sub_total_price) {
+				$cartCaontainer.closest('tr').remove();
+				$('.cart-count').data('cart', $('.cart-count').data('cart') - 1)
+				$('.cart-count').text(`Your cart:
 					${$('.cart-count').data('cart')} items`)
-			if (sub_total_price == 0) {
-				$('#cart-container').remove();
+				if (sub_total_price == 0) {
+					$('#cart-container').remove();
+				}
+				var newData = [];
+				$('.cart-checkbox').each(function() {
+					if ($(this).is(":checked")) {
+						newData.push({ cart_no: $(this).data('cart_no') })
+					}
+				})
+				$.ajax({
+					url: '/cart/choose',
+					type: 'post',
+					data: { data: JSON.stringify(newData) },
+					dataType: 'json',
+					success: function(sub_total_price) {
+						$subTotalContainer.html(`<span class="woocommerce-Price-currencySymbol" >₩</span>${sub_total_price.toString().replace(regexp, ',')}`)
+					}
+
+
+				})
+
 			}
-			var newData = [];
-			$('.cart-checkbox').each(function() {
-				if ($(this).is(":checked")) {
-					newData.push({ cart_no: $(this).data('cart_no') })
-
-				} else {
-					console.log("unhecked")
-
-
-				}
-			})
-			console.log(data)
-			$.ajax({
-				url: '/cart/choose',
-				type: 'post',
-				data: { data: JSON.stringify(newData) },
-				dataType: 'json',
-				success: function(sub_total_price) {
-					$subTotalContainer.html(`<span class="woocommerce-Price-currencySymbol" >₩</span>${sub_total_price.toString().replace(regexp, ',')}`)
-				}
-
-
-			})
-
-		}
-	})
+		})
+	}
 })
 
 $('.delete_cart-all').on('click', function() {
 	var data = [];
 	$subTotalContainer = $('#cartAccordion').find('.woocommerce-Price-amount');
 	$cartCaontainer = $(this);
-
+	if(window.confirm("선택하신 상품을 제거하시겠습니까?")){
 	$('.cart-checkbox').each(function() {
 		if ($(this).is(":checked")) {
 			data.push({ cart_no: $(this).data('cart_no') })
-
-		} else {
-			console.log("unhecked")
-
-
 		}
 	})
 	$.ajax({
@@ -173,7 +164,7 @@ $('.delete_cart-all').on('click', function() {
 		type: 'post',
 		data: { data: JSON.stringify(data) },
 		dataType: 'json',
-		success: function(sub_total_price) {
+		success: function() {
 			$subTotalContainer.html(`${0}원`);
 			$('.cart-count').data('cart', $('.cart-count').data('cart') - data.length)
 			$('.cart-count').text(`Your cart:
@@ -190,6 +181,7 @@ $('.delete_cart-all').on('click', function() {
 			}
 		}
 	})
+	}
 })
 
 $('.cart-checkbox-all').change(function() {

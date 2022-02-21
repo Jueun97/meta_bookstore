@@ -51,26 +51,12 @@
 	<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 	<c:import url="/WEB-INF/views/include/aside.jsp"></c:import>
 
-	<!--     content here 내용은 여기에 넣어주세용  -->
-	<div class="page-header border-bottom mb-8">
-		<div class="container">
-			<div
-				class="d-md-flex justify-content-between align-items-center py-4">
-				<h1 class="page-title font-size-3 font-weight-medium m-0 text-lh-lg">Shop</h1>
-				<nav class="woocommerce-breadcrumb font-size-2">
-					<a href="../shop/v1.html" class="h-primary">Category</a> <span
-						class="breadcrumb-separator mx-1"><i
-						class="fas fa-angle-right"></i></span>[search word]
-				</nav>
-			</div>
-		</div>
-	</div>
 	<div class="site-content" id="content">
 		<div class="container">
 			<div class="row">
 				<div id="primary" class="content-area order-2">
 					<div
-						class="shop-control-bar d-lg-flex justify-content-between align-items-center mb-5 text-center text-md-left">
+						class="shop-control-bar d-lg-flex justify-content-between align-items-center mt-5 mb-5 text-center text-md-left">
 						<div class="shop-control-bar__left mb-4 m-lg-0">
 							<p class="woocommerce-result-count m-0">Showing 1–12 of 126
 								results</p>
@@ -82,13 +68,20 @@
 									name="orderby" id="sel_cateNo"
 									data-style="border-bottom shadow-none outline-none py-2">
 									<option value="" selected="selected">All Books</option>
-									<option value="100" ${(bookPageObject.cate_no == 100)?"selected":"" }>Fiction</option>
-									<option value="110" ${(bookPageObject.cate_no == 110)?"selected":"" }>Poetry</option>
-									<option value="120" ${(bookPageObject.cate_no == 120)?"selected":"" }>Humanity</option>
-									<option value="130" ${(bookPageObject.cate_no == 130)?"selected":"" }>House</option>
-									<option value="140" ${(bookPageObject.cate_no == 140)?"selected":"" }>Health</option>
-									<option value="150" ${(bookPageObject.cate_no == 150)?"selected":"" }>Leisure</option>
-									<option value="160" ${(bookPageObject.cate_no == 160)?"selected":"" }>Economy</option>
+									<option value="100"
+										${(bookPageObject.cate_no == 100)?"selected":"" }>Fiction</option>
+									<option value="110"
+										${(bookPageObject.cate_no == 110)?"selected":"" }>Poetry</option>
+									<option value="120"
+										${(bookPageObject.cate_no == 120)?"selected":"" }>Humanity</option>
+									<option value="130"
+										${(bookPageObject.cate_no == 130)?"selected":"" }>House</option>
+									<option value="140"
+										${(bookPageObject.cate_no == 140)?"selected":"" }>Health</option>
+									<option value="150"
+										${(bookPageObject.cate_no == 150)?"selected":"" }>Leisure</option>
+									<option value="160"
+										${(bookPageObject.cate_no == 160)?"selected":"" }>Economy</option>
 								</select>
 								<!-- End Select -->
 							</form>
@@ -101,716 +94,24 @@
 									name="orderby"
 									data-style="border-bottom shadow-none outline-none py-2"
 									data-width="fit" id="sel_perPageNum">
-									<option value="10" ${(bookPageObject.perPageNum == 10)?"selected":"" }>Show 10</option>
-									<option value="15" ${(bookPageObject.perPageNum == 15)?"selected":"" }>Show 15</option>
-									<option value="20" selected="selected" ${(bookPageObject.perPageNum == 20)?"selected":"" }>Show 20</option>
-									<option value="25" ${(bookPageObject.perPageNum == 25)?"selected":"" }>Show 25</option>
-									<option value="30" ${(bookPageObject.perPageNum == 30)?"selected":"" }>Show 30</option>
+									<option value="10"
+										${(bookPageObject.perPageNum == 10)?"selected":"" }>Show
+										10</option>
+									<option value="15"
+										${(bookPageObject.perPageNum == 15)?"selected":"" }>Show
+										15</option>
+									<option value="20" selected="selected"
+										${(bookPageObject.perPageNum == 20)?"selected":"" }>Show
+										20</option>
+									<option value="25"
+										${(bookPageObject.perPageNum == 25)?"selected":"" }>Show
+										25</option>
+									<option value="30"
+										${(bookPageObject.perPageNum == 30)?"selected":"" }>Show
+										30</option>
 								</select>
 								<!-- End Select -->
 							</form>
-
-							<ul
-								class="nav nav-tab ml-lg-4 justify-content-center justify-content-md-start ml-md-auto"
-								id="pills-tab" role="tablist">
-								<li class="nav-item border"><a
-									class="nav-link p-0 height-38 width-38 justify-content-center d-flex align-items-center active"
-									id="pills-one-example1-tab" data-toggle="pill"
-									href="#pills-one-example1" role="tab"
-									aria-controls="pills-one-example1" aria-selected="true"> <svg
-											xmlns="http://www.w3.org/2000/svg"
-											xmlns:xlink="http://www.w3.org/1999/xlink" width="17px"
-											height="17px">
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M-0.000,0.000 L3.000,0.000 L3.000,3.000 L-0.000,3.000 L-0.000,0.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M7.000,0.000 L10.000,0.000 L10.000,3.000 L7.000,3.000 L7.000,0.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M14.000,0.000 L17.000,0.000 L17.000,3.000 L14.000,3.000 L14.000,0.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M-0.000,7.000 L3.000,7.000 L3.000,10.000 L-0.000,10.000 L-0.000,7.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M7.000,7.000 L10.000,7.000 L10.000,10.000 L7.000,10.000 L7.000,7.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M14.000,7.000 L17.000,7.000 L17.000,10.000 L14.000,10.000 L14.000,7.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M-0.000,14.000 L3.000,14.000 L3.000,17.000 L-0.000,17.000 L-0.000,14.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M7.000,14.000 L10.000,14.000 L10.000,17.000 L7.000,17.000 L7.000,14.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M14.000,14.000 L17.000,14.000 L17.000,17.000 L14.000,17.000 L14.000,14.000 Z" />
-                                        </svg>
-								</a></li>
-								<li class="nav-item border"><a
-									class="nav-link p-0 height-38 width-38 justify-content-center d-flex align-items-center"
-									id="pills-two-example1-tab" data-toggle="pill"
-									href="#pills-two-example1" role="tab"
-									aria-controls="pills-two-example1" aria-selected="false"> <svg
-											xmlns="http://www.w3.org/2000/svg"
-											xmlns:xlink="http://www.w3.org/1999/xlink" width="23px"
-											height="17px">
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M-0.000,0.000 L3.000,0.000 L3.000,3.000 L-0.000,3.000 L-0.000,0.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M7.000,0.000 L23.000,0.000 L23.000,3.000 L7.000,3.000 L7.000,0.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M-0.000,7.000 L3.000,7.000 L3.000,10.000 L-0.000,10.000 L-0.000,7.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M7.000,7.000 L23.000,7.000 L23.000,10.000 L7.000,10.000 L7.000,7.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M-0.000,14.000 L3.000,14.000 L3.000,17.000 L-0.000,17.000 L-0.000,14.000 Z" />
-                                            <path fill-rule="evenodd"
-												fill="rgb(25, 17, 11)"
-												d="M7.000,14.000 L23.000,14.000 L23.000,17.000 L7.000,17.000 L7.000,14.000 Z" />
-                                        </svg>
-								</a></li>
-							</ul>
-							<!-- Account Sidebar Toggle Button -->
-							<a id="sidebarNavToggler4" class="ml-3 h-primary"
-								href="javascript:;" role="button"
-								aria-controls="sidebarContent4" aria-haspopup="true"
-								aria-expanded="false" data-unfold-event="click"
-								data-unfold-hide-on-scroll="false"
-								data-unfold-target="#sidebarContent4"
-								data-unfold-type="css-animation"
-								data-unfold-overlay='{
-                                    "className": "u-sidebar-bg-overlay",
-                                    "background": "rgba(0, 0, 0, .7)",
-                                    "animationSpeed": 500
-                                }'
-								data-unfold-animation-in="fadeInRight"
-								data-unfold-animation-out="fadeOutRight"
-								data-unfold-duration="500"> <i class="flaticon-filter mr-2"></i>Filter
-								By
-							</a>
-							<!-- End Account Sidebar Toggle Button -->
-
-							<!-- Sidebar Navigation -->
-							<aside id="sidebarContent4"
-								class="u-sidebar u-sidebar__md js-scrollbar"
-								aria-labelledby="sidebarNavToggler4">
-								<div class="u-sidebar__scroller">
-									<div class="u-sidebar__container">
-										<div class="u-header-sidebar__footer-offset">
-											<!-- Toggle Button -->
-											<div
-												class="d-flex align-items-center justify-content-between py-4 px-4 border-bottom mb-5">
-												<div class="font-size-3">
-													<i class="flaticon-filter mr-2"></i>Filter By
-												</div>
-												<button type="button"
-													class="close font-size-3 text-dark d-flex align-items-center"
-													aria-controls="sidebarContent4" aria-haspopup="true"
-													aria-expanded="false" data-unfold-event="click"
-													data-unfold-hide-on-scroll="false"
-													data-unfold-target="#sidebarContent4"
-													data-unfold-type="css-animation"
-													data-unfold-animation-in="fadeInRight"
-													data-unfold-animation-out="fadeOutRight"
-													data-unfold-duration="500">
-													close <span aria-hidden="true"><i
-														class="ml-2 flaticon-error"></i></span>
-												</button>
-											</div>
-											<!-- End Toggle Button -->
-
-											<!-- Content -->
-											<div class="u-sidebar__body px-4">
-												<div class="u-sidebar__content u-header-sidebar__content">
-													<div class="sidebar widget-area">
-														<div id="widgetAccordion">
-															<div id="woocommerce_product_categories-2"
-																class="widget p-4d875 border woocommerce widget_product_categories">
-																<div id="widgetHeadingOne" class="widget-head">
-																	<a
-																		class="d-flex align-items-center justify-content-between text-dark"
-																		href="#" data-toggle="collapse"
-																		data-target="#widgetCollapseOne" aria-expanded="true"
-																		aria-controls="widgetCollapseOne">
-
-																		<h3
-																			class="widget-title mb-0 font-weight-medium font-size-3">Categories</h3>
-
-																		<svg class="mins" xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="2px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                                                                        </svg>
-
-																		<svg class="plus" xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="15px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                                                                        </svg>
-																	</a>
-																</div>
-
-																<div id="widgetCollapseOne"
-																	class="mt-3 widget-content collapse show"
-																	aria-labelledby="widgetHeadingOne"
-																	data-parent="#widgetAccordion">
-																	<ul class="product-categories">
-																		<li class="cat-item cat-item-9 cat-parent"><a
-																			href="#/clothing">Clothing</a>
-																			<ul class="children">
-																				<li class="cat-item cat-item-121"><a
-																					href="#/clothing/bags/">Bags</a></li>
-																				<li class="cat-item cat-item-44"><a
-																					href="#/clothing/blouses/">Blouses</a></li>
-																				<li class="cat-item cat-item-41"><a
-																					href="#/clothing/dresses/">Dresses</a></li>
-																				<li class="cat-item cat-item-56"><a
-																					href="#/clothing/footwear/">Footwear</a></li>
-																				<li class="cat-item cat-item-54"><a
-																					href="#/clothing/hats/">Hats</a></li>
-																				<li class="cat-item cat-item-10"><a
-																					href="#/clothing/hoodies/">Hoodies</a></li>
-																				<li class="cat-item cat-item-55"><a
-																					href="#/clothing/shirts/">Shirts</a></li>
-																				<li class="cat-item cat-item-47"><a
-																					href="#/clothing/skirts/">Skirts</a></li>
-																				<li class="cat-item cat-item-14"><a
-																					href="#/clothing/t-shirts/">T-shirts</a></li>
-																				<li class="cat-item cat-item-49"><a
-																					href="#/clothing/trousers/">Trousers</a></li>
-																			</ul></li>
-																		<li class="cat-item cat-item-69 cat-parent"><a
-																			href="#/electronics/">Electronics</a>
-																			<ul class="children">
-																				<li class="cat-item cat-item-71 cat-parent"><a
-																					href="#/electronics/cameras/">Cameras</a>
-																					<ul class="children">
-																						<li class="cat-item cat-item-114"><a
-																							href="#/electronics/cameras/accessories/">Accessories</a></li>
-																						<li class="cat-item cat-item-112"><a
-																							href="#/electronics/cameras/lenses/">Lenses</a></li>
-																					</ul></li>
-																				<li class="cat-item cat-item-99"><a
-																					href="#/electronics/dvd-players/">DVD Players</a></li>
-																				<li class="cat-item cat-item-72"><a
-																					href="#/electronics/headphones/">Headphones</a></li>
-																				<li class="cat-item cat-item-91"><a
-																					href="#/electronics/mp3-players/">MP3 Players</a></li>
-																				<li class="cat-item cat-item-90"><a
-																					href="#/electronics/radios/">Radios</a></li>
-																				<li class="cat-item cat-item-70"><a
-																					href="#/electronics/televisions/">Televisions</a></li>
-																			</ul></li>
-																		<li class="cat-item cat-item-65 cat-parent"><a
-																			href="#/kitchen/">Kitchen</a>
-																			<ul class="children">
-																				<li class="cat-item cat-item-102"><a
-																					href="#/kitchen/blenders/">Blenders</a></li>
-																				<li class="cat-item cat-item-103"><a
-																					href="#/kitchen/colanders/">Colanders</a></li>
-																				<li class="cat-item cat-item-68"><a
-																					href="#/kitchen/kettles/">Kettles</a></li>
-																				<li class="cat-item cat-item-101"><a
-																					href="#/kitchen/knives/">Knives</a></li>
-																				<li class="cat-item cat-item-66"><a
-																					href="#/kitchen/pots-pans/">Pots &amp; Pans</a></li>
-																				<li class="cat-item cat-item-67"><a
-																					href="#/kitchen/toasters/">Toasters</a></li>
-																			</ul></li>
-																		<li class="cat-item cat-item-11 cat-parent"><a
-																			href="#/music/">Music</a>
-																			<ul class="children">
-																				<li class="cat-item cat-item-15"><a
-																					href="#/music/albums/">Albums</a></li>
-																				<li class="cat-item cat-item-100"><a
-																					href="#/music/mp3/">MP3</a></li>
-																				<li class="cat-item cat-item-13"><a
-																					href="#/music/singles/">Singles</a></li>
-																			</ul></li>
-																		<li class="cat-item cat-item-12"><a
-																			href="#/posters/">Posters</a></li>
-																		<li class="cat-item cat-item-31"><a
-																			href="#/scuba-gear/">Scuba gear</a></li>
-																		<li class="cat-item cat-item-45"><a
-																			href="#/sweatshirts/">Sweatshirts</a></li>
-																	</ul>
-																</div>
-															</div>
-
-															<div id="Authors"
-																class="widget widget_search widget_author p-4d875 border">
-																<div id="widgetHeading21" class="widget-head">
-																	<a
-																		class="d-flex align-items-center justify-content-between text-dark"
-																		href="#" data-toggle="collapse"
-																		data-target="#widgetCollapse21" aria-expanded="true"
-																		aria-controls="widgetCollapse21">
-
-																		<h3
-																			class="widget-title mb-0 font-weight-medium font-size-3">Author</h3>
-
-																		<svg class="mins" xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="2px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                                                                        </svg>
-
-																		<svg class="plus" xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="15px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                                                                        </svg>
-																	</a>
-																</div>
-
-																<div id="widgetCollapse21"
-																	class="mt-4 widget-content collapse show"
-																	aria-labelledby="widgetHeading21"
-																	data-parent="#widgetAccordion">
-																	<form class="form-inline my-2 overflow-hidden">
-																		<div class="input-group flex-nowrap w-100">
-																			<div class="input-group-prepend">
-																				<i
-																					class="glph-icon flaticon-loupe py-2d75 bg-white-100 border-white-100 text-dark pl-3 pr-0 rounded-0"></i>
-																			</div>
-																			<input
-																				class="form-control bg-white-100 py-2d75 height-4 border-white-100 rounded-0"
-																				type="search" placeholder="Search"
-																				aria-label="Search">
-																		</div>
-																		<button
-																			class="btn btn-outline-success my-2 my-sm-0 sr-only"
-																			type="submit">Search</button>
-																	</form>
-																	<ul class="product-categories">
-																		<li class="cat-item cat-item-9 cat-parent"><a
-																			href="#/clothing">A. J. Finn</a></li>
-																		<li class="cat-item cat-item-69 cat-parent"><a
-																			href="#/electronics/">Anne Frank</a></li>
-																		<li class="cat-item cat-item-65 cat-parent"><a
-																			href="#/kitchen/">Camille Pagán</a></li>
-																		<li class="cat-item cat-item-11 cat-parent"><a
-																			href="#/music/">Daniel H. Pink</a></li>
-																		<li class="cat-item cat-item-12"><a
-																			href="#/posters/">Danielle Steel</a></li>
-																		<li class="cat-item cat-item-31"><a
-																			href="#/scuba-gear/">David Quammen</a></li>
-																	</ul>
-																</div>
-															</div>
-
-															<div id="Language" class="widget p-4d875 border">
-																<div id="widgetHeading22" class="widget-head">
-																	<a
-																		class="d-flex align-items-center justify-content-between text-dark"
-																		href="#" data-toggle="collapse"
-																		data-target="#widgetCollapse22" aria-expanded="true"
-																		aria-controls="widgetCollapse22">
-
-																		<h3
-																			class="widget-title mb-0 font-weight-medium font-size-3">Language</h3>
-
-																		<svg class="mins" xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="2px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                                                                        </svg>
-
-																		<svg class="plus" xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="15px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                                                                        </svg>
-																	</a>
-																</div>
-
-																<div id="widgetCollapse22"
-																	class="mt-4 widget-content collapse show"
-																	aria-labelledby="widgetHeading22"
-																	data-parent="#widgetAccordion">
-																	<ul class="product-categories">
-																		<li class="custom-control custom-checkbox mb-2 pb-2">
-																			<input type="checkbox" class="custom-control-input"
-																			id="brandEnglish"> <label
-																			class="custom-control-label" for="brandEnglish">English</label>
-																		</li>
-																		<li class="custom-control custom-checkbox mb-2 pb-2">
-																			<input type="checkbox" class="custom-control-input"
-																			id="brandGerman"> <label
-																			class="custom-control-label" for="brandGerman">German</label>
-																		</li>
-																		<li class="custom-control custom-checkbox mb-2 pb-2">
-																			<input type="checkbox" class="custom-control-input"
-																			id="brandFrench"> <label
-																			class="custom-control-label" for="brandFrench">French</label>
-																		</li>
-																		<li class="custom-control custom-checkbox mb-2 pb-2">
-																			<input type="checkbox" class="custom-control-input"
-																			id="brandSpanish"> <label
-																			class="custom-control-label" for="brandSpanish">Spanish</label>
-																		</li>
-																		<li class="custom-control custom-checkbox"><input
-																			type="checkbox" class="custom-control-input"
-																			id="brandTurkish"> <label
-																			class="custom-control-label" for="brandTurkish">Turkish</label>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-
-															<div id="Format" class="widget p-4d875 border">
-																<div id="widgetHeading23" class="widget-head">
-																	<a
-																		class="d-flex align-items-center justify-content-between text-dark"
-																		href="#" data-toggle="collapse"
-																		data-target="#widgetCollapse23" aria-expanded="true"
-																		aria-controls="widgetCollapse23">
-
-																		<h3
-																			class="widget-title mb-0 font-weight-medium font-size-3">Format</h3>
-
-																		<svg class="mins" xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="2px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                                                                        </svg>
-
-																		<svg class="plus" xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="15px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                                                                        </svg>
-																	</a>
-																</div>
-
-																<div id="widgetCollapse23"
-																	class="mt-3 widget-content collapse show"
-																	aria-labelledby="widgetHeading23"
-																	data-parent="#widgetAccordion">
-																	<ul class="product-categories">
-																		<li class="cat-item cat-item-9 cat-parent"><a
-																			href="#/clothing">Audio CD</a></li>
-																		<li class="cat-item cat-item-69 cat-parent"><a
-																			href="#/electronics/">Audio Book</a></li>
-																		<li class="cat-item cat-item-65 cat-parent"><a
-																			href="#/kitchen/">Hardcover</a></li>
-																		<li class="cat-item cat-item-11 cat-parent"><a
-																			href="#/music/">Kindle Books</a></li>
-																		<li class="cat-item cat-item-12"><a
-																			href="#/posters/">Paperback</a></li>
-																	</ul>
-																</div>
-															</div>
-
-															<div id="woocommerce_price_filter-2"
-																class="widget p-4d875 border woocommerce widget_price_filter">
-																<div id="widgetHeadingTwo" class="widget-head">
-																	<a
-																		class="d-flex align-items-center justify-content-between text-dark"
-																		href="#" data-toggle="collapse"
-																		data-target="#widgetCollapseTwo" aria-expanded="true"
-																		aria-controls="widgetCollapseTwo">
-
-																		<h3
-																			class="widget-title mb-0 font-weight-medium font-size-3">Filter
-																			by price</h3> <svg class="mins"
-																			xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="2px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                                                                        </svg>
-
-																		<svg class="plus" xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="15px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                                                                        </svg>
-																	</a>
-																</div>
-
-																<div id="widgetCollapseTwo"
-																	class="mt-4 widget-content collapse show"
-																	aria-labelledby="widgetHeadingTwo"
-																	data-parent="#widgetAccordion">
-																	<form method="get"
-																		action="https://themes.woocommerce.com/storefront/shop/">
-																		<div class="price_slider_wrapper">
-																			<div
-																				class="price_slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-																				style="">
-																				<div
-																					class="ui-slider-range ui-widget-header ui-corner-all"
-																					style="left: 0%; width: 100%;"></div>
-																				<span
-																					class="ui-slider-handle ui-state-default ui-corner-all"
-																					tabindex="0" style="left: 0%;"></span><span
-																					class="ui-slider-handle ui-state-default ui-corner-all"
-																					tabindex="0" style="left: 98%;"></span>
-																			</div>
-																			<div class="price_slider_amount">
-																				<input type="text" id="min_price" name="min_price"
-																					value="2" data-min="2" placeholder="Min price"
-																					style="display: none;"> <input type="text"
-																					id="max_price" name="max_price" value="1495"
-																					data-max="1495" placeholder="Max price"
-																					style="display: none;">
-																				<button type="submit" class="button d-none">Filter</button>
-																				<div class="mx-auto price_label mt-2" style="">
-																					Price: <span class="from">£2</span> — <span
-																						class="to">£1,495</span>
-																				</div>
-																			</div>
-																		</div>
-																	</form>
-																</div>
-															</div>
-
-															<div id="Review" class="widget p-4d875 border">
-																<div id="widgetHeading24" class="widget-head">
-																	<a
-																		class="d-flex align-items-center justify-content-between text-dark"
-																		href="#" data-toggle="collapse"
-																		data-target="#widgetCollapse24" aria-expanded="true"
-																		aria-controls="widgetCollapse24">
-
-																		<h3
-																			class="widget-title mb-0 font-weight-medium font-size-3">By
-																			Review</h3> <svg class="mins"
-																			xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="2px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                                                                        </svg>
-
-																		<svg class="plus" xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="15px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                                                                        </svg>
-																	</a>
-																</div>
-
-																<div id="widgetCollapse24"
-																	class="mt-4 widget-content collapse show"
-																	aria-labelledby="widgetHeading24"
-																	data-parent="#widgetAccordion">
-																	<div
-																		class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-2 pb-1">
-																		<div class="custom-control custom-checkbox">
-																			<input type="checkbox" class="custom-control-input"
-																				id="rating5"> <label
-																				class="custom-control-label" for="rating5">
-																				<span class="d-block text-yellow-darker mt-plus-3">
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="fas fa-star font-size-2 "></span>
-																			</span>
-																			</label>
-																		</div>
-																		<small class="font-size-2 text-gray-600">24</small>
-																	</div>
-																	<div
-																		class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-2 pb-1">
-																		<div class="custom-control custom-checkbox">
-																			<input type="checkbox" class="custom-control-input"
-																				id="rating4"> <label
-																				class="custom-control-label" for="rating4">
-																				<span class="d-block text-yellow-darker mt-plus-3">
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="far fa-star font-size-2 "></span>
-																			</span>
-																			</label>
-																		</div>
-																		<small class="font-size-2 text-gray-600">15</small>
-																	</div>
-																	<div
-																		class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-2 pb-1">
-																		<div class="custom-control custom-checkbox">
-																			<input type="checkbox" class="custom-control-input"
-																				id="rating3"> <label
-																				class="custom-control-label" for="rating3">
-																				<span class="d-block text-yellow-darker mt-plus-3">
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="far fa-star font-size-2 mr-1"></span>
-																					<span class="far fa-star font-size-2 "></span>
-																			</span>
-																			</label>
-																		</div>
-																		<small class="font-size-2 text-gray-600">43</small>
-																	</div>
-																	<div
-																		class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-2 pb-1">
-																		<div class="custom-control custom-checkbox">
-																			<input type="checkbox" class="custom-control-input"
-																				id="rating2"> <label
-																				class="custom-control-label" for="rating2">
-																				<span class="d-block text-yellow-darker mt-plus-3">
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="far fa-star font-size-2 mr-1"></span>
-																					<span class="far fa-star font-size-2 mr-1"></span>
-																					<span class="far fa-star font-size-2"></span>
-																			</span>
-																			</label>
-																		</div>
-																		<small class="font-size-2 text-gray-600">78</small>
-																	</div>
-																	<div
-																		class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-																		<div class="custom-control custom-checkbox">
-																			<input type="checkbox" class="custom-control-input"
-																				id="rating1"> <label
-																				class="custom-control-label" for="rating1">
-																				<span class="d-block text-yellow-darker mt-plus-3">
-																					<span class="fas fa-star font-size-2 mr-1"></span>
-																					<span class="far fa-star font-size-2 mr-1"></span>
-																					<span class="far fa-star font-size-2 mr-1"></span>
-																					<span class="far fa-star font-size-2 mr-1"></span>
-																					<span class="far fa-star font-size-2"></span>
-																			</span>
-																			</label>
-																		</div>
-																		<small class="font-size-2 text-gray-600">21</small>
-																	</div>
-																</div>
-															</div>
-
-															<div id="Featuredbooks" class="widget p-4d875 border">
-																<div id="widgetHeading25" class="widget-head">
-																	<a
-																		class="d-flex align-items-center justify-content-between text-dark"
-																		href="#" data-toggle="collapse"
-																		data-target="#widgetCollapse25" aria-expanded="true"
-																		aria-controls="widgetCollapse25">
-
-																		<h3
-																			class="widget-title mb-0 font-weight-medium font-size-3">Featured
-																			Books</h3> <svg class="mins"
-																			xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="2px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                                                                        </svg>
-
-																		<svg class="plus" xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="15px" height="15px">
-                                                                            <path
-																				fill-rule="evenodd" fill="rgb(22, 22, 25)"
-																				d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                                                                        </svg>
-																	</a>
-																</div>
-
-																<div id="widgetCollapse25"
-																	class="mt-5 widget-content collapse show"
-																	aria-labelledby="widgetHeading25"
-																	data-parent="#widgetAccordion">
-																	<div class="mb-5">
-																		<div class="media d-md-flex">
-																			<a class="d-block"
-																				href="../shop/single-product-v6.html"> <img
-																				class="img-fluid" src="https://placehold.it/60x92"
-																				alt="Image-Description">
-																			</a>
-																			<div class="media-body ml-3 pl-1">
-																				<h6
-																					class="font-size-2 text-lh-md font-weight-normal">
-																					<a href="../shop/single-product-v6.html">Lessons
-																						Learned from 15 Years as CEO...</a>
-																				</h6>
-																				<span class="font-weight-medium">$37</span>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="mb-5">
-																		<div class="media d-md-flex">
-																			<a class="d-block"
-																				href="../shop/single-product-v6.html"> <img
-																				class="img-fluid" src="https://placehold.it/60x92"
-																				alt="Image-Description">
-																			</a>
-																			<div class="media-body ml-3 pl-1">
-																				<h6
-																					class="font-size-2 text-lh-md font-weight-normal">
-																					<a href="../shop/single-product-v6.html">Love,
-																						Livestock, and Big Life Lessons...</a>
-																				</h6>
-																				<span class="font-weight-medium">$21</span>
-																			</div>
-																		</div>
-																	</div>
-																	<div>
-																		<div class="media d-md-flex">
-																			<a class="d-block"
-																				href="../shop/single-product-v6.html"> <img
-																				class="img-fluid" src="https://placehold.it/60x92"
-																				alt="Image-Description">
-																			</a>
-																			<div class="media-body ml-3 pl-1">
-																				<h6
-																					class="font-size-2 text-lh-md font-weight-normal">
-																					<a href="../shop/single-product-v6.html">Sleeper
-																						Cells, Ghost Stories, and Hunt...</a>
-																				</h6>
-																				<span class="font-weight-medium">$182</span>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- End Content -->
-										</div>
-									</div>
-								</div>
-							</aside>
-							<!-- End Sidebar Navigation -->
 						</div>
 					</div>
 
@@ -869,7 +170,8 @@
 														</div>
 													</div>
 													<div class="product__hover d-flex align-items-center">
-														<a class="text-uppercase text-dark h-dark font-weight-medium mr-auto"
+														<a
+															class="text-uppercase text-dark h-dark font-weight-medium mr-auto"
 															data-toggle="tooltip" data-placement="right" title=""
 															data-original-title="ADD TO CART"> <span
 															onClick="addToCart(${bookVo.book_no},${bookVo.price})"
@@ -886,97 +188,95 @@
 								</ul>
 							</c:if>
 						</div>
-					 <br><hr>
-<!-- pageNation -->
-<nav aria-label="Page navigation example">
-	<ul 
-		class="pagination pagination__custom justify-content-md-center flex-nowrap flex-md-wrap overflow-auto overflow-md-visble">
-		<li class="flex-shrink-0 flex-md-shrink-1 page-item" data-page="${bookPageObject.startPage-1}">
-			<!-- ◀에 해당되는 Previous기능 -->
-			<c:if test="${bookPageObject.startPage>1}">
-				<c:if test="${!empty bookPageObject.cate_no}">
-					<a class="page-link" href="/book/list?cate_no=${bookPageObject.cate_no}&page=${bookPageObject.startPage-1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }">
-						Previous
-					</a>
-				</c:if>
-				<c:if test="${empty bookPageObject.cate_no}">
-					<a class="page-link" href="/book/list?page=${bookPageObject.startPage-1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }">
-						Previous
-					</a>
-				</c:if>
-			</c:if>
-			<c:if test="${bookPageObject.startPage==1}">
-				<a href="" onclick="return false" class="page-link">
-					Previous
-				</a>
-			</c:if>
-		</li>
-		<!-- c:forEach : 숫자부분 -->
-		<c:forEach begin="${bookPageObject.startPage}" end="${bookPageObject.endPage}" var="cnt">
-			<li ${(bookPageObject.page==cnt)?"class=\"flex-shrink-0 flex-md-shrink-1 page-item active\" aria-current=\"page\" ":"class=\"flex-shrink-0 flex-md-shrink-1\" page-item "} 
-					data-page="${cnt}">
-					<!-- 페이지와 cnt가 같으면 링크가 없음 -->
-					<c:if test="${bookPageObject.page==cnt}">
-						<a href="" onclick="return false" class="page-link">${cnt}</a>
-					</c:if>
-					<!--페이지와 cnt가 같지않으면 링크가 있음--> 
-					<c:if test="${bookPageObject.page!=cnt}">
-						<!-- 카테고리 번호가 있을경우 -->
-						<c:if test="${!empty bookPageObject.cate_no}">
-							<a
-								href="/book/list?cate_no=${bookPageObject.cate_no}&page=${cnt}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
-								class="page-link"> ${cnt} </a>
-						</c:if>
-						<!-- 카테고리 번호가 없을 경우 -->
-						<c:if test="${empty bookPageObject.cate_no}">
-							<a
-								href="/book/list?page=${cnt}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
-								class="page-link"> ${cnt} </a>
-						</c:if>
-					</c:if>
-			</li>
-		</c:forEach>
-		<!-- ▶부분 -->
-		<c:if test="${bookPageObject.endPage<bookPageObject.totalPage}">
-			<li class="flex-shrink-0 flex-md-shrink-1 page-item" data-page="${bookPageObject.endPage+1}">
-				<!-- 카테고리 번호가 있을경우 -->
-				<c:if test="${!empty bookPageObject.cate_no}">
-					<a
-						href="/book/list?cate_no=${bookPageObject.cate_no}&page=${bookPageObject.endPage+1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
-						class="page-link"> Next </a>
-				</c:if>
-				<!-- 카테고리 번호가 없을 경우 -->
-				<c:if test="${empty bookPageObject.cate_no}">
-					<a
-						href="/book/list?page=${bookPageObject.endPage+1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
-						class="page-link"> Next </a>
-				</c:if>
-			</li>
-		</c:if>
-		<c:if test="${bookPageObject.endPage==bookPageObject.totalPage}">
-			<li class="flex-shrink-0 flex-md-shrink-1 page-item" data-page="${bookPageObject.endPage+1}">
-				<a href="" onclick="return false" class="page-link">
-					Next
-				</a>
-			</li>
-		</c:if>
-	</ul>
-</nav>
-<!-- end PageNation -->
-				</div>
+						<br>
+						<hr>
+						<!-- pageNation -->
+						<nav aria-label="Page navigation example">
+							<ul
+								class="pagination pagination__custom justify-content-md-center flex-nowrap flex-md-wrap overflow-auto overflow-md-visble">
+								<li class="flex-shrink-0 flex-md-shrink-1 page-item"
+									data-page="${bookPageObject.startPage-1}">
+									<!-- ◀에 해당되는 Previous기능 --> <c:if
+										test="${bookPageObject.startPage>1}">
+										<c:if test="${!empty bookPageObject.cate_no}">
+											<a class="page-link"
+												href="/book/list?cate_no=${bookPageObject.cate_no}&page=${bookPageObject.startPage-1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }">
+												Previous </a>
+										</c:if>
+										<c:if test="${empty bookPageObject.cate_no}">
+											<a class="page-link"
+												href="/book/list?page=${bookPageObject.startPage-1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }">
+												Previous </a>
+										</c:if>
+									</c:if> <c:if test="${bookPageObject.startPage==1}">
+										<a href="" onclick="return false" class="page-link">
+											Previous </a>
+									</c:if>
+								</li>
+								<!-- c:forEach : 숫자부분 -->
+								<c:forEach begin="${bookPageObject.startPage}"
+									end="${bookPageObject.endPage}" var="cnt">
+									<li
+										${(bookPageObject.page==cnt)?"class=\"flex-shrink-0 flex-md-shrink-1 page-item active\" aria-current=\"page\" ":"class=\"flex-shrink-0 flex-md-shrink-1\" page-item "}
+										data-page="${cnt}">
+										<!-- 페이지와 cnt가 같으면 링크가 없음 --> <c:if
+											test="${bookPageObject.page==cnt}">
+											<a href="" onclick="return false" class="page-link">${cnt}</a>
+										</c:if> <!--페이지와 cnt가 같지않으면 링크가 있음--> <c:if
+											test="${bookPageObject.page!=cnt}">
+											<!-- 카테고리 번호가 있을경우 -->
+											<c:if test="${!empty bookPageObject.cate_no}">
+												<a
+													href="/book/list?cate_no=${bookPageObject.cate_no}&page=${cnt}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
+													class="page-link"> ${cnt} </a>
+											</c:if>
+											<!-- 카테고리 번호가 없을 경우 -->
+											<c:if test="${empty bookPageObject.cate_no}">
+												<a
+													href="/book/list?page=${cnt}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
+													class="page-link"> ${cnt} </a>
+											</c:if>
+										</c:if>
+									</li>
+								</c:forEach>
+								<!-- ▶부분 -->
+								<c:if test="${bookPageObject.endPage<bookPageObject.totalPage}">
+									<li class="flex-shrink-0 flex-md-shrink-1 page-item"
+										data-page="${bookPageObject.endPage+1}">
+										<!-- 카테고리 번호가 있을경우 --> <c:if
+											test="${!empty bookPageObject.cate_no}">
+											<a
+												href="/book/list?cate_no=${bookPageObject.cate_no}&page=${bookPageObject.endPage+1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
+												class="page-link"> Next </a>
+										</c:if> <!-- 카테고리 번호가 없을 경우 --> <c:if
+											test="${empty bookPageObject.cate_no}">
+											<a
+												href="/book/list?page=${bookPageObject.endPage+1}&perPageNum=${bookPageObject.perPageNum}&key=${bookPageObject.key }&word=${bookPageObject.word }"
+												class="page-link"> Next </a>
+										</c:if>
+									</li>
+								</c:if>
+								<c:if test="${bookPageObject.endPage==bookPageObject.totalPage}">
+									<li class="flex-shrink-0 flex-md-shrink-1 page-item"
+										data-page="${bookPageObject.endPage+1}"><a href=""
+										onclick="return false" class="page-link"> Next </a></li>
+								</c:if>
+							</ul>
+						</nav>
+						<!-- end PageNation -->
+					</div>
 					<div id="secondary" class="sidebar widget-area order-1"
 						role="complementary"></div>
 				</div>
 			</div>
 		</div>
+	</div>
 
 
-
-
-		<!-- footer 자리 -->
-		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
-		<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
-		<script>
+	<!-- footer 자리 -->
+	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+	<c:import url="/WEB-INF/views/include/script.jsp"></c:import>
+	<script>
 			$("#sel_perPageNum").change(function(){
 				// 다시 리스트 불러오기 - 전달 정보는 페이지:1, perPageNum을 선택된 값을 전달.
 				location = "/book/list?page=1&perPageNum="+$(this).val();

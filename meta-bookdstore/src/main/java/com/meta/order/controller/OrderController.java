@@ -112,7 +112,6 @@ public class OrderController {
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		model.addAttribute("orderInfo", orderService.getOrderInfo(order_no));
 		model.addAttribute("orderItems", orderService.getOrderItems(order_no));
-		System.out.println(">>>> " + orderService.getOrderItems(order_no).get(0).toString());
 
 		return "order/myorder-details";
 	}

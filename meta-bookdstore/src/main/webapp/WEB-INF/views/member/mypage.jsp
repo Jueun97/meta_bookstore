@@ -78,7 +78,7 @@
 									class="font-weight-normal text-gray-600">Account details</span>
 							</a></li>
 							<li class="nav-item mx-0"><a
-								class="nav-link d-flex align-items-center px-0" href="/logout">
+								class="nav-link d-flex align-items-center px-0" href="javascript:alertLogout();">
 									<span class="font-weight-normal text-gray-600">Logout</span>
 							</a></li>
 						</ul>
@@ -263,6 +263,14 @@
 	  	$(function(){
 	  		${(empty msg)?"":"alert('" += msg += "');"};
 	  	});
+	  	
+		function alertLogout(){
+			if(window.confirm("로그아웃하시겠습니까?")){
+				location.href="/logout";
+			}
+		}
+
+
 	</script>
 	<script src="/js/member/mypage.js"></script>
 </body>
