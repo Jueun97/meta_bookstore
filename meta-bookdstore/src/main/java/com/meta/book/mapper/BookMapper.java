@@ -31,5 +31,7 @@ public interface BookMapper {
 	public List<BookVO> userBookList(BookPageObject bookPageObject);
 	//페이징처리 위한 책 갯수 구하기
 	public Long getTotalRow(BookPageObject pageObject);
+	//view리스트에서 카테고리별 관련 북리스트
+	public List<BookVO> relatedBookList(int cate_no);
 }
 
