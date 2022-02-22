@@ -33,11 +33,8 @@
 	rel="stylesheet">
 
 <!-- CSS Implementing Plugins -->
-<link rel="stylesheet" href="/vendor/font-awesome-free/css/all.css">
 <link rel="stylesheet"
-	href="/vendor/font-awesome-free/css/fontawesome.css">
-<link rel="stylesheet" href="/vendor/font-awesome-free/css/solid.css">
-
+	href="/vendor/font-awesome/css/fontawesome-all.min.css">
 <link rel="stylesheet" href="/vendor/flaticon/font/flaticon.css">
 <link rel="stylesheet" href="/vendor/animate.css/animate.css">
 <link rel="stylesheet"
@@ -330,7 +327,7 @@ figure.mb-0 span {
 																	<c:otherwise>
 																		<img src="/image/${bookVo.image}"
 																			class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-																			alt="image-description" style="max-width: 45%;"> 
+																			alt="image-description" style="max-width: 45%;">
 																	</c:otherwise>
 																</c:choose>
 															</a>

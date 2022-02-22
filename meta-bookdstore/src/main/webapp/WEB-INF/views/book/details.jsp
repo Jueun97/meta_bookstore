@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <sec:authorize access="isAuthenticated()">
 	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
 	<sec:authentication property="principal" var="principal" />
@@ -226,23 +227,31 @@
 											<div
 												class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
 												<div class="woocommerce-loop-product__thumbnail">
-													<a href="../shop/single-product-v4.html" class="d-block"><img
-														src="${related_Book.image}"
-														class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-														alt="image-description"></a>
+													<a href="/book/detail/${related_Book.book_no}" class="d-block">
+														<!-- 이미지 부분 --> <c:choose>
+															<c:when
+																test="${fn:substring(related_Book.image, 0, 5) eq 'https'}">
+																<img src="${related_Book.image}"
+																	class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
+																	alt="image-description" style="max-width: 45%;">
+															</c:when>
+															<c:otherwise>
+																<img src="/image/${related_Book.image}"
+																	class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
+																	alt="image-description" style="max-width: 45%;">
+															</c:otherwise>
+														</c:choose>
+													</a>
+													<!-- 기존 -->
 												</div>
 												<div
 													class="woocommerce-loop-product__body product__body pt-3 bg-white">
-													<div class="text-uppercase font-size-1 mb-1 text-truncate">
-														<a href="../shop/single-product-v4.html">Paperback</a>
-													</div>
 													<h2
 														class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark">
-														<a href="../shop/single-product-v4.html">${related_Book.title}</a>
+														<a href="/book/detail/${related_Book.book_no}">${related_Book.title}</a>
 													</h2>
 													<div class="font-size-2  mb-1 text-truncate">
-														<a href="../others/authors-single.html"
-															class="text-gray-700">${related_Book.author}</a>
+														<span class="text-gray-700">${related_Book.author}</span>
 													</div>
 													<div
 														class="price d-flex align-items-center font-weight-medium font-size-3">
@@ -250,11 +259,20 @@
 															class="woocommerce-Price-currencySymbol">$</span>${related_Book.price}</span>
 													</div>
 												</div>
-												<div class="product__hover d-flex align-items-center">
-													<span class="product__add-to-cart-text"
-													onClick="addToCart(${related_Book.book_no},${related_Book.price})">ADD
-													TO CART</span>
-												</div>
+												<c:choose>
+													<c:when test="${related_Book.stock != 0}">
+														<div class="product__hover d-flex align-items-center">
+															<span class="product__add-to-cart-text"
+																onClick="addToCart(${related_Book.book_no},${related_Book.price})">ADD
+																TO CART</span>
+														</div>
+													</c:when>
+													<c:otherwise>
+														<div class="product__hover d-flex align-items-center">
+															<span style="color: red;">품절</span>
+														</div>
+													</c:otherwise>
+												</c:choose>
 											</div>
 										</div>
 									</div>
