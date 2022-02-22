@@ -8,6 +8,9 @@
 	<sec:authentication property="principal" var="principal"/>
 	<!-- var="principal" : 세션정보를 담을 변수 => $principal.member~~}이런식으로 다른 jsp에서 쓰기--> 
 </sec:authorize>
+
+<link rel="stylesheet" href="/css/font.css">
+
 <header id="site-header" class="site-header__v3">
 	<div class="topbar border-bottom d-none d-md-block">
 		<div class="container">
