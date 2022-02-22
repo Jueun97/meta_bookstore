@@ -69,8 +69,8 @@
 								<div class="mb-4 mb-lg-7">
 									<h6 class="font-weight medium font-size-10 mb-4 mb-lg-7">Contact
 										Information</h6>
-									<p class="font-weight-medium font-italic">우리는 Metanet DT의 자회사 MetaBookStore 입니다.
-									저희 홈페이지에 방문하신 모든 고객분들께 감사의 인사드립니다.</p>
+									<p>우리는 Metanet DT의 인터넷 서점 MetaBookStore 입니다.</p>
+									<p>저희 홈페이지에 방문하신 모든 고객분들께 감사의 인사드립니다.</p>
 								</div>
 								<div class="mb-4 mb-lg-8">
 									<div class="row">
