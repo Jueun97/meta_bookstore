@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		//.authenticated() : 앞에있는 주소로 갈땐 인증이 필요하다
 		//.anyRequest().permitAll() : 위에꺼 아닌 주소는 허용하겠다.
 		http.authorizeRequests()
-			//.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.antMatchers("/order/**").authenticated()//로그인 해야 order페이지 접근가능
 			.antMatchers("/cart/add").permitAll()
 			.antMatchers("/cart/**").authenticated()
