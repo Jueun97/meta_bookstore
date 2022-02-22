@@ -87,7 +87,7 @@ figure.mb-0 span {
 									UP BEFORE OFFER WILL END</p>
 								<h2 class="hero__title text-primary-home-v3 font-size-14 mb-4">
 									이달의 작가</h2>
-								<a href="../shop/v3.html"
+								<a href=""
 									class="hero__btn btn btn-primary-home-v3 text-primary-yellow btn-wide rounded-md">Hire
 									Now</a>
 							</div>
@@ -104,7 +104,7 @@ figure.mb-0 span {
 									<span class="font-size-5 font-weight-medium">Best</span>
 								</div>
 								<div class="deal-progress">
-									<span class="font-size-4 font-weight-medium ">메타넷 인턴쉽 1기</span>
+									<span class="font-size-4 font-weight-medium ">2022 메타넷 대우정보 인턴3기</span>
 									<br> <span class="font-size-3 ">장주은</span>
 								</div>
 							</div>
@@ -124,7 +124,7 @@ figure.mb-0 span {
 									<span class="hero__title--1 font-weight-regular d-block">이달의
 										작가 
 								</h2>
-								<a href="../shop/v3.html"
+								<a href=""
 									class="hero__btn btn btn-primary-home-v3 text-primary-yellow btn-wide rounded-md">Hire
 									Now</a>
 							</div>
@@ -133,7 +133,8 @@ figure.mb-0 span {
 							</div>
 							<div class="col-xl-4 align-self-center test">
 								<img src="/img/uihyoen.jpeg"
-									class="img-fluid align-self-center " alt="image-description">
+									class="img-fluid align-self-center " alt="image-description"
+									style="height: 280px;">
 								<div
 									class="d-none badge badge-lg badge-primary-home-v3 position-absolute badge-pos--top-right text-primary-yellow rounded-circle d-xl-flex flex-column align-items-center justify-content-center"
 									style="top: 30px;">
@@ -141,7 +142,7 @@ figure.mb-0 span {
 									<span class="font-size-5 font-weight-medium">Best</span>
 								</div>
 								<div class="deal-progress">
-									<span class="font-size-4 font-weight-medium ">메타넷 인턴쉽 1기</span>
+									<span class="font-size-4 font-weight-medium ">2022 메타넷 대우정보 인턴3기</span>
 									<br> <span class="font-size-3 ">김의현</span>
 								</div>
 							</div>
@@ -158,20 +159,17 @@ figure.mb-0 span {
 									class="hero__pretitle text-uppercase text-primary-home-v3 opacity-md font-weight-bold mb-2 pb-1">HURRY
 									UP BEFORE OFFER WILL END</p>
 								<h2 class="hero__title text-primary-home-v3 font-size-14 mb-4">
-									<span class="hero__title--1 font-weight-regular d-block">Featured
-										Books of the </span> <span
-										class="hero__title--2 font-weight-bold d-block">February</span>
-								</h2>
-								<a href="../shop/v3.html"
-									class="hero__btn btn btn-primary-home-v3 text-primary-yellow btn-wide rounded-md">Shop
+									이달의 작가</h2>
+								<a href=""
+									class="hero__btn btn btn-primary-home-v3 text-primary-yellow btn-wide rounded-md">Hire
 									Now</a>
 							</div>
 							<div class="col-md-6 col-xl position-relative mb-5 mb-lg-0">
 
 							</div>
 							<div class="col-xl-4 align-self-center test">
-								<img src="../../assets/img/sample/book-sample.jpg"
-									class="img-fluid align-self-center " alt="image-description">
+								<img src="/img/mk.jpeg" class="img-fluid align-self-center "
+									alt="image-description" style="height: 280px;">
 								<div
 									class="d-none badge badge-lg badge-primary-home-v3 position-absolute badge-pos--top-right text-primary-yellow rounded-circle d-xl-flex flex-column align-items-center justify-content-center"
 									style="top: 30px;">
@@ -179,8 +177,8 @@ figure.mb-0 span {
 									<span class="font-size-5 font-weight-medium">Best</span>
 								</div>
 								<div class="deal-progress">
-									<span class="font-size-4 font-weight-medium ">My cover
-										book</span> <br> <span class="font-size-3 ">AuthorName</span>
+									<span class="font-size-4 font-weight-medium ">2022 메타넷 대우정보 인턴3기</span>
+									<br> <span class="font-size-3">여민기</span>
 								</div>
 							</div>
 						</div>

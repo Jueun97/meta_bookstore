@@ -38,7 +38,6 @@ public class OrderController {
 	@GetMapping("list")
 	public String order(@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		log.info("order창");
-		System.out.println("세션 정보 : " + principalDetails.getMember());
 		return "order/list";
 	}
 
@@ -51,7 +50,6 @@ public class OrderController {
 			cartVo.setCart_no(Integer.parseInt(data[i]));
 			list.add(cartVo);
 		}
-		System.out.println("주문 정보 : " + data[0]);
 		model.addAttribute("checkoutList", cartService.getCheckedoutCartList(list));
 		model.addAttribute("sub_total_price", cartService.getSelectedSubTotalPrice(list));
 		return "order/checkout";
@@ -125,7 +123,6 @@ public class OrderController {
 
 	@PostMapping("myorder/update/process")
 	public String updateMyOrderProcess(OrderVO orderVo) {
-		System.out.println("update info >> " + orderVo.toString());
 		orderService.updateOrderInfo(orderVo);
 		return "redirect:/order/myorder";
 	}
