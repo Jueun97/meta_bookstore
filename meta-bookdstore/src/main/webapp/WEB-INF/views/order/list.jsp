@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주문페이지</title>
+<title>MetaBookStore</title>
 </head>
 <body>
 	<div>
