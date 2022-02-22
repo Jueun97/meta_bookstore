@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	UserDetailsService userDetailsService;
 	
-	//BCrypt Password설정부분 <- 나중에..
+
 	@Bean
 	public BCryptPasswordEncoder encode() {
 		return new BCryptPasswordEncoder();
@@ -43,7 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.csrf().disable();
-		
+		http.headers(headers -> headers.cacheControl(cache -> cache.disable()));
+
 		
 		//인증이 되지 않은 사용자를 로그인 페이지로 가게하기
 		//.authenticated() : 앞에있는 주소로 갈땐 인증이 필요하다

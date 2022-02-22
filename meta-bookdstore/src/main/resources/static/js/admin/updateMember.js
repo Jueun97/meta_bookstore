@@ -1,14 +1,13 @@
 
 function checkSubmit() {
-    console.log("hihihi");
+    
     makeConvention();
-    console.log("222222");
+
     var id = document.getElementById("id");
     var newpassword = document.getElementById("newpassword");
     var name = document.getElementById("name");
     var zipcode = document.getElementById("zipcode");
     var roadAddress = document.getElementById("roadAddress");
-    console.log(newpassword);
 
 
     if(!id.value){
@@ -78,7 +77,7 @@ function to_auto_tel(thisStr, nextStr, len) {
 }
 
 function toggle(element) {
-    console.log(element.checked);
+
     var gradeCheck = document.getElementById("grade")
     if(element.checked){
         gradeCheck.value = "ADMIN"

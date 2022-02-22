@@ -62,7 +62,7 @@ function checkSubmit() {
 var regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
 
 $("#pubdate").keyup(function() {
-    console.log("hihi 찍히는중");
+    
     var pubdate = $("#pubdate").val();
 
     if (!regex.test(pubdate)) {
@@ -75,9 +75,9 @@ $("#pubdate").keyup(function() {
 });
 
 $("#price").keyup(function() {
-   console.log("hihi 가격 찍히는중");
+   
    var price = $("#price").val();
-    console.log(price);
+    
 
    if(price.length > 7){
        str ="<span style='color:red;'>" + "입력할 수 있는 금액을 넘었습니다." + "</span>";
