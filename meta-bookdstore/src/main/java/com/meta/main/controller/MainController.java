@@ -46,4 +46,12 @@ public class MainController {
 		log.warn("카테고리 번호 : " + cate_no);
 		return service.selectBookListByCateNo(cate_no);
 	}
+	
+	//403예외처리
+	@GetMapping("/denied")
+	public String handle403() {
+		//예외메시지
+		log.error("Exception403.....");
+		return "error/custom403";
+	}
 }

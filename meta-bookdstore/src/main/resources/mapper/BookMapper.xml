@@ -153,7 +153,7 @@
 	</sql>
 	<!-- 책 전체 갯수 구하기 -->
  	<select id="getTotalRow" resultType="java.lang.Long">
- 		SELECT COUNT(*) FROM book,stock
+ 		SELECT COUNT(*) FROM book
  		WHERE 1=1
  		<include refid="cate_search"/>
  	</select>

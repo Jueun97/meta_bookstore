@@ -37,7 +37,7 @@ function makeConvention() {
 
 function checkBoxOnChange(name, phone, email, roadAddress, zipcode, otherAddress) {
 	if ($('#checkout-checkbox').is(":checked")) {
-		console.log(name)
+		
 		$("#nameForm").val(name);
 
 		let phoneArr = phone.split("-");

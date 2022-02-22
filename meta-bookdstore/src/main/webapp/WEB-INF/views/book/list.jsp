@@ -59,7 +59,7 @@
 					<div
 						class="shop-control-bar d-lg-flex justify-content-between align-items-center mt-5 mb-5 text-center text-md-left">
 						<div class="shop-control-bar__left mb-4 m-lg-0">
-							<p class="woocommerce-result-count m-0">Showing 1–12 of 126
+							<p class="woocommerce-result-count m-0">Showing ${bookPageObject.startPage}–${bookPageObject.totalPage} of ${bookPageObject.totalRow}
 								results</p>
 						</div>
 						<div class="shop-control-bar__right d-md-flex align-items-center">

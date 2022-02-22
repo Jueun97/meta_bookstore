@@ -7,6 +7,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
@@ -22,7 +23,6 @@ public class CommonExceptionHandler{
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public String handle404(NoHandlerFoundException ex) {
-		log.info("들어오니?");
 		return "error/custom404";
 	}
 	
@@ -31,7 +31,7 @@ public class CommonExceptionHandler{
 	public String handle500(Exception ex,Model model) {
 		//예외메시지
 		log.error("Exception500....." + ex.getMessage());
-		model.addAttribute("exception",ex);
 		return "error/error_page";
 	}
+
 }

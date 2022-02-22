@@ -94,11 +94,7 @@
 				 <c:if test="${ param.error != null }">
 		      <div class="error">로그인 실패</div>
 		    </c:if>
-					<a
-						class="text-dark font-size-2 t-d-u link-muted font-weight-medium"
-						href="/member/find"
-						data-target="#forgotPassword" data-link-group="idForm"
-						data-animation-in="fadeIn">Forgot Password?</a>
+
 				</div>
 
 				<div class="mb-4d75">
