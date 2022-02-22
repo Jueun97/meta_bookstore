@@ -138,7 +138,7 @@ $('.product-remove-icon').on('click', function() {
 					data: { data: JSON.stringify(newData) },
 					dataType: 'json',
 					success: function(sub_total_price) {
-						$subTotalContainer.html(`<span class="woocommerce-Price-currencySymbol" >₩</span>${sub_total_price.toString().replace(regexp, ',')}`)
+						$subTotalContainer.html(`${sub_total_price.toString().replace(regexp, ',')}원`)
 					}
 
 

@@ -26,7 +26,7 @@
 					<!-- 로그인 한 경우 인삿말  -->
 					<sec:authorize access="isAuthenticated()">
 						<li class="nav-item"><span class="link-black-100">안녕하세요!
-								${principal.member.id} 님! :)</span></li>
+								${principal.member.name}님! :)</span></li>
 					</sec:authorize>
 
 				</ul>
