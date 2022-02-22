@@ -1,4 +1,5 @@
 var isPubdateChecked = false;
+var isPriceChecked = false;
 
 function checkSubmit() {
     var title = document.getElementById("title");
@@ -28,7 +29,7 @@ function checkSubmit() {
         pubdate.focus();
         return false;
     }
-    if(!price.value){
+    if(!isPriceChecked){
         alert("Price는 공백일 수 없습니다.");
         price.focus();
         return false;
@@ -56,4 +57,20 @@ $("#pubdate").keyup(function() {
         $("#pubdateHelp").html(str);
         isPubdateChecked = true;
     }
+});
+
+$("#price").keyup(function() {
+   console.log("hihi 가격 찍히는중");
+   var price = $("#price").val();
+    console.log(price);
+
+   if(price.length > 7){
+       str ="<span style='color:red;'>" + "입력할 수 있는 금액을 넘었습니다." + "</span>";
+       $("#priceHelp").html(str);
+       isPriceChecked = false;
+   }else{
+       str ="<span style='color:limegreen;'>" + "금액 입력 완료." + "</span>";
+       $("#priceHelp").html(str);
+       isPriceChecked = true;
+   }
 });

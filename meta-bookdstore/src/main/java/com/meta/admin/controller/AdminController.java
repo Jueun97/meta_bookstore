@@ -184,6 +184,7 @@ public class AdminController {
 			}
 
 			File thumbDelFile = new File(thumbDelPath);
+
 			if( thumbDelFile.exists() ){
 				if(thumbDelFile.delete()){
 					System.out.println("thumbDelFile파일삭제 성공");
@@ -203,7 +204,7 @@ public class AdminController {
 		bookService.updateBookInfo(vo);
 		stockService.updateStock(stockVO);
 
-		return "/admin/main";
+		return "redirect:/admin/book";
 	}
 
 	@GetMapping("bookDetail")
