@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		//super.configure(http); //삭제 시 기존 시큐리티가 가지고 있는 기능 비활성화
 		http.csrf().disable(); //csrf토큰 비활성화
-		
+		http.headers(headers -> headers.cacheControl(cache -> cache.disable()));
 		
 		//인증이 되지 않은 사용자를 로그인 페이지로 가게하기
 		//.authenticated() : 앞에있는 주소로 갈땐 인증이 필요하다
