@@ -24,6 +24,10 @@ public interface BookMapper {
 	public void insert(BookVO vo);
 
 	public List<CateVO> cateList();
+
+	public List<BookVO> rownumBookList();
+
+	public int cateCount(int number);
 	
 	//-------------------민기작성----------------------------------
 	public List<BookVO> selectMainBookList();

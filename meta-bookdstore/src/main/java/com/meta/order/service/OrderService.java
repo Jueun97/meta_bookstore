@@ -4,11 +4,12 @@ import com.meta.order.mapper.OrderMapper;
 import com.meta.order.vo.OrderItemsVO;
 import com.meta.order.vo.OrderStatusVO;
 import com.meta.order.vo.OrderVO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import java.util.List;
 import com.meta.stock.mapper.StockMapper;
 import com.meta.stock.vo.StockVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -82,4 +83,5 @@ public class OrderService {
 	public int updateOrderAdmin(OrderVO orderVo){
 		return orderMapper.updateOrderAdmin(orderVo);
 	}
+
 }

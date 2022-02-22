@@ -17,6 +17,7 @@ public class MemberVO {
 	private String grade;
 	private String regDate;
 	private long cartCount;
+	private int rownum;
 	
 	@Builder
 	public MemberVO(long m_no, String id, String password, String name, String zipcode, String roadAddress,

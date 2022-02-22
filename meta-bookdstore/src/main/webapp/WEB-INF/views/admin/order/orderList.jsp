@@ -15,10 +15,13 @@
 
     <title>Meta-Book Admin</title>
 
-    <!-- table관련 hover이벤트 -->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.png">
+
     <style>
-        table#trHover tr:hover{
-            background-color: #b8f1fb;
+        .nav-link {
+            padding-top: 2rem!important;
+            padding-bottom: 2rem!important;
         }
     </style>
 
@@ -192,6 +195,7 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr id="tablehover">
+                                    <th style="width: 3%;">No</th>
                                     <th>주문번호</th>
                                     <th>이름</th>
                                     <th>주소</th>
@@ -204,6 +208,7 @@
                                 <tbody>
                                 <c:forEach items="${orderInfo}" var = "info">
                                     <tr id="trHover">
+                                        <td>${info.rownum}</td>
                                         <td><a href="/admin/orderUpdate?order_no=${info.order_no}" style="color: #858796;">${info.order_no}</a></td>
                                         <td>${info.receiver_name}</td>
                                         <td>${info.receiver_roadAddress}</td>

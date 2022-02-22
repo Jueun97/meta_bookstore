@@ -86,5 +86,9 @@ public class MemberService {
 	public int memberDelete(Long m_no){
 		return memberMapper.memberDelete(m_no);
 	}
+
+	public List<MemberVO> rownumMemberList() {
+		return memberMapper.rownumMemberList();
+	}
 	
 }

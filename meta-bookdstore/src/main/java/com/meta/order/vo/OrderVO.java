@@ -18,4 +18,5 @@ public class OrderVO {
 	private String order_date;
 	private int status_code;
 	private String status;
+	private int rownum;
 }

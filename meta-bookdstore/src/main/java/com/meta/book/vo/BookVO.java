@@ -15,4 +15,5 @@ public class BookVO {
 	private String image;
 	private String th_image;
 	private int stock;
+	private int rownum;
 }

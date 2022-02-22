@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.UUID;
 
 @Slf4j
@@ -61,6 +63,16 @@ public class AdminController {
 	@GetMapping("main")
 	public String adminMainView(Model model) {
 		System.out.println("adminTestView");
+		ArrayList<Integer> lst = new ArrayList<Integer>(Arrays.asList(100, 110, 120, 130, 140, 150, 160));
+		ArrayList<Integer> tempList = new ArrayList<Integer>();
+
+		for(Integer number : lst){
+			tempList.add(bookService.cateCount(number));
+		}
+
+		model.addAttribute("counts", tempList);
+
+
 		return "/admin/main";
 	}
 
@@ -68,7 +80,7 @@ public class AdminController {
 	@GetMapping("book")
 	public String bookView(Model model) {
 		System.out.println("adminTestView");
-		model.addAttribute("bookdata", bookService.list());
+		model.addAttribute("bookdata", bookService.rownumBookList());
 
 		return "/admin/book/bookList";
 	}
@@ -273,7 +285,8 @@ public class AdminController {
 	@GetMapping("member")
 	public String memberView(Model model){
 		System.out.println(">>> "+this.getClass()+ " 호출됨!");
-		model.addAttribute("memberInfo", memberService.memberList());
+		model.addAttribute("memberInfo", memberService.rownumMemberList());
+
 		return "/admin/member/memberList";
 	}
 
