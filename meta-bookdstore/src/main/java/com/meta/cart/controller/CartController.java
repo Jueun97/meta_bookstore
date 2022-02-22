@@ -32,7 +32,6 @@ public class CartController {
 	public String addCart(@AuthenticationPrincipal PrincipalDetails principalDetails, @ModelAttribute CartVO cartVo) {
 		long memberId = principalDetails != null ? principalDetails.getMember().getM_no() : 0;
 		
-		System.out.println("add to cart >> "+memberId);
 		if (memberId != 0) {
 			cartVo.setM_no(memberId);
 			if (cartService.checkIfCartExisted(cartVo)) {
