@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <sec:authorize access="isAuthenticated()">
 	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
@@ -139,12 +140,12 @@
 																	test="${fn:substring(bookVo.image, 0, 5) eq 'https'}">
 																	<img src="${bookVo.image}"
 																		class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-																		alt="image-description"  style="max-width: 45%;">
+																		alt="image-description" style="max-width: 45%;">
 																</c:when>
 																<c:otherwise>
 																	<img src="/image/${bookVo.image}"
 																		class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-																		alt="image-description"  style="max-width: 45%;">
+																		alt="image-description" style="max-width: 45%;">
 																</c:otherwise>
 															</c:choose>
 														</a>
@@ -162,8 +163,8 @@
 														</div>
 														<div
 															class="price d-flex align-items-center font-weight-medium font-size-3">
-															<span class="woocommerce-Price-amount amount"><span
-																class="woocommerce-Price-currencySymbol">$</span>${bookVo.price}</span>
+															<span class="woocommerce-Price-amount amount"><fmt:formatNumber
+																	value="${bookVo.price}" pattern="###,###"></fmt:formatNumber>원</span>
 														</div>
 													</div>
 													<c:choose>

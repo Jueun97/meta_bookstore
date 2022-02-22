@@ -255,8 +255,8 @@
 													</div>
 													<div
 														class="price d-flex align-items-center font-weight-medium font-size-3">
-														<span class="woocommerce-Price-amount amount"><span
-															class="woocommerce-Price-currencySymbol">$</span>${related_Book.price}</span>
+														<span class="woocommerce-Price-amount amount"><fmt:formatNumber
+													value="${related_Book.price}" pattern="###,###"></fmt:formatNumber>원</span>
 													</div>
 												</div>
 												<c:choose>
