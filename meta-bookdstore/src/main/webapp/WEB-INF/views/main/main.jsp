@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <sec:authorize access="isAuthenticated()">
 	<!-- isAuthenticated() : 인증된 정보(세션)에 접근하는 방법 -->
@@ -33,11 +34,8 @@
 	rel="stylesheet">
 
 <!-- CSS Implementing Plugins -->
-<link rel="stylesheet" href="/vendor/font-awesome-free/css/all.css">
 <link rel="stylesheet"
-	href="/vendor/font-awesome-free/css/fontawesome.css">
-<link rel="stylesheet" href="/vendor/font-awesome-free/css/solid.css">
-
+	href="/vendor/font-awesome/css/fontawesome-all.min.css">
 <link rel="stylesheet" href="/vendor/flaticon/font/flaticon.css">
 <link rel="stylesheet" href="/vendor/animate.css/animate.css">
 <link rel="stylesheet"
@@ -48,7 +46,7 @@
 
 <!-- CSS Bookworm Template -->
 <link rel="stylesheet" href="/css/theme.css">
-	<link rel="stylesheet" href="/css/font.css">
+<link rel="stylesheet" href="/css/font.css">
 <style>
 figure.mb-0 {
 	display: flex;
@@ -78,112 +76,109 @@ figure.mb-0 span {
 				data-arrows-classes="d-none d-xl-block u-slick__arrow u-slick__arrow--v1 u-slick__arrow-centered--y rounded-circle"
 				data-arrow-left-classes="flaticon-back u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-2"
 				data-arrow-right-classes="flaticon-next u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-2">
-				<div class="bg-primary-yellow rounded-md px-5 px-xl-11 space-2"
+				<div class="bg-primary-yellow rounded-md px-5 px-xl-11 space-1"
 					style="height: 500px;">
 					<div class="hero-slider">
-						<div class="media row">
+						<div class="media row" style="width: 85%; margin: auto;">
 							<div
 								class="col-md-6 col-xl-4 hero__body media-body align-self-center mb-5 mb-lg-0">
 								<p
 									class="hero__pretitle text-uppercase text-primary-home-v3 opacity-md font-weight-bold mb-2 pb-1">HURRY
 									UP BEFORE OFFER WILL END</p>
 								<h2 class="hero__title text-primary-home-v3 font-size-14 mb-4">
-									<span class="hero__title--1 font-weight-regular d-block">Featured
-										Books of the </span> <span
-										class="hero__title--2 font-weight-bold d-block">February</span>
-								</h2>
-								<a href="../shop/v3.html"
-									class="hero__btn btn btn-primary-home-v3 text-primary-yellow btn-wide rounded-md">Shop
+									이달의 작가</h2>
+								<a href=""
+									class="hero__btn btn btn-primary-home-v3 text-primary-yellow btn-wide rounded-md">Hire
 									Now</a>
 							</div>
 							<div class="col-md-6 col-xl position-relative mb-5 mb-lg-0">
 
 							</div>
 							<div class="col-xl-4 align-self-center test">
-								<img src="../../assets/img/sample/book-sample.jpg"
-									class="img-fluid align-self-center " alt="image-description">
+								<img src="/img/jueun.jpeg" class="img-fluid align-self-center "
+									alt="image-description">
 								<div
-									class="d-none badge badge-lg badge-primary-home-v3 position-absolute badge-pos--top-right text-primary-yellow rounded-circle d-xl-flex flex-column align-items-center justify-content-center">
+									class="d-none badge badge-lg badge-primary-home-v3 position-absolute badge-pos--top-right text-primary-yellow rounded-circle d-xl-flex flex-column align-items-center justify-content-center"
+									style="top: 30px;">
 									<h6 class="font-weight-medium mb-n2">추천</h6>
 									<span class="font-size-5 font-weight-medium">Best</span>
 								</div>
 								<div class="deal-progress">
-									<span class="font-size-4 font-weight-medium ">My cover
-										book</span> <br> <span class="font-size-3 ">AuthorName</span>
+									<span class="font-size-4 font-weight-medium ">2022 메타넷 대우정보 인턴3기</span>
+									<br> <span class="font-size-3 ">장주은</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="bg-primary-yellow rounded-md px-5 px-xl-11 space-2"
+				<div class="bg-primary-yellow rounded-md px-5 px-xl-11 space-1"
 					style="height: 500px;">
 					<div class="hero-slider">
-						<div class="media row">
+						<div class="media row" style="width: 85%; margin: auto;">
 							<div
 								class="col-md-6 col-xl-4 hero__body media-body align-self-center mb-5 mb-lg-0">
 								<p
 									class="hero__pretitle text-uppercase text-primary-home-v3 opacity-md font-weight-bold mb-2 pb-1">HURRY
 									UP BEFORE OFFER WILL END</p>
 								<h2 class="hero__title text-primary-home-v3 font-size-14 mb-4">
-									<span class="hero__title--1 font-weight-regular d-block">Featured
-										Books of the </span> <span
-										class="hero__title--2 font-weight-bold d-block">February</span>
+									<span class="hero__title--1 font-weight-regular d-block">이달의
+										작가 
 								</h2>
-								<a href="../shop/v3.html"
-									class="hero__btn btn btn-primary-home-v3 text-primary-yellow btn-wide rounded-md">Shop
+								<a href=""
+									class="hero__btn btn btn-primary-home-v3 text-primary-yellow btn-wide rounded-md">Hire
 									Now</a>
 							</div>
 							<div class="col-md-6 col-xl position-relative mb-5 mb-lg-0">
 
 							</div>
 							<div class="col-xl-4 align-self-center test">
-								<img src="../../assets/img/sample/book-sample.jpg"
-									class="img-fluid align-self-center " alt="image-description">
+								<img src="/img/uihyoen.jpeg"
+									class="img-fluid align-self-center " alt="image-description"
+									style="height: 280px;">
 								<div
-									class="d-none badge badge-lg badge-primary-home-v3 position-absolute badge-pos--top-right text-primary-yellow rounded-circle d-xl-flex flex-column align-items-center justify-content-center">
+									class="d-none badge badge-lg badge-primary-home-v3 position-absolute badge-pos--top-right text-primary-yellow rounded-circle d-xl-flex flex-column align-items-center justify-content-center"
+									style="top: 30px;">
 									<h6 class="font-weight-medium mb-n2">추천</h6>
 									<span class="font-size-5 font-weight-medium">Best</span>
 								</div>
 								<div class="deal-progress">
-									<span class="font-size-4 font-weight-medium ">My cover
-										book</span> <br> <span class="font-size-3 ">AuthorName</span>
+									<span class="font-size-4 font-weight-medium ">2022 메타넷 대우정보 인턴3기</span>
+									<br> <span class="font-size-3 ">김의현</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="bg-primary-yellow rounded-md px-5 px-xl-11 space-2"
+				<div class="bg-primary-yellow rounded-md px-5 px-xl-11 space-1"
 					style="height: 500px;">
 					<div class="hero-slider">
-						<div class="media row">
+						<div class="media row" style="width: 85%; margin: auto;">
 							<div
 								class="col-md-6 col-xl-4 hero__body media-body align-self-center mb-5 mb-lg-0">
 								<p
 									class="hero__pretitle text-uppercase text-primary-home-v3 opacity-md font-weight-bold mb-2 pb-1">HURRY
 									UP BEFORE OFFER WILL END</p>
 								<h2 class="hero__title text-primary-home-v3 font-size-14 mb-4">
-									<span class="hero__title--1 font-weight-regular d-block">Featured
-										Books of the </span> <span
-										class="hero__title--2 font-weight-bold d-block">February</span>
-								</h2>
-								<a href="../shop/v3.html"
-									class="hero__btn btn btn-primary-home-v3 text-primary-yellow btn-wide rounded-md">Shop
+									이달의 작가</h2>
+								<a href=""
+									class="hero__btn btn btn-primary-home-v3 text-primary-yellow btn-wide rounded-md">Hire
 									Now</a>
 							</div>
 							<div class="col-md-6 col-xl position-relative mb-5 mb-lg-0">
 
 							</div>
 							<div class="col-xl-4 align-self-center test">
-								<img src="../../assets/img/sample/book-sample.jpg"
-									class="img-fluid align-self-center " alt="image-description">
+								<img src="/img/mk.jpeg" class="img-fluid align-self-center "
+									alt="image-description" style="height: 280px;">
 								<div
-									class="d-none badge badge-lg badge-primary-home-v3 position-absolute badge-pos--top-right text-primary-yellow rounded-circle d-xl-flex flex-column align-items-center justify-content-center">
+									class="d-none badge badge-lg badge-primary-home-v3 position-absolute badge-pos--top-right text-primary-yellow rounded-circle d-xl-flex flex-column align-items-center justify-content-center"
+									style="top: 30px;">
 									<h6 class="font-weight-medium mb-n2">추천</h6>
 									<span class="font-size-5 font-weight-medium">Best</span>
 								</div>
 								<div class="deal-progress">
-									<span class="font-size-4 font-weight-medium ">My cover
-										book</span> <br> <span class="font-size-3 ">AuthorName</span>
+									<span class="font-size-4 font-weight-medium ">2022 메타넷 대우정보 인턴3기</span>
+									<br> <span class="font-size-3">여민기</span>
 								</div>
 							</div>
 						</div>
@@ -310,6 +305,7 @@ figure.mb-0 span {
 						<div class="pt-2">
 							<div
 								class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6 ">
+
 								<c:forEach items="${bookList}" var="bookVo">
 									<div class="col">
 										<div class="mb-5 products">
@@ -325,12 +321,12 @@ figure.mb-0 span {
 																		test="${fn:substring(bookVo.image, 0, 5) eq 'https'}">
 																		<img src="${bookVo.image}"
 																			class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-																			alt="image-description">
+																			alt="image-description" style="max-width: 45%;">
 																	</c:when>
 																	<c:otherwise>
 																		<img src="/image/${bookVo.image}"
 																			class="d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"
-																			alt="image-description">
+																			alt="image-description" style="max-width: 45%;">
 																	</c:otherwise>
 																</c:choose>
 															</a>
@@ -343,13 +339,12 @@ figure.mb-0 span {
 																<a href="/book/detail/${bookVo.book_no}">${bookVo.title}</a>
 															</h2>
 															<div class="font-size-2  mb-1 text-truncate">
-																<span
-																	class="text-gray-700">${bookVo.author}</span>
+																<span class="text-gray-700">${bookVo.author}</span>
 															</div>
 															<div
 																class="price d-flex align-items-center font-weight-medium font-size-3">
-																<span class="woocommerce-Price-amount amount"><span
-																	class="woocommerce-Price-currencySymbol">₩</span>${bookVo.price}</span>
+																<span class="woocommerce-Price-amount amount"><fmt:formatNumber
+																		value="${bookVo.price}" pattern="###,###"></fmt:formatNumber>원</span>
 															</div>
 
 														</div>
@@ -363,7 +358,7 @@ figure.mb-0 span {
 															</c:when>
 															<c:otherwise>
 																<div class="product__hover d-flex align-items-center">
-																	<span style="color:red;">품절</span>
+																	<span style="color: red;">품절</span>
 																</div>
 															</c:otherwise>
 														</c:choose>

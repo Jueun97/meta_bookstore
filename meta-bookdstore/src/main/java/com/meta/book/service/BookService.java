@@ -73,8 +73,8 @@ public class BookService {
 		log.info("service 계산 후 bookPageObject : " + bookPageObject);
 		return mapper.userBookList(bookPageObject);
 	}
-	public List<BookVO> relatedBookList(int cate_no){
+	public List<BookVO> relatedBookList(BookVO bookVoInfo){
 
-		return mapper.relatedBookList(cate_no);
+		return mapper.relatedBookList(bookVoInfo);
 	}
 }

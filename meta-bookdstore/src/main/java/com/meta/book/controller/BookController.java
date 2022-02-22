@@ -40,8 +40,11 @@ public class BookController {
 		log.info("책 상세정보");
 		BookVO bookVo = service.detailBookInfo(book_no);
 		int cate_no = bookVo.getCate_no();
+		BookVO bookVoInfo = new BookVO();
+		bookVoInfo.setCate_no(cate_no);
+		bookVoInfo.setBook_no(book_no);
 		//카테고리 별 책리스트 뿌리기
-		List<BookVO> relatedBookList = service.relatedBookList(cate_no);
+		List<BookVO> relatedBookList = service.relatedBookList(bookVoInfo);
 		//상세보기 시 하는거.
 		model.addAttribute("bookInfo",bookVo);		
 		//카테고리별 연관 북리스트

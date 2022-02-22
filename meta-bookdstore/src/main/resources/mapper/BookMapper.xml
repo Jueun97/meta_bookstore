@@ -161,10 +161,12 @@
  	<!-- view페이지에서 연관된 카테고리별 북리스트 보여주기 -->
 	<select id="relatedBookList" resultType="com.meta.book.vo.BookVO">
 	<![CDATA[
-		SELECT book.book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, th_image, cate_no,stock
+		SELECT book.book_no,title,author,publisher,price, image, th_image, cate_no,stock
 		from book,stock
-		where cate_no = #{cate_no} AND book.book_no = stock.book_no 
-		AND ROWNUM<=12
+		where book.book_no != #{book_no} 
+		AND cate_no = #{cate_no} 
+		AND book.book_no = stock.book_no 
+		AND ROWNUM<=8
 	]]>
 	</select>
 </mapper>
