@@ -62,8 +62,18 @@
 						<div class="row space-2">
 							<div
 								class="d-flex align-items-center col-md-6 col-lg-5 offset-lg-1 woocommerce-product-gallery woocommerce-product-gallery--with-images images">
-								<img src="${bookInfo.image}" alt="Image Description"
-									class="mx-auto img-fluid" style="width: 35%;">
+								<c:choose>
+									<c:when test="${fn:substring(bookInfo.image, 0, 5) eq 'https'}">
+										<img src="${bookInfo.image}"
+											class="mx-auto img-fluid"
+											alt="image-description" style="width: 35%;">
+									</c:when>
+									<c:otherwise>
+										<img src="/image/${bookInfo.image}"
+											class="mx-auto img-fluid"
+											alt="image-description" style="width: 35%;">
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div class="col-md-6 col-lg-5 summary entry-summary">
 								<div class="border bg-white">
@@ -227,8 +237,8 @@
 											<div
 												class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
 												<div class="woocommerce-loop-product__thumbnail">
-													<a href="/book/detail/${related_Book.book_no}" class="d-block">
-														<!-- 이미지 부분 --> <c:choose>
+													<a href="/book/detail/${related_Book.book_no}"
+														class="d-block"> <!-- 이미지 부분 --> <c:choose>
 															<c:when
 																test="${fn:substring(related_Book.image, 0, 5) eq 'https'}">
 																<img src="${related_Book.image}"
@@ -256,7 +266,7 @@
 													<div
 														class="price d-flex align-items-center font-weight-medium font-size-3">
 														<span class="woocommerce-Price-amount amount"><fmt:formatNumber
-													value="${related_Book.price}" pattern="###,###"></fmt:formatNumber>원</span>
+																value="${related_Book.price}" pattern="###,###"></fmt:formatNumber>원</span>
 													</div>
 												</div>
 												<c:choose>
