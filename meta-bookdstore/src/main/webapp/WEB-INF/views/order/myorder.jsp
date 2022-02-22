@@ -111,7 +111,7 @@
 												<th
 													class="pl-3 pl-md-5 font-weight-normal align-middle py-6">${order.order_no}</th>
 												<td class="align-middle py-5">${order.order_date}</td>
-												<td class="align-middle py-5">${order.status}</td>
+												<th class="align-middle py-5 font-weight-strong">${order.status}</th>
 												<td class="align-middle py-5"><span
 													class="text-primary">₩<fmt:formatNumber
 															value="${order.order_price}" pattern="###,###"></fmt:formatNumber></span>
