@@ -84,7 +84,8 @@
 	<!-- 1. Order List 가져오기 -->
 	<select id="orderList" resultType="com.meta.order.vo.OrderVO">
 		<![CDATA[
-			select order_no,
+			select rownum,
+			       order_no,
 			       msg,
 			       receiver_email,
 			       receiver_zipcode,

@@ -15,12 +15,8 @@
 
     <title>Meta-Book Admin</title>
 
-    <!-- table관련 hover이벤트 -->
-    <style>
-        table#trHover tr:hover{
-            background-color: #b8f1fb;
-        }
-    </style>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.png">
 
     <!-- Custom fonts for this template -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,6 +29,13 @@
 
     <!-- Custom styles for this page -->
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <style>
+        .nav-link {
+            padding-top: 2rem!important;
+            padding-bottom: 2rem!important;
+        }
+    </style>
 
 </head>
 
@@ -49,7 +52,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">MetaBook Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">MetaBook Admin</div>
             </a>
 
             <!-- Divider -->
@@ -190,6 +193,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr id="tablehover">
+                                            <th style="width: 2%">No</th>
                                             <th style="width: 35%;">책 제목</th>
                                             <th style="width: 30%;">작가</th>
                                             <th style="width: 10%;">출판사</th>
@@ -202,6 +206,7 @@
                                     <tbody>
                                     <c:forEach items="${bookdata}" var = "data">
                                         <tr id="trHover">
+                                            <td>${data.rownum}</td>
                                             <td><a href="/admin/bookDetail?book_no=${data.book_no}" style="color: #858796;">${data.title}</a></td>
                                             <td>${data.author}</td>
                                             <td>${data.publisher}</td>
@@ -285,7 +290,7 @@
     <script>
         function test(link){
             if(!confirm("정말로 삭제하시겠습니까?")){
-                history.go(-1);
+
             }else{
                 location.href=link;
             }

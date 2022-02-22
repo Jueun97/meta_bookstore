@@ -16,6 +16,9 @@
 
     <title>Meta-Book Admin</title>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.png">
+
     <!-- Custom fonts for this template -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -27,6 +30,13 @@
 
     <!-- Custom styles for this page -->
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <style>
+        .nav-link {
+            padding-top: 2rem!important;
+            padding-bottom: 2rem!important;
+        }
+    </style>
 
 </head>
 

@@ -101,4 +101,10 @@
 			where m_no = #{m_no}
 		]]>
 	</delete>
+
+	<select id="rownumMemberList" resultType="com.meta.member.vo.MemberVO">
+		select rownum, m_no, id, password, name, zipcode, roadAddress, otherAddress, phone, email, grade, TO_CHAR(regDate, 'YYYY-MM-DD') as regDate
+		from MEMBER
+		ORDER BY m_no
+	</select>
   </mapper>
