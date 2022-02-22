@@ -23,7 +23,6 @@ public class CommonExceptionHandler{
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public String handle404(NoHandlerFoundException ex) {
-		log.info("들어오니?");
 		return "error/custom404";
 	}
 	
@@ -32,7 +31,6 @@ public class CommonExceptionHandler{
 	public String handle500(Exception ex,Model model) {
 		//예외메시지
 		log.error("Exception500....." + ex.getMessage());
-		model.addAttribute("exception",ex);
 		return "error/error_page";
 	}
 

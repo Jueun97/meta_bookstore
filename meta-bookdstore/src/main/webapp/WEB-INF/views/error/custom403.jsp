@@ -51,7 +51,7 @@
 					class="d-flex flex-column align-items-center pt-lg-7 pb-lg-4 pb-lg-6">
 					<div
 						class="font-weight-medium font-size-200 font-size-xs-170 text-lh-sm mt-xl-1">403</div>
-					<h6 class="font-size-4 font-weight-medium mb-2">403 권한이 없습니다!!</h6>
+					<h6 class="font-size-4 font-weight-medium mb-2">권한이 없습니다!!</h6>
 					<span class="font-size-2 mb-6">You could either go back or
 						go to homepage</span>
 					<div class="d-flex align-items-center flex-column">
