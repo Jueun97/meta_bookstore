@@ -1,6 +1,3 @@
-var isPubdateChecked = false;
-var isPriceChecked = false;
-
 function checkSubmit() {
     var title = document.getElementById("title");
     var author = document.getElementById("author");
@@ -24,15 +21,35 @@ function checkSubmit() {
         publisher.focus();
         return false;
     }
-    if(!isPubdateChecked){
-        alert("Pubdate의 형식이 올바르지 않습니다.");
+    if(!pubdate.value){
+        alert("Pubdate는 공백일 수 없습니다.");
         pubdate.focus();
         return false;
+    }else{
+        if(!regex.test(pubdate.value)){
+            str = "<span style='color:red;'>" + "입력형식이 올바르지 않습니다." + "</span>";
+            alert("Pubdate의 입력 형식이 틀렸습니다.");
+            $("#pubdateHelp").html(str);
+            return false;
+        }else {
+            str = "<span style='color:limegreen;'>" + "확인완료." + "</span>";
+            $("#pubdateHelp").html(str);
+        }
     }
-    if(!isPriceChecked){
+    if(!price.value){
         alert("Price는 공백일 수 없습니다.");
         price.focus();
         return false;
+    }else{
+        if(price.value.length > 7){
+            str ="<span style='color:red;'>" + "입력할 수 있는 금액을 넘었습니다." + "</span>";
+            alert("Price의 입력 형식이 틀렸습니다.");
+            $("#priceHelp").html(str);
+            return false;
+        }else{
+            str ="<span style='color:limegreen;'>" + "금액 입력 완료." + "</span>";
+            $("#priceHelp").html(str);
+        }
     }
     if(!description.value){
         alert("Dscription은 공백일 수 없습니다.");
@@ -51,11 +68,9 @@ $("#pubdate").keyup(function() {
     if (!regex.test(pubdate)) {
         str = "<span style='color:red;'>" + "입력형식이 올바르지 않습니다." + "</span>";
         $("#pubdateHelp").html(str);
-        isPubdateChecked = false;
     } else {
         str = "<span style='color:limegreen;'>" + "확인완료." + "</span>";
         $("#pubdateHelp").html(str);
-        isPubdateChecked = true;
     }
 });
 
@@ -67,10 +82,8 @@ $("#price").keyup(function() {
    if(price.length > 7){
        str ="<span style='color:red;'>" + "입력할 수 있는 금액을 넘었습니다." + "</span>";
        $("#priceHelp").html(str);
-       isPriceChecked = false;
    }else{
        str ="<span style='color:limegreen;'>" + "금액 입력 완료." + "</span>";
        $("#priceHelp").html(str);
-       isPriceChecked = true;
    }
 });

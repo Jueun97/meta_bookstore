@@ -58,7 +58,26 @@
 			from category
 		]]>
 	</select>
-	
+
+	<!-- 7. 책 리스트 rownum 적용 -->
+	<select id="rownumBookList" resultType="com.meta.book.vo.BookVO">
+		<![CDATA[
+		SELECT  rownum, x.*
+		FROM (SELECT book.book_no,title,author,publisher,TO_CHAR(pubdate,'YYYY-MM-DD') as pubdate, description, price, image, cate_no, stock
+			  from book, stock
+			  where book.book_no = stock.book_no
+			  ORDER BY book.book_no) x
+		]]>
+	</select>
+
+	<!-- 8. 카테고리별  책 개수 가져오기 -->
+	<select id="cateCount" resultType="Integer">
+		select count(*)
+		from book
+		where cate_no = #{number}
+	</select>
+
+
 	<!-- 민기 작성 : 메인페이지 북리스트(/main/main), (/book/list)의 북리스트 -->
 	<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 	<!-- 민기 작성,메인페이지의 카테고리 별 책리스트 select -->	

@@ -1,20 +1,15 @@
 package com.meta.book.service;
 
 import com.meta.book.mapper.BookMapper;
-
 import com.meta.book.vo.BookVO;
 import com.meta.book.vo.CateVO;
 import com.meta.util.BookPageObject;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -48,6 +43,14 @@ public class BookService {
 
 	public List<CateVO> cateList(){
 		return mapper.cateList();
+	}
+
+	public List<BookVO> rownumBookList(){
+		return mapper.rownumBookList();
+	}
+
+	public int cateCount(int number) {
+		return mapper.cateCount(number);
 	}
 
 	//----------------------------------------------------------

@@ -16,6 +16,9 @@
 
     <title>Meta-Book Admin</title>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.png">
+
     <!-- Custom fonts for this template -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -27,6 +30,13 @@
 
     <!-- Custom styles for this page -->
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <style>
+        .nav-link {
+            padding-top: 2rem!important;
+            padding-bottom: 2rem!important;
+        }
+    </style>
 
 </head>
 
@@ -206,8 +216,8 @@
                                 <div id="pubdateHelp" class="form-text">기존의 출판일자 확인 후, 수정할 출판일자를 형식에 맞게 입력해주세요.</div>
                             </div>
                             <div class="mb-3">
-                                <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="${bookInfo.price}"
+                                <label for="price" class="form-label">Price - 숫자만 입력 가능합니다.</label>
+                                <input type="text" pattern="[0-9]+" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="${bookInfo.price}"
                                        style="width: 100%;">
                                 <div id="priceHelp" class="form-text">기존의 책 가격 확인 후, 수정할 책 가격을 입력해주세요.</div>
                             </div>

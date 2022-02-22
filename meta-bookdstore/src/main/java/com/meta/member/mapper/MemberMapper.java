@@ -21,4 +21,5 @@ public interface MemberMapper {
 	public MemberVO memberDetailInfo(Long m_no);
 	public int memberUpdate(MemberUpdateAdminDto memberUpdateAdminDto);
 	public int memberDelete(Long m_no);
+	public List<MemberVO> rownumMemberList();
 }
