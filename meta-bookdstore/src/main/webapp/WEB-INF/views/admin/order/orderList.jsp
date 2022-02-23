@@ -189,9 +189,15 @@
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <!-- 혹시모를 추가 기능을 위한 버튼 남겨놓기
-                            <button type="button" class="btn btn-primary" style="float: right; margin-left:50px;" onclick="location.href='/admin/memberRegisterForm' ">회원 등록</button>
-                            -->
+                            <!-- 혹시모를 추가 기능을 위한 버튼 남겨놓기-->
+                            <button type="button" class="btn btn-light" style="float: right; background-color: #dfe1e7!important; font-size: 0.9rem;
+                            margin-left: 0.5rem;" onclick="location.href='/admin/order?stateCode=300'">배송완료</button>
+                            <button type="button" class="btn btn-light" style="float: right; background-color: #dfe1e7!important; font-size: 0.9rem;
+                            margin-left: 0.5rem;" onclick="location.href='/admin/order?stateCode=200'">배송중</button>
+                            <button type="button" class="btn btn-light" style="float: right; background-color: #dfe1e7!important; font-size: 0.9rem;
+                            margin-left: 0.5rem;" onclick="location.href='/admin/order?stateCode=100'">배송준비</button>
+                            <button type="button" class="btn btn-light" style="float: right; background-color: #dfe1e7!important; font-size: 0.9rem;
+                            margin-left: 1rem;" onclick="location.href='/admin/order'">전체</button>
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr id="tablehover">

@@ -327,10 +327,17 @@ public class AdminController {
 
 	//주문 리스트 조회
 	@GetMapping("order")
-	public String orderList(Model model){
+	public String orderList(Model model, @RequestParam(value = "stateCode", required = false) Integer stateCode){
 		System.out.println(">>> "+this.getClass()+ " 호출됨!");
+		System.out.println("<><><><><><><><><><><><><>" + stateCode);
 
-		model.addAttribute("orderInfo", orderService.orderList());
+		if(stateCode != null){
+			model.addAttribute("orderInfo", orderService.orderStateList(stateCode));
+		}else{
+			model.addAttribute("orderInfo", orderService.orderList());
+		}
+
+
 
 		return "/admin/order/orderList";
 	}
