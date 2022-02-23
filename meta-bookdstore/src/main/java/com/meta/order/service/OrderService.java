@@ -84,4 +84,8 @@ public class OrderService {
 		return orderMapper.updateOrderAdmin(orderVo);
 	}
 
+	public List<OrderVO> orderStateList(Integer stateCode){
+		return orderMapper.orderStateList(stateCode);
+	}
+
 }

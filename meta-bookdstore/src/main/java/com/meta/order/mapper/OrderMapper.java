@@ -23,4 +23,5 @@ public interface OrderMapper {
 	public OrderVO getOneOrderInfo(String order_no);
 	public List<OrderStatusVO> getOrderStatusInfo();
 	public int updateOrderAdmin(OrderVO orderVo);
+	public List<OrderVO> orderStateList(Integer stateCode);
 }
